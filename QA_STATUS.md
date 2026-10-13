@@ -25,3 +25,10 @@
 ## Seuraava tekninen portti
 
 Rakennetaan oikeat synteettiset PDF:t ja testataan todellinen PDF.js-selainpolku sekä koordinaattien ja sarakerajojen jäljitettävyys. Laajennetaan koesarja 25 perusasetteluun ja niiden vaikeutettuihin muunnelmiin. Käyttäjän puhelintesti ja riippumaton QA vasta myöhemmin.
+
+## v0.2 — tutkimuslisäys 13.10.2026
+
+- Uusi PDF-tavugeneraattori tuottaa synteettisen kaksi-/monisivuisen PDF:n, ei mockattua PDF.js-ulostuloa.
+- Paikalliset alkuperäiset 32 Node-testiä edelleen PASS; PDF-fixtureille lisätty kaksi Node-testiä. Chromiumin tulos tarkistetaan GitHub Actionsista lukitulle SHA:lle.
+- Aidon PDF.js:n browser-P0-03, browser-P0-04, käänteiset sarakkeet, identtiset toistot ja puuttuva sarake testataan Playwrightilla. Ei merkintää PASS ennen CI-tulosta.
+- **Android, OCR, skannatut dokumentit, tuntemattomat layoutit, riippumaton QA ja tuotantointegraatio: NOT RUN / NO-GO.**

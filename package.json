@@ -1,12 +1,23 @@
 {
   "name": "appeja-import-engine-lab",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "Isolated local-first import evidence and layout research. Synthetic data only.",
   "scripts": {
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "prepare:pdfjs": "node scripts/prepare-pdfjs.mjs",
+    "test:e2e": "npm run prepare:pdfjs && playwright test",
+    "test:all": "npm test && npm run test:e2e"
   },
-  "engines": { "node": ">=20" },
+  "dependencies": {
+    "pdfjs-dist": "6.4.299"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.57.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
   "license": "UNLICENSED"
 }
