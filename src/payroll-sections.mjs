@@ -1,6 +1,7 @@
 import {rowTokens} from './layout.mjs';
 import {parseNumber} from './numbers.mjs';
 import {evaluateImportCandidate} from './acceptance.mjs';
+import {parsePayrollDetailLedger,checkWithholdingReconciliation} from './payroll-lines.mjs';
 
 // Constrained section-based Finnish payslip experiment. Never writes data.
 const labeledNumber='(-?[\\d \\u00a0\\u202f]+[,.]\\d{2})';
@@ -110,12 +111,26 @@ export function parsePayrollSections(layout) {
   }
  }
  const fields=Object.fromEntries(fieldNames.map(k=>[k,resolve(evidence[k])]));
+ const ledger=parsePayrollDetailLedger(layout);
+ issues.push(...ledger.issues,...checkWithholdingReconciliation(ledger,fields.withholdingPeriod));
  if(!title)issues.push({level:'blocking',code:'UNKNOWN_PAYSLIP_TYPE'});
  const observations=(layout.observations??[]).map(o=>({
   id:o.id,raw:o.raw,page:o.page,box:o.box,material:moneyRegex.test(o.raw)
  }));
+ const accountedEvidenceIds=ledger.coveredSourceIds;
  const decision=evaluateImportCandidate({app:'palkka',
-  documentType:title?'payslip':'unknown',fields,observations,issues});
- return {schemaVersion:1,adapter:'payroll-sections-experiment',fields,evidence,
-  issues,observations,rows:seenRows,decision,canPersist:false};
+  documentType:title?'payslip':'unknown',fields,observations,issues,accountedEvidenceIds});
+ const coveredIds=new Set([
+   ...accountedEvidenceIds,
+   ...Object.values(fields).flatMap(f=>f.status==='verified'?f.sourceIds:[])
+ ]);
+ const material=observations.filter(o=>o.material);
+ const matched=material.filter(o=>coveredIds.has(o.id));
+ const coverage={materialObservations:material.length,coveredObservations:matched.length,
+   unresolvedObservations:material.length-matched.length,
+   unresolvedIds:material.filter(o=>!coveredIds.has(o.id)).map(o=>o.id),
+   paylineRowsRecognized:ledger.payLines.length,paylineRowsUnrecognized:ledger.unknown.length};
+ return {schemaVersion:2,adapter:'payroll-sections-experiment',fields,evidence,
+  payLines:ledger.payLines,unmatchedPayLines:ledger.unknown,
+  coverage,issues,observations,rows:seenRows,decision,canPersist:false};
 }

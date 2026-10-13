@@ -97,3 +97,15 @@ A/B/C-kokonaislaskelmissa poimitaan maksupäivä, kauden brutto, nettopalkka ja 
 Vertailussa tarkastellaan vain omista PDF.js-havainnoista poimittuja kenttiä. Vanhasta jäädytetystä parserista ei siirretä arvoja LABiin. `src/acceptance.mjs` pysyy riippumattomana ja `canPersist=false`. Tunnistamattomat olennaiset palkkaerittelyn rivit jätetään näkyviin ja ne estävät koneellisen valmistumisen, mikä on tässä vaiheessa tarkoituksellista.
 
 Testaus: `tests/payroll-sections.test.mjs` sekä `tests/e2e/payroll-sections.spec.mjs` (oikeat PDF.js-lukukierrokset A/B/C sekä rikkovat muunnelmat). OCR, muiden työnantajien laskelmapohjat, Android, suorituskyky ja riippumaton QA **NOT RUN**. Integraatio **NO-GO**.
+
+## LAB v0.7 — oikeat askeleet: palkkarivien lähdejälki ja vertailumittari
+
+Erillinen `src/payroll-lines.mjs` tunnistaa **rajatun sallitun palkkakoodijoukon** (13001, 13101, 20040, 20050, 20060, 20070, 20110, 20120, 20511, 20512, 30020, 90000). Jokainen oikein tunnistettu rivi palauttaa `code`, alkuperäisen selitteen, määrän, yksikköhinnan, rahasumman, laskentakertoimen (jos soveltuu) ja alkuperäiset PDF.js-`sourceIds`-viitteet. Koodin ja tekstin ristiriita, väärä sarakemäärä, tuntematon koodi, toistuva koodi, aritmeettinen poikkeama sekä ennakonpidätysrivin ja kausiyhteenvedon erotus aiheuttavat **estäviä** syitä. Ne eivät saa `accountedEvidenceIds`-merkintää.
+
+Ennakonpidätyksen koodirivillä oleva **verokortin kertymä ei ole vuoden veronalainen palkkakertymä**. Vähennyssumma säilyy etumerkillisenä; kuukausittaisen pidätyksen tunniste on erillinen. LAB ei päättele puuttuvaa kausipidätystä yksittäisestä koodirivistä.
+
+`src/payroll-sections.mjs` liittää rivikirjanpidon olemassa olevaan kenttäevidenssiin. Uusi `coverage` raportoi `materialObservations`, `coveredObservations`, `unresolvedObservations`, `unresolvedIds`, `paylineRowsRecognized` ja `paylineRowsUnrecognized`. Kattavuus ei tarkoita sitä, että koko palkkalaskelma hyväksytään: KTA/PP, prosentit, verokortti ja muut rahahavainnot voivat jäädä erillistä selvitystä vaativiksi. **V0.5:n hyväksymissopimus ja `canPersist=false` säilyvät koskemattomina.**
+
+Testit käyttävät samoja kolmea kokonaista **synteettistä PDF:ää**. `tests/e2e/payroll-lines.spec.mjs` vertailee alkuperäisten PDF-tavujen perusteella uuden adapterin palkkarivien lukumäärän, koodit, määrät, yksikköhinnat ja summat jäädytetyn nykyisen Palkka-parserin tuloksiin. Negatiiviset testit muuttavat yhden rahasumman, lisäävät tuntemattoman koodin ja aiheuttavat pidätyksen ristiriidan. Ne todentavat käsittelemättä jääneet havainnot ja estoilmoitukset.
+
+**Päätösraja:** tämä on näyttö tunnettujen rivien käsittelykyvystä, ei täysi laskelmien automaattinen hyväksyntä eikä kattavuus vieraista työnantajapohjista. Muiden palkkalajien käsittelyä ei arvata. Riippumaton QA, Android, OCR, todelliset palkkatiedot ja tuotantointegraatio **NOT RUN / NO-GO**.

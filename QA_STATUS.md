@@ -70,3 +70,11 @@ The latest laboratory-only fixture puts one `Ennakonpid.al.tulo` label beside ea
 - Testien hyväksyntäportti: A/B/C-kokonais-PDF:stä neljä ydinkenttää täsmälleen oikein, jokaisella vain olemassa olevat `sourceIds`. A/B: kauden ja vuoden ennakonpidätyksen summat erillisinä. Saman kentän kaksi eri lukua -> `conflict`. Puuttuva YTD -> `missing`. Netto > brutto -> esto. Kaikki tunnistamattomat olennaiset raharivit -> tarkistus.
 - Olennainen rajoitus: palkkaerittelyn kaikkia numeroita ja muita kenttiä ei vielä tulkita. Siksi lähdehavaintojen kokonaiskattavuus ja automaattisen valmiuden pariteetti ei ole saavutettu. `review-required` on tässä tutkimusvaiheessa oikea tulos.
 - Täsmällisen uuden SHA:n Node + Chromium CI **PENDING** ennen tulosten kirjaamista. Riippumaton QA / fyysinen Android / OCR **NOT RUN**. Tuotanto **NO-GO**.
+
+## LAB v0.7 — palkkarivien todennettavuus
+
+- Tarkastusportti: 3/3 kokonais-PDF:ää oikealla PDF.js:llä, uuden ja jäädytetyn parserin `code/quantity/unitPrice/amount`-rivien täsmävertailu; lähdeviitteiden olemassaolo; kattavuuden todellinen kasvu verrattuna v0.6:n kenttäviitteisiin.
+- Pakolliset vastatestit: tuntematon palkkakoodi, koodin ja palkkalajitekstin ristiriita, puutteellinen sarakerakenne, ylityön kertolaskupoikkeama, duplikaattikoodi, pidätyksen eri summa yhteenvedossa, puuttuva kausipidätys ja selittämätön raharivi.
+- Palkkarivikirjanpito sisältää **vain tuetut koodit**. `90000`-rivin verokortin kertymä ei korvaa YTD-palkkaa.
+- `canPersist=false` kaikissa tuloksissa. Tuntemattomat olennaiset rahahavainnot johtavat tarkistuspyyntöön.
+- **Uuden SHA:n Github CI PENDING**; tulokset kirjataan vasta tarkasta Actions-ajosta. Riippumaton QA, Android, OCR, tiedostojen arkistointi ja tuotantointegraatio edelleen NO-GO.
