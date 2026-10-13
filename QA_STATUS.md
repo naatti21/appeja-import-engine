@@ -102,3 +102,11 @@ The latest laboratory-only fixture puts one `Ennakonpid.al.tulo` label beside ea
 - Selaimen OCR lataa Tesseract.js:n ulkoisesta CDN:stä; ei vielä offline. Kuvareitin E2E käyttää simuloitua TSV:tä.
 - Oikeita käyttäjän tiedostoja ei viety GitHubiin. Tuotantokoodit koskemattomat.
 - Tarkka SHA:n CI **PENDING**; Android, riippumaton QA, oikea browser pixels-to-OCR sekä yksityinen PDF JavaScript-oracle NOT RUN. Tuotanto NO-GO.
+
+
+## LAB v1.1 — QA-variaatiogeneraattori
+
+- Erillinen fail-closed CI-portti CSV/XLSX/OCR TSV/natiiville PDF.js:lle sekä mobiilileveyksille; riippumattomat odotusarvot generoidaan ennen parsintaa.
+- Testin tulos on hyväksytty vasta exact SHA:n molempien workflow-ajojen jälkeen. **PENDING** tässä commitin luontivaiheessa.
+- Aiempi CSV-salkkuadapteri saattoi hyväksyä tyhjän/muotovirheisen valuutan; lisätty `CURRENCY_NOT_VERIFIED`-esto regressiotesteineen LABiin.
+- Aidot käyttäjän aineistot eivät kuulu julkiseen repoon/CI:hin. Riippumaton QA, todellinen kuva-OCR ja fyysinen Android NOT RUN. Tuotanto NO-GO.

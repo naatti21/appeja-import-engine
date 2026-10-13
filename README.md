@@ -128,3 +128,8 @@ Uusi `src/portfolio-review.mjs` on **post-extraction REVIEW GATE**, ei vielä va
 ## LAB v1.0 – paikallinen mobiili-esitarkistus
 
 [Demo ja rajaus](./V1_0_REVIEW_SCOPE.md) · [Selainkäyttöliittymä](./demo/review.html) · testi: `tests/e2e/mobile-review.spec.mjs`. Ei julkaisulupaa eikä tuotantointegraatiota.
+
+
+## LAB v1.1 — automaattinen QA-agentti
+
+[QA-protokolla](./QA_AGENT_PROTOCOL.md) määrittelee itsenäiset oracle-tarkistukset, siemenillä toistettavat CSV/XLSX/OCR/PDF-vaihtelut ja GitHub Actions -portit. Varsinaisten tuotantosovellusten testaus, merge ja deploy eivät ole automaattisia.
