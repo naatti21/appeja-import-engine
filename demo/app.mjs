@@ -2,6 +2,8 @@ import {layoutFromPdfItems} from '../src/layout.mjs';
 import {parsePayrollLayout} from '../src/payroll.mjs';
 import {parseHoldingsCsv} from '../src/holdings.mjs';
 import {payrollPage} from './synthetic.mjs';
+import {syntheticPayrollPdf} from './native-pdf.mjs';
+import {readPdfWithPdfJs} from '../src/layout.mjs';
 const root=document.getElementById('result');
 const el=(name,text,className)=>{
   const n=document.createElement(name);n.textContent=String(text);
@@ -61,3 +63,30 @@ document.getElementById('matching').addEventListener('click',()=>pdfRun('matchin
 document.getElementById('reverse').addEventListener('click',()=>pdfRun('reverse'));
 document.getElementById('missing').addEventListener('click',()=>pdfRun('missing'));
 document.getElementById('parseCsv').addEventListener('click',csvRun);
+
+async function nativePdfRun(){
+  root.replaceChildren(el('h2','PDF.js: oikea PDF-luku käynnistyy...'));
+  try {
+    const pdfjs=await import('./vendor/pdfjs/pdf.min.mjs');
+    pdfjs.GlobalWorkerOptions.workerSrc=new URL('./vendor/pdfjs/pdf.worker.min.mjs',import.meta.url).href;
+    const pdf=syntheticPayrollPdf([{ytd:'42 000,00'},{ytd:'43 000,00'}]);
+    const started=performance.now();
+    const layout=await readPdfWithPdfJs(pdfjs,pdf);
+    const parsed=parsePayrollLayout(layout);
+    const ms=Math.round(performance.now()-started);
+    start('PDF.js: oikea PDF-luku',layout.observations.length,parsed.canAutoAccept?0:1,parsed.issues);
+    add(el('p','PDF.js-käsittely '+ms+' ms, '+pdf.byteLength+' PDF-tavua, '+layout.pages.length+' sivua.'));
+    add(el('h2',parsed.fields.ytdTaxableIncome.status==='conflict'?'Ristiriita havaittu':'Tulkinnan tila'));
+    table(['Kenttä','Tila','Arvot ja lähdesivut'],Object.entries(parsed.fields).map(([name,f])=>[
+      name,f.status,(f.candidates||[]).map(c=>c.raw+' (sivu '+c.page+')').join(' · ')||'—'
+    ]));
+    if(parsed.issues.length)table(['Ongelma','Sivu'],parsed.issues.map(i=>[i.code,i.page??'—']));
+    add(el('h2','Alkuperäiset PDF.js-tekstihavainnot'));
+    table(['ID','Sivu','Teksti','X/Y'],layout.observations.map(t=>[
+      t.id,t.page,t.raw,t.box?t.box.x0.toFixed(3)+' / '+t.box.y0.toFixed(3):'ei geometriaa'
+    ]));
+  }catch(error){
+    root.replaceChildren(el('h2','PDF.js-käsittely epäonnistui'),el('p',String(error?.message||error),'status bad'));
+  }
+}
+document.getElementById('realPdf').addEventListener('click',nativePdfRun);
