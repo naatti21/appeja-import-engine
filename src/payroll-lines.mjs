@@ -30,7 +30,7 @@ export function parsePayrollDetailLedger(layout){
    if(!tokens.length)continue;
    const text=tokens.map(t=>t.raw.trim()).join(' ').replace(/\s+/g,' ').trim();
    if(/^(?:erittely(?:t)?\b|palkan osat\b)/i.test(text)){details=true;continue;}
-   if(/^(?:kertymä\b|kauden tiedot\b|vuoden tiedot\b)/i.test(text)){details=false;continue;}
+   if(/^(?:kertymä(?:\s|$)|kauden tiedot(?:\s|$)|vuoden tiedot(?:\s|$))/i.test(text)){details=false;continue;}
    if(!details)continue;
    const sourceIds=tokens.map(t=>t.id);
    const src={page:page.page,rowId:sourceRow.id,sourceIds,raw:text};

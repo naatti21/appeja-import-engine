@@ -16,7 +16,6 @@ for(const [name,count] of expected){
  test('known payline rows are fully sourced: '+name,async()=>{
   const result=parsePayrollSections(asLayout(await source(name)));
   assert.equal(result.payLines.length,count,name);
-  if(result.unmatchedPayLines.length)console.log('PAYLINE_UNMATCHED_DIAGNOSTIC '+name+' '+JSON.stringify(result.unmatchedPayLines));
   assert.equal(result.unmatchedPayLines.length,0);
   assert.ok(result.coverage.unresolvedObservations>0,'remaining ancillary money is not silently dismissed');
   assert.equal(result.decision.status,'review-required');
