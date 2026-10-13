@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Äppejä Import Engine — LAB 0.1</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0a1018;color:#eaf0f7}
+*{box-sizing:border-box}
+body{margin:0;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+main{max-width:780px;margin:auto;padding:22px 16px 50px}
+header{display:flex;align-items:center;justify-content:space-between;gap:8px}
+h1{font-size:clamp(23px,5vw,32px);line-height:1.1;margin:8px 0}
+p{line-height:1.5;color:#b8c8d8}
+.eyebrow{color:#80bff5;font-size:12px;font-weight:800;letter-spacing:.12em}
+.pill{font-size:11px;border:1px solid #396782;color:#b0ddff;border-radius:999px;padding:6px 10px;white-space:nowrap}
+.panel{background:#111d2b;border:1px solid #293a4e;border-radius:16px;margin-top:16px;padding:16px}
+.warning{color:#ffcf85;background:#2b2318;border:1px solid #6e4e23;border-radius:12px;padding:11px 12px;font-size:13px;line-height:1.5;margin:16px 0}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button{min-height:48px;border-radius:11px;background:#1c334a;color:#e4f3ff;border:1px solid #3c6584;font:inherit;font-weight:700;padding:10px 8px;cursor:pointer}
+button.primary{background:#126093;border-color:#2281bd}
+button:focus-visible,textarea:focus-visible{outline:3px solid #6bbfff;outline-offset:2px}
+textarea{width:100%;background:#0a131e;border:1px solid #426078;color:#e8f1fd;border-radius:10px;padding:11px;font:13px ui-monospace,SFMono-Regular,Consolas,monospace;resize:vertical;min-height:132px;line-height:1.5}
+label{display:block;margin:0 0 7px;font-weight:700;font-size:14px}
+small,.hint{color:#96a9ba;font-size:12px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.stat{border:1px solid #34475d;background:#132235;border-radius:10px;padding:10px}
+.stat b{display:block;font-size:19px;margin:4px 0}
+.stat span{color:#a6bcce;font-size:11px}
+.status{font-size:13px;font-weight:800;color:#f3cf86}
+.good{color:#79d6aa}.bad{color:#ffb8b8}
+h2{font-size:16px;margin:3px 0 12px}
+table{border-collapse:collapse;width:100%;font-size:12px}th,td{padding:9px 6px;border-bottom:1px solid #314356;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{color:#b6cbde;font-size:11px}
+.scroll{overflow-x:auto}
+pre{white-space:pre-wrap;word-break:break-word;background:#0b1420;padding:12px;border-radius:10px;font-size:11px;line-height:1.5}
+strong{color:#fff}
+footer{margin-top:24px;color:#8196aa;font-size:12px;line-height:1.6}
+@media(max-width:390px){main{padding:16px 11px}.actions{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="eyebrow">ÄPPEJÄ · IMPORT ENGINE</div><div class="pill">LAB 0.1 · SYNTEETTINEN</div></header>
+<h1>Todisteet ennen tulkintaa.</h1>
+<p>Tässä kokeessa tutkitaan, miten sama tieto voidaan poimia dokumentista menettämättä sen sijaintia tai ristiriitoja. Dataa ei tallenneta eikä lähetetä palvelimelle.</p>
+<div class="warning"><strong>Vain tutkimuskäyttöön.</strong> Älä syötä oikeaa palkka-, salkku- tai henkilötietoa. PDF-esimerkit ovat synteettisiä tekstielementtejä, eivät oikean PDF-lukijan selainintegraatiota. Tämä ei ole julkaisuvalmis tuonti.</div>
+<section class="panel">
+<h2>1. Tutki PDF-havaintoja</h2>
+<p class="hint">Testataan alkuperäisten tekstielementtien sarakesuhteita. Paina esimerkkiä.</p>
+<div class="actions">
+<button id="conflict" class="primary" type="button">42 000 / 43 000<br><small>ristiriita</small></button>
+<button id="matching" type="button">42 000 / 42 000<br><small>identtiset havainnot</small></button>
+<button id="reverse" type="button">Sarakkeet käännetty</button>
+<button id="missing" type="button">Puuttuva kenttä</button>
+</div>
+</section>
+<section class="panel">
+<h2>2. Tutki CSV-tietuetta</h2>
+<label for="csv">Muokkaa tätä synteettistä CSV-tekstiä</label>
+<textarea id="csv" spellcheck="false">Name;Quantity;Buy Price;Currency;MIC;Broker
+Nokia;100;4,20;EUR;XHEL;Nordnet
+Microsoft;12;;USD;XNAS;Nordea</textarea>
+<p class="hint">Kokeile vaihtaa puuttuva hankintahinta arvoksi 0. Huomaa ero.</p>
+<button id="parseCsv" class="primary" type="button">Tulkitse CSV (ei tallennusta)</button>
+</section>
+<section class="panel" aria-live="polite" id="result">
+<h2>3. Tulokset</h2>
+<p>Valitse yllä yksi koe. Näet tulkinnan lisäksi alkuperäisten havaintojen määrän ja tunnisteet.</p>
+</section>
+<footer>Paikallinen JavaScript · 0 AI API -kutsua · 0 tuotantosovelluksen muutosta · Ei tallennuspolkua. Kehittäjän testit eivät ole riippumaton QA.</footer>
+</main>
+<script type="module" src="./app.mjs"></script>
+</body>
+</html>
