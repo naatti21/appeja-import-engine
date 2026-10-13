@@ -79,3 +79,11 @@ Mittaamme vain kolmea yhteistä rahakenttää: `grossPay`, `ytdTaxableIncome` ja
 Tulokset syntyvät GitHub Actionsin Chromium-jobin lokiin `FULL_FROZEN_PARSER_VS_LAB_75`. Kunnes **tarkka SHA:n ajokerta** on tarkastettu, v0.4 on NOT VERIFIED. Positiivinen testi vaatii täsmälliset kolme arvoa; negatiivinen testi vaatii eston ja sille oikean syyn. Vanhan parserin blokkausten erot esitetään kuvailevana analyysinä, ei oikeuksien tai tuotantotallennuksen väitteenä.
 
 **Turvaraja:** synteettiset tiedot, ei oikeita palkkalaskelmia, ei käyttäjätietojen latausta, ei pilvipalvelua eikä maksullista AI:ta. Ei integroitu muihin repoihin. Riippumaton QA ja puhelintesti NOT RUN, tuotanto NO-GO.
+
+## LAB v0.5: yhteinen hyväksymissopimus + kokonaiset synteettiset palkkalaskelmat
+
+Lue **[ACCEPTANCE_CONTRACT.md](./ACCEPTANCE_CONTRACT.md)** ennen uusia integraatioita. Sopimus on toteutettu puhtaana paikallisena funktiona `src/acceptance.mjs` ja sen vastatestit tiedostossa `tests/acceptance-contract.test.mjs`. Erottelu on ehdoton: `candidate-ready` on vain ehdotus, `canPersist=false` aina. Palkka ja Osakevahti käyttävät omia pakollisia kenttiään saman lähdehavaintoihin perustuvan turvallisuuskehikon sisällä.
+
+Lisättiin kolme todellista, mutta keksityllä testidatalla täytettyä PDF-tiedostoa **ajon aikana luovaa fixtureä**. Niiden tekstipohjat ovat jäädytetyt nykyisestä Palkan julkisesta hyväksymistestistöstä commitista `550c7654…` (`tests/fixtures/complete-payslips/`). `demo/complete-pdf.mjs` tekee aidot yksisivuiset WinAnsi-PDF-tavut ilman käyttäjätietoja. Chromium lukee ne oikealla PDF.js:llä ja ajaa saman tekstin jäädytetyn `parsePayslip()`-parserin läpi.
+
+Tämän kokeen **positiivinen** tavoite on, että Palkan neljä pakollista kenttää säilyvät oikeina myös PDF-lukuvaiheen jälkeen (ei vain raakana tekstinä). Samassa ajossa tutkitaan, riittävätkö LABin nykyiset 3 kertymäkenttää yleisen sopimuksen täyttämiseen: eivät, koska LAB ei vielä poimi maksupäivää eikä nettoa. Sopimus vaatii tarkistuksen eikä koskaan tallenna. **Älä vertaa näitä kuin kaksi täyttä palkkaparseria.** Testiajon tulokset lukitaan SHA:han ja raportoidaan erikseen.

@@ -55,3 +55,11 @@ Rakennetaan oikeat synteettiset PDF:t ja testataan todellinen PDF.js-selainpolku
 The initial frozen-parser comparison was **invalid as an accuracy competition**: our synthesized multi-column money row used only one field label, while Palkka `parallelCumulativeSummary()` intentionally requires individually labeled numeric columns. It correctly flagged the synthetic input as uncertain rather than inventing a mapping.
 
 The latest laboratory-only fixture puts one `Ennakonpid.al.tulo` label beside each cumulative numeric cell on each test page. Neither the frozen Palkka parser nor any production app was modified. Re-check the **exact final CI run** before using the comparative counts. This remains synthetic exploratory evidence, not real-world sensitivity/specificity data.
+
+## LAB v0.5 — portti ennen integraatiota
+
+- Hyväksymiskriteerit lukittu ehdotukseksi: `ACCEPTANCE_CONTRACT.md` + `src/acceptance.mjs`; `canPersist=false` poikkeuksetta.
+- Sopimuksen testit kattavat lähde-ID:t, valheellisen confidence-varmuuden, ristiriitaisuuden, puuttuvan vs nollan, tuntemattomat olennaiset CSV-solut, estävät ilmoitukset, neljä Palkan ydinkenttää ja osakeomistuksen id/määrä/hankintahinta/valuutta.
+- Kolme julkisista synteettisistä Palkka-hyväksymisfixtuureista tehtyä aitoa PDF:ää testataan oikealla PDF.js:n Chromium-työketjulla; jäädytetyn täyden Palkka-parserin 4 ydinkenttää verrataan ennakkoon annettuihin arvoihin.
+- Nykyisellä LAB-geometry-adapterilla **ei** ole nettopalkan ja maksupäivän poimintaa, joten sopimuksen tulee edelleen antaa `review-required`, ei keksittyä hyväksyntää.
+- Tämän muutoksen tarkka GitHub CI = **NOT VERIFIED**, kunnes uuden Draft-PR:n ajot tarkastetaan. Riippumaton QA, fyysinen Android, OCR ja tuotantokelpoisuus **NO-GO**.
