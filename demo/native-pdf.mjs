@@ -36,9 +36,10 @@ function pageContent(o={}){
       } else out+=cell(c.label,x[i],y);
       if(o.duplicateHeader===c.role)out+=cell(c.label,x[i]+105,y);
     });
-    out+=cell(o.taxableLabel==='palkka'?'Ennakonpid.al.tulo':'Ver.al.ans',75,y-50);
+    if(o.taxableLabel!=='palkka')out+=cell('Ver.al.ans',75,y-50);
     header.forEach((c,i)=>{
       if(c.role==='ytd'&&o.includeYtd===false)return;
+      if(o.taxableLabel==='palkka')out+=cell('Ennakonpid.al.tulo',x[i]-140,y-50);
       const text=c.role==='ytd'?secondYtd:c.value;
       const px=x[i]+10+(o.offsets?.[c.role]??0);
       if(o.splitValue===c.role){
