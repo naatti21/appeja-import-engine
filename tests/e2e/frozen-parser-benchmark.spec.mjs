@@ -41,6 +41,7 @@ test('75 PDFs: same input through full frozen Palkka parser and LAB adapter',asy
       const oldBlockers=old.notices?.filter(n=>n.level==='blocking').map(n=>n.code)??[];
       results.push({
         id:fixture.id,kind:fixture.kind,oracle:fixture.oracle,
+        ...(fixture.id.endsWith('--clean')&&fixture.id.startsWith('01-') ? {diagnostic:{oldText:oldText.slice(0,1600),oldWarnings:old.notices?.map(n=>({level:n.level,code:n.code})),oldFieldSources:Object.fromEntries(['grossPay','ytdTaxableIncome','previousYearTaxableIncome'].map(k=>[k,old.fields[k]?.source??null]))}} : {}),
         old:{values:oldValues,documentType:old.documentType,sourceProfile:old.sourceProfile,
           blockingCodes:oldBlockers,fieldConflicts:Object.fromEntries(['grossPay','ytdTaxableIncome','previousYearTaxableIncome'].map(k=>[k,Boolean(old.fields[k]?.conflict||old.fields[k]?.evidenceIssue)]))},
         lab:{values:newValues,canAutoAccept:current.canAutoAccept,blockingCodes:current.issues.map(i=>i.code),
@@ -95,6 +96,7 @@ test('75 PDFs: same input through full frozen Palkka parser and LAB adapter',asy
       }
     }
   }
+  console.log('FROZEN_PARSER_DIAGNOSTIC '+JSON.stringify(outcomes.find(r=>r.diagnostic)?.diagnostic));
   console.log('FULL_FROZEN_PARSER_VS_LAB_75 '+JSON.stringify(metrics));
   expect(metrics.clean).toBe(25);
   expect(metrics.adversarial).toBe(50);
