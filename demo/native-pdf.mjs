@@ -36,7 +36,7 @@ function pageContent(o={}){
       } else out+=cell(c.label,x[i],y);
       if(o.duplicateHeader===c.role)out+=cell(c.label,x[i]+105,y);
     });
-    out+=cell('Ver.al.ans',75,y-50);
+    out+=cell(o.taxableLabel==='palkka'?'Ennakonpid.al.tulo':'Ver.al.ans',75,y-50);
     header.forEach((c,i)=>{
       if(c.role==='ytd'&&o.includeYtd===false)return;
       const text=c.role==='ytd'?secondYtd:c.value;

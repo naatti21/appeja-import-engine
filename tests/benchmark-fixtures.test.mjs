@@ -16,6 +16,7 @@ test('75 synthetic PDFs: 25 controlled bases with two adversarial variants each'
 test('benchmark corpus uses only explicit synthetic data',()=>{
   for(const s of scenarios){
     assert.equal(s.pages[0].fullSlip,true,s.id);
+    assert.equal(s.pages.every(p=>p.taxableLabel==='palkka'),true,s.id);
     assert.equal(s.pages.slice(1).every(p=>!p.fullSlip),true,s.id);
     if(s.kind==='conflicting-ytd')assert.equal(s.oracle.problem,'conflict');
     if(s.kind==='missing-ytd')assert.equal(s.oracle.problem,'MISSING_TABLE_VALUE');

@@ -20,18 +20,18 @@ const extra=(base,problem)=>{
   // visible as a structural omission even if other pages contain a unique YTD.
   const ytd=base.values.ytd===43000?'42 000,00':'43 000,00';
   const money=n=>Number(n).toLocaleString('fi-FI',{minimumFractionDigits:2,maximumFractionDigits:2});
-  return {gross:money(base.values.gross),previous:money(base.values.previous),
+  return {taxableLabel:'palkka',gross:money(base.values.gross),previous:money(base.values.previous),
     ...(problem==='conflicting-ytd'?{ytd}:{includeYtd:false})};
 };
 export const scenarios=baseLayouts.flatMap(base=>[
   {id:base.id+'--clean',kind:'clean',baseId:base.id,
-    pages:base.pages.map((p,i)=>({...p,fullSlip:i===0})),
+    pages:base.pages.map((p,i)=>({...p,taxableLabel:'palkka',fullSlip:i===0})),
     oracle:{safe:true,...base.values}},
   {id:base.id+'--conflicting-ytd',kind:'conflicting-ytd',baseId:base.id,
-    pages:[...base.pages.map((p,i)=>({...p,fullSlip:i===0})),extra(base,'conflicting-ytd')],
+    pages:[...base.pages.map((p,i)=>({...p,taxableLabel:'palkka',fullSlip:i===0})),extra(base,'conflicting-ytd')],
     oracle:{safe:false,problem:'conflict'}},
   {id:base.id+'--missing-ytd',kind:'missing-ytd',baseId:base.id,
-    pages:[...base.pages.map((p,i)=>({...p,fullSlip:i===0})),extra(base,'missing-ytd')],
+    pages:[...base.pages.map((p,i)=>({...p,taxableLabel:'palkka',fullSlip:i===0})),extra(base,'missing-ytd')],
     oracle:{safe:false,problem:'MISSING_TABLE_VALUE'}}
 ]);
 if(scenarios.length!==75 || new Set(scenarios.map(s=>s.id)).size!==75)throw Error('Expected 75 unique scenarios');
