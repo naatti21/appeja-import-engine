@@ -48,7 +48,7 @@ export function parsePayrollDetailLedger(layout){
    const rule=RULES.get(code);
    if(!rule){fail('UNKNOWN_PAYLINE_CODE');continue;}
    if(!rule.label.test(label.trim())){fail('PAYLINE_LABEL_MISMATCH');continue;}
-   if(rule.tax!== (numbers.length===2)){
+   if(Boolean(rule.tax)!==(numbers.length===2)){
     fail('PAYLINE_COLUMN_COUNT');continue;
    }
    const parsed=numbers.map(value=>parseNumber(value));
