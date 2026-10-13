@@ -1,0 +1,15 @@
+name: Import Engine Lab - Node Safety Tests
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  node-safety:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
