@@ -1,0 +1,380 @@
+{
+  "baseline": [
+    {
+      "path": "package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "903b14923a2b12c3023ebe576e17131ddbeb757d",
+      "size": 10622,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/903b14923a2b12c3023ebe576e17131ddbeb757d"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "402ea622b0b6ee4e7a5980ef2046e5bfef2d4f47",
+      "size": 607,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/402ea622b0b6ee4e7a5980ef2046e5bfef2d4f47"
+    },
+    {
+      "path": "src/acceptance.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "885b4f89759d29fc29bd5558cc8c24188f707c16",
+      "size": 5005,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/885b4f89759d29fc29bd5558cc8c24188f707c16"
+    },
+    {
+      "path": "src/csv.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd9c2942b43446e0cfaa3db74b995105af8c495b",
+      "size": 3458,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/bd9c2942b43446e0cfaa3db74b995105af8c495b"
+    },
+    {
+      "path": "src/evidence.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "16b57c7e991870cc36ef51683695b61b9b3a5724",
+      "size": 1087,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/16b57c7e991870cc36ef51683695b61b9b3a5724"
+    },
+    {
+      "path": "src/holdings.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5bb4be45c7a42996b2f4746e6371763142095be4",
+      "size": 4356,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/5bb4be45c7a42996b2f4746e6371763142095be4"
+    },
+    {
+      "path": "src/layout.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7aa67e9cc1960a71cc65571f66df719b9bf2d8f5",
+      "size": 5532,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/7aa67e9cc1960a71cc65571f66df719b9bf2d8f5"
+    },
+    {
+      "path": "src/numbers.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9ae0ed4093eff6ffc042f12e4510cc4d84041a0",
+      "size": 1970,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/a9ae0ed4093eff6ffc042f12e4510cc4d84041a0"
+    },
+    {
+      "path": "src/payroll-lines.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "37d61f9fd3488014b532651937cbf502766deebc",
+      "size": 4304,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/37d61f9fd3488014b532651937cbf502766deebc"
+    },
+    {
+      "path": "src/payroll-sections.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "242894e6981ce3e1a2d7a70257d9d3af3f55ec1c",
+      "size": 7233,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/242894e6981ce3e1a2d7a70257d9d3af3f55ec1c"
+    },
+    {
+      "path": "src/payroll.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "818eae52b5bd919c44de459ff51cf83c93d6020a",
+      "size": 5605,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/818eae52b5bd919c44de459ff51cf83c93d6020a"
+    }
+  ],
+  "measurement": [
+    {
+      "path": "research/baseline-v07-dev/ENVIRONMENT_FAILURE.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7460513bc08da9c678bc4821141e37b3c6577077",
+      "size": 8923,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/7460513bc08da9c678bc4821141e37b3c6577077"
+    },
+    {
+      "path": "research/baseline-v07-dev/FAILURE_ANALYSIS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "50556496b72a0184c7e1376bcd5866eede9cd7f3",
+      "size": 4349,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/50556496b72a0184c7e1376bcd5866eede9cd7f3"
+    },
+    {
+      "path": "research/baseline-v07-dev/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8271c342ba20639874d301c7647552706b2f5714",
+      "size": 1587,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/8271c342ba20639874d301c7647552706b2f5714"
+    },
+    {
+      "path": "research/baseline-v07-dev/REPRODUCE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d40db6582388afc83b10ea714567ecb7e02a774",
+      "size": 2615,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/3d40db6582388afc83b10ea714567ecb7e02a774"
+    },
+    {
+      "path": "research/baseline-v07-dev/RESULTS.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "40ee2e074dda03ff7824cdeac5a2c4b60bcb509c",
+      "size": 49255,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/40ee2e074dda03ff7824cdeac5a2c4b60bcb509c"
+    },
+    {
+      "path": "research/baseline-v07-dev/RESULTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d7b7da44cfcd9e6b6fc7f6a45e70b5886babf98a",
+      "size": 7123,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/d7b7da44cfcd9e6b6fc7f6a45e70b5886babf98a"
+    },
+    {
+      "path": "research/baseline-v07-dev/RUN_LOG.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "958d9c9efbb7e78b14790e5e3562c18e3ee2627c",
+      "size": 2841,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/958d9c9efbb7e78b14790e5e3562c18e3ee2627c"
+    },
+    {
+      "path": "research/baseline-v07-dev/RUN_MANIFEST.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d868231e2196bf259d564f420b39bb250fd952d",
+      "size": 5058,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/7d868231e2196bf259d564f420b39bb250fd952d"
+    },
+    {
+      "path": "research/baseline-v07-dev/harness.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b48057908c227636bb7d56cfc717245971861907",
+      "size": 9668,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/b48057908c227636bb7d56cfc717245971861907"
+    },
+    {
+      "path": "research/baseline-v07-dev/node-compat.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a01916bfa5c8a47442293f49f3d3f3df82cf548a",
+      "size": 463,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/a01916bfa5c8a47442293f49f3d3f3df82cf548a"
+    },
+    {
+      "path": "research/baseline-v07-dev/raw",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5d8d926f8d933aa5b46c56f8f50f769b4154ee5b",
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/trees/5d8d926f8d933aa5b46c56f8f50f769b4154ee5b"
+    },
+    {
+      "path": "research/baseline-v07-dev/raw/P01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3fb1c0ba39cb981fa4a8366dbf3f38da9a0d5c11",
+      "size": 50953,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/3fb1c0ba39cb981fa4a8366dbf3f38da9a0d5c11"
+    },
+    {
+      "path": "research/baseline-v07-dev/raw/P02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "269dd538aaa76fe0b2f0a4ebafd9b0d2db685ae9",
+      "size": 35794,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/269dd538aaa76fe0b2f0a4ebafd9b0d2db685ae9"
+    },
+    {
+      "path": "research/baseline-v07-dev/raw/P03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce746488143c25f8b62aa8c8bf9307315dca6869",
+      "size": 40715,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/ce746488143c25f8b62aa8c8bf9307315dca6869"
+    },
+    {
+      "path": "research/baseline-v07-dev/raw/T01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "73eb93d7f643c27c688993dc44baac308e2eca6b",
+      "size": 26704,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/73eb93d7f643c27c688993dc44baac308e2eca6b"
+    },
+    {
+      "path": "research/baseline-v07-dev/raw/T02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "22e5d99e5a0a0ff19c0f8c7cd7848024e15619ad",
+      "size": 31960,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/22e5d99e5a0a0ff19c0f8c7cd7848024e15619ad"
+    },
+    {
+      "path": "research/baseline-v07-dev/raw/T03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "892901cec215dd73f2b3ca712964e7b6b41bbcc9",
+      "size": 19785,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/892901cec215dd73f2b3ca712964e7b6b41bbcc9"
+    }
+  ],
+  "fixtures": [
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2864c4df480377a1ee8a743bf2b9a8c7ad438260",
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/trees/2864c4df480377a1ee8a743bf2b9a8c7ad438260"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c992c9647bb7c2e7db0bdcd900b76d6724f3c0dd",
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/trees/c992c9647bb7c2e7db0bdcd900b76d6724f3c0dd"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/P01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a392e87ccb2da207e70e723a49dcc78dfbd039a4",
+      "size": 19660,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/a392e87ccb2da207e70e723a49dcc78dfbd039a4"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/P02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "982e950e014a9780880dba7cd4ad03f71527ac73",
+      "size": 10371,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/982e950e014a9780880dba7cd4ad03f71527ac73"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/P03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "633fa1959d04e2e0d32036756ca311219f38fa52",
+      "size": 11945,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/633fa1959d04e2e0d32036756ca311219f38fa52"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/T01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e31f80843931ca2fba95ac3b27c34489179ac56",
+      "size": 10821,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/9e31f80843931ca2fba95ac3b27c34489179ac56"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/T02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "267d4614dff9e7683cdc80f59e65054d5acaa664",
+      "size": 11192,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/267d4614dff9e7683cdc80f59e65054d5acaa664"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/T03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a575c081d4ec1118863c937e51686a5d91a60a4",
+      "size": 6626,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/1a575c081d4ec1118863c937e51686a5d91a60a4"
+    },
+    {
+      "path": "research/blindtest-v1/DEV",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "39e2b6ffcb80951cafc7844ca8d04ff8dc829b88",
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/trees/39e2b6ffcb80951cafc7844ca8d04ff8dc829b88"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/P01.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e520db36f7265141636adf3414ebd96f1e1d049",
+      "size": 2710,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/2e520db36f7265141636adf3414ebd96f1e1d049"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/P02.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a4d2f3ccf6fa18ebb2516cf032394b559bf0e1e6",
+      "size": 9830,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/a4d2f3ccf6fa18ebb2516cf032394b559bf0e1e6"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/P03.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a53a5d979b1b5974f85c1af493721d8dc9d05d38",
+      "size": 3347,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/a53a5d979b1b5974f85c1af493721d8dc9d05d38"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/T01.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "21f0d097606811131e564e8fd2fae79f434c81a2",
+      "size": 2370,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/21f0d097606811131e564e8fd2fae79f434c81a2"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/T02.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "23f772ecf52c31f91f0511c56c259f8cde35a45d",
+      "size": 2464,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/23f772ecf52c31f91f0511c56c259f8cde35a45d"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/T03.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d2d6b83984f7e6469bf4196426c1570b709d22c",
+      "size": 6212,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/3d2d6b83984f7e6469bf4196426c1570b709d22c"
+    },
+    {
+      "path": "research/blindtest-v1/MANIFEST.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "030c526c7b9c5541a6521fc94525c3b264ae6387",
+      "size": 5286,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/030c526c7b9c5541a6521fc94525c3b264ae6387"
+    },
+    {
+      "path": "research/blindtest-v1/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba6df3845fcbb12003065c9d0716effe7a153767",
+      "size": 1425,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/ba6df3845fcbb12003065c9d0716effe7a153767"
+    },
+    {
+      "path": "research/blindtest-v1/TEST_PROTOCOL.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b2d33a5ea261ad5d8efa0fda2300b8ee5b074ba",
+      "size": 6762,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/4b2d33a5ea261ad5d8efa0fda2300b8ee5b074ba"
+    },
+    {
+      "path": "research/blindtest-v1/VALIDATION_REPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "37bf348419df4da8beecb4f565c93203ca046ea2",
+      "size": 1205,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/37bf348419df4da8beecb4f565c93203ca046ea2"
+    }
+  ]
+}

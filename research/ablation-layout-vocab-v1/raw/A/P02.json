@@ -1,0 +1,1405 @@
+{
+  "layout": {
+    "schemaVersion": 1,
+    "sourceKind": "pdf-text",
+    "observations": [
+      {
+        "id": "pdf-p1-t1",
+        "kind": "text",
+        "raw": "PAYROLL / palkkalaskelma",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.023753,
+          "x1": 0.445546,
+          "y1": 0.045131
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 0,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t3",
+        "kind": "text",
+        "raw": "Fictional Copper Fern Ltd - worker Niko Testisumu",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.061758,
+          "x1": 0.429227,
+          "y1": 0.073634
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 2,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t5",
+        "kind": "text",
+        "raw": "SYNTHETIC TEST DATA - FICTIONAL / EI OIKEA ASIAKIRJA",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.963183,
+          "x1": 0.431099,
+          "y1": 0.972684
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 4,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t7",
+        "kind": "text",
+        "raw": "P02 / 1",
+        "page": 1,
+        "box": {
+          "x0": 0.898568,
+          "y0": 0.963183,
+          "x1": 0.941176,
+          "y1": 0.972684
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 6,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t9",
+        "kind": "text",
+        "raw": "Payment date",
+        "page": 1,
+        "box": {
+          "x0": 0.062185,
+          "y0": 0.118765,
+          "x1": 0.155513,
+          "y1": 0.129454
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 8,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t11",
+        "kind": "text",
+        "raw": "2026-06-19",
+        "page": 1,
+        "box": {
+          "x0": 0.344111,
+          "y0": 0.11639,
+          "x1": 0.438655,
+          "y1": 0.129454
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 10,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t13",
+        "kind": "text",
+        "raw": "CURRENT PAY",
+        "page": 1,
+        "box": {
+          "x0": 0.072269,
+          "y0": 0.195962,
+          "x1": 0.193647,
+          "y1": 0.207838
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 12,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t15",
+        "kind": "text",
+        "raw": "DEDUCTIONS",
+        "page": 1,
+        "box": {
+          "x0": 0.383193,
+          "y0": 0.195962,
+          "x1": 0.494303,
+          "y1": 0.207838
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 14,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t17",
+        "kind": "text",
+        "raw": "YEAR TRACKER",
+        "page": 1,
+        "box": {
+          "x0": 0.694118,
+          "y0": 0.195962,
+          "x1": 0.82763,
+          "y1": 0.207838
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 16,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t19",
+        "kind": "text",
+        "raw": "Brutto / gross",
+        "page": 1,
+        "box": {
+          "x0": 0.07563,
+          "y0": 0.22209,
+          "x1": 0.165585,
+          "y1": 0.232779
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 18,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t21",
+        "kind": "text",
+        "raw": "2",
+        "page": 1,
+        "box": {
+          "x0": 0.134454,
+          "y0": 0.252969,
+          "x1": 0.144733,
+          "y1": 0.266033
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 20,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t23",
+        "kind": "text",
+        "raw": "875,40",
+        "page": 1,
+        "box": {
+          "x0": 0.166387,
+          "y0": 0.252969,
+          "x1": 0.232941,
+          "y1": 0.266033
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 22,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t25",
+        "kind": "text",
+        "raw": "Net",
+        "page": 1,
+        "box": {
+          "x0": 0.07395,
+          "y0": 0.292162,
+          "x1": 0.097486,
+          "y1": 0.30285
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 24,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t27",
+        "kind": "text",
+        "raw": "2034.75",
+        "page": 1,
+        "box": {
+          "x0": 0.232346,
+          "y0": 0.315914,
+          "x1": 0.29916,
+          "y1": 0.328979
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 26,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t29",
+        "kind": "text",
+        "raw": "Tax",
+        "page": 1,
+        "box": {
+          "x0": 0.383193,
+          "y0": 0.224466,
+          "x1": 0.408408,
+          "y1": 0.235154
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 28,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t31",
+        "kind": "text",
+        "raw": "690.10",
+        "page": 1,
+        "box": {
+          "x0": 0.556911,
+          "y0": 0.248219,
+          "x1": 0.613445,
+          "y1": 0.261283
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 30,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t33",
+        "kind": "text",
+        "raw": "Pension etc.",
+        "page": 1,
+        "box": {
+          "x0": 0.383193,
+          "y0": 0.274347,
+          "x1": 0.466432,
+          "y1": 0.285036
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 32,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t35",
+        "kind": "text",
+        "raw": "150.55",
+        "page": 1,
+        "box": {
+          "x0": 0.556911,
+          "y0": 0.2981,
+          "x1": 0.613445,
+          "y1": 0.311164
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 34,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t37",
+        "kind": "text",
+        "raw": "Taxable YTD",
+        "page": 1,
+        "box": {
+          "x0": 0.692437,
+          "y0": 0.230404,
+          "x1": 0.780697,
+          "y1": 0.241093
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 36,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t39",
+        "kind": "text",
+        "raw": "19764.21",
+        "page": 1,
+        "box": {
+          "x0": 0.840555,
+          "y0": 0.254157,
+          "x1": 0.917647,
+          "y1": 0.267221
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 38,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t41",
+        "kind": "text",
+        "raw": "Tax rate",
+        "page": 1,
+        "box": {
+          "x0": 0.692437,
+          "y0": 0.293349,
+          "x1": 0.747919,
+          "y1": 0.304038
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 40,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t43",
+        "kind": "text",
+        "raw": "24.00 %",
+        "page": 1,
+        "box": {
+          "x0": 0.849817,
+          "y0": 0.317102,
+          "x1": 0.917647,
+          "y1": 0.330166
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 42,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t45",
+        "kind": "text",
+        "raw": "Work / current period",
+        "page": 1,
+        "box": {
+          "x0": 0.058824,
+          "y0": 0.414489,
+          "x1": 0.245787,
+          "y1": 0.427553
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 44,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t47",
+        "kind": "text",
+        "raw": "Description",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.444181,
+          "x1": 0.144553,
+          "y1": 0.454869
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 46,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t49",
+        "kind": "text",
+        "raw": "Qty h",
+        "page": 1,
+        "box": {
+          "x0": 0.405042,
+          "y0": 0.444181,
+          "x1": 0.441193,
+          "y1": 0.454869
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 48,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t51",
+        "kind": "text",
+        "raw": "Rate EUR/h",
+        "page": 1,
+        "box": {
+          "x0": 0.564706,
+          "y0": 0.444181,
+          "x1": 0.645403,
+          "y1": 0.454869
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 50,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t53",
+        "kind": "text",
+        "raw": "Amount EUR",
+        "page": 1,
+        "box": {
+          "x0": 0.72437,
+          "y0": 0.444181,
+          "x1": 0.81263,
+          "y1": 0.454869
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 52,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t54",
+        "kind": "text",
+        "raw": "Contract earnings",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.477435,
+          "x1": 0.188282,
+          "y1": 0.488124
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 53,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t56",
+        "kind": "text",
+        "raw": "144.00",
+        "page": 1,
+        "box": {
+          "x0": 0.405042,
+          "y0": 0.477435,
+          "x1": 0.451297,
+          "y1": 0.488124
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 55,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t58",
+        "kind": "text",
+        "raw": "18.50",
+        "page": 1,
+        "box": {
+          "x0": 0.564706,
+          "y0": 0.477435,
+          "x1": 0.602551,
+          "y1": 0.488124
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 57,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t60",
+        "kind": "text",
+        "raw": "2664.00",
+        "page": 1,
+        "box": {
+          "x0": 0.72437,
+          "y0": 0.477435,
+          "x1": 0.779035,
+          "y1": 0.488124
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 59,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t61",
+        "kind": "text",
+        "raw": "Night premium",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.519002,
+          "x1": 0.167242,
+          "y1": 0.529691
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 60,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t63",
+        "kind": "text",
+        "raw": "-",
+        "page": 1,
+        "box": {
+          "x0": 0.405042,
+          "y0": 0.519002,
+          "x1": 0.410079,
+          "y1": 0.529691
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 62,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t65",
+        "kind": "text",
+        "raw": "-",
+        "page": 1,
+        "box": {
+          "x0": 0.564706,
+          "y0": 0.519002,
+          "x1": 0.569743,
+          "y1": 0.529691
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 64,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t67",
+        "kind": "text",
+        "raw": "211.40",
+        "page": 1,
+        "box": {
+          "x0": 0.72437,
+          "y0": 0.519002,
+          "x1": 0.770625,
+          "y1": 0.529691
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 66,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t68",
+        "kind": "text",
+        "raw": "Both period and year values are printed. Not a tax-card balance.",
+        "page": 1,
+        "box": {
+          "x0": 0.058824,
+          "y0": 0.612827,
+          "x1": 0.488449,
+          "y1": 0.623515
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 67,
+        "status": "observed"
+      }
+    ],
+    "pages": [
+      {
+        "page": 1,
+        "width": 595,
+        "height": 842,
+        "observationIds": [
+          "pdf-p1-t1",
+          "pdf-p1-t3",
+          "pdf-p1-t5",
+          "pdf-p1-t7",
+          "pdf-p1-t9",
+          "pdf-p1-t11",
+          "pdf-p1-t13",
+          "pdf-p1-t15",
+          "pdf-p1-t17",
+          "pdf-p1-t19",
+          "pdf-p1-t21",
+          "pdf-p1-t23",
+          "pdf-p1-t25",
+          "pdf-p1-t27",
+          "pdf-p1-t29",
+          "pdf-p1-t31",
+          "pdf-p1-t33",
+          "pdf-p1-t35",
+          "pdf-p1-t37",
+          "pdf-p1-t39",
+          "pdf-p1-t41",
+          "pdf-p1-t43",
+          "pdf-p1-t45",
+          "pdf-p1-t47",
+          "pdf-p1-t49",
+          "pdf-p1-t51",
+          "pdf-p1-t53",
+          "pdf-p1-t54",
+          "pdf-p1-t56",
+          "pdf-p1-t58",
+          "pdf-p1-t60",
+          "pdf-p1-t61",
+          "pdf-p1-t63",
+          "pdf-p1-t65",
+          "pdf-p1-t67",
+          "pdf-p1-t68"
+        ],
+        "rows": [
+          {
+            "id": "p1-r1",
+            "page": 1,
+            "y": 0.034442,
+            "tokenIds": [
+              "pdf-p1-t1"
+            ]
+          },
+          {
+            "id": "p1-r2",
+            "page": 1,
+            "y": 0.067696,
+            "tokenIds": [
+              "pdf-p1-t3"
+            ]
+          },
+          {
+            "id": "p1-r3",
+            "page": 1,
+            "y": 0.123516,
+            "tokenIds": [
+              "pdf-p1-t9",
+              "pdf-p1-t11"
+            ]
+          },
+          {
+            "id": "p1-r4",
+            "page": 1,
+            "y": 0.2019,
+            "tokenIds": [
+              "pdf-p1-t13",
+              "pdf-p1-t15",
+              "pdf-p1-t17"
+            ]
+          },
+          {
+            "id": "p1-r5",
+            "page": 1,
+            "y": 0.228622,
+            "tokenIds": [
+              "pdf-p1-t19",
+              "pdf-p1-t29"
+            ]
+          },
+          {
+            "id": "p1-r6",
+            "page": 1,
+            "y": 0.235749,
+            "tokenIds": [
+              "pdf-p1-t37"
+            ]
+          },
+          {
+            "id": "p1-r7",
+            "page": 1,
+            "y": 0.25861,
+            "tokenIds": [
+              "pdf-p1-t21",
+              "pdf-p1-t23",
+              "pdf-p1-t31",
+              "pdf-p1-t39"
+            ]
+          },
+          {
+            "id": "p1-r8",
+            "page": 1,
+            "y": 0.279692,
+            "tokenIds": [
+              "pdf-p1-t33"
+            ]
+          },
+          {
+            "id": "p1-r9",
+            "page": 1,
+            "y": 0.2981,
+            "tokenIds": [
+              "pdf-p1-t25",
+              "pdf-p1-t41"
+            ]
+          },
+          {
+            "id": "p1-r10",
+            "page": 1,
+            "y": 0.304632,
+            "tokenIds": [
+              "pdf-p1-t35"
+            ]
+          },
+          {
+            "id": "p1-r11",
+            "page": 1,
+            "y": 0.32304,
+            "tokenIds": [
+              "pdf-p1-t27",
+              "pdf-p1-t43"
+            ]
+          },
+          {
+            "id": "p1-r12",
+            "page": 1,
+            "y": 0.421021,
+            "tokenIds": [
+              "pdf-p1-t45"
+            ]
+          },
+          {
+            "id": "p1-r13",
+            "page": 1,
+            "y": 0.449525,
+            "tokenIds": [
+              "pdf-p1-t47",
+              "pdf-p1-t49",
+              "pdf-p1-t51",
+              "pdf-p1-t53"
+            ]
+          },
+          {
+            "id": "p1-r14",
+            "page": 1,
+            "y": 0.48278,
+            "tokenIds": [
+              "pdf-p1-t54",
+              "pdf-p1-t56",
+              "pdf-p1-t58",
+              "pdf-p1-t60"
+            ]
+          },
+          {
+            "id": "p1-r15",
+            "page": 1,
+            "y": 0.524347,
+            "tokenIds": [
+              "pdf-p1-t61",
+              "pdf-p1-t63",
+              "pdf-p1-t65",
+              "pdf-p1-t67"
+            ]
+          },
+          {
+            "id": "p1-r16",
+            "page": 1,
+            "y": 0.618171,
+            "tokenIds": [
+              "pdf-p1-t68"
+            ]
+          },
+          {
+            "id": "p1-r17",
+            "page": 1,
+            "y": 0.967934,
+            "tokenIds": [
+              "pdf-p1-t5",
+              "pdf-p1-t7"
+            ]
+          }
+        ]
+      }
+    ],
+    "issues": []
+  },
+  "parsed": {
+    "schemaVersion": 2,
+    "adapter": "payroll-sections-experiment",
+    "fields": {
+      "payDate": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "grossPay": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "netPay": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "ytdTaxableIncome": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "previousYearTaxableIncome": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "withholdingPeriod": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "withholdingYtd": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "payPeriodStart": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "payPeriodEnd": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      }
+    },
+    "evidence": {
+      "payDate": [],
+      "grossPay": [],
+      "netPay": [],
+      "ytdTaxableIncome": [],
+      "previousYearTaxableIncome": [],
+      "withholdingPeriod": [],
+      "withholdingYtd": [],
+      "payPeriodStart": [],
+      "payPeriodEnd": []
+    },
+    "payLines": [],
+    "unmatchedPayLines": [],
+    "coverage": {
+      "materialObservations": 1,
+      "coveredObservations": 0,
+      "unresolvedObservations": 1,
+      "unresolvedIds": [
+        "pdf-p1-t23"
+      ],
+      "paylineRowsRecognized": 0,
+      "paylineRowsUnrecognized": 0
+    },
+    "issues": [],
+    "observations": [
+      {
+        "id": "pdf-p1-t1",
+        "raw": "PAYROLL / palkkalaskelma",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.023753,
+          "x1": 0.445546,
+          "y1": 0.045131
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t3",
+        "raw": "Fictional Copper Fern Ltd - worker Niko Testisumu",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.061758,
+          "x1": 0.429227,
+          "y1": 0.073634
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t5",
+        "raw": "SYNTHETIC TEST DATA - FICTIONAL / EI OIKEA ASIAKIRJA",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.963183,
+          "x1": 0.431099,
+          "y1": 0.972684
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t7",
+        "raw": "P02 / 1",
+        "page": 1,
+        "box": {
+          "x0": 0.898568,
+          "y0": 0.963183,
+          "x1": 0.941176,
+          "y1": 0.972684
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t9",
+        "raw": "Payment date",
+        "page": 1,
+        "box": {
+          "x0": 0.062185,
+          "y0": 0.118765,
+          "x1": 0.155513,
+          "y1": 0.129454
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t11",
+        "raw": "2026-06-19",
+        "page": 1,
+        "box": {
+          "x0": 0.344111,
+          "y0": 0.11639,
+          "x1": 0.438655,
+          "y1": 0.129454
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t13",
+        "raw": "CURRENT PAY",
+        "page": 1,
+        "box": {
+          "x0": 0.072269,
+          "y0": 0.195962,
+          "x1": 0.193647,
+          "y1": 0.207838
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t15",
+        "raw": "DEDUCTIONS",
+        "page": 1,
+        "box": {
+          "x0": 0.383193,
+          "y0": 0.195962,
+          "x1": 0.494303,
+          "y1": 0.207838
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t17",
+        "raw": "YEAR TRACKER",
+        "page": 1,
+        "box": {
+          "x0": 0.694118,
+          "y0": 0.195962,
+          "x1": 0.82763,
+          "y1": 0.207838
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t19",
+        "raw": "Brutto / gross",
+        "page": 1,
+        "box": {
+          "x0": 0.07563,
+          "y0": 0.22209,
+          "x1": 0.165585,
+          "y1": 0.232779
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t21",
+        "raw": "2",
+        "page": 1,
+        "box": {
+          "x0": 0.134454,
+          "y0": 0.252969,
+          "x1": 0.144733,
+          "y1": 0.266033
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t23",
+        "raw": "875,40",
+        "page": 1,
+        "box": {
+          "x0": 0.166387,
+          "y0": 0.252969,
+          "x1": 0.232941,
+          "y1": 0.266033
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t25",
+        "raw": "Net",
+        "page": 1,
+        "box": {
+          "x0": 0.07395,
+          "y0": 0.292162,
+          "x1": 0.097486,
+          "y1": 0.30285
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t27",
+        "raw": "2034.75",
+        "page": 1,
+        "box": {
+          "x0": 0.232346,
+          "y0": 0.315914,
+          "x1": 0.29916,
+          "y1": 0.328979
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t29",
+        "raw": "Tax",
+        "page": 1,
+        "box": {
+          "x0": 0.383193,
+          "y0": 0.224466,
+          "x1": 0.408408,
+          "y1": 0.235154
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t31",
+        "raw": "690.10",
+        "page": 1,
+        "box": {
+          "x0": 0.556911,
+          "y0": 0.248219,
+          "x1": 0.613445,
+          "y1": 0.261283
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t33",
+        "raw": "Pension etc.",
+        "page": 1,
+        "box": {
+          "x0": 0.383193,
+          "y0": 0.274347,
+          "x1": 0.466432,
+          "y1": 0.285036
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t35",
+        "raw": "150.55",
+        "page": 1,
+        "box": {
+          "x0": 0.556911,
+          "y0": 0.2981,
+          "x1": 0.613445,
+          "y1": 0.311164
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t37",
+        "raw": "Taxable YTD",
+        "page": 1,
+        "box": {
+          "x0": 0.692437,
+          "y0": 0.230404,
+          "x1": 0.780697,
+          "y1": 0.241093
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t39",
+        "raw": "19764.21",
+        "page": 1,
+        "box": {
+          "x0": 0.840555,
+          "y0": 0.254157,
+          "x1": 0.917647,
+          "y1": 0.267221
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t41",
+        "raw": "Tax rate",
+        "page": 1,
+        "box": {
+          "x0": 0.692437,
+          "y0": 0.293349,
+          "x1": 0.747919,
+          "y1": 0.304038
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t43",
+        "raw": "24.00 %",
+        "page": 1,
+        "box": {
+          "x0": 0.849817,
+          "y0": 0.317102,
+          "x1": 0.917647,
+          "y1": 0.330166
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t45",
+        "raw": "Work / current period",
+        "page": 1,
+        "box": {
+          "x0": 0.058824,
+          "y0": 0.414489,
+          "x1": 0.245787,
+          "y1": 0.427553
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t47",
+        "raw": "Description",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.444181,
+          "x1": 0.144553,
+          "y1": 0.454869
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t49",
+        "raw": "Qty h",
+        "page": 1,
+        "box": {
+          "x0": 0.405042,
+          "y0": 0.444181,
+          "x1": 0.441193,
+          "y1": 0.454869
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t51",
+        "raw": "Rate EUR/h",
+        "page": 1,
+        "box": {
+          "x0": 0.564706,
+          "y0": 0.444181,
+          "x1": 0.645403,
+          "y1": 0.454869
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t53",
+        "raw": "Amount EUR",
+        "page": 1,
+        "box": {
+          "x0": 0.72437,
+          "y0": 0.444181,
+          "x1": 0.81263,
+          "y1": 0.454869
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t54",
+        "raw": "Contract earnings",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.477435,
+          "x1": 0.188282,
+          "y1": 0.488124
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t56",
+        "raw": "144.00",
+        "page": 1,
+        "box": {
+          "x0": 0.405042,
+          "y0": 0.477435,
+          "x1": 0.451297,
+          "y1": 0.488124
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t58",
+        "raw": "18.50",
+        "page": 1,
+        "box": {
+          "x0": 0.564706,
+          "y0": 0.477435,
+          "x1": 0.602551,
+          "y1": 0.488124
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t60",
+        "raw": "2664.00",
+        "page": 1,
+        "box": {
+          "x0": 0.72437,
+          "y0": 0.477435,
+          "x1": 0.779035,
+          "y1": 0.488124
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t61",
+        "raw": "Night premium",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.519002,
+          "x1": 0.167242,
+          "y1": 0.529691
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t63",
+        "raw": "-",
+        "page": 1,
+        "box": {
+          "x0": 0.405042,
+          "y0": 0.519002,
+          "x1": 0.410079,
+          "y1": 0.529691
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t65",
+        "raw": "-",
+        "page": 1,
+        "box": {
+          "x0": 0.564706,
+          "y0": 0.519002,
+          "x1": 0.569743,
+          "y1": 0.529691
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t67",
+        "raw": "211.40",
+        "page": 1,
+        "box": {
+          "x0": 0.72437,
+          "y0": 0.519002,
+          "x1": 0.770625,
+          "y1": 0.529691
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t68",
+        "raw": "Both period and year values are printed. Not a tax-card balance.",
+        "page": 1,
+        "box": {
+          "x0": 0.058824,
+          "y0": 0.612827,
+          "x1": 0.488449,
+          "y1": 0.623515
+        },
+        "material": false
+      }
+    ],
+    "rows": 17,
+    "decision": {
+      "status": "review-required",
+      "canAutoAccept": false,
+      "canPersist": false,
+      "problems": [
+        {
+          "code": "MISSING_FIELD",
+          "field": "payDate"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "grossPay"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "netPay"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "ytdTaxableIncome"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t23"
+        }
+      ]
+    },
+    "canPersist": false
+  },
+  "core": [
+    {
+      "key": "payDate",
+      "expected_state": "known",
+      "expected_value": "2026-06-19",
+      "actual": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "correct_value": false,
+      "correct_value_source": false,
+      "correct_label_source": false,
+      "exact_core_match": false,
+      "correct_missing": false,
+      "source_refs_exist": true
+    },
+    {
+      "key": "grossPay",
+      "expected_state": "known",
+      "expected_value": "2875.40",
+      "actual": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "correct_value": false,
+      "correct_value_source": false,
+      "correct_label_source": false,
+      "exact_core_match": false,
+      "correct_missing": false,
+      "source_refs_exist": true
+    },
+    {
+      "key": "netPay",
+      "expected_state": "known",
+      "expected_value": "2034.75",
+      "actual": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "correct_value": false,
+      "correct_value_source": false,
+      "correct_label_source": false,
+      "exact_core_match": false,
+      "correct_missing": false,
+      "source_refs_exist": true
+    },
+    {
+      "key": "ytdTaxableIncome",
+      "expected_state": "known",
+      "expected_value": "19764.21",
+      "actual": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "correct_value": false,
+      "correct_value_source": false,
+      "correct_label_source": false,
+      "exact_core_match": false,
+      "correct_missing": false,
+      "source_refs_exist": true
+    }
+  ],
+  "transformedRows": []
+}

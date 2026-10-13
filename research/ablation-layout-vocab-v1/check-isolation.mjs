@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+const here=path.dirname(fileURLToPath(import.meta.url));
+let expected=fs.readFileSync(path.join(here,'../../src/payroll-sections.mjs'),'utf8');
+expected=expected.replaceAll("from './", "from '../../src/");
+expected="import {normalizeSemanticRow} from './vocabulary.mjs';\n"+expected;
+expected=expected.replace('parsePayrollSections(layout)', 'parsePayrollSectionsVocabulary(layout)');
+expected=expected.replace('let section=null,sectionIds=[];',"let section=null,sectionIds=[],semanticScope=null;");
+expected=expected.replace("   const text=tokens.map(t=>t.raw.trim()).join(' ').replace(/\\s+/g,' ').trim();", "   const originalText=tokens.map(t=>t.raw.trim()).join(' ').replace(/\\s+/g,' ').trim();\n   if(/^(?:verokortti|tax[ -]?card|edellinen vuosi|previous year)(?:\\s+(?:tiedot|details))?$/i.test(originalText))semanticScope='excluded';\n   if(/^(?:current pay|current period|year tracker|palkkakausi|kauden tiedot|vuoden tiedot|kertymä palkkakaudelta|kertymä vuoden alusta)$/i.test(originalText))semanticScope=null;\n   const text=normalizeSemanticRow(originalText,layout,{section,semanticScope});");
+if(expected!==fs.readFileSync(path.join(here,'semantic-parser.mjs'),'utf8'))throw Error('Undocumented semantic parser change');
+console.log('Semantic parser differs only by import paths, exported name, and documented lexical hook/context. Numeric rules, payline rules, source binding, resolver and acceptance logic identical.');

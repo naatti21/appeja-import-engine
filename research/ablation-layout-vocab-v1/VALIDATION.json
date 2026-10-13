@@ -1,0 +1,14 @@
+{
+  "status": "VALIDATED_NODE_ARTIFACTS",
+  "documents": 6,
+  "variants_per_document": 4,
+  "baseline_matches_04": "6/6",
+  "regression_probes_passed": "32/32",
+  "raw_hashes_matched": "24/24",
+  "layout_isolation": "A=C and B=D: 6/6 each",
+  "baseline_source_byte_integrity": "11/11 checked by harness",
+  "observation_conservation": "201/201 each variant",
+  "holdout_read_in_this_task": false,
+  "browser": "NOT RUN",
+  "caveat": "same author and DEV tuning; no production or generalization approval"
+}

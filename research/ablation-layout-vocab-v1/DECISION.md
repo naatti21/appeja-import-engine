@@ -1,0 +1,18 @@
+# Suositus — rajattu jatko, ei tuotanto-GO:ta
+
+1. **Pelkkä rakenne:** 1/11 → 2/11, lisäys 1 oikea kenttä. P01:n päivämäärä osoittaa, että rivien litistäminen on todellinen ongelma. T03:n rinnakkaistaulukot erottuvat, mutta T01:n valuuttarivin eheys heikkenee.
+2. **Pelkkä semantiikka:** 1/11 → 5/11, lisäys 4. Sanaston laajennus tuotti suuremman yksittäisen ydinkenttähyödyn kuin rakenne. Se ei kuitenkaan hae arvoja eri riveiltä.
+3. **Yhdistelmä:** 10/11, eli +5 C:hen ja +8 B:hen. Rakenteen ja semantiikan count-interaktio +4 kertoo aidosta komplementaarisuudesta tässä DEV-aineistossa.
+4. **Uudet vaaralliset tulkinnat:** ei havaittuja vääriä verified-ydinkenttiä eikä candidate-ready-virheitä. Rakenne ehdottaa silti seitsemää väärää solusidosta ja heikentää T01:n record-eheyttä. Näitä ei saa käyttää myöhemmin varmoina yleissoluina. Negatiivisia regressioita 32/32, mutta ei riippumatonta turvallisuustodistusta.
+5. **Ratkaisematta:** P03:n maksupäivän semanttinen varmuus; aidosti puuttuva netto; tuntemattomat palkkarivit; huomattava kattavuusaukko; sarakeotsikot, yhdistetyt solut, moniriviset recordit ja sivujatkokset; mobiili/selaimen toiminta.
+6. **Yleiskäyttöisyys:** B:n koodissa ei ole palkkasanoja, kenttänimiä, dokumenttitunnuksia tai kovakoodattuja koordinaatteja. Siksi lähestymistapa on domainriippumaton, mutta onnistuminen ei ole yleiskäyttöisesti todistettu. T03 onnistuu ja T01 regressoi. C pysyy palkka-adapterin sisällä, ei yhteisen ytimen sääntönä.
+7. **Paras tutkimusperusta:** D:n erillinen rakenne→semantiikka-jako, alkuperäiset lähdehavainnot ja kontrolli A. Ei tämän nykyisen kopio-parserin tuotantokäyttöä. C on halvin rajattu perusparannus mutta jättää viisi D:n löytämää kenttää saamatta. D:n +5 kentän lisähyöty C:hen nähden on riittävä rajatun rakennetutkimuksen jatkamiseen, ei täydellisen A+-moottorin rakentamisvaltuutus.
+8. **Pienin seuraava koe ennen HOLDOUTia:** tiukenna paikallista label–value-paria niin, ettei moninumeroinen taulukkorivi tai suffix-valuutta tulkinnu uudeksi soluksi/labeliksi. Muut rakenne-, sanasto-, numero- ja hyväksyntäsäännöt jäädytetään. DEV-kriteeri: D säilyttää 10/11 ydintä, T03 2/2 puhtaat recordit, T01 palautuu 2/2 kokonaiseksi, seitsemän väärää soluehdotusta poistuvat tai muuttuvat nimenomaisesti unverified-row-tilaksi, missing-netto ja negatiiviset regressiot säilyvät. Vasta sitten lukittu kandidaattilähdekoodi erillisen riippumattoman arvioijan HOLDOUT-ajoon; tämä agentti ei avaa HOLDOUTia.
+
+## Ylläpito ja mobiili
+
+B: noin 90 riviä uutta heuristiikkaa, useita fontti-/välikynnyksiä ja rivityksen tilakone. C: noin 24-rivinen aliasmoduuli sekä kontrolloidusti kopioitu v0.7-adapteri. D yhdistää molemmat ja tarvitsee molempien regressiot. Kopioitu adapteri tuo drift-riskin; tutkimuksessa check-isolation havaitsee ylimääräiset muutokset. Tuotantokandidaatissa sanasto pitää myöhemmin tehdä injektoitavaksi domain-adapteriin ilman parserikopioita.
+
+Kaikki on determinististä paikallista JavaScriptiä, ei mallipainoja, palvelinta tai jatkuvia API-kuluja. Tämä tekee puhelimeen sovittamisen uskottavaksi, mutta ei todista puhelimen nopeutta. Nykyinen rakenne tekee toistuvia riveihin/havaintoihin kohdistuvia hakuja ja säilyttää ylimääräiset kloonit tutkimuksessa; isoilla tiedostoilla skaalautuvuus on avoin. Yhden Node-ajon millisekunneista ei tehdä Android-RAM- tai akkuarviota.
+
+**Päätösehdotus:** GO rajatulle paritusehdotusten/record-eheyden tutkimukselle; NO-GO nykyisen version tuotantointegraatiolle ja väitteelle valmiista yleisestä solukerroksesta. Käyttäjä päättää seuraavan toteutusvaiheen. Tässä työssä sitä ei aloitettu.

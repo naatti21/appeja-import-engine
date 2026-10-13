@@ -1,0 +1,231 @@
+{
+  "baseline_sha": "8f28544651a27225c1212228753fbc6c6a265c38",
+  "measurement_sha": "1af65c9b8648dafbc8f44ec9d202884be0ace052",
+  "fixture_sha": "72520b612444994741f6d09655e8c2f08f279308",
+  "measured_at_utc": "2026-10-13T22:44:27.414Z",
+  "environment": {
+    "node": "v24.19.0",
+    "pdfjs": "6.4.299",
+    "playwright": "1.57.0",
+    "platform": "linux",
+    "arch": "x64",
+    "chromium": "See BROWSER_STATUS.json; Node results are not browser tests",
+    "node_compat": "Uint8Array.toHex shim via --import"
+  },
+  "verified_files": [
+    {
+      "path": "src/layout.mjs",
+      "git_blob_sha": "7aa67e9cc1960a71cc65571f66df719b9bf2d8f5",
+      "sha256": "e38dee3fa4fd40b5450debf520fed235eff392bc6d25f590ffdb65eb84a9ae39"
+    },
+    {
+      "path": "src/payroll-sections.mjs",
+      "git_blob_sha": "242894e6981ce3e1a2d7a70257d9d3af3f55ec1c",
+      "sha256": "1252cf3b21d9e7fdad78b9b403030fdb4719e5bda125959460b42b421224d46f"
+    },
+    {
+      "path": "src/payroll-lines.mjs",
+      "git_blob_sha": "37d61f9fd3488014b532651937cbf502766deebc",
+      "sha256": "148ea4de933dbe938ad4b5a2ca4587e658c60869ad988454eb6f2815d33d5aee"
+    },
+    {
+      "path": "src/acceptance.mjs",
+      "git_blob_sha": "885b4f89759d29fc29bd5558cc8c24188f707c16",
+      "sha256": "d8736bab39590323c23362e4a480de9020b1a02e95a6476548f167c9265a690a"
+    },
+    {
+      "path": "src/holdings.mjs",
+      "git_blob_sha": "5bb4be45c7a42996b2f4746e6371763142095be4",
+      "sha256": "76334aefc622d20aee1aaa302640f7cb2ceb7ec786808c038452b7161b267466"
+    },
+    {
+      "path": "src/evidence.mjs",
+      "git_blob_sha": "16b57c7e991870cc36ef51683695b61b9b3a5724",
+      "sha256": "28575f1ae559938256f6d87dc173c90a821a3dae2a753f03f2864d36d7189648"
+    },
+    {
+      "path": "src/numbers.mjs",
+      "git_blob_sha": "a9ae0ed4093eff6ffc042f12e4510cc4d84041a0",
+      "sha256": "df344b9f9a42331ba82c8c20c82564b4eb068ee18f606a7a3e8fe92e460edcce"
+    },
+    {
+      "path": "src/csv.mjs",
+      "git_blob_sha": "bd9c2942b43446e0cfaa3db74b995105af8c495b",
+      "sha256": "959f42bed43045f664e5d57374f4580917ce99617fc978329dc3f9690b26d504"
+    },
+    {
+      "path": "src/payroll.mjs",
+      "git_blob_sha": "818eae52b5bd919c44de459ff51cf83c93d6020a",
+      "sha256": "4cb5905c6295912af688fcb38f5580e474ab78cfd0f3b8e743c1d7d664afffcb"
+    },
+    {
+      "path": "package.json",
+      "git_blob_sha": "402ea622b0b6ee4e7a5980ef2046e5bfef2d4f47",
+      "sha256": "db88768e258a1ec33bba3d22f5f37e311809edd7e3c582c1648ddfc8341ff53a"
+    },
+    {
+      "path": "package-lock.json",
+      "git_blob_sha": "903b14923a2b12c3023ebe576e17131ddbeb757d",
+      "sha256": "b2bad056f385ef60e6827c2e509a5720181203bf40037eadbea54d6faa69c9fe"
+    },
+    {
+      "path": "research/baseline-v07-dev/RESULTS.md",
+      "git_blob_sha": "d7b7da44cfcd9e6b6fc7f6a45e70b5886babf98a",
+      "sha256": "065820a5a4b5d058f1b75a7e8cd61773bc05ee6fe3e6481bef2f4c5525fafa03"
+    },
+    {
+      "path": "research/baseline-v07-dev/RESULTS.json",
+      "git_blob_sha": "40ee2e074dda03ff7824cdeac5a2c4b60bcb509c",
+      "sha256": "c1dd53a29ca36329b64707361cb33a266c00c0b915572644a8142975f5a18da4"
+    },
+    {
+      "path": "research/baseline-v07-dev/FAILURE_ANALYSIS.md",
+      "git_blob_sha": "50556496b72a0184c7e1376bcd5866eede9cd7f3",
+      "sha256": "3ad0cd2829c603be1a59fed86e52922506ed8f96cd3fcc543ef12739474111d4"
+    },
+    {
+      "path": "research/baseline-v07-dev/REPRODUCE.md",
+      "git_blob_sha": "3d40db6582388afc83b10ea714567ecb7e02a774",
+      "sha256": "7cc4065b6e3817bb1d882cfd39c9a76bbbdf50b58c013b35fb3f1911f97ca38f"
+    },
+    {
+      "path": "research/baseline-v07-dev/RUN_MANIFEST.json",
+      "git_blob_sha": "7d868231e2196bf259d564f420b39bb250fd952d",
+      "sha256": "dfe41efa0894031cfbc1d5a16abb4a3826ec29d655f18321ce688d79fad803c8"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/P01.json",
+      "git_blob_sha": "a392e87ccb2da207e70e723a49dcc78dfbd039a4",
+      "sha256": "561374d3750c735b81af63a913a3df7dcdd3145d619b7471cb9669623fc66426"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/P02.json",
+      "git_blob_sha": "982e950e014a9780880dba7cd4ad03f71527ac73",
+      "sha256": "b08aa4dd7eb02759e3e2ee5cf03191379740071f55c9a93db7293f611b81422e"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/P03.json",
+      "git_blob_sha": "633fa1959d04e2e0d32036756ca311219f38fa52",
+      "sha256": "43ee15fdb0a59eb0b82a51ec9fb69c31b3551838dd6f67c26adf9978a7bc9426"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/T01.json",
+      "git_blob_sha": "9e31f80843931ca2fba95ac3b27c34489179ac56",
+      "sha256": "4f5de2992a9424ebe2b7900d098f2885b53072c292c73ac1e58a9b30aaa4f697"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/T02.json",
+      "git_blob_sha": "267d4614dff9e7683cdc80f59e65054d5acaa664",
+      "sha256": "c00695246b13bc65e78109726325922b9e9c1cbb488800c8ae05f8fff1338427"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/T03.json",
+      "git_blob_sha": "1a575c081d4ec1118863c937e51686a5d91a60a4",
+      "sha256": "7c7d2c3462884b7ad57ab280c46b017dbc413cdda789b018410298e0d8de4c56"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/P01.pdf",
+      "git_blob_sha": "2e520db36f7265141636adf3414ebd96f1e1d049",
+      "sha256": "2edfe9ae3ac7896baa1c2041d87cf4a226675add731b803ef9084e635a021c01"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/P02.pdf",
+      "git_blob_sha": "a4d2f3ccf6fa18ebb2516cf032394b559bf0e1e6",
+      "sha256": "75951281d8c88a830b5714c8dd047f174728da2c59bfae0d217bba3a06112361"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/P03.pdf",
+      "git_blob_sha": "a53a5d979b1b5974f85c1af493721d8dc9d05d38",
+      "sha256": "d217037f46f15ef8cc7447cbec01d0a8cce4beb241175841c09872ff8c9e9950"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/T01.pdf",
+      "git_blob_sha": "21f0d097606811131e564e8fd2fae79f434c81a2",
+      "sha256": "9fcdb7a6f154a85c4ba86ff0ba8d66ad3adc0642882c61f1ba98d1799ba2ff28"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/T02.pdf",
+      "git_blob_sha": "23f772ecf52c31f91f0511c56c259f8cde35a45d",
+      "sha256": "18b35155d71d2b8b81431eceab20aecc232e504e6578cf165b18713792a13a82"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/T03.pdf",
+      "git_blob_sha": "3d2d6b83984f7e6469bf4196426c1570b709d22c",
+      "sha256": "f5e30b01ef4219cffc0b07a00be024498d7f96e477c8e279d8540649c3408273"
+    },
+    {
+      "path": "research/blindtest-v1/README.md",
+      "git_blob_sha": "ba6df3845fcbb12003065c9d0716effe7a153767",
+      "sha256": "80f0ab39808f36e493b368595b1ae4f3e71e4e2445f2ac55911b39f0606b8afc"
+    },
+    {
+      "path": "research/blindtest-v1/TEST_PROTOCOL.md",
+      "git_blob_sha": "4b2d33a5ea261ad5d8efa0fda2300b8ee5b074ba",
+      "sha256": "e8273a59637496b359e1c7d34222a5dee9c326179905a0ee5d26f9fa0f008682"
+    },
+    {
+      "path": "research/blindtest-v1/VALIDATION_REPORT.md",
+      "git_blob_sha": "37bf348419df4da8beecb4f565c93203ca046ea2",
+      "sha256": "0ccb4d1a00306613e2dbfdc9b3f4abb174b8fa42a447bb76cd863735a0807e58"
+    },
+    {
+      "path": "research/blindtest-v1/MANIFEST.json",
+      "git_blob_sha": "030c526c7b9c5541a6521fc94525c3b264ae6387",
+      "sha256": "7fa2ec599e8b0c18d473dfcf9b82f021de8558b0adc5376e14275f9ec93b270c"
+    }
+  ],
+  "experiment_source_hashes": [
+    {
+      "path": "harness.mjs",
+      "sha256": "cf947020f59be04de61c75ec08cd866606bd4b8af7eceeb6ed09482246de523a"
+    },
+    {
+      "path": "structure.mjs",
+      "sha256": "c0a409793c67b9f01af00b7029eecb191dea379ba7d2ff72d4421499b553b267"
+    },
+    {
+      "path": "vocabulary.mjs",
+      "sha256": "d7491b112b8840e8c47152e4f7fc2a709000b5d021cbf455c157eddb1a92bc1f"
+    },
+    {
+      "path": "semantic-parser.mjs",
+      "sha256": "eb864716ff62be4522bf302a1061ba0c01928371e25f85f2d1d6872067b2702d"
+    },
+    {
+      "path": "regressions.mjs",
+      "sha256": "f726443545c4c1e371f1b2b1dbcf8d25d29c6f616fa61272ce97bb8930c4c2e0"
+    },
+    {
+      "path": "node-compat.mjs",
+      "sha256": "d65977b5b4216781bfc524062f5609448b97eaf26d44d15f74f6055eed4b461a"
+    },
+    {
+      "path": "check-isolation.mjs",
+      "sha256": "a6dda14d757b3943281974edbc024580a4f419e0eded51a004aeb5780f46185c"
+    },
+    {
+      "path": "SOURCE_PINS.json",
+      "sha256": "98828042fe3191f6330c58ff7772b5a03486d1811157a55e440edaa8f6026b96"
+    }
+  ],
+  "holdout_accessed": false,
+  "independence": "DEV-tuned experiment by same agent that authored fixtures; not independent generalization evidence",
+  "variants": {
+    "A": {
+      "structure": false,
+      "semantics": false
+    },
+    "B": {
+      "structure": true,
+      "semantics": false
+    },
+    "C": {
+      "structure": false,
+      "semantics": true
+    },
+    "D": {
+      "structure": true,
+      "semantics": true
+    }
+  }
+}
