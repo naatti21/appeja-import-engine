@@ -63,3 +63,10 @@ The latest laboratory-only fixture puts one `Ennakonpid.al.tulo` label beside ea
 - Kolme julkisista synteettisistä Palkka-hyväksymisfixtuureista tehtyä aitoa PDF:ää testataan oikealla PDF.js:n Chromium-työketjulla; jäädytetyn täyden Palkka-parserin 4 ydinkenttää verrataan ennakkoon annettuihin arvoihin.
 - Nykyisellä LAB-geometry-adapterilla **ei** ole nettopalkan ja maksupäivän poimintaa, joten sopimuksen tulee edelleen antaa `review-required`, ei keksittyä hyväksyntää.
 - Tämän muutoksen tarkka GitHub CI = **NOT VERIFIED**, kunnes uuden Draft-PR:n ajot tarkastetaan. Riippumaton QA, fyysinen Android, OCR ja tuotantokelpoisuus **NO-GO**.
+
+## LAB v0.6 — osiorakenteen kenttäevidenssi
+
+- Lisätty uusi rajattu adapteri `src/payroll-sections.mjs`; tuotantosovelluksiin tai v0.5-taulukkoadapteriin ei koskettu.
+- Testien hyväksyntäportti: A/B/C-kokonais-PDF:stä neljä ydinkenttää täsmälleen oikein, jokaisella vain olemassa olevat `sourceIds`. A/B: kauden ja vuoden ennakonpidätyksen summat erillisinä. Saman kentän kaksi eri lukua -> `conflict`. Puuttuva YTD -> `missing`. Netto > brutto -> esto. Kaikki tunnistamattomat olennaiset raharivit -> tarkistus.
+- Olennainen rajoitus: palkkaerittelyn kaikkia numeroita ja muita kenttiä ei vielä tulkita. Siksi lähdehavaintojen kokonaiskattavuus ja automaattisen valmiuden pariteetti ei ole saavutettu. `review-required` on tässä tutkimusvaiheessa oikea tulos.
+- Täsmällisen uuden SHA:n Node + Chromium CI **PENDING** ennen tulosten kirjaamista. Riippumaton QA / fyysinen Android / OCR **NOT RUN**. Tuotanto **NO-GO**.
