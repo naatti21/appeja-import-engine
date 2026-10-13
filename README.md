@@ -123,3 +123,8 @@ Neljä todellista kuvakaappausta ja viisi eri rakenteista palkka-PDF:ää tarkas
 Uusi `src/portfolio-review.mjs` on **post-extraction REVIEW GATE**, ei vielä valmiiksi toimiva kuvasta-salkku-parseri. Se hyväksyy vain jo luetut ja lähde-ID:llä perustellut kenttäehdokkaat. Kuvitteellisia tietoja käyttävät regressiot kattavat nykyarvon ja ostohinnan eron, saman salkkunäkymän uusinnan, rahaston erillisen detail-näkymän, tilien erilläänpidon, OCR:llä kadonneen desimaalin, korkeamman nykykurssin ja ostohinnan sekoittumisen, taseen laskentatarkistuksen ja väärät lähdeviitteet. `canPersist=false` aina.
 
 **Nämä testit eivät validoi tuotannon Tesseract.js:n OCR-tarkkuutta**, eivätkä yhteisen moottorin automaattista PDF-/kuva-taulukon kohdistusta. Yksityisten tiedostojen paikallinen arvio löytyy vain käyttäjälle toimitetusta erillisestä anonymisoidusta raportista, ei reposta. Draft PR ja tuotantointegraatio edelleen NO-GO.
+
+
+## LAB v1.0 – paikallinen mobiili-esitarkistus
+
+[Demo ja rajaus](./V1_0_REVIEW_SCOPE.md) · [Selainkäyttöliittymä](./demo/review.html) · testi: `tests/e2e/mobile-review.spec.mjs`. Ei julkaisulupaa eikä tuotantointegraatiota.

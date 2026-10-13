@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Import Engine LAB v1.0 — paikallinen esitarkistus</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;--bg:#080f17;--card:#152230;--line:#344b61;--text:#eef4fa;--dim:#aec1d2;--warn:#ffd18c;--accent:#78c4f2;background:var(--bg);color:var(--text)}
+*{box-sizing:border-box}
+body{margin:0}main{max-width:850px;margin:auto;padding:env(safe-area-inset-top) 14px env(safe-area-inset-bottom);padding-top:22px;padding-bottom:45px}
+small,.muted{color:var(--dim)}h1{font-size:clamp(24px,6vw,34px);line-height:1.15;margin:9px 0}
+h2{font-size:19px;margin:0 0 10px}h3{font-size:15px;margin:0}
+p{line-height:1.52}.kicker{color:#a6d9f9;font-size:12px;letter-spacing:.11em;font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0}
+.notice{background:#2c261b;border-color:#71562c;color:#ffe0a9}
+.warning{color:var(--warn)}.good{color:#99e4bf}
+label{display:block;font-weight:650;margin:0 0 9px}
+input[type=file]{width:100%;border:1px solid #6c849a;border-radius:11px;padding:15px 10px;background:#0e1823;color:#edf4fa}
+input[type=file]::file-selector-button{border:0;background:#176fa1;color:#fff;border-radius:8px;padding:12px;margin-right:12px;font:inherit}
+button{background:#235375;border:1px solid #6998b9;border-radius:11px;color:#fff;font:inherit;font-weight:650;padding:11px 16px;min-height:46px;cursor:pointer}
+button:disabled{opacity:.48;cursor:default}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #9de1ff;outline-offset:2px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.stat{background:#0d1b27;padding:12px;border:1px solid #35485c;border-radius:10px}.stat strong{display:block;font-size:22px}
+.chip{display:inline-block;background:#49391b;color:#ffe1ae;padding:4px 9px;border-radius:999px;font-size:12px;font-weight:800}
+.chip.light{background:#133e46;color:#abecdd}
+#status[aria-live]{padding:6px 0;font-weight:600}
+#preview{max-width:100%;max-height:520px;display:none;margin:10px auto;border-radius:12px;border:1px solid #4d657d}
+.item{border:1px solid #32485b;border-radius:12px;padding:12px;margin:9px 0;background:#0d1a25}
+.item dl{display:grid;grid-template-columns:minmax(100px,120px) 1fr;gap:6px;margin:9px 0 0;font-size:14px}
+.item dt{color:var(--dim)}.item dd{margin:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+code{color:#bbddfa;overflow-wrap:anywhere}details{margin-top:12px}
+summary{padding:10px 2px;cursor:pointer;font-weight:650}
+#evidenceTable{max-height:370px;overflow:auto;border:1px solid #32485b;border-radius:9px}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:430px}
+td,th{padding:8px;text-align:left;border-bottom:1px solid #2c4457;vertical-align:top;overflow-wrap:anywhere}
+th{background:#183146;color:#eaf5fa;position:sticky;top:0}
+.scroll{overflow-x:auto}#error{color:#ffc4b9;font-weight:600}
+footer{font-size:12px;color:#92adbe;line-height:1.6;padding:14px 0 35px}
+[hidden]{display:none!important}
+@media(min-width:650px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+</head>
+<body><main>
+<header class="row"><div class="kicker">ÄPPEJÄ · IMPORT ENGINE · LAB V1.0</div><span class="chip">Ei tallennusta</span></header>
+<h1>Tuonnin paikallinen esitarkistus</h1>
+<p>Valitse tiedosto, tutki mitä kone pystyy lukemaan ja mistä tieto löytyi. Tämä on tutkimusnäkymä, ei Palkan tai Osakevahdin tallentava tuonti.</p>
+<section class="card notice"><strong>Tietosuoja:</strong> valittu tiedosto käsitellään selaimessasi. Mitään sisältöä ei siirretä Import Enginen palvelimelle tai tallenneta. Kuvien tekstintunnistus käyttää erikseen ladattavaa Tesseract-ohjelmakirjastoa ja kielimalleja: ensikäyttö tarvitsee verkkoyhteyden. Alkuperäistä kuvaa ei ole tarkoitus lähettää OCR-palvelimelle.</section>
+<section class="card">
+ <h2>1. Valitse tiedosto</h2>
+ <label for="sourceFile">PDF · kuva (PNG/JPG/WebP) · XLSX · CSV/TSV/TXT</label>
+ <input type="file" id="sourceFile" accept=".pdf,.xlsx,.csv,.tsv,.txt,image/png,image/jpeg,image/webp,application/pdf,text/plain,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+ <p class="muted"><small>Korkeintaan 10 Mt. XLSX-luku on rajattu, eikä kaikkia kaavoja, muotoiluja tai taulukkorakenteita tueta.</small></p>
+ <div class="row"><button id="analyzeBtn" disabled>Analysoi tiedosto</button><button id="clearBtn" type="button">Tyhjennä näkymä</button></div>
+ <p id="status" role="status" aria-live="polite">Odottamassa tiedostoa.</p><p id="error" role="alert" hidden></p>
+</section>
+<section id="results" hidden>
+ <section class="card">
+  <div class="row"><h2>2. Mitä löytyi?</h2><span class="chip">Käyttäjän tarkistus vaaditaan</span></div>
+  <div class="stats">
+   <div class="stat"><small>Formaatti</small><strong id="formatText">–</strong></div>
+   <div class="stat"><small>Havaintoja</small><strong id="observationCount">–</strong></div>
+   <div class="stat"><small>Tarkistushuomioita</small><strong id="issueCount">–</strong></div>
+  </div>
+  <p id="summary" class="muted"></p>
+ </section>
+ <section class="card" id="previewCard" hidden><h2>Alkuperäinen kuva</h2><img id="preview" alt="Valittu kuva näytetään vain tällä laitteella"></section>
+ <section class="card"><h2>3. Tunnistetut ehdokkaat</h2><p class="muted" id="candidateInfo">Koneen ehdotus ei ole hyväksytty tieto.</p><div id="candidates"></div></section>
+ <section class="card"><h2>4. Epäselvyydet ja varoitukset</h2><div id="issues"></div></section>
+ <section class="card">
+ <details><summary>Alkuperäiset havainnot ja lähdeviitteet</summary>
+  <p class="muted">Nämä rivit sisältävät tiedostosta luettua raakasisältöä. Niitä ei tallenneta.</p>
+  <div class="scroll"><div id="evidenceTable"><table><thead><tr><th>Lähde</th><th>Havainto</th></tr></thead><tbody id="evidenceRows"></tbody></table></div></div>
+ </details></section>
+</section>
+<footer>LAB v1.0 · Testeihin tarkoitettu paikallinen käyttöliittymä. Ei automaattista hyväksyntää, tilaus- tai kaupankäyntitoimintoja eikä tiedostojen pysyvää tallennusta.</footer>
+<script type="module" src="./review.mjs"></script>
+</main></body>
+</html>
