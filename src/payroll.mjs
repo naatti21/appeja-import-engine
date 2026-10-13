@@ -8,7 +8,7 @@ const HEADER = [
   [/kertymä\s+vuoden\s+alusta/i,'ytdTaxableIncome'],
   [/kertymä\s+edellis(?:eltä|eltä)\s+vuodelta/i,'previousYearTaxableIncome']
 ];
-const moneyLabel = /(?:ver\.?\s*al\.?\s*ans\.?|veronalainen\s+ansio)/i;
+const moneyLabel = /(?:ver\.?\s*al\.?\s*ans\.?|veronalainen\s+ansio|ennakonpid(?:ä|\.)?\s*\.?\s*al\.?\s*tul(?:o)?)/i;
 function headerRole(text) { return HEADER.find(([re]) => re.test(text))?.[1] ?? null; }
 const essential = ['grossPay','ytdTaxableIncome'];
 
