@@ -40,3 +40,12 @@ Rakennetaan oikeat synteettiset PDF:t ja testataan todellinen PDF.js-selainpolku
 - **Important interpretation:** matching source token count or exact column boxes does not prove the production Palkka app has higher pay-field accuracy. The legacy comparator copies only the line-folding stage, not the full payroll parser or acceptance workflow.
 - Gate: 0 silent false auto-accepts in this synthetic adversarial corpus, all intentionally conflicting/missing/unaligned data visibly blocked, normal layouts correct. Any FAIL requires a test-linked source change and a fresh full CI run.
 - No live users, no uploads, no backend, no OCR; mobile device and independent QA **NOT RUN**, production **NO-GO**.
+
+## v0.4: samadokumenttinen parserivertailu — tarkastamatta CI-portin yli
+
+- Jäädytetty Palkka kehityskandidaatti: commit `550c765413c0916259c67b44ba8dfdb9b3f06da6` (parser.js, semantic-evidence.js; pdf-reader.js:n rivivaihe testidatan koostamisessa).
+- 25 hallittua pohjakonfiguraatiota × (ehjä + ristiriitainen YTD + puuttuva YTD) = 75 täysin synteettistä oikeaa PDF-dokumenttia. Toisella sivulla oleva puuttuva YTD on rakenteellinen vaara, vaikka muilla sivuilla arvo säilyisi.
+- CI:n hyväksyntäehto: uusista 25 ehjästä 25 täsmälleen oikein kaikissa 3 yhteisessä rahakentässä; 50 negatiivisesta 50 pysäytetty, oikealla perustelulla; 0 hävinnyttä geometriahavaintoa.
+- Koko vanha `parsePayslip` suoritetaan; sen brutto/YTD/edellinen vuosi -osumien määrä, blokkausvaroitusten määrä sekä havaintojen granulaation ero kirjataan erikseen. Vain näiden kolmen yhteisen rahakentän vertailu on mielekäs tässä tutkimuksessa.
+- Tämä on **kehittäjän synteettinen hyväksymiskoe**, ei tilastollinen näyttö oikeiden palkkalaskelmien tarkkuudesta tai automaattitallennuksen turvallisuudesta.
+- **V0.4 Chromium ja Node tulos: NOT YET VERIFIED** tässä kirjallisessa muutoksessa. Riippumaton QA, fyysinen Android, OCR, todelliset tuntemattomat pohjat NOT RUN. Tuotanto NO-GO.

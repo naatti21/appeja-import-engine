@@ -14,6 +14,12 @@ function cell(value,x,y,size=13){
 function pageContent(o={}){
   const gross=o.gross??'3 200,00',ytd=o.ytd??'42 000,00',prev=o.previous??'38 000,00';
   let out=cell('TEST DATA - SYNTHETIC ONLY',75,785,15);
+  if(o.fullSlip){
+    out+=cell('Palkkalaskelma',75,764);
+    out+=cell('Palkkakausi 01.10.2026 - 13.10.2026',75,742);
+    out+=cell('Maksupäivä 13.10.2026',75,720);
+    out+=cell('Maksetaan 2 450,00',75,699);
+  }
   if(o.noiseAbove)out+=cell('99 999,00',570,745);
   const header=[
     {label:'Kertymä palkkakaudelta',role:'gross',value:gross},

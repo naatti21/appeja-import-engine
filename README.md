@@ -67,3 +67,15 @@ Rajoitus: tämä ei tunnista mielivaltaisia palkkalaskelmia. Kierretyt/rajatut P
 - The 30-case matrix and a legacy granularity comparison run through real PDF.js in Chromium on GitHub Actions.
 - Commands remain npm test and npm run test:e2e. Node smoke on the isolated local sources: **36/36 PASS** before GitHub transfer; exact PR HEAD CI result recorded separately.
 - Cross-layout generalization, scanned images/OCR, physical Android and independent QA remain **NOT RUN**; production integration **NO-GO**.
+
+## v0.4: 75 synteettistä PDF:tä ja jäädytetty koko Palkka-parseri
+
+Koe käyttää **25 hallittua asettelukonfiguraatiota**, joista jokaisesta tehdään (1) ehjä tapaus, (2) erillisen sivun ristiriitainen YTD sekä (3) erillisen sivun puuttuva YTD. **25 ei tarkoita 25 eri työnantajaa tai autenttista palkkalaskelmapohjaa.** Yhteensä 75 PDF:tä käsitellään todellisella, versiopinnatulla PDF.js:llä Chromiumissa.
+
+Vertailu ei käytä pelkkää vanhaa rivifunktiota: jäädytetty **koko** `parsePayslip({text,lines})` ja sen `semantic-evidence.js` kopioidaan testiriippuvuudeksi lähdecommitista `naatti21/Palkan-laskenta@550c765413c0916259c67b44ba8dfdb9b3f06da6`, joka on Palkka Draft PR #13:n kehityskandidaatti, ei julkaisun tuotantokoodi. PDF:n riviteksti muodostetaan saman commitin `pageItemsToLines`-funktion mukaan. **Molemmat parserit saavat täsmälleen saman generoivan PDF-dokumentin lähtötiedoksi.**
+
+Mittaamme vain kolmea yhteistä rahakenttää: `grossPay`, `ytdTaxableIncome` ja `previousYearTaxableIncome`. Vanha parseri kyllä ajetaan kokonaisena, ja sen `documentType`, kentät sekä `validate()`-tarkistusvaroitukset luetaan, mutta uuden laboratorion adapteri ei vielä tue kaikkia Palkan ominaisuuksia (nettopalkka, maksupäivä, maksuerittely, käyttäjän hyväksyntä). Tätä ei saa kutsua täydelliseksi Palkka-sovelluksen pariteettitestiksi.
+
+Tulokset syntyvät GitHub Actionsin Chromium-jobin lokiin `FULL_FROZEN_PARSER_VS_LAB_75`. Kunnes **tarkka SHA:n ajokerta** on tarkastettu, v0.4 on NOT VERIFIED. Positiivinen testi vaatii täsmälliset kolme arvoa; negatiivinen testi vaatii eston ja sille oikean syyn. Vanhan parserin blokkausten erot esitetään kuvailevana analyysinä, ei oikeuksien tai tuotantotallennuksen väitteenä.
+
+**Turvaraja:** synteettiset tiedot, ei oikeita palkkalaskelmia, ei käyttäjätietojen latausta, ei pilvipalvelua eikä maksullista AI:ta. Ei integroitu muihin repoihin. Riippumaton QA ja puhelintesti NOT RUN, tuotanto NO-GO.
