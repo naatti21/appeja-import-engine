@@ -87,9 +87,11 @@ export function parsePayrollSections(layout) {
      return v;
    };
    parse('netPay',net);
-   parse('grossPay',gross);
+   const explicitGross=parse('grossPay',gross);
    parse('ytdTaxableIncome',year);
-   const tax=matchMoney(text,taxable);
+   // Explicit "veronalainen ansio / kausi" must not also be parsed as a
+   // shorter generic "veronalainen ansio" label with an invalid suffix.
+   const tax=explicitGross?null:matchMoney(text,taxable);
    if(tax?.error)bad('taxable');
    else if(tax){
      if(section==='period')add('grossPay',tax.value,row,tax.raw,sectionIds);
