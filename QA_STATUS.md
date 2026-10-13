@@ -49,3 +49,9 @@ Rakennetaan oikeat synteettiset PDF:t ja testataan todellinen PDF.js-selainpolku
 - Koko vanha `parsePayslip` suoritetaan; sen brutto/YTD/edellinen vuosi -osumien määrä, blokkausvaroitusten määrä sekä havaintojen granulaation ero kirjataan erikseen. Vain näiden kolmen yhteisen rahakentän vertailu on mielekäs tässä tutkimuksessa.
 - Tämä on **kehittäjän synteettinen hyväksymiskoe**, ei tilastollinen näyttö oikeiden palkkalaskelmien tarkkuudesta tai automaattitallennuksen turvallisuudesta.
 - **V0.4 Chromium ja Node tulos: NOT YET VERIFIED** tässä kirjallisessa muutoksessa. Riippumaton QA, fyysinen Android, OCR, todelliset tuntemattomat pohjat NOT RUN. Tuotanto NO-GO.
+
+## v0.4 audit: isolated 3-column source-label correction
+
+The initial frozen-parser comparison was **invalid as an accuracy competition**: our synthesized multi-column money row used only one field label, while Palkka `parallelCumulativeSummary()` intentionally requires individually labeled numeric columns. It correctly flagged the synthetic input as uncertain rather than inventing a mapping.
+
+The latest laboratory-only fixture puts one `Ennakonpid.al.tulo` label beside each cumulative numeric cell on each test page. Neither the frozen Palkka parser nor any production app was modified. Re-check the **exact final CI run** before using the comparative counts. This remains synthetic exploratory evidence, not real-world sensitivity/specificity data.
