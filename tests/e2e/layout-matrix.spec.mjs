@@ -44,14 +44,15 @@ test('same PDF input: old line folding vs item-level geometric evidence',async({
     pdfjs.GlobalWorkerOptions.workerSrc='/demo/vendor/pdfjs/pdf.worker.min.mjs';
     const {readPdfWithPdfJs}=await import('/src/layout.mjs');
     const {pageItemsToLines}=await import('/tests/fixtures/legacy-lines.mjs');
-    const original=await pdfjs.getDocument({data:new Uint8Array(data)}).promise;
+    const loadingTask=pdfjs.getDocument({data:new Uint8Array(data)});
+    const original=await loadingTask.promise;
     const oldLines=[];
     for(let n=1;n<=original.numPages;n++){
       const page=await original.getPage(n);
       const items=(await page.getTextContent()).items;
       oldLines.push(...pageItemsToLines(items,n));
     }
-    await original.destroy();
+    await loadingTask.destroy();
     const layout=await readPdfWithPdfJs(pdfjs,new Uint8Array(data));
     const rawAmounts=layout.observations.filter(o=>/^(?:3 200|42 000|43 000|38 000),00$/.test(o.raw.trim()));
     return {oldLines,newTokens:layout.observations.length,amounts:rawAmounts.map(o=>({page:o.page,x:o.box.x0,raw:o.raw})),
