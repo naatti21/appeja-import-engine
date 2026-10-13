@@ -85,3 +85,12 @@ The latest laboratory-only fixture puts one `Ennakonpid.al.tulo` label beside ea
 - Uudet lähteet: XLSX-pakattu OOXML + CSV/TSV, PDF.js-geometria ja OCR TSV -havaintoformaatti.
 - Testataan samaa synteettistä kahden osakkeen aineistoa pakattuna XLSX:nä ja CSV:nä; OCR TSV ja native PDF ovat vielä lähdehavaintojen säilyvyystestejä, eivät end-to-end-kuvan/salkun pariteettia.
 - Tämän HEADin Node + Chromium CI **PENDING**; riippumaton QA, oikea kuvantunnistus, Android ja tuntemattomat dokumenttipohjat NOT RUN. Tuotanto NO-GO.
+
+
+## LAB v0.9 — kuvakaappauksen todellisuustarkistus
+
+- Vain fiktiivistä numeerista ja instrumenttidataa sisältävä `src/portfolio-review.mjs` + Node/Chromium-regressiot.
+- Alkuperäiset 5 PDF + 4 kuvaa arvioitu paikallisesti; **ei ladattu repoihin, CI-artefakteihin eikä muihin pilvipalveluihin**. GitHubin regressioaineistossa ei ole kopioituja oikeita nimiä, määriä tai rahasummia.
+- Pakolliset estot: ostohinnan puute, OCR-desimaalivirheen paljastava määrä×kurssi-ristiriita, eri tilien yhdistämisyritys, ristiriitaiset saman omistuksen näkymät, epäselvä lähdeviite, epäjohdonmukainen käteinen+salkkuarvo. Sama yleisnäkymä ja yksittäisen rahaston yksityiskohtanäkymä eivät muodosta uusia omistuksia.
+- **Uusi SHA CI PENDING** ennen hyväksyntää. Todellista tuotannon selaimen Tesseract.js:tä, yksityisten PDF:ien JS-parserin end-to-end-kenttäpariteettia, riippumatonta QA:ta ja fyysistä Androidia ei ole vielä varmennettu.
+- Tuotanto NO-GO. Tämä gate ei oikeuta tallentamaan mitään.

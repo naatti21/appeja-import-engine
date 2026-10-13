@@ -114,3 +114,12 @@ Testit käyttävät samoja kolmea kokonaista **synteettistä PDF:ää**. `tests/
 ## LAB v0.8: PDF, CSV/TSV, XLSX ja OCR-havainnot
 
 Lue [MULTIFORMAT_PLAN.md](./MULTIFORMAT_PLAN.md). Tämä vaihe lisää erillisen yhteisen havaintokerroksen, ei uutta palkkaparseria. Excelin aitoon ZIP/OOXML-luentaan ja synteettiseen osakeaineistoon liittyvät Node- ja Chromium-testit ovat tiedostoissa `tests/multiformat.test.mjs` ja `tests/e2e/multiformat.spec.mjs`. OCR-TSV on jälkikäsittelyn testi, ei oikean kuvapikselin OCR-koe. Production: NO-GO.
+
+
+## LAB v0.9 — todellisten kuvien paikallisen QA:n pohjalta turvallisuussäännöt
+
+Neljä todellista kuvakaappausta ja viisi eri rakenteista palkka-PDF:ää tarkastettiin **vain erillisessä paikallisessa ympäristössä**. Niiden sisältöä, henkilö-, tili- tai oikeita taloudellisia tietoja **ei** kopioitu tähän julkiseen repoon eikä GitHub Actionsiin. Todellista OCR:tä kokeiltiin paikallisella Tesseract-moottorilla: OCR:n desimaalipilkku voi kadota; nimiosuma ei todista oikeaa rahalukua.
+
+Uusi `src/portfolio-review.mjs` on **post-extraction REVIEW GATE**, ei vielä valmiiksi toimiva kuvasta-salkku-parseri. Se hyväksyy vain jo luetut ja lähde-ID:llä perustellut kenttäehdokkaat. Kuvitteellisia tietoja käyttävät regressiot kattavat nykyarvon ja ostohinnan eron, saman salkkunäkymän uusinnan, rahaston erillisen detail-näkymän, tilien erilläänpidon, OCR:llä kadonneen desimaalin, korkeamman nykykurssin ja ostohinnan sekoittumisen, taseen laskentatarkistuksen ja väärät lähdeviitteet. `canPersist=false` aina.
+
+**Nämä testit eivät validoi tuotannon Tesseract.js:n OCR-tarkkuutta**, eivätkä yhteisen moottorin automaattista PDF-/kuva-taulukon kohdistusta. Yksityisten tiedostojen paikallinen arvio löytyy vain käyttäjälle toimitetusta erillisestä anonymisoidusta raportista, ei reposta. Draft PR ja tuotantointegraatio edelleen NO-GO.
