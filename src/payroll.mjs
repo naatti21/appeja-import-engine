@@ -12,6 +12,36 @@ const moneyLabel = /(?:ver\.?\s*al\.?\s*ans\.?|veronalainen\s+ansio)/i;
 function headerRole(text) { return HEADER.find(([re]) => re.test(text))?.[1] ?? null; }
 const essential = ['grossPay','ytdTaxableIncome'];
 
+/** Reconstruct only tightly adjacent fragments of a known header; source tokens remain unchanged. */
+function detectHeaders(tokens) {
+  const ordered = tokens.filter(t=>t.box).sort((a,b)=>a.box.x0-b.box.x0);
+  const headers=[];
+  for(let i=0;i<ordered.length;i++) {
+    let phrase='',last=null;
+    for(let j=i;j<Math.min(ordered.length,i+4);j++) {
+      const item=ordered[j];
+      if(last && item.box.x0-last.box.x1>0.025) break;
+      phrase+=(phrase?' ':'')+item.raw.trim();
+      const role=headerRole(phrase);
+      if(role){
+        headers.push({role,token:ordered[i],sourceIds:ordered.slice(i,j+1).map(t=>t.id)});
+        i=j; break;
+      }
+      last=item;
+    }
+  }
+  return headers;
+}
+
+/** Never assign a number to a remote or geometrically ambiguous column. */
+function locateColumn(cell,orderedHeaders) {
+  const distances=orderedHeaders.map(h=>({role:h.role,d:Math.abs(cell.box.x0-h.token.box.x0)}))
+    .sort((a,b)=>a.d-b.d);
+  if(!distances.length || distances[0].d>0.075) return null;
+  if(distances.length>1 && distances[1].d-distances[0].d<0.02) return null;
+  return distances[0].role;
+}
+
 export function parsePayrollLayout(layout) {
   const issues = [...(layout.issues ?? [])];
   const evidence = { grossPay:[], ytdTaxableIncome:[],previousYearTaxableIncome:[] };
@@ -22,7 +52,7 @@ export function parsePayrollLayout(layout) {
     const rows = page.rows.map(row=>({row,tokens:rowTokens(layout,row)}));
     for (let i=0; i<rows.length; i++) {
       const current = rows[i];
-      const headers = current.tokens.map(t=>({token:t,role:headerRole(t.raw)})).filter(h=>h.role);
+      const headers = detectHeaders(current.tokens);
       if (!headers.length) continue;
       blocks++;
       const tableId=`p${page.page}-block${blocks}`;
@@ -33,13 +63,23 @@ export function parsePayrollLayout(layout) {
       if (!essential.every(role=>headers.some(h=>h.role===role))) {
         issues.push({code:'INCOMPLETE_TABLE_HEADER',page:page.page,tableId});
       }
-      const nextHeader = rows.findIndex((r, j)=>j>i && r.tokens.some(t=>headerRole(t.raw)));
+      const nextHeader = rows.findIndex((r, j)=>j>i && detectHeaders(r.tokens).length>0);
       const stop = nextHeader<0 ? rows.length:nextHeader;
       let foundData=false;
       for(let j=i+1;j<stop;j++) {
         const r=rows[j];
         if (r.row.y-current.row.y>0.16) break;
-        if (!r.tokens.some(t=>moneyLabel.test(t.raw))) continue;
+        if (!r.tokens.some(t=>moneyLabel.test(t.raw))) {
+          // Money-like text inside a known table has not been accounted for.
+          // Do not accidentally bless a partially parsed table.
+          for(const t of r.tokens){
+            if(parseNumber(t.raw).status==='valid' || parseNumber(t.raw).status==='ambiguous'){
+              unmatched.push({observationId:t.id,raw:t.raw,reason:'unanchored-table-amount',tableId});
+              issues.push({code:'UNANCHORED_MONEY_ROW',page:page.page,tableId,observationId:t.id});
+            }
+          }
+          continue;
+        }
         foundData=true;
         const numeric = r.tokens.filter(t=>!moneyLabel.test(t.raw)).map(t=>({token:t,parsed:parseNumber(t.raw)}));
         const seen=new Set();
@@ -49,15 +89,12 @@ export function parsePayrollLayout(layout) {
             issues.push({code:'INVALID_MONEY_CELL',page:page.page,tableId,observationId:cell.token.id});
             continue;
           }
-          const ordered = [...headers].sort((a,b)=>a.token.box.x0-b.token.box.x0);
-          const x=cell.token.box.x0;
-          const col = ordered.findIndex((h,k)=>x < (ordered[k+1]?.token.box.x0 ?? 2));
-          if (col<0 || x < ordered[0].token.box.x0 - 0.05) {
-            unmatched.push({observationId:cell.token.id,raw:cell.token.raw,reason:'outside-columns',tableId});
-            issues.push({code:'UNASSIGNED_MONEY_CELL',page:page.page,tableId,observationId:cell.token.id});
+          const role=locateColumn(cell.token,headers);
+          if (!role) {
+            unmatched.push({observationId:cell.token.id,raw:cell.token.raw,reason:'ambiguous-or-distant-column',tableId});
+            issues.push({code:'AMBIGUOUS_MONEY_COLUMN',page:page.page,tableId,observationId:cell.token.id});
             continue;
           }
-          const role=ordered[col].role;
           if(seen.has(role)) issues.push({code:'MULTIPLE_VALUES_IN_ONE_COLUMN',page:page.page,tableId,role});
           seen.add(role);
           evidence[role].push({

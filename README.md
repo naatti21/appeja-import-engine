@@ -58,3 +58,12 @@ Lähdekoodi on kehityskandidaatti. GitHub Actionsin mahdollinen vihreä Node-tul
 - `demo/index.html` sisältää painikkeen **Oikea PDF.js · kaksisivuinen testi**. Demoon ei lisätty käyttäjän tiedoston latausta, koska tutkimus käsittelee toistaiseksi vain testiaineistoa.
 
 Rajoitus: tämä ei tunnista mielivaltaisia palkkalaskelmia. Kierretyt/rajatut PDF-sivut, skannatut PDF:t, OCR ja puhelimen todellinen suorituskyky puuttuvat edelleen. API-laskutusta, käyttäjätietojen tallennusta tai sovellusintegraatiota ei ole.
+
+## v0.3 adversarial layout research (Draft)
+
+- Thirty deterministic, entirely synthetic page-layout scenarios are generated at test time; there are no real paycheck samples or user files.
+- New safety rules: nearby known headers can be reconstructed from text fragments; amount positions are matched only when the nearest column is within a narrow, unambiguous range; suspicious unanchored amounts inside a detected table block review.
+- A **test-only** copy of Palkka's old PDF row folding (pdf-reader.js, frozen snapshot 550c7654…) is run on the **same synthetic PDF**, solely to measure preservation of word-level geometry vs folded-line geometry. It is **not** a head-to-head accuracy test of full Palkka parsing logic.
+- The 30-case matrix and a legacy granularity comparison run through real PDF.js in Chromium on GitHub Actions.
+- Commands remain npm test and npm run test:e2e. Node smoke on the isolated local sources: **36/36 PASS** before GitHub transfer; exact PR HEAD CI result recorded separately.
+- Cross-layout generalization, scanned images/OCR, physical Android and independent QA remain **NOT RUN**; production integration **NO-GO**.
