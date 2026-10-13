@@ -1,0 +1,93 @@
+Warning: Please use the `legacy` build in Node.js environments.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+[
+  {
+    "id": "P01",
+    "status": "EXECUTED_NODE_REAL_PDFJS",
+    "raw": "26/26",
+    "core": "1/4",
+    "verified": [
+      [
+        "netPay",
+        2516
+      ]
+    ],
+    "decision": "review-required",
+    "uncovered": 25,
+    "unwarned": 10,
+    "paylines": 0,
+    "rawMissing": []
+  },
+  {
+    "id": "P02",
+    "status": "EXECUTED_NODE_REAL_PDFJS",
+    "raw": "13/13",
+    "core": "0/4",
+    "verified": [],
+    "decision": "review-required",
+    "uncovered": 13,
+    "unwarned": 12,
+    "paylines": 0,
+    "rawMissing": []
+  },
+  {
+    "id": "P03",
+    "status": "EXECUTED_NODE_REAL_PDFJS",
+    "raw": "14/14",
+    "core": "0/3",
+    "verified": [],
+    "decision": "review-required",
+    "uncovered": 14,
+    "unwarned": 4,
+    "paylines": 0,
+    "rawMissing": []
+  },
+  {
+    "id": "T01",
+    "status": "EXECUTED_NODE_REAL_PDFJS",
+    "raw": "13/13",
+    "core": "0/0",
+    "verified": [],
+    "decision": "review-required",
+    "uncovered": 13,
+    "unwarned": 10,
+    "paylines": null,
+    "rawMissing": []
+  },
+  {
+    "id": "T02",
+    "status": "EXECUTED_NODE_REAL_PDFJS",
+    "raw": "14/14",
+    "core": "0/0",
+    "verified": [],
+    "decision": "review-required",
+    "uncovered": 14,
+    "unwarned": 7,
+    "paylines": null,
+    "rawMissing": []
+  },
+  {
+    "id": "T03",
+    "status": "EXECUTED_NODE_REAL_PDFJS",
+    "raw": "7/7",
+    "core": "0/0",
+    "verified": [],
+    "decision": "review-required",
+    "uncovered": 7,
+    "unwarned": 6,
+    "paylines": null,
+    "rawMissing": []
+  }
+]

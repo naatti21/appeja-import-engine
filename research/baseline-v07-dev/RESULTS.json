@@ -1,0 +1,1778 @@
+{
+  "run": {
+    "baseline_sha": "8f28544651a27225c1212228753fbc6c6a265c38",
+    "fixture_sha": "72520b612444994741f6d09655e8c2f08f279308",
+    "environment": {
+      "node": "v24.19.0",
+      "pdfjs": "6.4.299",
+      "playwright": "1.57.0",
+      "chromium": "NOT RUN - pinned Chromium 143.0.7499.4/build1200 download failed (truncated ZIP / GatewayExceptionResponse)",
+      "node_compat": "Standard Uint8Array.toHex environment shim loaded through --import; no baseline/PDF.js files changed",
+      "platform": "linux",
+      "arch": "x64",
+      "execution": "Node; actual PDF bytes; exact standard PDF.js build and baseline exported functions"
+    },
+    "input_manifest_sha256": "7fa2ec599e8b0c18d473dfcf9b82f021de8558b0adc5376e14275f9ec93b270c",
+    "input_integrity": [
+      {
+        "path": "ANNOTATIONS/DEV/P01.json",
+        "sha256": "561374d3750c735b81af63a913a3df7dcdd3145d619b7471cb9669623fc66426",
+        "match": true
+      },
+      {
+        "path": "ANNOTATIONS/DEV/P02.json",
+        "sha256": "b08aa4dd7eb02759e3e2ee5cf03191379740071f55c9a93db7293f611b81422e",
+        "match": true
+      },
+      {
+        "path": "ANNOTATIONS/DEV/P03.json",
+        "sha256": "43ee15fdb0a59eb0b82a51ec9fb69c31b3551838dd6f67c26adf9978a7bc9426",
+        "match": true
+      },
+      {
+        "path": "ANNOTATIONS/DEV/T01.json",
+        "sha256": "4f5de2992a9424ebe2b7900d098f2885b53072c292c73ac1e58a9b30aaa4f697",
+        "match": true
+      },
+      {
+        "path": "ANNOTATIONS/DEV/T02.json",
+        "sha256": "c00695246b13bc65e78109726325922b9e9c1cbb488800c8ae05f8fff1338427",
+        "match": true
+      },
+      {
+        "path": "ANNOTATIONS/DEV/T03.json",
+        "sha256": "7c7d2c3462884b7ad57ab280c46b017dbc413cdda789b018410298e0d8de4c56",
+        "match": true
+      },
+      {
+        "path": "DEV/P01.pdf",
+        "sha256": "2edfe9ae3ac7896baa1c2041d87cf4a226675add731b803ef9084e635a021c01",
+        "match": true
+      },
+      {
+        "path": "DEV/P02.pdf",
+        "sha256": "75951281d8c88a830b5714c8dd047f174728da2c59bfae0d217bba3a06112361",
+        "match": true
+      },
+      {
+        "path": "DEV/P03.pdf",
+        "sha256": "d217037f46f15ef8cc7447cbec01d0a8cce4beb241175841c09872ff8c9e9950",
+        "match": true
+      },
+      {
+        "path": "DEV/T01.pdf",
+        "sha256": "9fcdb7a6f154a85c4ba86ff0ba8d66ad3adc0642882c61f1ba98d1799ba2ff28",
+        "match": true
+      },
+      {
+        "path": "DEV/T02.pdf",
+        "sha256": "18b35155d71d2b8b81431eceab20aecc232e504e6578cf165b18713792a13a82",
+        "match": true
+      },
+      {
+        "path": "DEV/T03.pdf",
+        "sha256": "f5e30b01ef4219cffc0b07a00be024498d7f96e477c8e279d8540649c3408273",
+        "match": true
+      },
+      {
+        "path": "README.md",
+        "sha256": "80f0ab39808f36e493b368595b1ae4f3e71e4e2445f2ac55911b39f0606b8afc",
+        "match": true
+      },
+      {
+        "path": "TEST_PROTOCOL.md",
+        "sha256": "e8273a59637496b359e1c7d34222a5dee9c326179905a0ee5d26f9fa0f008682",
+        "match": true
+      },
+      {
+        "path": "VALIDATION_REPORT.md",
+        "sha256": "0ccb4d1a00306613e2dbfdc9b3f4abb174b8fa42a447bb76cd863735a0807e58",
+        "match": true
+      }
+    ],
+    "baseline_source_hashes": [
+      {
+        "path": "src/layout.mjs",
+        "sha256": "e38dee3fa4fd40b5450debf520fed235eff392bc6d25f590ffdb65eb84a9ae39",
+        "git_blob_sha": "7aa67e9cc1960a71cc65571f66df719b9bf2d8f5"
+      },
+      {
+        "path": "src/payroll-sections.mjs",
+        "sha256": "1252cf3b21d9e7fdad78b9b403030fdb4719e5bda125959460b42b421224d46f",
+        "git_blob_sha": "242894e6981ce3e1a2d7a70257d9d3af3f55ec1c"
+      },
+      {
+        "path": "src/payroll-lines.mjs",
+        "sha256": "148ea4de933dbe938ad4b5a2ca4587e658c60869ad988454eb6f2815d33d5aee",
+        "git_blob_sha": "37d61f9fd3488014b532651937cbf502766deebc"
+      },
+      {
+        "path": "src/acceptance.mjs",
+        "sha256": "d8736bab39590323c23362e4a480de9020b1a02e95a6476548f167c9265a690a",
+        "git_blob_sha": "885b4f89759d29fc29bd5558cc8c24188f707c16"
+      },
+      {
+        "path": "src/holdings.mjs",
+        "sha256": "76334aefc622d20aee1aaa302640f7cb2ceb7ec786808c038452b7161b267466",
+        "git_blob_sha": "5bb4be45c7a42996b2f4746e6371763142095be4"
+      },
+      {
+        "path": "src/evidence.mjs",
+        "sha256": "28575f1ae559938256f6d87dc173c90a821a3dae2a753f03f2864d36d7189648",
+        "git_blob_sha": "16b57c7e991870cc36ef51683695b61b9b3a5724"
+      },
+      {
+        "path": "src/numbers.mjs",
+        "sha256": "df344b9f9a42331ba82c8c20c82564b4eb068ee18f606a7a3e8fe92e460edcce",
+        "git_blob_sha": "a9ae0ed4093eff6ffc042f12e4510cc4d84041a0"
+      },
+      {
+        "path": "src/csv.mjs",
+        "sha256": "959f42bed43045f664e5d57374f4580917ce99617fc978329dc3f9690b26d504",
+        "git_blob_sha": "bd9c2942b43446e0cfaa3db74b995105af8c495b"
+      },
+      {
+        "path": "src/payroll.mjs",
+        "sha256": "4cb5905c6295912af688fcb38f5580e474ab78cfd0f3b8e743c1d7d664afffcb",
+        "git_blob_sha": "818eae52b5bd919c44de459ff51cf83c93d6020a"
+      }
+    ],
+    "source_unchanged": true,
+    "holdout_opened_in_this_run": false,
+    "independence": "Same agent authored fixtures earlier; DEV baseline measurement is not author-independent QA",
+    "measured_at_utc": "2026-10-13T22:13:31.917Z"
+  },
+  "documents": [
+    {
+      "document_id": "P01",
+      "type": "payroll",
+      "status": "EXECUTED_NODE_REAL_PDFJS",
+      "pages": 1,
+      "raw_items": 48,
+      "raw_expected_fields": 26,
+      "raw_fields_found": 26,
+      "raw_locations_correct": 26,
+      "raw_missing": [],
+      "split_fields": [
+        "P01-f19"
+      ],
+      "layout_issues": [],
+      "core": [
+        {
+          "key": "payDate",
+          "expected_state": "known",
+          "expected_value": "2026-05-22",
+          "actual": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "correct_value": false,
+          "correct_value_source": false,
+          "correct_label_source": false,
+          "exact_core_match": false,
+          "correct_missing": false,
+          "source_refs_exist": true
+        },
+        {
+          "key": "grossPay",
+          "expected_state": "known",
+          "expected_value": "3400.00",
+          "actual": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "correct_value": false,
+          "correct_value_source": false,
+          "correct_label_source": false,
+          "exact_core_match": false,
+          "correct_missing": false,
+          "source_refs_exist": true
+        },
+        {
+          "key": "netPay",
+          "expected_state": "known",
+          "expected_value": "2516.00",
+          "actual": {
+            "status": "verified",
+            "value": 2516,
+            "sourceIds": [
+              "pdf-p1-t84",
+              "pdf-p1-t86"
+            ],
+            "candidates": [
+              {
+                "value": 2516,
+                "raw": "2 516,00",
+                "sourceIds": [
+                  "pdf-p1-t84",
+                  "pdf-p1-t86"
+                ],
+                "page": 1,
+                "rowId": "p1-r14",
+                "observationId": "pdf-p1-t84"
+              }
+            ]
+          },
+          "correct_value": true,
+          "correct_value_source": true,
+          "correct_label_source": true,
+          "exact_core_match": true,
+          "correct_missing": false,
+          "source_refs_exist": true
+        },
+        {
+          "key": "ytdTaxableIncome",
+          "expected_state": "known",
+          "expected_value": "27540.00",
+          "actual": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "correct_value": false,
+          "correct_value_source": false,
+          "correct_label_source": false,
+          "exact_core_match": false,
+          "correct_missing": false,
+          "source_refs_exist": true
+        }
+      ],
+      "core_known_denominator": 4,
+      "core_exact_numerator": 1,
+      "core_wrong_verified": 0,
+      "core_missing_numerator": 0,
+      "semantic_non_payroll": "NOT IMPLEMENTED: holdings accepts CSV, not PDF; other domain adapters absent",
+      "generic_structure": "NOT IMPLEMENTED: baseline outputs rows; no generic table/cell/header/continuation graph",
+      "recognized_paylines": 0,
+      "verified_fields": [
+        {
+          "key": "netPay",
+          "status": "verified",
+          "value": 2516,
+          "sourceIds": [
+            "pdf-p1-t84",
+            "pdf-p1-t86"
+          ],
+          "candidates": [
+            {
+              "value": 2516,
+              "raw": "2 516,00",
+              "sourceIds": [
+                "pdf-p1-t84",
+                "pdf-p1-t86"
+              ],
+              "page": 1,
+              "rowId": "p1-r14",
+              "observationId": "pdf-p1-t84"
+            }
+          ]
+        }
+      ],
+      "material_observations": 16,
+      "unresolved_material_observations": 15,
+      "essential_fully_uncovered": 25,
+      "specific_unaccounted_notice": 15,
+      "essential_without_candidate_or_specific_unaccounted_notice": 10,
+      "omission_audit": [
+        {
+          "field_id": "P01-f1",
+          "role": "payDate",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t11"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P01-f2",
+          "role": "period",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t15"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P01-f3",
+          "role": "pay-code",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t29"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P01-f4",
+          "role": "row-description",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t31"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P01-f5",
+          "role": "hours",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t33"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f6",
+          "role": "unit-rate",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t35"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f7",
+          "role": "earning",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t37"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f8",
+          "role": "pay-code",
+          "record": "r2",
+          "source_ids": [
+            "pdf-p1-t38"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P01-f9",
+          "role": "row-description",
+          "record": "r2",
+          "source_ids": [
+            "pdf-p1-t40"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P01-f10",
+          "role": "hours",
+          "record": "r2",
+          "source_ids": [
+            "pdf-p1-t42"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f11",
+          "role": "unit-rate",
+          "record": "r2",
+          "source_ids": [
+            "pdf-p1-t44"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f12",
+          "role": "earning",
+          "record": "r2",
+          "source_ids": [
+            "pdf-p1-t46"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f13",
+          "role": "pay-code",
+          "record": "r3",
+          "source_ids": [
+            "pdf-p1-t47"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P01-f14",
+          "role": "row-description",
+          "record": "r3",
+          "source_ids": [
+            "pdf-p1-t49"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P01-f15",
+          "role": "hours",
+          "record": "r3",
+          "source_ids": [
+            "pdf-p1-t51"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f16",
+          "role": "unit-rate",
+          "record": "r3",
+          "source_ids": [
+            "pdf-p1-t53"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f17",
+          "role": "earning",
+          "record": "r3",
+          "source_ids": [
+            "pdf-p1-t55"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f18",
+          "role": "pay-code",
+          "record": "r4",
+          "source_ids": [
+            "pdf-p1-t56"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P01-f19",
+          "role": "row-description",
+          "record": "r4",
+          "source_ids": [
+            "pdf-p1-t58",
+            "pdf-p1-t59"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P01-f20",
+          "role": "earning",
+          "record": "r4",
+          "source_ids": [
+            "pdf-p1-t64"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f21",
+          "role": "tax",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t70"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f22",
+          "role": "other",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t74"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f23",
+          "role": "ratePercent",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t78"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f24",
+          "role": "grossPay",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t82"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P01-f26",
+          "role": "ytdTaxableIncome",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t90"
+          ],
+          "specific_unaccounted_notice": true
+        }
+      ],
+      "decision": {
+        "status": "review-required",
+        "canAutoAccept": false,
+        "canPersist": false,
+        "problems": [
+          {
+            "code": "MISSING_FIELD",
+            "field": "payDate"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "grossPay"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "ytdTaxableIncome"
+          },
+          {
+            "code": "BLOCKING_SOURCE_ISSUE",
+            "detail": "UNPARSEABLE_LABELED_AMOUNT"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t33"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t35"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t37"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t42"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t44"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t46"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t51"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t53"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t55"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t64"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t70"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t74"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t78"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t82"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t90"
+          }
+        ]
+      },
+      "issues": [
+        {
+          "level": "blocking",
+          "code": "UNPARSEABLE_LABELED_AMOUNT",
+          "field": "payDate",
+          "page": 1,
+          "observationId": "pdf-p1-t9"
+        }
+      ],
+      "unknown_document_type_blocked": null,
+      "dangerous_candidate_ready": false,
+      "timings": {
+        "reader_ms": 96.847084,
+        "adapter_ms": 4.499531000000019
+      },
+      "process_memory_snapshot": {
+        "rss": 69992448,
+        "heapTotal": 23678976,
+        "heapUsed": 16404016,
+        "external": 8773465,
+        "arrayBuffers": 430288
+      },
+      "raw_file": "raw/P01.json",
+      "raw_sha256": "5e2e1c2a73accca7437977855e7e209e1996ccfa7c5795fa521114b703f9c9bc"
+    },
+    {
+      "document_id": "P02",
+      "type": "payroll",
+      "status": "EXECUTED_NODE_REAL_PDFJS",
+      "pages": 1,
+      "raw_items": 36,
+      "raw_expected_fields": 13,
+      "raw_fields_found": 13,
+      "raw_locations_correct": 13,
+      "raw_missing": [],
+      "split_fields": [
+        "P02-f2"
+      ],
+      "layout_issues": [],
+      "core": [
+        {
+          "key": "payDate",
+          "expected_state": "known",
+          "expected_value": "2026-06-19",
+          "actual": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "correct_value": false,
+          "correct_value_source": false,
+          "correct_label_source": false,
+          "exact_core_match": false,
+          "correct_missing": false,
+          "source_refs_exist": true
+        },
+        {
+          "key": "grossPay",
+          "expected_state": "known",
+          "expected_value": "2875.40",
+          "actual": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "correct_value": false,
+          "correct_value_source": false,
+          "correct_label_source": false,
+          "exact_core_match": false,
+          "correct_missing": false,
+          "source_refs_exist": true
+        },
+        {
+          "key": "netPay",
+          "expected_state": "known",
+          "expected_value": "2034.75",
+          "actual": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "correct_value": false,
+          "correct_value_source": false,
+          "correct_label_source": false,
+          "exact_core_match": false,
+          "correct_missing": false,
+          "source_refs_exist": true
+        },
+        {
+          "key": "ytdTaxableIncome",
+          "expected_state": "known",
+          "expected_value": "19764.21",
+          "actual": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "correct_value": false,
+          "correct_value_source": false,
+          "correct_label_source": false,
+          "exact_core_match": false,
+          "correct_missing": false,
+          "source_refs_exist": true
+        }
+      ],
+      "core_known_denominator": 4,
+      "core_exact_numerator": 0,
+      "core_wrong_verified": 0,
+      "core_missing_numerator": 0,
+      "semantic_non_payroll": "NOT IMPLEMENTED: holdings accepts CSV, not PDF; other domain adapters absent",
+      "generic_structure": "NOT IMPLEMENTED: baseline outputs rows; no generic table/cell/header/continuation graph",
+      "recognized_paylines": 0,
+      "verified_fields": [],
+      "material_observations": 1,
+      "unresolved_material_observations": 1,
+      "essential_fully_uncovered": 13,
+      "specific_unaccounted_notice": 1,
+      "essential_without_candidate_or_specific_unaccounted_notice": 12,
+      "omission_audit": [
+        {
+          "field_id": "P02-f1",
+          "role": "payDate",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t11"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P02-f2",
+          "role": "gross-pay",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t21",
+            "pdf-p1-t23"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P02-f3",
+          "role": "netPay",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t27"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P02-f4",
+          "role": "tax",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t31"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P02-f5",
+          "role": "other",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t35"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P02-f6",
+          "role": "ytdTaxableIncome",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t39"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P02-f7",
+          "role": "ratePercent",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t43"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P02-f8",
+          "role": "row-description",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t54"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P02-f9",
+          "role": "hours",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t56"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P02-f10",
+          "role": "unit-rate",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t58"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P02-f11",
+          "role": "earning",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t60"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P02-f12",
+          "role": "row-description",
+          "record": "r2",
+          "source_ids": [
+            "pdf-p1-t61"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P02-f13",
+          "role": "earning",
+          "record": "r2",
+          "source_ids": [
+            "pdf-p1-t67"
+          ],
+          "specific_unaccounted_notice": false
+        }
+      ],
+      "decision": {
+        "status": "review-required",
+        "canAutoAccept": false,
+        "canPersist": false,
+        "problems": [
+          {
+            "code": "MISSING_FIELD",
+            "field": "payDate"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "grossPay"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "netPay"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "ytdTaxableIncome"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t23"
+          }
+        ]
+      },
+      "issues": [],
+      "unknown_document_type_blocked": null,
+      "dangerous_candidate_ready": false,
+      "timings": {
+        "reader_ms": 17.462998,
+        "adapter_ms": 0.2806420000000003
+      },
+      "process_memory_snapshot": {
+        "rss": 75235328,
+        "heapTotal": 24727552,
+        "heapUsed": 20165752,
+        "external": 9513541,
+        "arrayBuffers": 1303546
+      },
+      "raw_file": "raw/P02.json",
+      "raw_sha256": "cd894dab81a0cfc586dd0de54350af4fa43f78897664ef787a0d0b55c041e30a"
+    },
+    {
+      "document_id": "P03",
+      "type": "payroll",
+      "status": "EXECUTED_NODE_REAL_PDFJS",
+      "pages": 2,
+      "raw_items": 40,
+      "raw_expected_fields": 14,
+      "raw_fields_found": 14,
+      "raw_locations_correct": 14,
+      "raw_missing": [],
+      "split_fields": [
+        "P03-f10"
+      ],
+      "layout_issues": [],
+      "core": [
+        {
+          "key": "payDate",
+          "expected_state": "known",
+          "expected_value": "2026-07-10",
+          "actual": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "correct_value": false,
+          "correct_value_source": false,
+          "correct_label_source": false,
+          "exact_core_match": false,
+          "correct_missing": false,
+          "source_refs_exist": true
+        },
+        {
+          "key": "grossPay",
+          "expected_state": "known",
+          "expected_value": "3690.00",
+          "actual": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "correct_value": false,
+          "correct_value_source": false,
+          "correct_label_source": false,
+          "exact_core_match": false,
+          "correct_missing": false,
+          "source_refs_exist": true
+        },
+        {
+          "key": "ytdTaxableIncome",
+          "expected_state": "known",
+          "expected_value": "45321.78",
+          "actual": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "correct_value": false,
+          "correct_value_source": false,
+          "correct_label_source": false,
+          "exact_core_match": false,
+          "correct_missing": false,
+          "source_refs_exist": true
+        },
+        {
+          "key": "netPay",
+          "expected_state": "missing",
+          "expected_value": null,
+          "actual": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "correct_value": false,
+          "correct_value_source": false,
+          "correct_label_source": false,
+          "exact_core_match": false,
+          "correct_missing": true,
+          "source_refs_exist": true
+        }
+      ],
+      "core_known_denominator": 3,
+      "core_exact_numerator": 0,
+      "core_wrong_verified": 0,
+      "core_missing_numerator": 1,
+      "semantic_non_payroll": "NOT IMPLEMENTED: holdings accepts CSV, not PDF; other domain adapters absent",
+      "generic_structure": "NOT IMPLEMENTED: baseline outputs rows; no generic table/cell/header/continuation graph",
+      "recognized_paylines": 0,
+      "verified_fields": [],
+      "material_observations": 10,
+      "unresolved_material_observations": 10,
+      "essential_fully_uncovered": 14,
+      "specific_unaccounted_notice": 10,
+      "essential_without_candidate_or_specific_unaccounted_notice": 4,
+      "omission_audit": [
+        {
+          "field_id": "P03-f1",
+          "role": "payDate",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t11"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P03-f2",
+          "role": "row-description",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t23"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P03-f3",
+          "role": "hours",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t25"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P03-f4",
+          "role": "unit-rate",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t27"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P03-f5",
+          "role": "earning",
+          "record": "r1",
+          "source_ids": [
+            "pdf-p1-t29"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P03-f6",
+          "role": "row-description",
+          "record": "r2",
+          "source_ids": [
+            "pdf-p1-t30"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P03-f7",
+          "role": "hours",
+          "record": "r2",
+          "source_ids": [
+            "pdf-p1-t32"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P03-f8",
+          "role": "unit-rate",
+          "record": "r2",
+          "source_ids": [
+            "pdf-p1-t34"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P03-f9",
+          "role": "earning",
+          "record": "r2",
+          "source_ids": [
+            "pdf-p1-t36"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P03-f10",
+          "role": "row-description",
+          "record": "r3",
+          "source_ids": [
+            "pdf-p2-t19",
+            "pdf-p2-t20"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "P03-f11",
+          "role": "earning",
+          "record": "r3",
+          "source_ids": [
+            "pdf-p2-t26"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P03-f12",
+          "role": "grossPay",
+          "record": "document",
+          "source_ids": [
+            "pdf-p2-t29"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P03-f13",
+          "role": "ytdTaxableIncome",
+          "record": "document",
+          "source_ids": [
+            "pdf-p2-t33"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "P03-f14",
+          "role": "previous-period-net",
+          "record": "document",
+          "source_ids": [
+            "pdf-p2-t37"
+          ],
+          "specific_unaccounted_notice": true
+        }
+      ],
+      "decision": {
+        "status": "review-required",
+        "canAutoAccept": false,
+        "canPersist": false,
+        "problems": [
+          {
+            "code": "MISSING_FIELD",
+            "field": "payDate"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "grossPay"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "netPay"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "ytdTaxableIncome"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t25"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t27"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t29"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t32"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t34"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t36"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p2-t26"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p2-t29"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p2-t33"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p2-t37"
+          }
+        ]
+      },
+      "issues": [],
+      "unknown_document_type_blocked": null,
+      "dangerous_candidate_ready": false,
+      "timings": {
+        "reader_ms": 7.168541000000005,
+        "adapter_ms": 0.6243780000000072
+      },
+      "process_memory_snapshot": {
+        "rss": 76414976,
+        "heapTotal": 25513984,
+        "heapUsed": 19573592,
+        "external": 9586214,
+        "arrayBuffers": 1376219
+      },
+      "raw_file": "raw/P03.json",
+      "raw_sha256": "ec4fcba3a838048c12dd781f2c420080e5c858a22a13f1be7b3272147c8088d9"
+    },
+    {
+      "document_id": "T01",
+      "type": "holdings",
+      "status": "EXECUTED_NODE_REAL_PDFJS",
+      "pages": 1,
+      "raw_items": 26,
+      "raw_expected_fields": 13,
+      "raw_fields_found": 13,
+      "raw_locations_correct": 13,
+      "raw_missing": [],
+      "split_fields": [],
+      "layout_issues": [],
+      "core": [],
+      "core_known_denominator": 0,
+      "core_exact_numerator": 0,
+      "core_wrong_verified": 0,
+      "core_missing_numerator": 0,
+      "semantic_non_payroll": "NOT IMPLEMENTED: holdings accepts CSV, not PDF; other domain adapters absent",
+      "generic_structure": "NOT IMPLEMENTED: baseline outputs rows; no generic table/cell/header/continuation graph",
+      "recognized_paylines": null,
+      "verified_fields": [],
+      "material_observations": 3,
+      "unresolved_material_observations": 3,
+      "essential_fully_uncovered": 13,
+      "specific_unaccounted_notice": 3,
+      "essential_without_candidate_or_specific_unaccounted_notice": 10,
+      "omission_audit": [
+        {
+          "field_id": "T01-f1",
+          "role": "account",
+          "record": "h1",
+          "source_ids": [
+            "pdf-p1-t23"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T01-f2",
+          "role": "instrument-name",
+          "record": "h1",
+          "source_ids": [
+            "pdf-p1-t25"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T01-f3",
+          "role": "symbol",
+          "record": "h1",
+          "source_ids": [
+            "pdf-p1-t27"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T01-f4",
+          "role": "quantity",
+          "record": "h1",
+          "source_ids": [
+            "pdf-p1-t29"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T01-f5",
+          "role": "buy-price",
+          "record": "h1",
+          "source_ids": [
+            "pdf-p1-t31"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T01-f6",
+          "role": "currency",
+          "record": "h1",
+          "source_ids": [
+            "pdf-p1-t33"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T01-f7",
+          "role": "account",
+          "record": "h2",
+          "source_ids": [
+            "pdf-p1-t34"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T01-f8",
+          "role": "instrument-name",
+          "record": "h2",
+          "source_ids": [
+            "pdf-p1-t36"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T01-f9",
+          "role": "symbol",
+          "record": "h2",
+          "source_ids": [
+            "pdf-p1-t38"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T01-f10",
+          "role": "quantity",
+          "record": "h2",
+          "source_ids": [
+            "pdf-p1-t40"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "T01-f11",
+          "role": "buy-price",
+          "record": "h2",
+          "source_ids": [
+            "pdf-p1-t42"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "T01-f12",
+          "role": "currency",
+          "record": "h2",
+          "source_ids": [
+            "pdf-p1-t44"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T01-f13",
+          "role": "market-value",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t50"
+          ],
+          "specific_unaccounted_notice": true
+        }
+      ],
+      "decision": {
+        "status": "review-required",
+        "canAutoAccept": false,
+        "canPersist": false,
+        "problems": [
+          {
+            "code": "UNKNOWN_DOCUMENT_TYPE"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "payDate"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "grossPay"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "netPay"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "ytdTaxableIncome"
+          },
+          {
+            "code": "BLOCKING_SOURCE_ISSUE",
+            "detail": "UNKNOWN_PAYSLIP_TYPE"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t40"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t42"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t50"
+          }
+        ]
+      },
+      "issues": [
+        {
+          "level": "blocking",
+          "code": "UNKNOWN_PAYSLIP_TYPE"
+        }
+      ],
+      "unknown_document_type_blocked": true,
+      "dangerous_candidate_ready": false,
+      "timings": {
+        "reader_ms": 7.373038000000008,
+        "adapter_ms": 0.12442699999999718
+      },
+      "process_memory_snapshot": {
+        "rss": 77856768,
+        "heapTotal": 34164736,
+        "heapUsed": 16809896,
+        "external": 8706509,
+        "arrayBuffers": 496514
+      },
+      "raw_file": "raw/T01.json",
+      "raw_sha256": "0441c3655a959036e11cdd1c3e0e50bde06607c3d0e27be1cc9152de82839a68"
+    },
+    {
+      "document_id": "T02",
+      "type": "invoice",
+      "status": "EXECUTED_NODE_REAL_PDFJS",
+      "pages": 1,
+      "raw_items": 31,
+      "raw_expected_fields": 14,
+      "raw_fields_found": 14,
+      "raw_locations_correct": 14,
+      "raw_missing": [],
+      "split_fields": [
+        "T02-f6"
+      ],
+      "layout_issues": [],
+      "core": [],
+      "core_known_denominator": 0,
+      "core_exact_numerator": 0,
+      "core_wrong_verified": 0,
+      "core_missing_numerator": 0,
+      "semantic_non_payroll": "NOT IMPLEMENTED: holdings accepts CSV, not PDF; other domain adapters absent",
+      "generic_structure": "NOT IMPLEMENTED: baseline outputs rows; no generic table/cell/header/continuation graph",
+      "recognized_paylines": null,
+      "verified_fields": [],
+      "material_observations": 7,
+      "unresolved_material_observations": 7,
+      "essential_fully_uncovered": 14,
+      "specific_unaccounted_notice": 7,
+      "essential_without_candidate_or_specific_unaccounted_notice": 7,
+      "omission_audit": [
+        {
+          "field_id": "T02-f1",
+          "role": "dueDate",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t11"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T02-f2",
+          "role": "row-description",
+          "record": "i1",
+          "source_ids": [
+            "pdf-p1-t23"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T02-f3",
+          "role": "quantity",
+          "record": "i1",
+          "source_ids": [
+            "pdf-p1-t25"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T02-f4",
+          "role": "unit-price",
+          "record": "i1",
+          "source_ids": [
+            "pdf-p1-t27"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "T02-f5",
+          "role": "line-net",
+          "record": "i1",
+          "source_ids": [
+            "pdf-p1-t29"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "T02-f6",
+          "role": "row-description",
+          "record": "i2",
+          "source_ids": [
+            "pdf-p1-t30",
+            "pdf-p1-t31"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T02-f7",
+          "role": "quantity",
+          "record": "i2",
+          "source_ids": [
+            "pdf-p1-t33"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T02-f8",
+          "role": "unit-price",
+          "record": "i2",
+          "source_ids": [
+            "pdf-p1-t35"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "T02-f9",
+          "role": "line-net",
+          "record": "i2",
+          "source_ids": [
+            "pdf-p1-t37"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "T02-f10",
+          "role": "row-description",
+          "record": "row3",
+          "source_ids": [
+            "pdf-p1-t38"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T02-f11",
+          "role": "subtotal",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t43"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "T02-f12",
+          "role": "vatRate",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t47"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T02-f13",
+          "role": "vat",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t51"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "T02-f14",
+          "role": "total",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t55"
+          ],
+          "specific_unaccounted_notice": true
+        }
+      ],
+      "decision": {
+        "status": "review-required",
+        "canAutoAccept": false,
+        "canPersist": false,
+        "problems": [
+          {
+            "code": "UNKNOWN_DOCUMENT_TYPE"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "payDate"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "grossPay"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "netPay"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "ytdTaxableIncome"
+          },
+          {
+            "code": "BLOCKING_SOURCE_ISSUE",
+            "detail": "UNKNOWN_PAYSLIP_TYPE"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t27"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t29"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t35"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t37"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t43"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t51"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t55"
+          }
+        ]
+      },
+      "issues": [
+        {
+          "level": "blocking",
+          "code": "UNKNOWN_PAYSLIP_TYPE"
+        }
+      ],
+      "unknown_document_type_blocked": true,
+      "dangerous_candidate_ready": false,
+      "timings": {
+        "reader_ms": 2.9367520000000127,
+        "adapter_ms": 0.1527799999999786
+      },
+      "process_memory_snapshot": {
+        "rss": 78381056,
+        "heapTotal": 34164736,
+        "heapUsed": 18340872,
+        "external": 8782127,
+        "arrayBuffers": 572132
+      },
+      "raw_file": "raw/T02.json",
+      "raw_sha256": "a8ccd8e1817be4ecdbf20173aeb7b85bb169c9cf3b8d2b64572da1c132af37c9"
+    },
+    {
+      "document_id": "T03",
+      "type": "inventory",
+      "status": "EXECUTED_NODE_REAL_PDFJS",
+      "pages": 1,
+      "raw_items": 20,
+      "raw_expected_fields": 7,
+      "raw_fields_found": 7,
+      "raw_locations_correct": 7,
+      "raw_missing": [],
+      "split_fields": [],
+      "layout_issues": [],
+      "core": [],
+      "core_known_denominator": 0,
+      "core_exact_numerator": 0,
+      "core_wrong_verified": 0,
+      "core_missing_numerator": 0,
+      "semantic_non_payroll": "NOT IMPLEMENTED: holdings accepts CSV, not PDF; other domain adapters absent",
+      "generic_structure": "NOT IMPLEMENTED: baseline outputs rows; no generic table/cell/header/continuation graph",
+      "recognized_paylines": null,
+      "verified_fields": [],
+      "material_observations": 1,
+      "unresolved_material_observations": 1,
+      "essential_fully_uncovered": 7,
+      "specific_unaccounted_notice": 1,
+      "essential_without_candidate_or_specific_unaccounted_notice": 6,
+      "omission_audit": [
+        {
+          "field_id": "T03-f1",
+          "role": "sku",
+          "record": "s1",
+          "source_ids": [
+            "pdf-p1-t16"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T03-f2",
+          "role": "quantity",
+          "record": "s1",
+          "source_ids": [
+            "pdf-p1-t18"
+          ],
+          "specific_unaccounted_notice": true
+        },
+        {
+          "field_id": "T03-f3",
+          "role": "unit",
+          "record": "s1",
+          "source_ids": [
+            "pdf-p1-t20"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T03-f4",
+          "role": "sku",
+          "record": "s2",
+          "source_ids": [
+            "pdf-p1-t29"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T03-f5",
+          "role": "quantity",
+          "record": "s2",
+          "source_ids": [
+            "pdf-p1-t31"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T03-f6",
+          "role": "unit",
+          "record": "s2",
+          "source_ids": [
+            "pdf-p1-t33"
+          ],
+          "specific_unaccounted_notice": false
+        },
+        {
+          "field_id": "T03-f7",
+          "role": "unit-cost",
+          "record": "document",
+          "source_ids": [
+            "pdf-p1-t36"
+          ],
+          "specific_unaccounted_notice": false
+        }
+      ],
+      "decision": {
+        "status": "review-required",
+        "canAutoAccept": false,
+        "canPersist": false,
+        "problems": [
+          {
+            "code": "UNKNOWN_DOCUMENT_TYPE"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "payDate"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "grossPay"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "netPay"
+          },
+          {
+            "code": "MISSING_FIELD",
+            "field": "ytdTaxableIncome"
+          },
+          {
+            "code": "BLOCKING_SOURCE_ISSUE",
+            "detail": "UNKNOWN_PAYSLIP_TYPE"
+          },
+          {
+            "code": "UNACCOUNTED_MATERIAL",
+            "detail": "pdf-p1-t18"
+          }
+        ]
+      },
+      "issues": [
+        {
+          "level": "blocking",
+          "code": "UNKNOWN_PAYSLIP_TYPE"
+        }
+      ],
+      "unknown_document_type_blocked": true,
+      "dangerous_candidate_ready": false,
+      "timings": {
+        "reader_ms": 5.83026000000001,
+        "adapter_ms": 0.2993200000000229
+      },
+      "process_memory_snapshot": {
+        "rss": 80609280,
+        "heapTotal": 34164736,
+        "heapUsed": 20490096,
+        "external": 9451145,
+        "arrayBuffers": 1241150
+      },
+      "raw_file": "raw/T03.json",
+      "raw_sha256": "642f49643a080155e5e0028ef0c5f5f5adde63bb5fd31bcff259bdc0076a2ae8"
+    }
+  ]
+}

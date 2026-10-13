@@ -1,0 +1,905 @@
+{
+  "document_id": "T03",
+  "layout": {
+    "schemaVersion": 1,
+    "sourceKind": "pdf-text",
+    "observations": [
+      {
+        "id": "pdf-p1-t1",
+        "kind": "text",
+        "raw": "Varastoluettelo / inventaario",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.023753,
+          "x1": 0.458948,
+          "y1": 0.045131
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 0,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t3",
+        "kind": "text",
+        "raw": "Kuvitteellinen Poutavarasto Oy",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.061758,
+          "x1": 0.28358,
+          "y1": 0.073634
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 2,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t5",
+        "kind": "text",
+        "raw": "SYNTHETIC TEST DATA - FICTIONAL / EI OIKEA ASIAKIRJA",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.963183,
+          "x1": 0.431099,
+          "y1": 0.972684
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 4,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t7",
+        "kind": "text",
+        "raw": "T03 / 1",
+        "page": 1,
+        "box": {
+          "x0": 0.899321,
+          "y0": 0.963183,
+          "x1": 0.941176,
+          "y1": 0.972684
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 6,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t9",
+        "kind": "text",
+        "raw": "Hylly A",
+        "page": 1,
+        "box": {
+          "x0": 0.05042,
+          "y0": 0.188836,
+          "x1": 0.113092,
+          "y1": 0.2019
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 8,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t11",
+        "kind": "text",
+        "raw": "Nimike",
+        "page": 1,
+        "box": {
+          "x0": 0.060504,
+          "y0": 0.218527,
+          "x1": 0.106714,
+          "y1": 0.229216
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 10,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t13",
+        "kind": "text",
+        "raw": "Saldo",
+        "page": 1,
+        "box": {
+          "x0": 0.220168,
+          "y0": 0.218527,
+          "x1": 0.258845,
+          "y1": 0.229216
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 12,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t15",
+        "kind": "text",
+        "raw": "Yks.",
+        "page": 1,
+        "box": {
+          "x0": 0.388235,
+          "y0": 0.218527,
+          "x1": 0.417655,
+          "y1": 0.229216
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 14,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t16",
+        "kind": "text",
+        "raw": "0007",
+        "page": 1,
+        "box": {
+          "x0": 0.060504,
+          "y0": 0.251781,
+          "x1": 0.094145,
+          "y1": 0.26247
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 15,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t18",
+        "kind": "text",
+        "raw": "1,234",
+        "page": 1,
+        "box": {
+          "x0": 0.220168,
+          "y0": 0.251781,
+          "x1": 0.258013,
+          "y1": 0.26247
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 17,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t20",
+        "kind": "text",
+        "raw": "kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.388235,
+          "y0": 0.251781,
+          "x1": 0.407566,
+          "y1": 0.26247
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 19,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t22",
+        "kind": "text",
+        "raw": "Hylly B",
+        "page": 1,
+        "box": {
+          "x0": 0.521008,
+          "y0": 0.188836,
+          "x1": 0.583681,
+          "y1": 0.2019
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 21,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t24",
+        "kind": "text",
+        "raw": "Nimike",
+        "page": 1,
+        "box": {
+          "x0": 0.531092,
+          "y0": 0.218527,
+          "x1": 0.577303,
+          "y1": 0.229216
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 23,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t26",
+        "kind": "text",
+        "raw": "Saldo",
+        "page": 1,
+        "box": {
+          "x0": 0.690756,
+          "y0": 0.218527,
+          "x1": 0.729434,
+          "y1": 0.229216
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 25,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t28",
+        "kind": "text",
+        "raw": "Yks.",
+        "page": 1,
+        "box": {
+          "x0": 0.858824,
+          "y0": 0.218527,
+          "x1": 0.888244,
+          "y1": 0.229216
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 27,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t29",
+        "kind": "text",
+        "raw": "0007",
+        "page": 1,
+        "box": {
+          "x0": 0.531092,
+          "y0": 0.251781,
+          "x1": 0.564733,
+          "y1": 0.26247
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 28,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t31",
+        "kind": "text",
+        "raw": "8",
+        "page": 1,
+        "box": {
+          "x0": 0.690756,
+          "y0": 0.251781,
+          "x1": 0.699166,
+          "y1": 0.26247
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 30,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t33",
+        "kind": "text",
+        "raw": "kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.858824,
+          "y0": 0.251781,
+          "x1": 0.878155,
+          "y1": 0.26247
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 32,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t34",
+        "kind": "text",
+        "raw": "Kustannus / kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.421615,
+          "x1": 0.157198,
+          "y1": 0.432304
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 33,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t36",
+        "kind": "text",
+        "raw": "3.25",
+        "page": 1,
+        "box": {
+          "x0": 0.898477,
+          "y0": 0.41924,
+          "x1": 0.934454,
+          "y1": 0.432304
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 35,
+        "status": "observed"
+      }
+    ],
+    "pages": [
+      {
+        "page": 1,
+        "width": 595,
+        "height": 842,
+        "observationIds": [
+          "pdf-p1-t1",
+          "pdf-p1-t3",
+          "pdf-p1-t5",
+          "pdf-p1-t7",
+          "pdf-p1-t9",
+          "pdf-p1-t11",
+          "pdf-p1-t13",
+          "pdf-p1-t15",
+          "pdf-p1-t16",
+          "pdf-p1-t18",
+          "pdf-p1-t20",
+          "pdf-p1-t22",
+          "pdf-p1-t24",
+          "pdf-p1-t26",
+          "pdf-p1-t28",
+          "pdf-p1-t29",
+          "pdf-p1-t31",
+          "pdf-p1-t33",
+          "pdf-p1-t34",
+          "pdf-p1-t36"
+        ],
+        "rows": [
+          {
+            "id": "p1-r1",
+            "page": 1,
+            "y": 0.034442,
+            "tokenIds": [
+              "pdf-p1-t1"
+            ]
+          },
+          {
+            "id": "p1-r2",
+            "page": 1,
+            "y": 0.067696,
+            "tokenIds": [
+              "pdf-p1-t3"
+            ]
+          },
+          {
+            "id": "p1-r3",
+            "page": 1,
+            "y": 0.195368,
+            "tokenIds": [
+              "pdf-p1-t9",
+              "pdf-p1-t22"
+            ]
+          },
+          {
+            "id": "p1-r4",
+            "page": 1,
+            "y": 0.223872,
+            "tokenIds": [
+              "pdf-p1-t11",
+              "pdf-p1-t13",
+              "pdf-p1-t15",
+              "pdf-p1-t24",
+              "pdf-p1-t26",
+              "pdf-p1-t28"
+            ]
+          },
+          {
+            "id": "p1-r5",
+            "page": 1,
+            "y": 0.257125,
+            "tokenIds": [
+              "pdf-p1-t16",
+              "pdf-p1-t18",
+              "pdf-p1-t20",
+              "pdf-p1-t29",
+              "pdf-p1-t31",
+              "pdf-p1-t33"
+            ]
+          },
+          {
+            "id": "p1-r6",
+            "page": 1,
+            "y": 0.426366,
+            "tokenIds": [
+              "pdf-p1-t34",
+              "pdf-p1-t36"
+            ]
+          },
+          {
+            "id": "p1-r7",
+            "page": 1,
+            "y": 0.967934,
+            "tokenIds": [
+              "pdf-p1-t5",
+              "pdf-p1-t7"
+            ]
+          }
+        ]
+      }
+    ],
+    "issues": []
+  },
+  "parsed": {
+    "schemaVersion": 2,
+    "adapter": "payroll-sections-experiment",
+    "fields": {
+      "payDate": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "grossPay": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "netPay": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "ytdTaxableIncome": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "previousYearTaxableIncome": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "withholdingPeriod": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "withholdingYtd": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "payPeriodStart": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "payPeriodEnd": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      }
+    },
+    "evidence": {
+      "payDate": [],
+      "grossPay": [],
+      "netPay": [],
+      "ytdTaxableIncome": [],
+      "previousYearTaxableIncome": [],
+      "withholdingPeriod": [],
+      "withholdingYtd": [],
+      "payPeriodStart": [],
+      "payPeriodEnd": []
+    },
+    "payLines": [],
+    "unmatchedPayLines": [],
+    "coverage": {
+      "materialObservations": 1,
+      "coveredObservations": 0,
+      "unresolvedObservations": 1,
+      "unresolvedIds": [
+        "pdf-p1-t18"
+      ],
+      "paylineRowsRecognized": 0,
+      "paylineRowsUnrecognized": 0
+    },
+    "issues": [
+      {
+        "level": "blocking",
+        "code": "UNKNOWN_PAYSLIP_TYPE"
+      }
+    ],
+    "observations": [
+      {
+        "id": "pdf-p1-t1",
+        "raw": "Varastoluettelo / inventaario",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.023753,
+          "x1": 0.458948,
+          "y1": 0.045131
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t3",
+        "raw": "Kuvitteellinen Poutavarasto Oy",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.061758,
+          "x1": 0.28358,
+          "y1": 0.073634
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t5",
+        "raw": "SYNTHETIC TEST DATA - FICTIONAL / EI OIKEA ASIAKIRJA",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.963183,
+          "x1": 0.431099,
+          "y1": 0.972684
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t7",
+        "raw": "T03 / 1",
+        "page": 1,
+        "box": {
+          "x0": 0.899321,
+          "y0": 0.963183,
+          "x1": 0.941176,
+          "y1": 0.972684
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t9",
+        "raw": "Hylly A",
+        "page": 1,
+        "box": {
+          "x0": 0.05042,
+          "y0": 0.188836,
+          "x1": 0.113092,
+          "y1": 0.2019
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t11",
+        "raw": "Nimike",
+        "page": 1,
+        "box": {
+          "x0": 0.060504,
+          "y0": 0.218527,
+          "x1": 0.106714,
+          "y1": 0.229216
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t13",
+        "raw": "Saldo",
+        "page": 1,
+        "box": {
+          "x0": 0.220168,
+          "y0": 0.218527,
+          "x1": 0.258845,
+          "y1": 0.229216
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t15",
+        "raw": "Yks.",
+        "page": 1,
+        "box": {
+          "x0": 0.388235,
+          "y0": 0.218527,
+          "x1": 0.417655,
+          "y1": 0.229216
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t16",
+        "raw": "0007",
+        "page": 1,
+        "box": {
+          "x0": 0.060504,
+          "y0": 0.251781,
+          "x1": 0.094145,
+          "y1": 0.26247
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t18",
+        "raw": "1,234",
+        "page": 1,
+        "box": {
+          "x0": 0.220168,
+          "y0": 0.251781,
+          "x1": 0.258013,
+          "y1": 0.26247
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t20",
+        "raw": "kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.388235,
+          "y0": 0.251781,
+          "x1": 0.407566,
+          "y1": 0.26247
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t22",
+        "raw": "Hylly B",
+        "page": 1,
+        "box": {
+          "x0": 0.521008,
+          "y0": 0.188836,
+          "x1": 0.583681,
+          "y1": 0.2019
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t24",
+        "raw": "Nimike",
+        "page": 1,
+        "box": {
+          "x0": 0.531092,
+          "y0": 0.218527,
+          "x1": 0.577303,
+          "y1": 0.229216
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t26",
+        "raw": "Saldo",
+        "page": 1,
+        "box": {
+          "x0": 0.690756,
+          "y0": 0.218527,
+          "x1": 0.729434,
+          "y1": 0.229216
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t28",
+        "raw": "Yks.",
+        "page": 1,
+        "box": {
+          "x0": 0.858824,
+          "y0": 0.218527,
+          "x1": 0.888244,
+          "y1": 0.229216
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t29",
+        "raw": "0007",
+        "page": 1,
+        "box": {
+          "x0": 0.531092,
+          "y0": 0.251781,
+          "x1": 0.564733,
+          "y1": 0.26247
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t31",
+        "raw": "8",
+        "page": 1,
+        "box": {
+          "x0": 0.690756,
+          "y0": 0.251781,
+          "x1": 0.699166,
+          "y1": 0.26247
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t33",
+        "raw": "kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.858824,
+          "y0": 0.251781,
+          "x1": 0.878155,
+          "y1": 0.26247
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t34",
+        "raw": "Kustannus / kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.421615,
+          "x1": 0.157198,
+          "y1": 0.432304
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t36",
+        "raw": "3.25",
+        "page": 1,
+        "box": {
+          "x0": 0.898477,
+          "y0": 0.41924,
+          "x1": 0.934454,
+          "y1": 0.432304
+        },
+        "material": false
+      }
+    ],
+    "rows": 7,
+    "decision": {
+      "status": "review-required",
+      "canAutoAccept": false,
+      "canPersist": false,
+      "problems": [
+        {
+          "code": "UNKNOWN_DOCUMENT_TYPE"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "payDate"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "grossPay"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "netPay"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "ytdTaxableIncome"
+        },
+        {
+          "code": "BLOCKING_SOURCE_ISSUE",
+          "detail": "UNKNOWN_PAYSLIP_TYPE"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t18"
+        }
+      ]
+    },
+    "canPersist": false
+  },
+  "readerMatches": [
+    {
+      "field_id": "T03-f1",
+      "key": "sku",
+      "role": "sku",
+      "record": "s1",
+      "page": 1,
+      "raw_expected": "0007",
+      "located_raw": "0007",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t16"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T03-f2",
+      "key": "quantity",
+      "role": "quantity",
+      "record": "s1",
+      "page": 1,
+      "raw_expected": "1,234",
+      "located_raw": "1,234",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t18"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T03-f3",
+      "key": "unit",
+      "role": "unit",
+      "record": "s1",
+      "page": 1,
+      "raw_expected": "kpl",
+      "located_raw": "kpl",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t20"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T03-f4",
+      "key": "sku",
+      "role": "sku",
+      "record": "s2",
+      "page": 1,
+      "raw_expected": "0007",
+      "located_raw": "0007",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t29"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T03-f5",
+      "key": "quantity",
+      "role": "quantity",
+      "record": "s2",
+      "page": 1,
+      "raw_expected": "8",
+      "located_raw": "8",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t31"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T03-f6",
+      "key": "unit",
+      "role": "unit",
+      "record": "s2",
+      "page": 1,
+      "raw_expected": "kpl",
+      "located_raw": "kpl",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t33"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T03-f7",
+      "key": "unitCost",
+      "role": "unit-cost",
+      "record": "document",
+      "page": 1,
+      "raw_expected": "3.25",
+      "located_raw": "3.25",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t36"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    }
+  ],
+  "core": []
+}

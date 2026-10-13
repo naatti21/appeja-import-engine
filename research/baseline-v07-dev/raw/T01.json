@@ -1,0 +1,1199 @@
+{
+  "document_id": "T01",
+  "layout": {
+    "schemaVersion": 1,
+    "sourceKind": "pdf-text",
+    "observations": [
+      {
+        "id": "pdf-p1-t1",
+        "kind": "text",
+        "raw": "Omistuserittely / keksitty salkku",
+        "page": 1,
+        "box": {
+          "x0": 0.038005,
+          "y0": 0.033613,
+          "x1": 0.363565,
+          "y1": 0.063866
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 0,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t3",
+        "kind": "text",
+        "raw": "Kuvitteellinen Pilvikori Säilytys - DEMO ACCOUNT",
+        "page": 1,
+        "box": {
+          "x0": 0.038005,
+          "y0": 0.087395,
+          "x1": 0.305261,
+          "y1": 0.104202
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 2,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t5",
+        "kind": "text",
+        "raw": "SYNTHETIC TEST DATA - FICTIONAL / EI OIKEA ASIAKIRJA",
+        "page": 1,
+        "box": {
+          "x0": 0.038005,
+          "y0": 0.947899,
+          "x1": 0.304637,
+          "y1": 0.961345
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 4,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t7",
+        "kind": "text",
+        "raw": "T01 / 1",
+        "page": 1,
+        "box": {
+          "x0": 0.928855,
+          "y0": 0.947899,
+          "x1": 0.958432,
+          "y1": 0.961345
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 6,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t9",
+        "kind": "text",
+        "raw": "Arvopaperierät",
+        "page": 1,
+        "box": {
+          "x0": 0.035629,
+          "y0": 0.22521,
+          "x1": 0.128555,
+          "y1": 0.243697
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 8,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t11",
+        "kind": "text",
+        "raw": "Tili",
+        "page": 1,
+        "box": {
+          "x0": 0.042755,
+          "y0": 0.268908,
+          "x1": 0.058201,
+          "y1": 0.284034
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 10,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t13",
+        "kind": "text",
+        "raw": "Instrumentti",
+        "page": 1,
+        "box": {
+          "x0": 0.16152,
+          "y0": 0.268908,
+          "x1": 0.22328,
+          "y1": 0.284034
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 12,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t15",
+        "kind": "text",
+        "raw": "Tunnus",
+        "page": 1,
+        "box": {
+          "x0": 0.404988,
+          "y0": 0.268908,
+          "x1": 0.443586,
+          "y1": 0.284034
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 14,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t17",
+        "kind": "text",
+        "raw": "Määrä",
+        "page": 1,
+        "box": {
+          "x0": 0.5,
+          "y0": 0.268908,
+          "x1": 0.530891,
+          "y1": 0.284034
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 16,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t19",
+        "kind": "text",
+        "raw": "Hankintahinta",
+        "page": 1,
+        "box": {
+          "x0": 0.612827,
+          "y0": 0.268908,
+          "x1": 0.683501,
+          "y1": 0.284034
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 18,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t21",
+        "kind": "text",
+        "raw": "Valuutta",
+        "page": 1,
+        "box": {
+          "x0": 0.743468,
+          "y0": 0.268908,
+          "x1": 0.785635,
+          "y1": 0.284034
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 20,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t23",
+        "kind": "text",
+        "raw": "A-TEST",
+        "page": 1,
+        "box": {
+          "x0": 0.042755,
+          "y0": 0.315966,
+          "x1": 0.080765,
+          "y1": 0.331092
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 22,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t25",
+        "kind": "text",
+        "raw": "Valo Demo / listaus A",
+        "page": 1,
+        "box": {
+          "x0": 0.16152,
+          "y0": 0.315966,
+          "x1": 0.263695,
+          "y1": 0.331092
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 24,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t27",
+        "kind": "text",
+        "raw": "VALA",
+        "page": 1,
+        "box": {
+          "x0": 0.404988,
+          "y0": 0.315966,
+          "x1": 0.432319,
+          "y1": 0.331092
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 26,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t29",
+        "kind": "text",
+        "raw": "12.500",
+        "page": 1,
+        "box": {
+          "x0": 0.5,
+          "y0": 0.315966,
+          "x1": 0.532686,
+          "y1": 0.331092
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 28,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t31",
+        "kind": "text",
+        "raw": "18.375",
+        "page": 1,
+        "box": {
+          "x0": 0.612827,
+          "y0": 0.315966,
+          "x1": 0.645513,
+          "y1": 0.331092
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 30,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t33",
+        "kind": "text",
+        "raw": "EUR",
+        "page": 1,
+        "box": {
+          "x0": 0.743468,
+          "y0": 0.315966,
+          "x1": 0.766032,
+          "y1": 0.331092
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 32,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t34",
+        "kind": "text",
+        "raw": "B-TEST",
+        "page": 1,
+        "box": {
+          "x0": 0.042755,
+          "y0": 0.394958,
+          "x1": 0.080765,
+          "y1": 0.410084
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 33,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t36",
+        "kind": "text",
+        "raw": "Valo Demo / listaus B",
+        "page": 1,
+        "box": {
+          "x0": 0.16152,
+          "y0": 0.394958,
+          "x1": 0.263695,
+          "y1": 0.410084
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 35,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t38",
+        "kind": "text",
+        "raw": "VALA",
+        "page": 1,
+        "box": {
+          "x0": 0.404988,
+          "y0": 0.394958,
+          "x1": 0.432319,
+          "y1": 0.410084
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 37,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t40",
+        "kind": "text",
+        "raw": "4,00",
+        "page": 1,
+        "box": {
+          "x0": 0.5,
+          "y0": 0.394958,
+          "x1": 0.5208,
+          "y1": 0.410084
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 39,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t42",
+        "kind": "text",
+        "raw": "47,20",
+        "page": 1,
+        "box": {
+          "x0": 0.612827,
+          "y0": 0.394958,
+          "x1": 0.63957,
+          "y1": 0.410084
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 41,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t44",
+        "kind": "text",
+        "raw": "USD",
+        "page": 1,
+        "box": {
+          "x0": 0.743468,
+          "y0": 0.394958,
+          "x1": 0.766032,
+          "y1": 0.410084
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 43,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t46",
+        "kind": "text",
+        "raw": "Instrumentit ovat kuvitteellisia. Sama tunnus ei yhdistä tilejä tai listauksia.",
+        "page": 1,
+        "box": {
+          "x0": 0.035629,
+          "y0": 0.554622,
+          "x1": 0.419786,
+          "y1": 0.571429
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 45,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t48",
+        "kind": "text",
+        "raw": "Markkina-arvo EUR-erä",
+        "page": 1,
+        "box": {
+          "x0": 0.043943,
+          "y0": 0.663866,
+          "x1": 0.156186,
+          "y1": 0.678992
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 47,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t50",
+        "kind": "text",
+        "raw": "229,69",
+        "page": 1,
+        "box": {
+          "x0": 0.709456,
+          "y0": 0.660504,
+          "x1": 0.749406,
+          "y1": 0.678992
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 49,
+        "status": "observed"
+      }
+    ],
+    "pages": [
+      {
+        "page": 1,
+        "width": 842,
+        "height": 595,
+        "observationIds": [
+          "pdf-p1-t1",
+          "pdf-p1-t3",
+          "pdf-p1-t5",
+          "pdf-p1-t7",
+          "pdf-p1-t9",
+          "pdf-p1-t11",
+          "pdf-p1-t13",
+          "pdf-p1-t15",
+          "pdf-p1-t17",
+          "pdf-p1-t19",
+          "pdf-p1-t21",
+          "pdf-p1-t23",
+          "pdf-p1-t25",
+          "pdf-p1-t27",
+          "pdf-p1-t29",
+          "pdf-p1-t31",
+          "pdf-p1-t33",
+          "pdf-p1-t34",
+          "pdf-p1-t36",
+          "pdf-p1-t38",
+          "pdf-p1-t40",
+          "pdf-p1-t42",
+          "pdf-p1-t44",
+          "pdf-p1-t46",
+          "pdf-p1-t48",
+          "pdf-p1-t50"
+        ],
+        "rows": [
+          {
+            "id": "p1-r1",
+            "page": 1,
+            "y": 0.04874,
+            "tokenIds": [
+              "pdf-p1-t1"
+            ]
+          },
+          {
+            "id": "p1-r2",
+            "page": 1,
+            "y": 0.095799,
+            "tokenIds": [
+              "pdf-p1-t3"
+            ]
+          },
+          {
+            "id": "p1-r3",
+            "page": 1,
+            "y": 0.234453,
+            "tokenIds": [
+              "pdf-p1-t9"
+            ]
+          },
+          {
+            "id": "p1-r4",
+            "page": 1,
+            "y": 0.276471,
+            "tokenIds": [
+              "pdf-p1-t11",
+              "pdf-p1-t13",
+              "pdf-p1-t15",
+              "pdf-p1-t17",
+              "pdf-p1-t19",
+              "pdf-p1-t21"
+            ]
+          },
+          {
+            "id": "p1-r5",
+            "page": 1,
+            "y": 0.323529,
+            "tokenIds": [
+              "pdf-p1-t23",
+              "pdf-p1-t25",
+              "pdf-p1-t27",
+              "pdf-p1-t29",
+              "pdf-p1-t31",
+              "pdf-p1-t33"
+            ]
+          },
+          {
+            "id": "p1-r6",
+            "page": 1,
+            "y": 0.402521,
+            "tokenIds": [
+              "pdf-p1-t34",
+              "pdf-p1-t36",
+              "pdf-p1-t38",
+              "pdf-p1-t40",
+              "pdf-p1-t42",
+              "pdf-p1-t44"
+            ]
+          },
+          {
+            "id": "p1-r7",
+            "page": 1,
+            "y": 0.563026,
+            "tokenIds": [
+              "pdf-p1-t46"
+            ]
+          },
+          {
+            "id": "p1-r8",
+            "page": 1,
+            "y": 0.670589,
+            "tokenIds": [
+              "pdf-p1-t48",
+              "pdf-p1-t50"
+            ]
+          },
+          {
+            "id": "p1-r9",
+            "page": 1,
+            "y": 0.954622,
+            "tokenIds": [
+              "pdf-p1-t5",
+              "pdf-p1-t7"
+            ]
+          }
+        ]
+      }
+    ],
+    "issues": []
+  },
+  "parsed": {
+    "schemaVersion": 2,
+    "adapter": "payroll-sections-experiment",
+    "fields": {
+      "payDate": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "grossPay": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "netPay": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "ytdTaxableIncome": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "previousYearTaxableIncome": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "withholdingPeriod": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "withholdingYtd": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "payPeriodStart": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "payPeriodEnd": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      }
+    },
+    "evidence": {
+      "payDate": [],
+      "grossPay": [],
+      "netPay": [],
+      "ytdTaxableIncome": [],
+      "previousYearTaxableIncome": [],
+      "withholdingPeriod": [],
+      "withholdingYtd": [],
+      "payPeriodStart": [],
+      "payPeriodEnd": []
+    },
+    "payLines": [],
+    "unmatchedPayLines": [],
+    "coverage": {
+      "materialObservations": 3,
+      "coveredObservations": 0,
+      "unresolvedObservations": 3,
+      "unresolvedIds": [
+        "pdf-p1-t40",
+        "pdf-p1-t42",
+        "pdf-p1-t50"
+      ],
+      "paylineRowsRecognized": 0,
+      "paylineRowsUnrecognized": 0
+    },
+    "issues": [
+      {
+        "level": "blocking",
+        "code": "UNKNOWN_PAYSLIP_TYPE"
+      }
+    ],
+    "observations": [
+      {
+        "id": "pdf-p1-t1",
+        "raw": "Omistuserittely / keksitty salkku",
+        "page": 1,
+        "box": {
+          "x0": 0.038005,
+          "y0": 0.033613,
+          "x1": 0.363565,
+          "y1": 0.063866
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t3",
+        "raw": "Kuvitteellinen Pilvikori Säilytys - DEMO ACCOUNT",
+        "page": 1,
+        "box": {
+          "x0": 0.038005,
+          "y0": 0.087395,
+          "x1": 0.305261,
+          "y1": 0.104202
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t5",
+        "raw": "SYNTHETIC TEST DATA - FICTIONAL / EI OIKEA ASIAKIRJA",
+        "page": 1,
+        "box": {
+          "x0": 0.038005,
+          "y0": 0.947899,
+          "x1": 0.304637,
+          "y1": 0.961345
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t7",
+        "raw": "T01 / 1",
+        "page": 1,
+        "box": {
+          "x0": 0.928855,
+          "y0": 0.947899,
+          "x1": 0.958432,
+          "y1": 0.961345
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t9",
+        "raw": "Arvopaperierät",
+        "page": 1,
+        "box": {
+          "x0": 0.035629,
+          "y0": 0.22521,
+          "x1": 0.128555,
+          "y1": 0.243697
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t11",
+        "raw": "Tili",
+        "page": 1,
+        "box": {
+          "x0": 0.042755,
+          "y0": 0.268908,
+          "x1": 0.058201,
+          "y1": 0.284034
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t13",
+        "raw": "Instrumentti",
+        "page": 1,
+        "box": {
+          "x0": 0.16152,
+          "y0": 0.268908,
+          "x1": 0.22328,
+          "y1": 0.284034
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t15",
+        "raw": "Tunnus",
+        "page": 1,
+        "box": {
+          "x0": 0.404988,
+          "y0": 0.268908,
+          "x1": 0.443586,
+          "y1": 0.284034
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t17",
+        "raw": "Määrä",
+        "page": 1,
+        "box": {
+          "x0": 0.5,
+          "y0": 0.268908,
+          "x1": 0.530891,
+          "y1": 0.284034
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t19",
+        "raw": "Hankintahinta",
+        "page": 1,
+        "box": {
+          "x0": 0.612827,
+          "y0": 0.268908,
+          "x1": 0.683501,
+          "y1": 0.284034
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t21",
+        "raw": "Valuutta",
+        "page": 1,
+        "box": {
+          "x0": 0.743468,
+          "y0": 0.268908,
+          "x1": 0.785635,
+          "y1": 0.284034
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t23",
+        "raw": "A-TEST",
+        "page": 1,
+        "box": {
+          "x0": 0.042755,
+          "y0": 0.315966,
+          "x1": 0.080765,
+          "y1": 0.331092
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t25",
+        "raw": "Valo Demo / listaus A",
+        "page": 1,
+        "box": {
+          "x0": 0.16152,
+          "y0": 0.315966,
+          "x1": 0.263695,
+          "y1": 0.331092
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t27",
+        "raw": "VALA",
+        "page": 1,
+        "box": {
+          "x0": 0.404988,
+          "y0": 0.315966,
+          "x1": 0.432319,
+          "y1": 0.331092
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t29",
+        "raw": "12.500",
+        "page": 1,
+        "box": {
+          "x0": 0.5,
+          "y0": 0.315966,
+          "x1": 0.532686,
+          "y1": 0.331092
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t31",
+        "raw": "18.375",
+        "page": 1,
+        "box": {
+          "x0": 0.612827,
+          "y0": 0.315966,
+          "x1": 0.645513,
+          "y1": 0.331092
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t33",
+        "raw": "EUR",
+        "page": 1,
+        "box": {
+          "x0": 0.743468,
+          "y0": 0.315966,
+          "x1": 0.766032,
+          "y1": 0.331092
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t34",
+        "raw": "B-TEST",
+        "page": 1,
+        "box": {
+          "x0": 0.042755,
+          "y0": 0.394958,
+          "x1": 0.080765,
+          "y1": 0.410084
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t36",
+        "raw": "Valo Demo / listaus B",
+        "page": 1,
+        "box": {
+          "x0": 0.16152,
+          "y0": 0.394958,
+          "x1": 0.263695,
+          "y1": 0.410084
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t38",
+        "raw": "VALA",
+        "page": 1,
+        "box": {
+          "x0": 0.404988,
+          "y0": 0.394958,
+          "x1": 0.432319,
+          "y1": 0.410084
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t40",
+        "raw": "4,00",
+        "page": 1,
+        "box": {
+          "x0": 0.5,
+          "y0": 0.394958,
+          "x1": 0.5208,
+          "y1": 0.410084
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t42",
+        "raw": "47,20",
+        "page": 1,
+        "box": {
+          "x0": 0.612827,
+          "y0": 0.394958,
+          "x1": 0.63957,
+          "y1": 0.410084
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t44",
+        "raw": "USD",
+        "page": 1,
+        "box": {
+          "x0": 0.743468,
+          "y0": 0.394958,
+          "x1": 0.766032,
+          "y1": 0.410084
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t46",
+        "raw": "Instrumentit ovat kuvitteellisia. Sama tunnus ei yhdistä tilejä tai listauksia.",
+        "page": 1,
+        "box": {
+          "x0": 0.035629,
+          "y0": 0.554622,
+          "x1": 0.419786,
+          "y1": 0.571429
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t48",
+        "raw": "Markkina-arvo EUR-erä",
+        "page": 1,
+        "box": {
+          "x0": 0.043943,
+          "y0": 0.663866,
+          "x1": 0.156186,
+          "y1": 0.678992
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t50",
+        "raw": "229,69",
+        "page": 1,
+        "box": {
+          "x0": 0.709456,
+          "y0": 0.660504,
+          "x1": 0.749406,
+          "y1": 0.678992
+        },
+        "material": true
+      }
+    ],
+    "rows": 9,
+    "decision": {
+      "status": "review-required",
+      "canAutoAccept": false,
+      "canPersist": false,
+      "problems": [
+        {
+          "code": "UNKNOWN_DOCUMENT_TYPE"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "payDate"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "grossPay"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "netPay"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "ytdTaxableIncome"
+        },
+        {
+          "code": "BLOCKING_SOURCE_ISSUE",
+          "detail": "UNKNOWN_PAYSLIP_TYPE"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t40"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t42"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t50"
+        }
+      ]
+    },
+    "canPersist": false
+  },
+  "readerMatches": [
+    {
+      "field_id": "T01-f1",
+      "key": "account",
+      "role": "account",
+      "record": "h1",
+      "page": 1,
+      "raw_expected": "A-TEST",
+      "located_raw": "A-TEST",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t23"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T01-f2",
+      "key": "name",
+      "role": "instrument-name",
+      "record": "h1",
+      "page": 1,
+      "raw_expected": "Valo Demo / listaus A",
+      "located_raw": "Valo Demo / listaus A",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t25"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T01-f3",
+      "key": "ticker",
+      "role": "symbol",
+      "record": "h1",
+      "page": 1,
+      "raw_expected": "VALA",
+      "located_raw": "VALA",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t27"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T01-f4",
+      "key": "quantity",
+      "role": "quantity",
+      "record": "h1",
+      "page": 1,
+      "raw_expected": "12.500",
+      "located_raw": "12.500",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t29"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T01-f5",
+      "key": "buyPrice",
+      "role": "buy-price",
+      "record": "h1",
+      "page": 1,
+      "raw_expected": "18.375",
+      "located_raw": "18.375",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t31"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T01-f6",
+      "key": "currency",
+      "role": "currency",
+      "record": "h1",
+      "page": 1,
+      "raw_expected": "EUR",
+      "located_raw": "EUR",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t33"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T01-f7",
+      "key": "account",
+      "role": "account",
+      "record": "h2",
+      "page": 1,
+      "raw_expected": "B-TEST",
+      "located_raw": "B-TEST",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t34"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T01-f8",
+      "key": "name",
+      "role": "instrument-name",
+      "record": "h2",
+      "page": 1,
+      "raw_expected": "Valo Demo / listaus B",
+      "located_raw": "Valo Demo / listaus B",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t36"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T01-f9",
+      "key": "ticker",
+      "role": "symbol",
+      "record": "h2",
+      "page": 1,
+      "raw_expected": "VALA",
+      "located_raw": "VALA",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t38"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T01-f10",
+      "key": "quantity",
+      "role": "quantity",
+      "record": "h2",
+      "page": 1,
+      "raw_expected": "4,00",
+      "located_raw": "4,00",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t40"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T01-f11",
+      "key": "buyPrice",
+      "role": "buy-price",
+      "record": "h2",
+      "page": 1,
+      "raw_expected": "47,20",
+      "located_raw": "47,20",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t42"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T01-f12",
+      "key": "currency",
+      "role": "currency",
+      "record": "h2",
+      "page": 1,
+      "raw_expected": "USD",
+      "located_raw": "USD",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t44"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    },
+    {
+      "field_id": "T01-f13",
+      "key": "marketValue",
+      "role": "market-value",
+      "record": "document",
+      "page": 1,
+      "raw_expected": "229,69",
+      "located_raw": "229,69",
+      "raw_match": true,
+      "source_ids": [
+        "pdf-p1-t50"
+      ],
+      "location_match": true,
+      "split_across_items": false
+    }
+  ],
+  "core": []
+}
