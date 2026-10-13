@@ -1,0 +1,667 @@
+{
+  "annotation_version": "1.0",
+  "document_id": "P03",
+  "document_type": "payroll",
+  "split": "DEV",
+  "layout_family": "two-page-continuation-missing-net",
+  "coordinate_system": "points; top-left origin; x0,y0,x1,y1",
+  "page_sizes_pt": [
+    [
+      595,
+      842
+    ],
+    [
+      595,
+      842
+    ]
+  ],
+  "fields": [
+    {
+      "id": "P03-f1",
+      "key": "payDate",
+      "role": "payDate",
+      "record": "document",
+      "unit": "date",
+      "raw": "10.07.2026",
+      "value": "2026-07-10",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        151,
+        103,
+        266,
+        125
+      ],
+      "bbox_norm": [
+        0.253782,
+        0.122328,
+        0.447059,
+        0.148456
+      ],
+      "label": "Maksu kirjataan",
+      "label_bbox_pt": [
+        36,
+        103,
+        146,
+        125
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f2",
+      "key": "description",
+      "role": "row-description",
+      "record": "r1",
+      "unit": null,
+      "raw": "Koneistus / alkujakso",
+      "value": "Koneistus / alkujakso",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        36,
+        218,
+        311,
+        262
+      ],
+      "bbox_norm": [
+        0.060504,
+        0.258907,
+        0.522689,
+        0.311164
+      ],
+      "label": "Työerä",
+      "label_bbox_pt": [
+        36,
+        190,
+        311,
+        218
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f3",
+      "key": "quantity",
+      "role": "hours",
+      "record": "r1",
+      "unit": "h",
+      "raw": "80,00",
+      "value": "80.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        311,
+        218,
+        381,
+        262
+      ],
+      "bbox_norm": [
+        0.522689,
+        0.258907,
+        0.640336,
+        0.311164
+      ],
+      "label": "Tunnit",
+      "label_bbox_pt": [
+        311,
+        190,
+        381,
+        218
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f4",
+      "key": "rate",
+      "role": "unit-rate",
+      "record": "r1",
+      "unit": "EUR/h",
+      "raw": "20,00",
+      "value": "20.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        381,
+        218,
+        466,
+        262
+      ],
+      "bbox_norm": [
+        0.640336,
+        0.258907,
+        0.783193,
+        0.311164
+      ],
+      "label": "EUR/h",
+      "label_bbox_pt": [
+        381,
+        190,
+        466,
+        218
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f5",
+      "key": "amount",
+      "role": "earning",
+      "record": "r1",
+      "unit": "EUR",
+      "raw": "1 600,00",
+      "value": "1600.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        466,
+        218,
+        556,
+        262
+      ],
+      "bbox_norm": [
+        0.783193,
+        0.258907,
+        0.934454,
+        0.311164
+      ],
+      "label": "EUR",
+      "label_bbox_pt": [
+        466,
+        190,
+        556,
+        218
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f6",
+      "key": "description",
+      "role": "row-description",
+      "record": "r2",
+      "unit": null,
+      "raw": "Koneistus / loppujakso",
+      "value": "Koneistus / loppujakso",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        36,
+        262,
+        311,
+        306
+      ],
+      "bbox_norm": [
+        0.060504,
+        0.311164,
+        0.522689,
+        0.36342
+      ],
+      "label": "Työerä",
+      "label_bbox_pt": [
+        36,
+        190,
+        311,
+        218
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f7",
+      "key": "quantity",
+      "role": "hours",
+      "record": "r2",
+      "unit": "h",
+      "raw": "88,00",
+      "value": "88.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        311,
+        262,
+        381,
+        306
+      ],
+      "bbox_norm": [
+        0.522689,
+        0.311164,
+        0.640336,
+        0.36342
+      ],
+      "label": "Tunnit",
+      "label_bbox_pt": [
+        311,
+        190,
+        381,
+        218
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f8",
+      "key": "rate",
+      "role": "unit-rate",
+      "record": "r2",
+      "unit": "EUR/h",
+      "raw": "20,00",
+      "value": "20.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        381,
+        262,
+        466,
+        306
+      ],
+      "bbox_norm": [
+        0.640336,
+        0.311164,
+        0.783193,
+        0.36342
+      ],
+      "label": "EUR/h",
+      "label_bbox_pt": [
+        381,
+        190,
+        466,
+        218
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f9",
+      "key": "amount",
+      "role": "earning",
+      "record": "r2",
+      "unit": "EUR",
+      "raw": "1 760,00",
+      "value": "1760.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        466,
+        262,
+        556,
+        306
+      ],
+      "bbox_norm": [
+        0.783193,
+        0.311164,
+        0.934454,
+        0.36342
+      ],
+      "label": "EUR",
+      "label_bbox_pt": [
+        466,
+        190,
+        556,
+        218
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f10",
+      "key": "description",
+      "role": "row-description",
+      "record": "r3",
+      "unit": null,
+      "raw": "Tuotantopalkkio\nkesäkauden osuus",
+      "value": "Tuotantopalkkio\nkesäkauden osuus",
+      "status": "known",
+      "page": 2,
+      "bbox_pt": [
+        36,
+        178,
+        311,
+        224
+      ],
+      "bbox_norm": [
+        0.060504,
+        0.211401,
+        0.522689,
+        0.266033
+      ],
+      "label": "Työerä",
+      "label_bbox_pt": [
+        36,
+        150,
+        311,
+        178
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f11",
+      "key": "amount",
+      "role": "earning",
+      "record": "r3",
+      "unit": "EUR",
+      "raw": "330,00",
+      "value": "330.00",
+      "status": "known",
+      "page": 2,
+      "bbox_pt": [
+        466,
+        178,
+        556,
+        224
+      ],
+      "bbox_norm": [
+        0.783193,
+        0.211401,
+        0.934454,
+        0.266033
+      ],
+      "label": "EUR",
+      "label_bbox_pt": [
+        466,
+        150,
+        556,
+        178
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f12",
+      "key": "grossPay",
+      "role": "grossPay",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "3 690,00",
+      "value": "3690.00",
+      "status": "known",
+      "page": 2,
+      "bbox_pt": [
+        421,
+        300,
+        536,
+        322
+      ],
+      "bbox_norm": [
+        0.707563,
+        0.356295,
+        0.90084,
+        0.382423
+      ],
+      "label": "Ansiot yhteensä",
+      "label_bbox_pt": [
+        36,
+        300,
+        416,
+        322
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f13",
+      "key": "ytdTaxableIncome",
+      "role": "ytdTaxableIncome",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "45 321,78",
+      "value": "45321.78",
+      "status": "known",
+      "page": 2,
+      "bbox_pt": [
+        421,
+        345,
+        536,
+        367
+      ],
+      "bbox_norm": [
+        0.707563,
+        0.409739,
+        0.90084,
+        0.435867
+      ],
+      "label": "Vuoden veronalaiset",
+      "label_bbox_pt": [
+        36,
+        345,
+        416,
+        367
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P03-f14",
+      "key": "priorTransfer",
+      "role": "previous-period-net",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "2 600,00",
+      "value": "2600.00",
+      "status": "known",
+      "page": 2,
+      "bbox_pt": [
+        421,
+        395,
+        536,
+        417
+      ],
+      "bbox_norm": [
+        0.707563,
+        0.469121,
+        0.90084,
+        0.495249
+      ],
+      "label": "Edellinen tilisiirto",
+      "label_bbox_pt": [
+        36,
+        395,
+        416,
+        417
+      ],
+      "essential": true,
+      "parts": []
+    }
+  ],
+  "payroll_core": {
+    "payDate": {
+      "state": "known",
+      "field_ids": [
+        "P03-f1"
+      ]
+    },
+    "grossPay": {
+      "state": "known",
+      "field_ids": [
+        "P03-f12"
+      ]
+    },
+    "ytdTaxableIncome": {
+      "state": "known",
+      "field_ids": [
+        "P03-f13"
+      ]
+    },
+    "netPay": {
+      "state": "missing",
+      "field_ids": []
+    }
+  },
+  "tables": [
+    {
+      "id": "p03-work1",
+      "page": 1,
+      "bbox_pt": [
+        36,
+        190,
+        556,
+        306
+      ],
+      "headers": [
+        "Työerä",
+        "Tunnit",
+        "EUR/h",
+        "EUR"
+      ],
+      "row_count": 2,
+      "column_count": 4,
+      "cells": [
+        {
+          "row": 1,
+          "column": 0,
+          "field_id": "P03-f2",
+          "bbox_pt": [
+            36,
+            218,
+            311,
+            262
+          ]
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "field_id": "P03-f3",
+          "bbox_pt": [
+            311,
+            218,
+            381,
+            262
+          ]
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "field_id": "P03-f4",
+          "bbox_pt": [
+            381,
+            218,
+            466,
+            262
+          ]
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "field_id": "P03-f5",
+          "bbox_pt": [
+            466,
+            218,
+            556,
+            262
+          ]
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "field_id": "P03-f6",
+          "bbox_pt": [
+            36,
+            262,
+            311,
+            306
+          ]
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "field_id": "P03-f7",
+          "bbox_pt": [
+            311,
+            262,
+            381,
+            306
+          ]
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "field_id": "P03-f8",
+          "bbox_pt": [
+            381,
+            262,
+            466,
+            306
+          ]
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "field_id": "P03-f9",
+          "bbox_pt": [
+            466,
+            262,
+            556,
+            306
+          ]
+        }
+      ],
+      "merged_cells": [],
+      "continuation_of": null
+    },
+    {
+      "id": "p03-work2",
+      "page": 2,
+      "bbox_pt": [
+        36,
+        150,
+        556,
+        224
+      ],
+      "headers": [
+        "Työerä",
+        "Tunnit",
+        "EUR/h",
+        "EUR"
+      ],
+      "row_count": 1,
+      "column_count": 4,
+      "cells": [
+        {
+          "row": 1,
+          "column": 0,
+          "field_id": "P03-f10",
+          "bbox_pt": [
+            36,
+            178,
+            311,
+            224
+          ]
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "field_id": "P03-f11",
+          "bbox_pt": [
+            466,
+            178,
+            556,
+            224
+          ]
+        }
+      ],
+      "merged_cells": [],
+      "continuation_of": "p03-work1"
+    }
+  ],
+  "intentional_conflicts": [],
+  "intentional_missing": [
+    {
+      "key": "netPay",
+      "reason": "No current net-payment amount is printed; previous transfer is not current net."
+    }
+  ],
+  "uncertain_interpretations": [],
+  "expected": {
+    "domain_status": "review-required",
+    "review_reasons": [
+      "missing-netPay"
+    ],
+    "payroll_adapter_route": "payslip",
+    "canPersist": false,
+    "unknown_type_refusal_is_error": false
+  },
+  "reviewer_status": "provisionally-checked-by-one-agent",
+  "parser_used_for_truth": false
+}

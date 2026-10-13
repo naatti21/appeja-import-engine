@@ -1,0 +1,147 @@
+{
+  "package": "IMPORT-ENGINE-BLINDTEST-V1-DEV",
+  "version": "1.0",
+  "baseline_sha": "8f28544651a27225c1212228753fbc6c6a265c38",
+  "documents": [
+    {
+      "document_id": "P01",
+      "type": "payroll",
+      "family": "two-column-right-summary",
+      "producer": "canvas",
+      "pdf": "DEV/P01.pdf",
+      "pdf_sha256": "2edfe9ae3ac7896baa1c2041d87cf4a226675add731b803ef9084e635a021c01",
+      "pages": 1,
+      "annotation": "ANNOTATIONS/DEV/P01.json",
+      "annotation_sha256": "561374d3750c735b81af63a913a3df7dcdd3145d619b7471cb9669623fc66426",
+      "origin": "newly authored fictional data; no LAB fixtures reused"
+    },
+    {
+      "document_id": "P02",
+      "type": "payroll",
+      "family": "three-card-mixed-decimal-split",
+      "producer": "fitz",
+      "pdf": "DEV/P02.pdf",
+      "pdf_sha256": "75951281d8c88a830b5714c8dd047f174728da2c59bfae0d217bba3a06112361",
+      "pages": 1,
+      "annotation": "ANNOTATIONS/DEV/P02.json",
+      "annotation_sha256": "b08aa4dd7eb02759e3e2ee5cf03191379740071f55c9a93db7293f611b81422e",
+      "origin": "newly authored fictional data; no LAB fixtures reused"
+    },
+    {
+      "document_id": "P03",
+      "type": "payroll",
+      "family": "two-page-continuation-missing-net",
+      "producer": "platypus",
+      "pdf": "DEV/P03.pdf",
+      "pdf_sha256": "d217037f46f15ef8cc7447cbec01d0a8cce4beb241175841c09872ff8c9e9950",
+      "pages": 2,
+      "annotation": "ANNOTATIONS/DEV/P03.json",
+      "annotation_sha256": "43ee15fdb0a59eb0b82a51ec9fb69c31b3551838dd6f67c26adf9978a7bc9426",
+      "origin": "newly authored fictional data; no LAB fixtures reused"
+    },
+    {
+      "document_id": "T01",
+      "type": "holdings",
+      "family": "landscape-two-accounts-same-symbol",
+      "producer": "canvas",
+      "pdf": "DEV/T01.pdf",
+      "pdf_sha256": "9fcdb7a6f154a85c4ba86ff0ba8d66ad3adc0642882c61f1ba98d1799ba2ff28",
+      "pages": 1,
+      "annotation": "ANNOTATIONS/DEV/T01.json",
+      "annotation_sha256": "4f5de2992a9424ebe2b7900d098f2885b53072c292c73ac1e58a9b30aaa4f697",
+      "origin": "newly authored fictional data; no LAB fixtures reused"
+    },
+    {
+      "document_id": "T02",
+      "type": "invoice",
+      "family": "portrait-merged-invoice-columns",
+      "producer": "platypus",
+      "pdf": "DEV/T02.pdf",
+      "pdf_sha256": "18b35155d71d2b8b81431eceab20aecc232e504e6578cf165b18713792a13a82",
+      "pages": 1,
+      "annotation": "ANNOTATIONS/DEV/T02.json",
+      "annotation_sha256": "c00695246b13bc65e78109726325922b9e9c1cbb488800c8ae05f8fff1338427",
+      "origin": "newly authored fictional data; no LAB fixtures reused"
+    },
+    {
+      "document_id": "T03",
+      "type": "inventory",
+      "family": "dual-bin-tables-ambiguous-quantity",
+      "producer": "fitz",
+      "pdf": "DEV/T03.pdf",
+      "pdf_sha256": "f5e30b01ef4219cffc0b07a00be024498d7f96e477c8e279d8540649c3408273",
+      "pages": 1,
+      "annotation": "ANNOTATIONS/DEV/T03.json",
+      "annotation_sha256": "7c7d2c3462884b7ad57ab280c46b017dbc413cdda789b018410298e0d8de4c56",
+      "origin": "newly authored fictional data; no LAB fixtures reused"
+    }
+  ],
+  "files": [
+    {
+      "path": "ANNOTATIONS/DEV/P01.json",
+      "sha256": "561374d3750c735b81af63a913a3df7dcdd3145d619b7471cb9669623fc66426"
+    },
+    {
+      "path": "ANNOTATIONS/DEV/P02.json",
+      "sha256": "b08aa4dd7eb02759e3e2ee5cf03191379740071f55c9a93db7293f611b81422e"
+    },
+    {
+      "path": "ANNOTATIONS/DEV/P03.json",
+      "sha256": "43ee15fdb0a59eb0b82a51ec9fb69c31b3551838dd6f67c26adf9978a7bc9426"
+    },
+    {
+      "path": "ANNOTATIONS/DEV/T01.json",
+      "sha256": "4f5de2992a9424ebe2b7900d098f2885b53072c292c73ac1e58a9b30aaa4f697"
+    },
+    {
+      "path": "ANNOTATIONS/DEV/T02.json",
+      "sha256": "c00695246b13bc65e78109726325922b9e9c1cbb488800c8ae05f8fff1338427"
+    },
+    {
+      "path": "ANNOTATIONS/DEV/T03.json",
+      "sha256": "7c7d2c3462884b7ad57ab280c46b017dbc413cdda789b018410298e0d8de4c56"
+    },
+    {
+      "path": "DEV/P01.pdf",
+      "sha256": "2edfe9ae3ac7896baa1c2041d87cf4a226675add731b803ef9084e635a021c01"
+    },
+    {
+      "path": "DEV/P02.pdf",
+      "sha256": "75951281d8c88a830b5714c8dd047f174728da2c59bfae0d217bba3a06112361"
+    },
+    {
+      "path": "DEV/P03.pdf",
+      "sha256": "d217037f46f15ef8cc7447cbec01d0a8cce4beb241175841c09872ff8c9e9950"
+    },
+    {
+      "path": "DEV/T01.pdf",
+      "sha256": "9fcdb7a6f154a85c4ba86ff0ba8d66ad3adc0642882c61f1ba98d1799ba2ff28"
+    },
+    {
+      "path": "DEV/T02.pdf",
+      "sha256": "18b35155d71d2b8b81431eceab20aecc232e504e6578cf165b18713792a13a82"
+    },
+    {
+      "path": "DEV/T03.pdf",
+      "sha256": "f5e30b01ef4219cffc0b07a00be024498d7f96e477c8e279d8540649c3408273"
+    },
+    {
+      "path": "README.md",
+      "sha256": "80f0ab39808f36e493b368595b1ae4f3e71e4e2445f2ac55911b39f0606b8afc"
+    },
+    {
+      "path": "TEST_PROTOCOL.md",
+      "sha256": "e8273a59637496b359e1c7d34222a5dee9c326179905a0ee5d26f9fa0f008682"
+    },
+    {
+      "path": "VALIDATION_REPORT.md",
+      "sha256": "0ccb4d1a00306613e2dbfdc9b3f4abb174b8fa42a447bb76cd863735a0807e58"
+    }
+  ],
+  "holdout": {
+    "version": "1.0",
+    "document_count": 6,
+    "sha256": "762f0ac71a1c9134ba9e932bd11480e012e42eb07e1b24540f63b0566d002cbc"
+  },
+  "manifest_self_hash": "excluded"
+}

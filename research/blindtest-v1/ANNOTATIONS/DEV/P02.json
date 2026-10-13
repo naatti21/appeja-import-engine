@@ -1,0 +1,581 @@
+{
+  "annotation_version": "1.0",
+  "document_id": "P02",
+  "document_type": "payroll",
+  "split": "DEV",
+  "layout_family": "three-card-mixed-decimal-split",
+  "coordinate_system": "points; top-left origin; x0,y0,x1,y1",
+  "page_sizes_pt": [
+    [
+      595,
+      842
+    ]
+  ],
+  "fields": [
+    {
+      "id": "P02-f1",
+      "key": "payDate",
+      "role": "payDate",
+      "record": "document",
+      "unit": "date",
+      "raw": "2026-06-19",
+      "value": "2026-06-19",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        150,
+        95,
+        265,
+        117
+      ],
+      "bbox_norm": [
+        0.252101,
+        0.112827,
+        0.445378,
+        0.138955
+      ],
+      "label": "Payment date",
+      "label_bbox_pt": [
+        35,
+        95,
+        145,
+        117
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P02-f2",
+      "key": "grossPay",
+      "role": "gross-pay",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "2 875,40",
+      "value": "2875.40",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        75,
+        208,
+        153,
+        236
+      ],
+      "bbox_norm": [
+        0.12605,
+        0.247031,
+        0.257143,
+        0.280285
+      ],
+      "label": "Brutto / gross",
+      "label_bbox_pt": [
+        43,
+        182,
+        180,
+        202
+      ],
+      "essential": true,
+      "parts": [
+        {
+          "raw": "2",
+          "bbox_pt": [
+            80,
+            211,
+            90,
+            231
+          ],
+          "font": "Helvetica-Bold"
+        },
+        {
+          "raw": "875,40",
+          "bbox_pt": [
+            99,
+            211,
+            145,
+            231
+          ],
+          "font": "Courier"
+        }
+      ]
+    },
+    {
+      "id": "P02-f3",
+      "key": "netPay",
+      "role": "netPay",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "2034.75",
+      "value": "2034.75",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        42,
+        263,
+        182,
+        285
+      ],
+      "bbox_norm": [
+        0.070588,
+        0.312352,
+        0.305882,
+        0.33848
+      ],
+      "label": "Net",
+      "label_bbox_pt": [
+        42,
+        241,
+        182,
+        261
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P02-f4",
+      "key": "tax",
+      "role": "tax",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "690.10",
+      "value": "690.10",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        226,
+        206,
+        369,
+        228
+      ],
+      "bbox_norm": [
+        0.379832,
+        0.244656,
+        0.620168,
+        0.270784
+      ],
+      "label": "Tax",
+      "label_bbox_pt": [
+        226,
+        184,
+        369,
+        204
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P02-f5",
+      "key": "other",
+      "role": "other",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "150.55",
+      "value": "150.55",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        226,
+        248,
+        369,
+        270
+      ],
+      "bbox_norm": [
+        0.379832,
+        0.294537,
+        0.620168,
+        0.320665
+      ],
+      "label": "Pension etc.",
+      "label_bbox_pt": [
+        226,
+        226,
+        369,
+        246
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P02-f6",
+      "key": "ytdTaxableIncome",
+      "role": "ytdTaxableIncome",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "19764.21",
+      "value": "19764.21",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        410,
+        211,
+        550,
+        233
+      ],
+      "bbox_norm": [
+        0.689076,
+        0.250594,
+        0.92437,
+        0.276722
+      ],
+      "label": "Taxable YTD",
+      "label_bbox_pt": [
+        410,
+        189,
+        550,
+        209
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P02-f7",
+      "key": "ratePercent",
+      "role": "ratePercent",
+      "record": "document",
+      "unit": "percent",
+      "raw": "24.00 %",
+      "value": "24.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        410,
+        264,
+        550,
+        286
+      ],
+      "bbox_norm": [
+        0.689076,
+        0.313539,
+        0.92437,
+        0.339667
+      ],
+      "label": "Tax rate",
+      "label_bbox_pt": [
+        410,
+        242,
+        550,
+        262
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P02-f8",
+      "key": "description",
+      "role": "row-description",
+      "record": "r1",
+      "unit": null,
+      "raw": "Contract earnings",
+      "value": "Contract earnings",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        35,
+        398,
+        235,
+        433
+      ],
+      "bbox_norm": [
+        0.058824,
+        0.472684,
+        0.394958,
+        0.514252
+      ],
+      "label": "Description",
+      "label_bbox_pt": [
+        35,
+        370,
+        235,
+        398
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P02-f9",
+      "key": "quantity",
+      "role": "hours",
+      "record": "r1",
+      "unit": "h",
+      "raw": "144.00",
+      "value": "144.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        235,
+        398,
+        330,
+        433
+      ],
+      "bbox_norm": [
+        0.394958,
+        0.472684,
+        0.554622,
+        0.514252
+      ],
+      "label": "Qty h",
+      "label_bbox_pt": [
+        235,
+        370,
+        330,
+        398
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P02-f10",
+      "key": "rate",
+      "role": "unit-rate",
+      "record": "r1",
+      "unit": "EUR/h",
+      "raw": "18.50",
+      "value": "18.50",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        330,
+        398,
+        425,
+        433
+      ],
+      "bbox_norm": [
+        0.554622,
+        0.472684,
+        0.714286,
+        0.514252
+      ],
+      "label": "Rate EUR/h",
+      "label_bbox_pt": [
+        330,
+        370,
+        425,
+        398
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P02-f11",
+      "key": "amount",
+      "role": "earning",
+      "record": "r1",
+      "unit": "EUR",
+      "raw": "2664.00",
+      "value": "2664.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        425,
+        398,
+        555,
+        433
+      ],
+      "bbox_norm": [
+        0.714286,
+        0.472684,
+        0.932773,
+        0.514252
+      ],
+      "label": "Amount EUR",
+      "label_bbox_pt": [
+        425,
+        370,
+        555,
+        398
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P02-f12",
+      "key": "description",
+      "role": "row-description",
+      "record": "r2",
+      "unit": null,
+      "raw": "Night premium",
+      "value": "Night premium",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        35,
+        433,
+        235,
+        468
+      ],
+      "bbox_norm": [
+        0.058824,
+        0.514252,
+        0.394958,
+        0.555819
+      ],
+      "label": "Description",
+      "label_bbox_pt": [
+        35,
+        370,
+        235,
+        398
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P02-f13",
+      "key": "amount",
+      "role": "earning",
+      "record": "r2",
+      "unit": "EUR",
+      "raw": "211.40",
+      "value": "211.40",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        425,
+        433,
+        555,
+        468
+      ],
+      "bbox_norm": [
+        0.714286,
+        0.514252,
+        0.932773,
+        0.555819
+      ],
+      "label": "Amount EUR",
+      "label_bbox_pt": [
+        425,
+        370,
+        555,
+        398
+      ],
+      "essential": true,
+      "parts": []
+    }
+  ],
+  "payroll_core": {
+    "payDate": {
+      "state": "known",
+      "field_ids": [
+        "P02-f1"
+      ]
+    },
+    "grossPay": {
+      "state": "known",
+      "field_ids": [
+        "P02-f2"
+      ]
+    },
+    "netPay": {
+      "state": "known",
+      "field_ids": [
+        "P02-f3"
+      ]
+    },
+    "ytdTaxableIncome": {
+      "state": "known",
+      "field_ids": [
+        "P02-f6"
+      ]
+    }
+  },
+  "tables": [
+    {
+      "id": "p02-work",
+      "page": 1,
+      "bbox_pt": [
+        35,
+        370,
+        555,
+        468
+      ],
+      "headers": [
+        "Description",
+        "Qty h",
+        "Rate EUR/h",
+        "Amount EUR"
+      ],
+      "row_count": 2,
+      "column_count": 4,
+      "cells": [
+        {
+          "row": 1,
+          "column": 0,
+          "field_id": "P02-f8",
+          "bbox_pt": [
+            35,
+            398,
+            235,
+            433
+          ]
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "field_id": "P02-f9",
+          "bbox_pt": [
+            235,
+            398,
+            330,
+            433
+          ]
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "field_id": "P02-f10",
+          "bbox_pt": [
+            330,
+            398,
+            425,
+            433
+          ]
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "field_id": "P02-f11",
+          "bbox_pt": [
+            425,
+            398,
+            555,
+            433
+          ]
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "field_id": "P02-f12",
+          "bbox_pt": [
+            35,
+            433,
+            235,
+            468
+          ]
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "field_id": "P02-f13",
+          "bbox_pt": [
+            425,
+            433,
+            555,
+            468
+          ]
+        }
+      ],
+      "merged_cells": [],
+      "continuation_of": null
+    }
+  ],
+  "intentional_conflicts": [],
+  "intentional_missing": [],
+  "uncertain_interpretations": [],
+  "expected": {
+    "domain_status": "eligible-after-complete-evidence-review",
+    "review_reasons": [],
+    "payroll_adapter_route": "payslip",
+    "canPersist": false,
+    "unknown_type_refusal_is_error": false
+  },
+  "reviewer_status": "provisionally-checked-by-one-agent",
+  "parser_used_for_truth": false
+}

@@ -1,0 +1,376 @@
+{
+  "annotation_version": "1.0",
+  "document_id": "T03",
+  "document_type": "inventory",
+  "split": "DEV",
+  "layout_family": "dual-bin-tables-ambiguous-quantity",
+  "coordinate_system": "points; top-left origin; x0,y0,x1,y1",
+  "page_sizes_pt": [
+    [
+      595,
+      842
+    ]
+  ],
+  "fields": [
+    {
+      "id": "T03-f1",
+      "key": "sku",
+      "role": "sku",
+      "record": "s1",
+      "unit": null,
+      "raw": "0007",
+      "value": "0007",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        30,
+        208,
+        125,
+        246
+      ],
+      "bbox_norm": [
+        0.05042,
+        0.247031,
+        0.210084,
+        0.292162
+      ],
+      "label": "Nimike",
+      "label_bbox_pt": [
+        30,
+        180,
+        125,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T03-f2",
+      "key": "quantity",
+      "role": "quantity",
+      "record": "s1",
+      "unit": "pcs",
+      "raw": "1,234",
+      "value": null,
+      "status": "ambiguous",
+      "page": 1,
+      "bbox_pt": [
+        125,
+        208,
+        225,
+        246
+      ],
+      "bbox_norm": [
+        0.210084,
+        0.247031,
+        0.378151,
+        0.292162
+      ],
+      "label": "Saldo",
+      "label_bbox_pt": [
+        125,
+        180,
+        225,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T03-f3",
+      "key": "unit",
+      "role": "unit",
+      "record": "s1",
+      "unit": null,
+      "raw": "kpl",
+      "value": "pcs",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        225,
+        208,
+        285,
+        246
+      ],
+      "bbox_norm": [
+        0.378151,
+        0.247031,
+        0.478992,
+        0.292162
+      ],
+      "label": "Yks.",
+      "label_bbox_pt": [
+        225,
+        180,
+        285,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T03-f4",
+      "key": "sku",
+      "role": "sku",
+      "record": "s2",
+      "unit": null,
+      "raw": "0007",
+      "value": "0007",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        310,
+        208,
+        405,
+        246
+      ],
+      "bbox_norm": [
+        0.521008,
+        0.247031,
+        0.680672,
+        0.292162
+      ],
+      "label": "Nimike",
+      "label_bbox_pt": [
+        310,
+        180,
+        405,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T03-f5",
+      "key": "quantity",
+      "role": "quantity",
+      "record": "s2",
+      "unit": "pcs",
+      "raw": "8",
+      "value": "8",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        405,
+        208,
+        505,
+        246
+      ],
+      "bbox_norm": [
+        0.680672,
+        0.247031,
+        0.848739,
+        0.292162
+      ],
+      "label": "Saldo",
+      "label_bbox_pt": [
+        405,
+        180,
+        505,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T03-f6",
+      "key": "unit",
+      "role": "unit",
+      "record": "s2",
+      "unit": null,
+      "raw": "kpl",
+      "value": "pcs",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        505,
+        208,
+        565,
+        246
+      ],
+      "bbox_norm": [
+        0.848739,
+        0.247031,
+        0.94958,
+        0.292162
+      ],
+      "label": "Yks.",
+      "label_bbox_pt": [
+        505,
+        180,
+        565,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T03-f7",
+      "key": "unitCost",
+      "role": "unit-cost",
+      "record": "document",
+      "unit": "EUR/pcs",
+      "raw": "3.25",
+      "value": "3.25",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        445,
+        350,
+        560,
+        372
+      ],
+      "bbox_norm": [
+        0.747899,
+        0.415677,
+        0.941176,
+        0.441805
+      ],
+      "label": "Kustannus / kpl",
+      "label_bbox_pt": [
+        30,
+        350,
+        440,
+        372
+      ],
+      "essential": true,
+      "parts": []
+    }
+  ],
+  "payroll_core": {},
+  "tables": [
+    {
+      "id": "t03-a",
+      "page": 1,
+      "bbox_pt": [
+        30,
+        180,
+        285,
+        246
+      ],
+      "headers": [
+        "Nimike",
+        "Saldo",
+        "Yks."
+      ],
+      "row_count": 1,
+      "column_count": 3,
+      "cells": [
+        {
+          "row": 1,
+          "column": 0,
+          "field_id": "T03-f1",
+          "bbox_pt": [
+            30,
+            208,
+            125,
+            246
+          ]
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "field_id": "T03-f2",
+          "bbox_pt": [
+            125,
+            208,
+            225,
+            246
+          ]
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "field_id": "T03-f3",
+          "bbox_pt": [
+            225,
+            208,
+            285,
+            246
+          ]
+        }
+      ],
+      "merged_cells": [],
+      "continuation_of": null
+    },
+    {
+      "id": "t03-b",
+      "page": 1,
+      "bbox_pt": [
+        310,
+        180,
+        565,
+        246
+      ],
+      "headers": [
+        "Nimike",
+        "Saldo",
+        "Yks."
+      ],
+      "row_count": 1,
+      "column_count": 3,
+      "cells": [
+        {
+          "row": 1,
+          "column": 0,
+          "field_id": "T03-f4",
+          "bbox_pt": [
+            310,
+            208,
+            405,
+            246
+          ]
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "field_id": "T03-f5",
+          "bbox_pt": [
+            405,
+            208,
+            505,
+            246
+          ]
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "field_id": "T03-f6",
+          "bbox_pt": [
+            505,
+            208,
+            565,
+            246
+          ]
+        }
+      ],
+      "merged_cells": [],
+      "continuation_of": null
+    }
+  ],
+  "intentional_conflicts": [],
+  "intentional_missing": [],
+  "uncertain_interpretations": [
+    {
+      "field_ids": [
+        "T03-f2"
+      ],
+      "candidates": [
+        "1.234",
+        "1234"
+      ],
+      "reason": "Ambiguous separator; no numeric locale is specified."
+    }
+  ],
+  "expected": {
+    "domain_status": "review-required",
+    "review_reasons": [
+      "ambiguous-quantity"
+    ],
+    "payroll_adapter_route": "unknown-document-type",
+    "canPersist": false,
+    "unknown_type_refusal_is_error": false
+  },
+  "reviewer_status": "provisionally-checked-by-one-agent",
+  "parser_used_for_truth": false
+}

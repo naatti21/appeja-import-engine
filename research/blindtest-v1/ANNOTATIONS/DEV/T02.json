@@ -1,0 +1,623 @@
+{
+  "annotation_version": "1.0",
+  "document_id": "T02",
+  "document_type": "invoice",
+  "split": "DEV",
+  "layout_family": "portrait-merged-invoice-columns",
+  "coordinate_system": "points; top-left origin; x0,y0,x1,y1",
+  "page_sizes_pt": [
+    [
+      595,
+      842
+    ]
+  ],
+  "fields": [
+    {
+      "id": "T02-f1",
+      "key": "dueDate",
+      "role": "dueDate",
+      "record": "document",
+      "unit": "date",
+      "raw": "16.06.2026",
+      "value": "2026-06-16",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        420,
+        100,
+        535,
+        122
+      ],
+      "bbox_norm": [
+        0.705882,
+        0.118765,
+        0.89916,
+        0.144893
+      ],
+      "label": "Eräpäivä",
+      "label_bbox_pt": [
+        35,
+        100,
+        415,
+        122
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f2",
+      "key": "description",
+      "role": "row-description",
+      "record": "i1",
+      "unit": null,
+      "raw": "Tarvikepaketti A",
+      "value": "Tarvikepaketti A",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        35,
+        223,
+        255,
+        268
+      ],
+      "bbox_norm": [
+        0.058824,
+        0.264846,
+        0.428571,
+        0.31829
+      ],
+      "label": "Palvelu / toimitus",
+      "label_bbox_pt": [
+        35,
+        195,
+        255,
+        223
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f3",
+      "key": "quantity",
+      "role": "quantity",
+      "record": "i1",
+      "unit": "pcs",
+      "raw": "4",
+      "value": "4",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        255,
+        223,
+        325,
+        268
+      ],
+      "bbox_norm": [
+        0.428571,
+        0.264846,
+        0.546218,
+        0.31829
+      ],
+      "label": "kpl",
+      "label_bbox_pt": [
+        255,
+        195,
+        325,
+        223
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f4",
+      "key": "rate",
+      "role": "unit-price",
+      "record": "i1",
+      "unit": "EUR/pcs",
+      "raw": "49,50",
+      "value": "49.50",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        325,
+        223,
+        430,
+        268
+      ],
+      "bbox_norm": [
+        0.546218,
+        0.264846,
+        0.722689,
+        0.31829
+      ],
+      "label": "EUR/kpl",
+      "label_bbox_pt": [
+        325,
+        195,
+        430,
+        223
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f5",
+      "key": "amount",
+      "role": "line-net",
+      "record": "i1",
+      "unit": "EUR",
+      "raw": "198,00",
+      "value": "198.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        430,
+        223,
+        550,
+        268
+      ],
+      "bbox_norm": [
+        0.722689,
+        0.264846,
+        0.92437,
+        0.31829
+      ],
+      "label": "Netto EUR",
+      "label_bbox_pt": [
+        430,
+        195,
+        550,
+        223
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f6",
+      "key": "description",
+      "role": "row-description",
+      "record": "i2",
+      "unit": null,
+      "raw": "Tarvikepaketti B\nkaksi erillistä toimituserää",
+      "value": "Tarvikepaketti B\nkaksi erillistä toimituserää",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        35,
+        268,
+        255,
+        313
+      ],
+      "bbox_norm": [
+        0.058824,
+        0.31829,
+        0.428571,
+        0.371734
+      ],
+      "label": "Palvelu / toimitus",
+      "label_bbox_pt": [
+        35,
+        195,
+        255,
+        223
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f7",
+      "key": "quantity",
+      "role": "quantity",
+      "record": "i2",
+      "unit": "pcs",
+      "raw": "2",
+      "value": "2",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        255,
+        268,
+        325,
+        313
+      ],
+      "bbox_norm": [
+        0.428571,
+        0.31829,
+        0.546218,
+        0.371734
+      ],
+      "label": "kpl",
+      "label_bbox_pt": [
+        255,
+        195,
+        325,
+        223
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f8",
+      "key": "rate",
+      "role": "unit-price",
+      "record": "i2",
+      "unit": "EUR/pcs",
+      "raw": "49,40",
+      "value": "49.40",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        325,
+        268,
+        430,
+        313
+      ],
+      "bbox_norm": [
+        0.546218,
+        0.31829,
+        0.722689,
+        0.371734
+      ],
+      "label": "EUR/kpl",
+      "label_bbox_pt": [
+        325,
+        195,
+        430,
+        223
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f9",
+      "key": "amount",
+      "role": "line-net",
+      "record": "i2",
+      "unit": "EUR",
+      "raw": "98,80",
+      "value": "98.80",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        430,
+        268,
+        550,
+        313
+      ],
+      "bbox_norm": [
+        0.722689,
+        0.31829,
+        0.92437,
+        0.371734
+      ],
+      "label": "Netto EUR",
+      "label_bbox_pt": [
+        430,
+        195,
+        550,
+        223
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f10",
+      "key": "description",
+      "role": "row-description",
+      "record": "row3",
+      "unit": null,
+      "raw": "Lisätieto: pakkaus sisältyy hintaan",
+      "value": "Lisätieto: pakkaus sisältyy hintaan",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        35,
+        313,
+        255,
+        358
+      ],
+      "bbox_norm": [
+        0.058824,
+        0.371734,
+        0.428571,
+        0.425178
+      ],
+      "label": "Palvelu / toimitus",
+      "label_bbox_pt": [
+        35,
+        195,
+        255,
+        223
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f11",
+      "key": "subtotal",
+      "role": "subtotal",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "296,80",
+      "value": "296.80",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        430,
+        390,
+        545,
+        412
+      ],
+      "bbox_norm": [
+        0.722689,
+        0.463183,
+        0.915966,
+        0.489311
+      ],
+      "label": "Veroton yhteensä",
+      "label_bbox_pt": [
+        35,
+        390,
+        425,
+        412
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f12",
+      "key": "vatRate",
+      "role": "vatRate",
+      "record": "document",
+      "unit": "percent",
+      "raw": "25,5 %",
+      "value": "25.5",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        430,
+        428,
+        545,
+        450
+      ],
+      "bbox_norm": [
+        0.722689,
+        0.508314,
+        0.915966,
+        0.534442
+      ],
+      "label": "ALV",
+      "label_bbox_pt": [
+        35,
+        428,
+        425,
+        450
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f13",
+      "key": "vat",
+      "role": "vat",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "75,68",
+      "value": "75.68",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        430,
+        463,
+        545,
+        485
+      ],
+      "bbox_norm": [
+        0.722689,
+        0.549881,
+        0.915966,
+        0.57601
+      ],
+      "label": "Vero EUR",
+      "label_bbox_pt": [
+        35,
+        463,
+        425,
+        485
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T02-f14",
+      "key": "total",
+      "role": "total",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "372,48",
+      "value": "372.48",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        430,
+        510,
+        545,
+        532
+      ],
+      "bbox_norm": [
+        0.722689,
+        0.605701,
+        0.915966,
+        0.631829
+      ],
+      "label": "Maksettava EUR",
+      "label_bbox_pt": [
+        35,
+        510,
+        425,
+        532
+      ],
+      "essential": true,
+      "parts": []
+    }
+  ],
+  "payroll_core": {},
+  "tables": [
+    {
+      "id": "t02",
+      "page": 1,
+      "bbox_pt": [
+        35,
+        195,
+        550,
+        358
+      ],
+      "headers": [
+        "Palvelu / toimitus",
+        "kpl",
+        "EUR/kpl",
+        "Netto EUR"
+      ],
+      "row_count": 3,
+      "column_count": 4,
+      "cells": [
+        {
+          "row": 1,
+          "column": 0,
+          "field_id": "T02-f2",
+          "bbox_pt": [
+            35,
+            223,
+            255,
+            268
+          ]
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "field_id": "T02-f3",
+          "bbox_pt": [
+            255,
+            223,
+            325,
+            268
+          ]
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "field_id": "T02-f4",
+          "bbox_pt": [
+            325,
+            223,
+            430,
+            268
+          ]
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "field_id": "T02-f5",
+          "bbox_pt": [
+            430,
+            223,
+            550,
+            268
+          ]
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "field_id": "T02-f6",
+          "bbox_pt": [
+            35,
+            268,
+            255,
+            313
+          ]
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "field_id": "T02-f7",
+          "bbox_pt": [
+            255,
+            268,
+            325,
+            313
+          ]
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "field_id": "T02-f8",
+          "bbox_pt": [
+            325,
+            268,
+            430,
+            313
+          ]
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "field_id": "T02-f9",
+          "bbox_pt": [
+            430,
+            268,
+            550,
+            313
+          ]
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "field_id": "T02-f10",
+          "bbox_pt": [
+            35,
+            313,
+            255,
+            358
+          ]
+        }
+      ],
+      "merged_cells": [
+        [
+          [
+            0,
+            3
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      ],
+      "continuation_of": null,
+      "merged_footer_band": {
+        "bbox_pt": [
+          35,
+          555,
+          550,
+          587
+        ],
+        "column_span": [
+          0,
+          3
+        ]
+      }
+    }
+  ],
+  "intentional_conflicts": [],
+  "intentional_missing": [],
+  "uncertain_interpretations": [],
+  "expected": {
+    "domain_status": "eligible-after-complete-evidence-review",
+    "review_reasons": [],
+    "payroll_adapter_route": "unknown-document-type",
+    "canPersist": false,
+    "unknown_type_refusal_is_error": false
+  },
+  "reviewer_status": "provisionally-checked-by-one-agent",
+  "parser_used_for_truth": false
+}

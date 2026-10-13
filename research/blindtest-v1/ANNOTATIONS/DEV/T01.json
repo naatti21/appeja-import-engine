@@ -1,0 +1,603 @@
+{
+  "annotation_version": "1.0",
+  "document_id": "T01",
+  "document_type": "holdings",
+  "split": "DEV",
+  "layout_family": "landscape-two-accounts-same-symbol",
+  "coordinate_system": "points; top-left origin; x0,y0,x1,y1",
+  "page_sizes_pt": [
+    [
+      842,
+      595
+    ]
+  ],
+  "fields": [
+    {
+      "id": "T01-f1",
+      "key": "account",
+      "role": "account",
+      "record": "h1",
+      "unit": null,
+      "raw": "A-TEST",
+      "value": "A-TEST",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        30,
+        183,
+        130,
+        230
+      ],
+      "bbox_norm": [
+        0.035629,
+        0.307563,
+        0.154394,
+        0.386555
+      ],
+      "label": "Tili",
+      "label_bbox_pt": [
+        30,
+        155,
+        130,
+        183
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T01-f2",
+      "key": "name",
+      "role": "instrument-name",
+      "record": "h1",
+      "unit": null,
+      "raw": "Valo Demo / listaus A",
+      "value": "Valo Demo / listaus A",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        130,
+        183,
+        335,
+        230
+      ],
+      "bbox_norm": [
+        0.154394,
+        0.307563,
+        0.397862,
+        0.386555
+      ],
+      "label": "Instrumentti",
+      "label_bbox_pt": [
+        130,
+        155,
+        335,
+        183
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T01-f3",
+      "key": "ticker",
+      "role": "symbol",
+      "record": "h1",
+      "unit": null,
+      "raw": "VALA",
+      "value": "VALA",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        335,
+        183,
+        415,
+        230
+      ],
+      "bbox_norm": [
+        0.397862,
+        0.307563,
+        0.492874,
+        0.386555
+      ],
+      "label": "Tunnus",
+      "label_bbox_pt": [
+        335,
+        155,
+        415,
+        183
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T01-f4",
+      "key": "quantity",
+      "role": "quantity",
+      "record": "h1",
+      "unit": "shares",
+      "raw": "12.500",
+      "value": "12.500",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        415,
+        183,
+        510,
+        230
+      ],
+      "bbox_norm": [
+        0.492874,
+        0.307563,
+        0.605701,
+        0.386555
+      ],
+      "label": "Määrä",
+      "label_bbox_pt": [
+        415,
+        155,
+        510,
+        183
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T01-f5",
+      "key": "buyPrice",
+      "role": "buy-price",
+      "record": "h1",
+      "unit": "EUR/share",
+      "raw": "18.375",
+      "value": "18.375",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        510,
+        183,
+        620,
+        230
+      ],
+      "bbox_norm": [
+        0.605701,
+        0.307563,
+        0.736342,
+        0.386555
+      ],
+      "label": "Hankintahinta",
+      "label_bbox_pt": [
+        510,
+        155,
+        620,
+        183
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T01-f6",
+      "key": "currency",
+      "role": "currency",
+      "record": "h1",
+      "unit": null,
+      "raw": "EUR",
+      "value": "EUR",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        620,
+        183,
+        775,
+        230
+      ],
+      "bbox_norm": [
+        0.736342,
+        0.307563,
+        0.920428,
+        0.386555
+      ],
+      "label": "Valuutta",
+      "label_bbox_pt": [
+        620,
+        155,
+        775,
+        183
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T01-f7",
+      "key": "account",
+      "role": "account",
+      "record": "h2",
+      "unit": null,
+      "raw": "B-TEST",
+      "value": "B-TEST",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        30,
+        230,
+        130,
+        277
+      ],
+      "bbox_norm": [
+        0.035629,
+        0.386555,
+        0.154394,
+        0.465546
+      ],
+      "label": "Tili",
+      "label_bbox_pt": [
+        30,
+        155,
+        130,
+        183
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T01-f8",
+      "key": "name",
+      "role": "instrument-name",
+      "record": "h2",
+      "unit": null,
+      "raw": "Valo Demo / listaus B",
+      "value": "Valo Demo / listaus B",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        130,
+        230,
+        335,
+        277
+      ],
+      "bbox_norm": [
+        0.154394,
+        0.386555,
+        0.397862,
+        0.465546
+      ],
+      "label": "Instrumentti",
+      "label_bbox_pt": [
+        130,
+        155,
+        335,
+        183
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T01-f9",
+      "key": "ticker",
+      "role": "symbol",
+      "record": "h2",
+      "unit": null,
+      "raw": "VALA",
+      "value": "VALA",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        335,
+        230,
+        415,
+        277
+      ],
+      "bbox_norm": [
+        0.397862,
+        0.386555,
+        0.492874,
+        0.465546
+      ],
+      "label": "Tunnus",
+      "label_bbox_pt": [
+        335,
+        155,
+        415,
+        183
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T01-f10",
+      "key": "quantity",
+      "role": "quantity",
+      "record": "h2",
+      "unit": "shares",
+      "raw": "4,00",
+      "value": "4.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        415,
+        230,
+        510,
+        277
+      ],
+      "bbox_norm": [
+        0.492874,
+        0.386555,
+        0.605701,
+        0.465546
+      ],
+      "label": "Määrä",
+      "label_bbox_pt": [
+        415,
+        155,
+        510,
+        183
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T01-f11",
+      "key": "buyPrice",
+      "role": "buy-price",
+      "record": "h2",
+      "unit": "USD/share",
+      "raw": "47,20",
+      "value": "47.20",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        510,
+        230,
+        620,
+        277
+      ],
+      "bbox_norm": [
+        0.605701,
+        0.386555,
+        0.736342,
+        0.465546
+      ],
+      "label": "Hankintahinta",
+      "label_bbox_pt": [
+        510,
+        155,
+        620,
+        183
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T01-f12",
+      "key": "currency",
+      "role": "currency",
+      "record": "h2",
+      "unit": null,
+      "raw": "USD",
+      "value": "USD",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        620,
+        230,
+        775,
+        277
+      ],
+      "bbox_norm": [
+        0.736342,
+        0.386555,
+        0.920428,
+        0.465546
+      ],
+      "label": "Valuutta",
+      "label_bbox_pt": [
+        620,
+        155,
+        775,
+        183
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "T01-f13",
+      "key": "marketValue",
+      "role": "market-value",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "229,69",
+      "value": "229.69",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        520,
+        390,
+        635,
+        412
+      ],
+      "bbox_norm": [
+        0.617577,
+        0.655462,
+        0.754157,
+        0.692437
+      ],
+      "label": "Markkina-arvo EUR-erä",
+      "label_bbox_pt": [
+        35,
+        390,
+        515,
+        412
+      ],
+      "essential": true,
+      "parts": []
+    }
+  ],
+  "payroll_core": {},
+  "tables": [
+    {
+      "id": "t01",
+      "page": 1,
+      "bbox_pt": [
+        30,
+        155,
+        775,
+        277
+      ],
+      "headers": [
+        "Tili",
+        "Instrumentti",
+        "Tunnus",
+        "Määrä",
+        "Hankintahinta",
+        "Valuutta"
+      ],
+      "row_count": 2,
+      "column_count": 6,
+      "cells": [
+        {
+          "row": 1,
+          "column": 0,
+          "field_id": "T01-f1",
+          "bbox_pt": [
+            30,
+            183,
+            130,
+            230
+          ]
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "field_id": "T01-f2",
+          "bbox_pt": [
+            130,
+            183,
+            335,
+            230
+          ]
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "field_id": "T01-f3",
+          "bbox_pt": [
+            335,
+            183,
+            415,
+            230
+          ]
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "field_id": "T01-f4",
+          "bbox_pt": [
+            415,
+            183,
+            510,
+            230
+          ]
+        },
+        {
+          "row": 1,
+          "column": 4,
+          "field_id": "T01-f5",
+          "bbox_pt": [
+            510,
+            183,
+            620,
+            230
+          ]
+        },
+        {
+          "row": 1,
+          "column": 5,
+          "field_id": "T01-f6",
+          "bbox_pt": [
+            620,
+            183,
+            775,
+            230
+          ]
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "field_id": "T01-f7",
+          "bbox_pt": [
+            30,
+            230,
+            130,
+            277
+          ]
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "field_id": "T01-f8",
+          "bbox_pt": [
+            130,
+            230,
+            335,
+            277
+          ]
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "field_id": "T01-f9",
+          "bbox_pt": [
+            335,
+            230,
+            415,
+            277
+          ]
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "field_id": "T01-f10",
+          "bbox_pt": [
+            415,
+            230,
+            510,
+            277
+          ]
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "field_id": "T01-f11",
+          "bbox_pt": [
+            510,
+            230,
+            620,
+            277
+          ]
+        },
+        {
+          "row": 2,
+          "column": 5,
+          "field_id": "T01-f12",
+          "bbox_pt": [
+            620,
+            230,
+            775,
+            277
+          ]
+        }
+      ],
+      "merged_cells": [],
+      "continuation_of": null
+    }
+  ],
+  "intentional_conflicts": [],
+  "intentional_missing": [],
+  "uncertain_interpretations": [],
+  "expected": {
+    "domain_status": "eligible-after-complete-evidence-review",
+    "review_reasons": [],
+    "payroll_adapter_route": "unknown-document-type",
+    "canPersist": false,
+    "unknown_type_refusal_is_error": false
+  },
+  "reviewer_status": "provisionally-checked-by-one-agent",
+  "parser_used_for_truth": false
+}

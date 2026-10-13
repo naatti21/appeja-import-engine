@@ -1,0 +1,1112 @@
+{
+  "annotation_version": "1.0",
+  "document_id": "P01",
+  "document_type": "payroll",
+  "split": "DEV",
+  "layout_family": "two-column-right-summary",
+  "coordinate_system": "points; top-left origin; x0,y0,x1,y1",
+  "page_sizes_pt": [
+    [
+      595,
+      842
+    ]
+  ],
+  "fields": [
+    {
+      "id": "P01-f1",
+      "key": "payDate",
+      "role": "payDate",
+      "record": "document",
+      "unit": "date",
+      "raw": "22.05.2026",
+      "value": "2026-05-22",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        150,
+        100,
+        265,
+        122
+      ],
+      "bbox_norm": [
+        0.252101,
+        0.118765,
+        0.445378,
+        0.144893
+      ],
+      "label": "Maksupäivä",
+      "label_bbox_pt": [
+        35,
+        100,
+        145,
+        122
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f2",
+      "key": "period",
+      "role": "period",
+      "record": "document",
+      "unit": "date-range",
+      "raw": "04.05.-17.05.2026",
+      "value": [
+        "2026-05-04",
+        "2026-05-17"
+      ],
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        420,
+        100,
+        535,
+        122
+      ],
+      "bbox_norm": [
+        0.705882,
+        0.118765,
+        0.89916,
+        0.144893
+      ],
+      "label": "Jakso",
+      "label_bbox_pt": [
+        305,
+        100,
+        415,
+        122
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f3",
+      "key": "code",
+      "role": "pay-code",
+      "record": "r1",
+      "unit": null,
+      "raw": "710",
+      "value": "710",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        35,
+        208,
+        77,
+        248
+      ],
+      "bbox_norm": [
+        0.058824,
+        0.247031,
+        0.129412,
+        0.294537
+      ],
+      "label": "Laji",
+      "label_bbox_pt": [
+        35,
+        180,
+        77,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f4",
+      "key": "description",
+      "role": "row-description",
+      "record": "r1",
+      "unit": null,
+      "raw": "Normaalityö",
+      "value": "Normaalityö",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        77,
+        208,
+        247,
+        248
+      ],
+      "bbox_norm": [
+        0.129412,
+        0.247031,
+        0.415126,
+        0.294537
+      ],
+      "label": "Selite",
+      "label_bbox_pt": [
+        77,
+        180,
+        247,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f5",
+      "key": "quantity",
+      "role": "hours",
+      "record": "r1",
+      "unit": "h",
+      "raw": "120,00",
+      "value": "120.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        247,
+        208,
+        312,
+        248
+      ],
+      "bbox_norm": [
+        0.415126,
+        0.247031,
+        0.52437,
+        0.294537
+      ],
+      "label": "Tunnit",
+      "label_bbox_pt": [
+        247,
+        180,
+        312,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f6",
+      "key": "rate",
+      "role": "unit-rate",
+      "record": "r1",
+      "unit": "EUR/h",
+      "raw": "25,00",
+      "value": "25.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        312,
+        208,
+        392,
+        248
+      ],
+      "bbox_norm": [
+        0.52437,
+        0.247031,
+        0.658824,
+        0.294537
+      ],
+      "label": "EUR/h",
+      "label_bbox_pt": [
+        312,
+        180,
+        392,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f7",
+      "key": "amount",
+      "role": "earning",
+      "record": "r1",
+      "unit": "EUR",
+      "raw": "3 000,00",
+      "value": "3000.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        392,
+        208,
+        525,
+        248
+      ],
+      "bbox_norm": [
+        0.658824,
+        0.247031,
+        0.882353,
+        0.294537
+      ],
+      "label": "Määrä EUR",
+      "label_bbox_pt": [
+        392,
+        180,
+        525,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f8",
+      "key": "code",
+      "role": "pay-code",
+      "record": "r2",
+      "unit": null,
+      "raw": "721",
+      "value": "721",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        35,
+        248,
+        77,
+        288
+      ],
+      "bbox_norm": [
+        0.058824,
+        0.294537,
+        0.129412,
+        0.342043
+      ],
+      "label": "Laji",
+      "label_bbox_pt": [
+        35,
+        180,
+        77,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f9",
+      "key": "description",
+      "role": "row-description",
+      "record": "r2",
+      "unit": null,
+      "raw": "Iltalisä / viikko 19",
+      "value": "Iltalisä / viikko 19",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        77,
+        248,
+        247,
+        288
+      ],
+      "bbox_norm": [
+        0.129412,
+        0.294537,
+        0.415126,
+        0.342043
+      ],
+      "label": "Selite",
+      "label_bbox_pt": [
+        77,
+        180,
+        247,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f10",
+      "key": "quantity",
+      "role": "hours",
+      "record": "r2",
+      "unit": "h",
+      "raw": "40,00",
+      "value": "40.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        247,
+        248,
+        312,
+        288
+      ],
+      "bbox_norm": [
+        0.415126,
+        0.294537,
+        0.52437,
+        0.342043
+      ],
+      "label": "Tunnit",
+      "label_bbox_pt": [
+        247,
+        180,
+        312,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f11",
+      "key": "rate",
+      "role": "unit-rate",
+      "record": "r2",
+      "unit": "EUR/h",
+      "raw": "2,50",
+      "value": "2.50",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        312,
+        248,
+        392,
+        288
+      ],
+      "bbox_norm": [
+        0.52437,
+        0.294537,
+        0.658824,
+        0.342043
+      ],
+      "label": "EUR/h",
+      "label_bbox_pt": [
+        312,
+        180,
+        392,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f12",
+      "key": "amount",
+      "role": "earning",
+      "record": "r2",
+      "unit": "EUR",
+      "raw": "100,00",
+      "value": "100.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        392,
+        248,
+        525,
+        288
+      ],
+      "bbox_norm": [
+        0.658824,
+        0.294537,
+        0.882353,
+        0.342043
+      ],
+      "label": "Määrä EUR",
+      "label_bbox_pt": [
+        392,
+        180,
+        525,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f13",
+      "key": "code",
+      "role": "pay-code",
+      "record": "r3",
+      "unit": null,
+      "raw": "721",
+      "value": "721",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        35,
+        288,
+        77,
+        328
+      ],
+      "bbox_norm": [
+        0.058824,
+        0.342043,
+        0.129412,
+        0.389549
+      ],
+      "label": "Laji",
+      "label_bbox_pt": [
+        35,
+        180,
+        77,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f14",
+      "key": "description",
+      "role": "row-description",
+      "record": "r3",
+      "unit": null,
+      "raw": "Iltalisä / viikko 20",
+      "value": "Iltalisä / viikko 20",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        77,
+        288,
+        247,
+        328
+      ],
+      "bbox_norm": [
+        0.129412,
+        0.342043,
+        0.415126,
+        0.389549
+      ],
+      "label": "Selite",
+      "label_bbox_pt": [
+        77,
+        180,
+        247,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f15",
+      "key": "quantity",
+      "role": "hours",
+      "record": "r3",
+      "unit": "h",
+      "raw": "32,00",
+      "value": "32.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        247,
+        288,
+        312,
+        328
+      ],
+      "bbox_norm": [
+        0.415126,
+        0.342043,
+        0.52437,
+        0.389549
+      ],
+      "label": "Tunnit",
+      "label_bbox_pt": [
+        247,
+        180,
+        312,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f16",
+      "key": "rate",
+      "role": "unit-rate",
+      "record": "r3",
+      "unit": "EUR/h",
+      "raw": "2,50",
+      "value": "2.50",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        312,
+        288,
+        392,
+        328
+      ],
+      "bbox_norm": [
+        0.52437,
+        0.342043,
+        0.658824,
+        0.389549
+      ],
+      "label": "EUR/h",
+      "label_bbox_pt": [
+        312,
+        180,
+        392,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f17",
+      "key": "amount",
+      "role": "earning",
+      "record": "r3",
+      "unit": "EUR",
+      "raw": "80,00",
+      "value": "80.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        392,
+        288,
+        525,
+        328
+      ],
+      "bbox_norm": [
+        0.658824,
+        0.342043,
+        0.882353,
+        0.389549
+      ],
+      "label": "Määrä EUR",
+      "label_bbox_pt": [
+        392,
+        180,
+        525,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f18",
+      "key": "code",
+      "role": "pay-code",
+      "record": "r4",
+      "unit": null,
+      "raw": "744",
+      "value": "744",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        35,
+        328,
+        77,
+        368
+      ],
+      "bbox_norm": [
+        0.058824,
+        0.389549,
+        0.129412,
+        0.437055
+      ],
+      "label": "Laji",
+      "label_bbox_pt": [
+        35,
+        180,
+        77,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f19",
+      "key": "description",
+      "role": "row-description",
+      "record": "r4",
+      "unit": null,
+      "raw": "Laatupalkkio\nkuukauden osuus",
+      "value": "Laatupalkkio\nkuukauden osuus",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        77,
+        328,
+        247,
+        368
+      ],
+      "bbox_norm": [
+        0.129412,
+        0.389549,
+        0.415126,
+        0.437055
+      ],
+      "label": "Selite",
+      "label_bbox_pt": [
+        77,
+        180,
+        247,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f20",
+      "key": "amount",
+      "role": "earning",
+      "record": "r4",
+      "unit": "EUR",
+      "raw": "220,00",
+      "value": "220.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        392,
+        328,
+        525,
+        368
+      ],
+      "bbox_norm": [
+        0.658824,
+        0.389549,
+        0.882353,
+        0.437055
+      ],
+      "label": "Määrä EUR",
+      "label_bbox_pt": [
+        392,
+        180,
+        525,
+        208
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f21",
+      "key": "tax",
+      "role": "tax",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "680,00",
+      "value": "680.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        150,
+        462,
+        265,
+        484
+      ],
+      "bbox_norm": [
+        0.252101,
+        0.548694,
+        0.445378,
+        0.574822
+      ],
+      "label": "Vero",
+      "label_bbox_pt": [
+        45,
+        462,
+        145,
+        484
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f22",
+      "key": "other",
+      "role": "other",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "204,00",
+      "value": "204.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        150,
+        491,
+        265,
+        513
+      ],
+      "bbox_norm": [
+        0.252101,
+        0.583135,
+        0.445378,
+        0.609264
+      ],
+      "label": "Muut pidätykset",
+      "label_bbox_pt": [
+        45,
+        491,
+        145,
+        513
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f23",
+      "key": "ratePercent",
+      "role": "ratePercent",
+      "record": "document",
+      "unit": "percent",
+      "raw": "20,00 %",
+      "value": "20.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        150,
+        520,
+        265,
+        542
+      ],
+      "bbox_norm": [
+        0.252101,
+        0.617577,
+        0.445378,
+        0.643705
+      ],
+      "label": "Veroprosentti",
+      "label_bbox_pt": [
+        45,
+        520,
+        145,
+        542
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f24",
+      "key": "grossPay",
+      "role": "grossPay",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "3 400,00",
+      "value": "3400.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        425,
+        462,
+        540,
+        484
+      ],
+      "bbox_norm": [
+        0.714286,
+        0.548694,
+        0.907563,
+        0.574822
+      ],
+      "label": "Bruttopalkka",
+      "label_bbox_pt": [
+        315,
+        462,
+        420,
+        484
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f25",
+      "key": "netPay",
+      "role": "netPay",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "2 516,00",
+      "value": "2516.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        425,
+        499,
+        540,
+        521
+      ],
+      "bbox_norm": [
+        0.714286,
+        0.592637,
+        0.907563,
+        0.618765
+      ],
+      "label": "Nettopalkka",
+      "label_bbox_pt": [
+        315,
+        499,
+        420,
+        521
+      ],
+      "essential": true,
+      "parts": []
+    },
+    {
+      "id": "P01-f26",
+      "key": "ytdTaxableIncome",
+      "role": "ytdTaxableIncome",
+      "record": "document",
+      "unit": "EUR",
+      "raw": "27 540,00",
+      "value": "27540.00",
+      "status": "known",
+      "page": 1,
+      "bbox_pt": [
+        425,
+        555,
+        540,
+        577
+      ],
+      "bbox_norm": [
+        0.714286,
+        0.659145,
+        0.907563,
+        0.685273
+      ],
+      "label": "Veronalainen / YTD",
+      "label_bbox_pt": [
+        315,
+        555,
+        420,
+        577
+      ],
+      "essential": true,
+      "parts": []
+    }
+  ],
+  "payroll_core": {
+    "payDate": {
+      "state": "known",
+      "field_ids": [
+        "P01-f1"
+      ]
+    },
+    "grossPay": {
+      "state": "known",
+      "field_ids": [
+        "P01-f24"
+      ]
+    },
+    "netPay": {
+      "state": "known",
+      "field_ids": [
+        "P01-f25"
+      ]
+    },
+    "ytdTaxableIncome": {
+      "state": "known",
+      "field_ids": [
+        "P01-f26"
+      ]
+    }
+  },
+  "tables": [
+    {
+      "id": "p01-earn",
+      "page": 1,
+      "bbox_pt": [
+        35,
+        180,
+        525,
+        368
+      ],
+      "headers": [
+        "Laji",
+        "Selite",
+        "Tunnit",
+        "EUR/h",
+        "Määrä EUR"
+      ],
+      "row_count": 4,
+      "column_count": 5,
+      "cells": [
+        {
+          "row": 1,
+          "column": 0,
+          "field_id": "P01-f3",
+          "bbox_pt": [
+            35,
+            208,
+            77,
+            248
+          ]
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "field_id": "P01-f4",
+          "bbox_pt": [
+            77,
+            208,
+            247,
+            248
+          ]
+        },
+        {
+          "row": 1,
+          "column": 2,
+          "field_id": "P01-f5",
+          "bbox_pt": [
+            247,
+            208,
+            312,
+            248
+          ]
+        },
+        {
+          "row": 1,
+          "column": 3,
+          "field_id": "P01-f6",
+          "bbox_pt": [
+            312,
+            208,
+            392,
+            248
+          ]
+        },
+        {
+          "row": 1,
+          "column": 4,
+          "field_id": "P01-f7",
+          "bbox_pt": [
+            392,
+            208,
+            525,
+            248
+          ]
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "field_id": "P01-f8",
+          "bbox_pt": [
+            35,
+            248,
+            77,
+            288
+          ]
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "field_id": "P01-f9",
+          "bbox_pt": [
+            77,
+            248,
+            247,
+            288
+          ]
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "field_id": "P01-f10",
+          "bbox_pt": [
+            247,
+            248,
+            312,
+            288
+          ]
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "field_id": "P01-f11",
+          "bbox_pt": [
+            312,
+            248,
+            392,
+            288
+          ]
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "field_id": "P01-f12",
+          "bbox_pt": [
+            392,
+            248,
+            525,
+            288
+          ]
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "field_id": "P01-f13",
+          "bbox_pt": [
+            35,
+            288,
+            77,
+            328
+          ]
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "field_id": "P01-f14",
+          "bbox_pt": [
+            77,
+            288,
+            247,
+            328
+          ]
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "field_id": "P01-f15",
+          "bbox_pt": [
+            247,
+            288,
+            312,
+            328
+          ]
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "field_id": "P01-f16",
+          "bbox_pt": [
+            312,
+            288,
+            392,
+            328
+          ]
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "field_id": "P01-f17",
+          "bbox_pt": [
+            392,
+            288,
+            525,
+            328
+          ]
+        },
+        {
+          "row": 4,
+          "column": 0,
+          "field_id": "P01-f18",
+          "bbox_pt": [
+            35,
+            328,
+            77,
+            368
+          ]
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "field_id": "P01-f19",
+          "bbox_pt": [
+            77,
+            328,
+            247,
+            368
+          ]
+        },
+        {
+          "row": 4,
+          "column": 4,
+          "field_id": "P01-f20",
+          "bbox_pt": [
+            392,
+            328,
+            525,
+            368
+          ]
+        }
+      ],
+      "merged_cells": [],
+      "continuation_of": null
+    }
+  ],
+  "intentional_conflicts": [],
+  "intentional_missing": [],
+  "uncertain_interpretations": [],
+  "expected": {
+    "domain_status": "eligible-after-complete-evidence-review",
+    "review_reasons": [],
+    "payroll_adapter_route": "payslip",
+    "canPersist": false,
+    "unknown_type_refusal_is_error": false
+  },
+  "reviewer_status": "provisionally-checked-by-one-agent",
+  "parser_used_for_truth": false
+}
