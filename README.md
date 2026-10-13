@@ -87,3 +87,13 @@ Lue **[ACCEPTANCE_CONTRACT.md](./ACCEPTANCE_CONTRACT.md)** ennen uusia integraat
 Lisättiin kolme todellista, mutta keksityllä testidatalla täytettyä PDF-tiedostoa **ajon aikana luovaa fixtureä**. Niiden tekstipohjat ovat jäädytetyt nykyisestä Palkan julkisesta hyväksymistestistöstä commitista `550c7654…` (`tests/fixtures/complete-payslips/`). `demo/complete-pdf.mjs` tekee aidot yksisivuiset WinAnsi-PDF-tavut ilman käyttäjätietoja. Chromium lukee ne oikealla PDF.js:llä ja ajaa saman tekstin jäädytetyn `parsePayslip()`-parserin läpi.
 
 Tämän kokeen **positiivinen** tavoite on, että Palkan neljä pakollista kenttää säilyvät oikeina myös PDF-lukuvaiheen jälkeen (ei vain raakana tekstinä). Samassa ajossa tutkitaan, riittävätkö LABin nykyiset 3 kertymäkenttää yleisen sopimuksen täyttämiseen: eivät, koska LAB ei vielä poimi maksupäivää eikä nettoa. Sopimus vaatii tarkistuksen eikä koskaan tallenna. **Älä vertaa näitä kuin kaksi täyttä palkkaparseria.** Testiajon tulokset lukitaan SHA:han ja raportoidaan erikseen.
+
+## LAB v0.6 — osioihin jaettu palkkalaskelma
+
+`src/payroll-sections.mjs` on uusi **rinnakkainen tutkimusadapteri**, joka käyttää vain PDF.js:n alkuperäisiä havaintoja (`id`, `page`, `box`). Sillä ei ole kutsua jäädytettyyn Palkka-parseriin eikä tallennustoimintoa. V0.5:n `src/payroll.mjs`-taulukkoadapteri pysyy ennallaan.
+
+A/B/C-kokonaislaskelmissa poimitaan maksupäivä, kauden brutto, nettopalkka ja vuoden veronalainen kertymä myös osioitujen tekstirivien ja vaihtoehtoisten otsikoiden avulla. Kausi- ja vuosipidätykset erotetaan vain niiden otsikoiden alla; signed deduction säilyy lähderivissä ja esitetään positiivisena pidätyksen suuruutena. Jokaisella ehdotuksella on `sourceIds` ja kaikki saman kentän toistuvat ehdokkaat säilyvät. Eri arvot antavat `conflict`, puuttuva antaa `missing`.
+
+Vertailussa tarkastellaan vain omista PDF.js-havainnoista poimittuja kenttiä. Vanhasta jäädytetystä parserista ei siirretä arvoja LABiin. `src/acceptance.mjs` pysyy riippumattomana ja `canPersist=false`. Tunnistamattomat olennaiset palkkaerittelyn rivit jätetään näkyviin ja ne estävät koneellisen valmistumisen, mikä on tässä vaiheessa tarkoituksellista.
+
+Testaus: `tests/payroll-sections.test.mjs` sekä `tests/e2e/payroll-sections.spec.mjs` (oikeat PDF.js-lukukierrokset A/B/C sekä rikkovat muunnelmat). OCR, muiden työnantajien laskelmapohjat, Android, suorituskyky ja riippumaton QA **NOT RUN**. Integraatio **NO-GO**.
