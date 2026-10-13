@@ -32,3 +32,11 @@ Rakennetaan oikeat synteettiset PDF:t ja testataan todellinen PDF.js-selainpolku
 - Paikalliset alkuperäiset 32 Node-testiä edelleen PASS; PDF-fixtureille lisätty kaksi Node-testiä. Chromiumin tulos tarkistetaan GitHub Actionsista lukitulle SHA:lle.
 - Aidon PDF.js:n browser-P0-03, browser-P0-04, käänteiset sarakkeet, identtiset toistot ja puuttuva sarake testataan Playwrightilla. Ei merkintää PASS ennen CI-tulosta.
 - **Android, OCR, skannatut dokumentit, tuntemattomat layoutit, riippumaton QA ja tuotantointegraatio: NOT RUN / NO-GO.**
+
+## v0.3 change-specific developer QA (2026-10-13)
+
+- Node baseline and new regression tests (36 total) completed in local isolated source copy: **36/36 PASS**.
+- GitHub Actions on immutable PR commit must be read before classifying Chromium matrix results. New expected cases: 30 synthetic PDF layout scenarios plus baseline same-document line-folding evidence audit.
+- **Important interpretation:** matching source token count or exact column boxes does not prove the production Palkka app has higher pay-field accuracy. The legacy comparator copies only the line-folding stage, not the full payroll parser or acceptance workflow.
+- Gate: 0 silent false auto-accepts in this synthetic adversarial corpus, all intentionally conflicting/missing/unaligned data visibly blocked, normal layouts correct. Any FAIL requires a test-linked source change and a fresh full CI run.
+- No live users, no uploads, no backend, no OCR; mobile device and independent QA **NOT RUN**, production **NO-GO**.

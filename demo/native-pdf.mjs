@@ -14,6 +14,7 @@ function cell(value,x,y,size=13){
 function pageContent(o={}){
   const gross=o.gross??'3 200,00',ytd=o.ytd??'42 000,00',prev=o.previous??'38 000,00';
   let out=cell('TEST DATA - SYNTHETIC ONLY',75,785,15);
+  if(o.noiseAbove)out+=cell('99 999,00',570,745);
   const header=[
     {label:'Kertymä palkkakaudelta',role:'gross',value:gross},
     {label:'Kertymä vuoden alusta',role:'ytd',value:ytd},
@@ -22,12 +23,25 @@ function pageContent(o={}){
   if(o.reverse)header.reverse();
   const x=[250,570,900];
   function block(y,secondYtd){
-    header.forEach((c,i)=>{out+=cell(c.label,x[i],y);});
+    header.forEach((c,i)=>{
+      if(o.splitHeader===c.role){
+        out+=cell('Kertymä',x[i],y);
+        out+=cell(c.label.slice('Kertymä '.length),x[i]+65,y);
+      } else out+=cell(c.label,x[i],y);
+      if(o.duplicateHeader===c.role)out+=cell(c.label,x[i]+105,y);
+    });
     out+=cell('Ver.al.ans',75,y-50);
     header.forEach((c,i)=>{
       if(c.role==='ytd'&&o.includeYtd===false)return;
-      out+=cell(c.role==='ytd'?secondYtd:c.value,x[i]+10,y-50);
+      const text=c.role==='ytd'?secondYtd:c.value;
+      const px=x[i]+10+(o.offsets?.[c.role]??0);
+      if(o.splitValue===c.role){
+        out+=cell(text.slice(0,2),px,y-50);
+        out+=cell(text.slice(2),px+20,y-50);
+      } else out+=cell(text,px,y-50);
     });
+    if(o.extraMoney)out+=cell('99 999,00',1100,y-50);
+    if(o.unanchoredMoney)out+=cell('99 999,00',580,y-88);
   }
   block(660,ytd);
   if(o.secondBlock!=null)block(390,o.secondBlock);
@@ -43,7 +57,9 @@ export function syntheticPayrollPdf(pageOptions=[{}]){
   for(const options of pageOptions){
     const content=pageContent(options);
     const data=add('<< /Length '+bytes(content).length+' >>\nstream\n'+content+'endstream');
-    kids.push(add('<< /Type /Page /Parent '+pages+' 0 R /MediaBox [0 0 '+W+' '+H+'] /Resources << /Font << /F1 '+font+' 0 R >> >> /Contents '+data+' 0 R >>'));
+    const rotation=options.rotate?' /Rotate '+options.rotate:'';
+    const crop=options.crop?' /CropBox [75 0 1125 840]':'';
+    kids.push(add('<< /Type /Page /Parent '+pages+' 0 R /MediaBox [0 0 '+W+' '+H+']'+rotation+crop+' /Resources << /Font << /F1 '+font+' 0 R >> >> /Contents '+data+' 0 R >>'));
   }
   objects[catalog-1]='<< /Type /Catalog /Pages '+pages+' 0 R >>';
   objects[pages-1]='<< /Type /Pages /Kids ['+kids.map(k=>k+' 0 R').join(' ')+'] /Count '+kids.length+' >>';

@@ -103,3 +103,22 @@ test('negative gross amount is preserved but not auto-accepted',()=>{
   assert.ok(parsed.issues.some(i=>i.code==='INVALID_MONEY_CELL'));
   assert.ok(parsed.unmatched.some(t=>t.raw==='-3 200,00'));
 });
+
+
+test('severely shifted YTD token is never assigned to gross column',()=>{
+  const layout=payLayout([{}]);
+  const token=layout.observations.find(t=>t.raw==='42 000,00');
+  token.box={...token.box,x0:token.box.x0-0.15,x1:token.box.x1-0.15};
+  const out=parsePayrollLayout(layout);
+  assert.equal(out.canAutoAccept,false);
+  assert.ok(out.issues.some(i=>i.code==='AMBIGUOUS_MONEY_COLUMN'));
+});
+
+test('financial token on an otherwise unanchored data row blocks the batch',()=>{
+  const page=payrollPage();
+  page.items.push({str:'99 999,00',transform:[11,0,0,11,580,893],width:80,height:19});
+  const layout=layoutFromPdfItems([page]);
+  const out=parsePayrollLayout(layout);
+  assert.equal(out.canAutoAccept,false);
+  assert.ok(out.issues.some(i=>i.code==='UNANCHORED_MONEY_ROW'));
+});
