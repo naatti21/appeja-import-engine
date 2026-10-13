@@ -94,3 +94,11 @@ The latest laboratory-only fixture puts one `Ennakonpid.al.tulo` label beside ea
 - Pakolliset estot: ostohinnan puute, OCR-desimaalivirheen paljastava määrä×kurssi-ristiriita, eri tilien yhdistämisyritys, ristiriitaiset saman omistuksen näkymät, epäselvä lähdeviite, epäjohdonmukainen käteinen+salkkuarvo. Sama yleisnäkymä ja yksittäisen rahaston yksityiskohtanäkymä eivät muodosta uusia omistuksia.
 - **Uusi SHA CI PENDING** ennen hyväksyntää. Todellista tuotannon selaimen Tesseract.js:tä, yksityisten PDF:ien JS-parserin end-to-end-kenttäpariteettia, riippumatonta QA:ta ja fyysistä Androidia ei ole vielä varmennettu.
 - Tuotanto NO-GO. Tämä gate ei oikeuta tallentamaan mitään.
+
+
+## v1.0 mobile review — kehittäjäportti
+
+- Käyttöliittymä: CSV/TSV, pakattu XLSX, natiivi PDF.js ja OCR TSV. Lähdeviitteet, estot ja mobiilinäkymä.
+- Selaimen OCR lataa Tesseract.js:n ulkoisesta CDN:stä; ei vielä offline. Kuvareitin E2E käyttää simuloitua TSV:tä.
+- Oikeita käyttäjän tiedostoja ei viety GitHubiin. Tuotantokoodit koskemattomat.
+- Tarkka SHA:n CI **PENDING**; Android, riippumaton QA, oikea browser pixels-to-OCR sekä yksityinen PDF JavaScript-oracle NOT RUN. Tuotanto NO-GO.
