@@ -60,6 +60,8 @@ export function parseHoldingsCsv(input) {
     if(fields.quantity?.status!=='valid') localIssues.push({code:'QUANTITY_NOT_VERIFIED'});
     if(!fields.buyPrice || fields.buyPrice.status==='missing') localIssues.push({code:'BUY_PRICE_MISSING_REVIEW'});
     if(fields.buyPrice?.status==='ambiguous') localIssues.push({code:'PRICE_AMBIGUOUS_REVIEW'});
+    if(fields.currency?.status!=='valid'||!/^[A-Z]{3}$/.test(String(fields.currency.value??'')))
+      localIssues.push({code:'CURRENCY_NOT_VERIFIED'});
     records.push({sourceRow:ri+1,fields,issues:localIssues,status:localIssues.length?'review-required':'candidate-only'});
   }
   if(!records.length) issues.push({code:'NO_HOLDINGS_ROWS'});

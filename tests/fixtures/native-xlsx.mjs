@@ -44,12 +44,13 @@ function worksheet(rows,sharedMap,{formula=false}={}){
  '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'+
  '<sheetData>'+body+'</sheetData></worksheet>';
 }
-export function syntheticHoldingsXlsx({formula=false,duplicate=false,extra=false,compress=true}={}){
- const rows=[
+export function syntheticHoldingsXlsx({formula=false,duplicate=false,extra=false,compress=true,portfolioRows=null}={}){
+ const defaults=[
   ['Ticker','Name','Quantity','Buy Price','Currency'],
   ['NOKIA','Nokia',10,3.5,'EUR'],
   ['MSFT','Microsoft',2,formula?{formula:'100*4',cached:400}:400,'USD']
  ];
+ const rows=portfolioRows?portfolioRows.map(r=>[...r]):defaults;
  if(extra)rows[2].push('Ignored material');
  const other=[['Note','Value'],['Source','Synthetic only']];
  const unique=new Set([...rows,...other].flat().filter(v=>typeof v==='string'));
