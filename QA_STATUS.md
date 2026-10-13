@@ -78,3 +78,10 @@ The latest laboratory-only fixture puts one `Ennakonpid.al.tulo` label beside ea
 - Palkkarivikirjanpito sisältää **vain tuetut koodit**. `90000`-rivin verokortin kertymä ei korvaa YTD-palkkaa.
 - `canPersist=false` kaikissa tuloksissa. Tuntemattomat olennaiset rahahavainnot johtavat tarkistuspyyntöön.
 - **Uuden SHA:n Github CI PENDING**; tulokset kirjataan vasta tarkasta Actions-ajosta. Riippumaton QA, Android, OCR, tiedostojen arkistointi ja tuotantointegraatio edelleen NO-GO.
+
+
+## LAB v0.8 — moni­formaattinen tuontitutkimus
+
+- Uudet lähteet: XLSX-pakattu OOXML + CSV/TSV, PDF.js-geometria ja OCR TSV -havaintoformaatti.
+- Testataan samaa synteettistä kahden osakkeen aineistoa pakattuna XLSX:nä ja CSV:nä; OCR TSV ja native PDF ovat vielä lähdehavaintojen säilyvyystestejä, eivät end-to-end-kuvan/salkun pariteettia.
+- Tämän HEADin Node + Chromium CI **PENDING**; riippumaton QA, oikea kuvantunnistus, Android ja tuntemattomat dokumenttipohjat NOT RUN. Tuotanto NO-GO.

@@ -109,3 +109,8 @@ Ennakonpidätyksen koodirivillä oleva **verokortin kertymä ei ole vuoden veron
 Testit käyttävät samoja kolmea kokonaista **synteettistä PDF:ää**. `tests/e2e/payroll-lines.spec.mjs` vertailee alkuperäisten PDF-tavujen perusteella uuden adapterin palkkarivien lukumäärän, koodit, määrät, yksikköhinnat ja summat jäädytetyn nykyisen Palkka-parserin tuloksiin. Negatiiviset testit muuttavat yhden rahasumman, lisäävät tuntemattoman koodin ja aiheuttavat pidätyksen ristiriidan. Ne todentavat käsittelemättä jääneet havainnot ja estoilmoitukset.
 
 **Päätösraja:** tämä on näyttö tunnettujen rivien käsittelykyvystä, ei täysi laskelmien automaattinen hyväksyntä eikä kattavuus vieraista työnantajapohjista. Muiden palkkalajien käsittelyä ei arvata. Riippumaton QA, Android, OCR, todelliset palkkatiedot ja tuotantointegraatio **NOT RUN / NO-GO**.
+
+
+## LAB v0.8: PDF, CSV/TSV, XLSX ja OCR-havainnot
+
+Lue [MULTIFORMAT_PLAN.md](./MULTIFORMAT_PLAN.md). Tämä vaihe lisää erillisen yhteisen havaintokerroksen, ei uutta palkkaparseria. Excelin aitoon ZIP/OOXML-luentaan ja synteettiseen osakeaineistoon liittyvät Node- ja Chromium-testit ovat tiedostoissa `tests/multiformat.test.mjs` ja `tests/e2e/multiformat.spec.mjs`. OCR-TSV on jälkikäsittelyn testi, ei oikean kuvapikselin OCR-koe. Production: NO-GO.
