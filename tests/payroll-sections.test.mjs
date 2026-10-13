@@ -3,13 +3,14 @@ import assert from 'node:assert/strict';
 import {layoutFromPdfItems} from '../src/layout.mjs';
 import {parsePayrollSections} from '../src/payroll-sections.mjs';
 
-function layoutFromLines(lines){
+function layoutFromPages(pages){
  const height=1000,width=1300;
- return layoutFromPdfItems([{width,height,items:lines.map((text,i)=>({
+ return layoutFromPdfItems(pages.map(lines=>({width,height,items:lines.map((text,i)=>({
   str:text,width:Math.min(1000,Math.max(80,text.length*7)),
   height:12,transform:[12,0,0,12,60,height-30-i*27]
- }))}]);
+ }))})));
 }
+function layoutFromLines(lines){return layoutFromPages([lines]);}
 const base=[
  'PALKKALASKELMA',
  'Palkkakausi 3.8.2026 - 16.8.2026',
@@ -85,4 +86,12 @@ test('explicit alternative labels work without cumulative headings',()=>{
 test('unlabeled extra money must remain visible and block',()=>{
  const r=parsePayrollSections(layoutFromLines([...base,'43000,00']));
  assert.ok(r.decision.problems.some(p=>p.code==='UNACCOUNTED_MATERIAL'));
+});
+
+test('two PDF pages with contradictory annual taxable income preserve both sources',()=>{
+ const other=base.map(s=>s.replace('63 832,82','63 833,82'));
+ const r=parsePayrollSections(layoutFromPages([base,other]));
+ assert.equal(r.fields.ytdTaxableIncome.status,'conflict');
+ assert.deepEqual(r.fields.ytdTaxableIncome.candidates.map(c=>c.page),[1,2]);
+ assert.equal(r.decision.canPersist,false);
 });

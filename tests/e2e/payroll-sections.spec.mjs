@@ -37,6 +37,9 @@ for(const s of sources){
    for(const id of result.fields[field].sourceIds)
     expect(result.observations.some(o=>o.id===id),id).toBe(true);
   }
+  if(s.id==='c-alt-terms')
+   expect(result.issues.some(i=>i.code==='UNPARSEABLE_LABELED_AMOUNT'),
+     'Explicit label must not also trigger a generic parsing error').toBe(false);
   if(s.withhold){
    expect(result.fields.withholdingPeriod.value).toBe(1526.89);
    expect(result.fields.withholdingYtd.value).toBe(18792.51);
