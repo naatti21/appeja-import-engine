@@ -9,24 +9,63 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - run: npm ci
-      - run: npm test
+      - name: Node QA with captured report
+        id: qa
+        run: |
+          mkdir -p qa-output/logs
+          set -o pipefail
+          npm test 2>&1 | tee qa-output/logs/node.log
+      - name: Build QA report manifest
+        if: always()
+        env:
+          QA_SUITE: node-safety
+          QA_TEST_OUTCOME: ${{ steps.qa.outcome }}
+        run: node scripts/qa-artifact-manifest.mjs
+      - name: Archive Node QA ZIP
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-node-safety-${{ github.run_id }}-${{ github.run_attempt }}
+          path: qa-output/
+          retention-days: 14
+          if-no-files-found: warn
   real-pdfjs-chromium:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - run: npm ci
       - run: npx playwright install --with-deps chromium
-      - run: npm run test:e2e
-      - uses: actions/upload-artifact@v4
-        if: failure()
+      - name: Browser QA with captured report
+        id: qa
+        run: |
+          mkdir -p qa-output/logs
+          set -o pipefail
+          npm run test:e2e 2>&1 | tee qa-output/logs/browser.log
+      - name: Build QA report manifest
+        if: always()
+        env:
+          QA_SUITE: browser
+          QA_TEST_OUTCOME: ${{ steps.qa.outcome }}
+        run: node scripts/qa-artifact-manifest.mjs
+      - name: Archive browser QA ZIP
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: e2e-failures
-          path: test-results/
-          retention-days: 3
+          name: qa-browser-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            qa-output/
+            test-results/
+            playwright-report/
+          retention-days: 14
+          if-no-files-found: warn

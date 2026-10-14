@@ -138,3 +138,8 @@ Uusi `src/portfolio-review.mjs` on **post-extraction REVIEW GATE**, ei vielä va
 ## LAB v1.2 — oikea selaimen kuva-OCR
 
 [QA-kokeen scope](./V1_2_REAL_OCR_QA.md): aidot renderöidyt synteettiset salkkukuvat, Tesseract.js:n selaintyöntekijä ja kielimallit samasta alkuperästä. Ei käyttäjän kuvaa ulkopuoliseen palveluun eikä tuotantointegraatiota. 
+
+
+## QA ZIP -paketit ja pysyvät raportit
+
+Käytä [QA-arkiston ohjetta](./QA_ARCHIVE.md), [raporttihakemistoa](./qa/reports/INDEX.md) ja [QA-handoff-mallia](./qa/HANDOFF_TEMPLATE.md). Jokainen Node-, PDF/Chromium-, variaatio- ja OCR-CI-ajo tuottaa GitHub Actionsin Artifacts-osioon ladattavan QA ZIPin (14 pv, repon säilytysasetusten rajoissa): raportti, manifesti, raakalogit ja tarvittaessa Playwright-failuret. Pysyvä QA-tilannekuva kirjataan samaan PR:ään. Älä lisää suuria ZIPejä tai yksityisiä aineistoja Git-historiaan. 
