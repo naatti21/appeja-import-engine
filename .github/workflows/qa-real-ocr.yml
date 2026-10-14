@@ -26,6 +26,8 @@ jobs:
         run: node scripts/prepare-local-ocr.mjs
       - run: npx playwright install --with-deps chromium
       - name: Real synthetic pixels -> same-origin Tesseract OCR -> independent oracle
+        env:
+          REAL_OCR_QA: '1'
         run: npm run test:e2e -- --grep "QA genuine same-origin|QA real on-device"
       - uses: actions/upload-artifact@v4
         if: failure()

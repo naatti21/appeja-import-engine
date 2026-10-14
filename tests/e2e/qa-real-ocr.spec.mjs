@@ -103,7 +103,13 @@ test('QA real on-device image UI only uses same-origin OCR assets',async({page,c
  await page.locator('#sourceFile').setInputFiles({name:'qa-synthetic.png',
   mimeType:'image/png',buffer:Buffer.from(image.split(',')[1],'base64')});
  await page.locator('#analyzeBtn').click();
- await expect(page.locator('#status')).toContainText('Esitarkistus valmis',{timeout:180000});
+ await expect.poll(async()=>{
+  const status=await page.locator('#status').textContent();
+  if(status?.includes('Esitarkistusta ei saatu valmiiksi')){
+   throw new Error('UI_REAL_OCR_ERROR: '+await page.locator('#error').textContent());
+  }
+  return status;
+ },{timeout:45000}).toContain('Esitarkistus valmis');
  await expect(page.locator('#formatText')).toHaveText('Kuva/OCR');
  await expect(page.locator('#issues')).toContainText('OCR_NOT_SEMANTICALLY_VERIFIED');
  await expect(page.locator('#issues')).toContainText('OCR_DECIMAL_PUNCTUATION_RISK');
