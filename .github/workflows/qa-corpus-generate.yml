@@ -1,0 +1,61 @@
+name: QA Corpus - Regenerate 60 Synthetic Portfolios
+on:
+  pull_request:
+    paths:
+      - 'scripts/qa-corpus/**'
+      - 'tests/fixtures/native-xlsx.mjs'
+      - 'src/xlsx.mjs'
+      - '.github/workflows/qa-corpus-generate.yml'
+      - 'QA_ARCHIVE.md'
+      - 'qa/reports/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  generate-and-verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed generator dependencies
+        run: |
+          npm ci
+          python -m pip install --disable-pip-version-check \
+            Pillow==12.3.0 reportlab==4.4.9 pypdf==5.9.0
+      - name: Generate 60 original-oracle-equivalent cases and 300 real source files
+        id: qa
+        run: |
+          mkdir -p qa-output/logs
+          set -o pipefail
+          {
+            python scripts/qa-corpus/generate.py
+            node scripts/qa-corpus/build-xlsx.mjs qa-output/corpus
+            python scripts/qa-corpus/verify.py qa-output/corpus
+            QA_CORPUS_DIR=qa-output/repro-corpus python scripts/qa-corpus/generate.py
+            node scripts/qa-corpus/build-xlsx.mjs qa-output/repro-corpus
+            python scripts/qa-corpus/check-determinism.py \
+              qa-output/corpus qa-output/repro-corpus
+            rm -rf qa-output/repro-corpus
+          } 2>&1 | tee qa-output/logs/corpus-generator.log
+      - name: Write ZIP manifest and QA report
+        if: always()
+        env:
+          QA_SUITE: corpus-generator
+          QA_TEST_OUTCOME: ${{ steps.qa.outcome }}
+        run: node scripts/qa-artifact-manifest.mjs
+      - name: Upload generated corpus ZIP to Actions Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-v13-synthetic-corpus-${{ github.run_id }}-${{ github.run_attempt }}
+          path: qa-output/
+          retention-days: 14
+          if-no-files-found: warn
