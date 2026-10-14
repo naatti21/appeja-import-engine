@@ -175,14 +175,14 @@ export function resolvePositionedHoldings(evidence){
    rowIssues.push(issue('NEGATIVE_FINANCIAL_VALUE'));
   const [qty,price,value]=['quantity','current_price','current_value'].map(k=>fields[k]);
   if([qty,price,value].every(f=>f.status==='candidate')){
-   if(Math.abs(qty.value*price.value-value.value)>Math.max(.055,Math.abs(value.value)*.001))
+   if(Math.abs(qty.value*price.value-value.value)>0.055)
     rowIssues.push(issue('VALUE_PRICE_QUANTITY_CONFLICT'));
   }
   const account=fields.account.value,name=fields.name.value;
   if(account&&name){
    const key=account+'\u0000'+name;
    const existing=seenKeys.get(key);
-   if(existing){
+   if(seenKeys.has(key)){
     rowIssues.push(issue('REPEATED_HOLDING_NEEDS_REVIEW',{firstRow:existing}));
    }else seenKeys.set(key,rows.length);
   }

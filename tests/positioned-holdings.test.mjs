@@ -99,7 +99,8 @@ test('geometry shifted off a column cannot be silently accounted',()=>{
  const e=mock();
  e.observations.find(o=>o.id==='obs-1-5').source.box.x0+=.084;
  const r=resolvePositionedHoldings(e);
- assert.ok(codes(r).includes('UNACCOUNTED_POSITIONAL_TOKEN'));
+ assert.ok(codes(r).includes('UNUSABLE_SOURCE_GEOMETRY'));
+ assert.equal(r.rows.length,0);
 });
 test('source kind other than actual PDF/OCR cannot masquerade as positioning',()=>{
  const e=mock();e.sourceKind='csv';
