@@ -145,7 +145,12 @@ async function handleImage(file){
    if(progress.progress!=null)status.textContent='OCR käsittelee kuvaa: '+Math.round(progress.progress*100)+' %';
   }});
   const recognized=await worker.recognize(file,{}, {text:true,tsv:true});
-  const evidence=evidenceFromOcrTsv(String(recognized?.data?.tsv??''),{imageWidth,imageHeight});
+  const tsv=String(recognized?.data?.tsv??'');
+  if(!tsv.trim())throw new Error('OCR_TSV_MISSING_FORMAT: '+Object.keys(recognized?.data??{}).join(','));
+  if(!tsv.trim().startsWith('level')){
+   throw new Error('OCR_TSV_BAD_HEADER: '+tsv.slice(0,120).replace(/\s/g,' '));
+  }
+  const evidence=evidenceFromOcrTsv(tsv,{imageWidth,imageHeight});
   const grouped=new Map();
   for(const word of evidence.observations){
    const key=word.source.page+':'+word.source.line;

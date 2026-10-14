@@ -67,9 +67,11 @@ test('QA genuine same-origin Tesseract browser pixels with independent oracle',a
      o.price.toFixed(2).replace('.',',')+'       '+o.value.toFixed(2).replace('.',','),
      w*0.04,c.height*0.7);
     const png=c.toDataURL(o.jpeg?'image/jpeg':'image/png',o.jpeg?0.45:1);
-    const recognized=await window.qaWorker.recognize(png);
-    return {text:recognized.data.text,confidence:recognized.data.confidence};
+    const recognized=await window.qaWorker.recognize(png,{}, {text:true,tsv:true});
+    return {text:recognized.data.text,confidence:recognized.data.confidence,
+     tsvHead:String(recognized.data.tsv??'').slice(0,110)};
    },item);
+   if(item.index===0 && item.seed===71)console.log('QA_OCR_TSV_HEADER '+JSON.stringify(response.tsvHead));
    const s=score(response.text,item);
    fieldsRight+=Number(s.ticker)+Number(s.quantity)+Number(s.price)+Number(s.value);
    if(item.class==='baseline'){baselineTotal++;baselineRight+=Number(s.all);}
