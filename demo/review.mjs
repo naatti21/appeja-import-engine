@@ -120,10 +120,10 @@ function loadTesseract(){
  if(ocrLoader)return ocrLoader;
  ocrLoader=new Promise((resolve,reject)=>{
   const s=document.createElement('script');
-  s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.0/dist/tesseract.min.js';
+  s.src=new URL('./vendor/ocr/tesseract.min.js',import.meta.url).href;
   s.crossOrigin='anonymous';
   s.onload=()=>window.Tesseract?.createWorker?resolve(window.Tesseract):reject(new Error('Tesseract ei käynnistynyt'));
-  s.onerror=()=>reject(new Error('OCR-kirjaston lataus epäonnistui; ensikäyttö tarvitsee verkkoyhteyden'));
+  s.onerror=()=>reject(new Error('Oman palvelimen OCR-pakettia ei ole asennettu: käsittely keskeytetään.'));
   document.head.append(s);
  }).catch(err=>{ocrLoader=null;throw err;});
  return ocrLoader;
@@ -136,11 +136,19 @@ async function handleImage(file){
  const api=await loadTesseract();
  let worker=null;
  try{
-  worker=await api.createWorker(['fin','eng'],1,{logger:progress=>{
+  worker=await api.createWorker(['fin','eng'],1,{
+   workerPath:new URL('./vendor/ocr/worker.min.js',import.meta.url).href,
+   corePath:new URL('./vendor/ocr/core',import.meta.url).href,
+   langPath:new URL('./vendor/ocr/lang',import.meta.url).href,
+   gzip:false,workerBlobURL:false,cacheMethod:'none',
+   logger:progress=>{
    if(progress.progress!=null)status.textContent='OCR käsittelee kuvaa: '+Math.round(progress.progress*100)+' %';
   }});
   const recognized=await worker.recognize(file,{}, {text:true,tsv:true});
-  const evidence=evidenceFromOcrTsv(String(recognized?.data?.tsv??''),{imageWidth,imageHeight});
+  const tsv=String(recognized?.data?.tsv??'');
+  if(!tsv.trim())throw new Error('OCR_TSV_MISSING_FORMAT: '+Object.keys(recognized?.data??{}).join(','));
+  // Headerless Tesseract v5 TSV is validated by the shared evidence adapter.
+  const evidence=evidenceFromOcrTsv(tsv,{imageWidth,imageHeight});
   const grouped=new Map();
   for(const word of evidence.observations){
    const key=word.source.page+':'+word.source.line;
