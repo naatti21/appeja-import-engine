@@ -1,0 +1,42 @@
+[
+  {
+    "id": "foreign-aliases",
+    "variant": "E",
+    "pass": true
+  },
+  {
+    "id": "tax-card-qualified-label",
+    "variant": "E",
+    "pass": true
+  },
+  {
+    "id": "tax-card-section",
+    "variant": "E",
+    "pass": true
+  },
+  {
+    "id": "year-section-not-period-gross",
+    "variant": "E",
+    "pass": true
+  },
+  {
+    "id": "ambiguous-three-decimals",
+    "variant": "E",
+    "pass": true
+  },
+  {
+    "id": "competing-vertical-values",
+    "variant": "E",
+    "pass": true
+  },
+  {
+    "id": "contradictory-same-role",
+    "variant": "E",
+    "pass": true
+  },
+  {
+    "id": "previous-transfer-not-net",
+    "variant": "E",
+    "pass": true
+  }
+]

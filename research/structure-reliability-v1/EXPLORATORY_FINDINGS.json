@@ -1,0 +1,78 @@
+{
+  "phase": "First DEV pass before final structural placeholder guard",
+  "observation": "T02 source pdf-p1-t40 is a dash with no corresponding GT value binding. E initially inherited D numeric-syntax classification of a bare dash. This is unscored by GT, not declared a verified semantic error. Final E leaves non-digit placeholders uncertain. No annotation or oracle changed.",
+  "initial_results": {
+    "P01": {
+      "D": {
+        "unambiguous_correct": 8,
+        "unambiguous_denominator": 8,
+        "unambiguous_wrong": 0
+      },
+      "E": {
+        "unambiguous_correct": 8,
+        "unambiguous_denominator": 8,
+        "unambiguous_wrong": 0
+      }
+    },
+    "P02": {
+      "D": {
+        "unambiguous_correct": 7,
+        "unambiguous_denominator": 9,
+        "unambiguous_wrong": 2
+      },
+      "E": {
+        "unambiguous_correct": 7,
+        "unambiguous_denominator": 7,
+        "unambiguous_wrong": 0
+      }
+    },
+    "P03": {
+      "D": {
+        "unambiguous_correct": 4,
+        "unambiguous_denominator": 6,
+        "unambiguous_wrong": 2
+      },
+      "E": {
+        "unambiguous_correct": 4,
+        "unambiguous_denominator": 4,
+        "unambiguous_wrong": 0
+      }
+    },
+    "T01": {
+      "D": {
+        "unambiguous_correct": 1,
+        "unambiguous_denominator": 3,
+        "unambiguous_wrong": 2
+      },
+      "E": {
+        "unambiguous_correct": 1,
+        "unambiguous_denominator": 1,
+        "unambiguous_wrong": 0
+      }
+    },
+    "T02": {
+      "D": {
+        "unambiguous_correct": 5,
+        "unambiguous_denominator": 7,
+        "unambiguous_wrong": 2
+      },
+      "E": {
+        "unambiguous_correct": 5,
+        "unambiguous_denominator": 6,
+        "unambiguous_wrong": 1
+      }
+    },
+    "T03": {
+      "D": {
+        "unambiguous_correct": 1,
+        "unambiguous_denominator": 1,
+        "unambiguous_wrong": 0
+      },
+      "E": {
+        "unambiguous_correct": 1,
+        "unambiguous_denominator": 1,
+        "unambiguous_wrong": 0
+      }
+    }
+  }
+}

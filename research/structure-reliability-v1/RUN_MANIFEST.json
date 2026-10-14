@@ -1,0 +1,453 @@
+{
+  "parent_sha": "7d7498983c78825c9fde48d31893ae5a3a416601",
+  "baseline_sha": "8f28544651a27225c1212228753fbc6c6a265c38",
+  "fixture_sha": "72520b612444994741f6d09655e8c2f08f279308",
+  "measured_at_utc": "2026-10-14T19:16:19.147Z",
+  "environment": {
+    "node": "v24.19.0",
+    "pdfjs": "6.4.299",
+    "playwright": "1.57.0",
+    "platform": "linux",
+    "arch": "x64",
+    "execution": "Real PDF.js and original reader, Node only; browser status separate"
+  },
+  "verified_files": [
+    {
+      "path": "package-lock.json",
+      "sha256": "b2bad056f385ef60e6827c2e509a5720181203bf40037eadbea54d6faa69c9fe",
+      "git_blob_sha": "903b14923a2b12c3023ebe576e17131ddbeb757d"
+    },
+    {
+      "path": "package.json",
+      "sha256": "db88768e258a1ec33bba3d22f5f37e311809edd7e3c582c1648ddfc8341ff53a",
+      "git_blob_sha": "402ea622b0b6ee4e7a5980ef2046e5bfef2d4f47"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/ARTIFACT_HASHES.json",
+      "sha256": "00092b19480356832f1c5e0afb8954d82fb933ee7528fb396016a42d84252199",
+      "git_blob_sha": "46a4fa57ea65b13d0961eb505707a6798abf0cc3"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/BROWSER_INSTALL_LOG.txt",
+      "sha256": "a8bf4bd400ecb483d9cd5eae70a520519a2b4e967ceaf84e8623cd20572cc3d8",
+      "git_blob_sha": "f78469011a40168dcb11e31de225f6aa52a2fb01"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/BROWSER_STATUS.json",
+      "sha256": "428d5fd115dca922ebd8ea8cfa8e7e903285ed5f7c3807cb2252b5103a315c25",
+      "git_blob_sha": "92f1f4e5a304b212e3b62c119427d6ffdb539652"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/DECISION.md",
+      "sha256": "096e6df2ec339abd841d0a850f2fcdeea0515de79f9de31316ace289d26b78ba",
+      "git_blob_sha": "bb249ff33ce9135ce3338a33932b46c224ae015a"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/EXPERIMENT_DESIGN.md",
+      "sha256": "760cac29afed2e98f81872133dd0c0b2f1bb98d9fe4660e17bf4fffdab6f8846",
+      "git_blob_sha": "da3b393060b5edbabc2121bf9bd6b82adab97038"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/FAILURES.md",
+      "sha256": "46df01e1c555f7265fbc09c5a6371fc1c18f3c62c6ef751561b79b8108c8c2f1",
+      "git_blob_sha": "2426f3863b6389c80aa7bb2a3bd4fd1b81003ae0"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/README.md",
+      "sha256": "126e4c089602ecd009fec9501ebdb92485b4c7d98441691b2dcbf578bfae768a",
+      "git_blob_sha": "3efe8809e72375a496d02449fd3f96ec11c9e2f9"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/REGRESSION_LOG.txt",
+      "sha256": "484721526ff9c7e3fc9e5cdc2cb45907ab29b5151824fccea256115938666255",
+      "git_blob_sha": "e038482edffa71fbaa22783d6ca6f12a98eda5a4"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/REGRESSION_RESULTS.json",
+      "sha256": "08c15abaca537b7f6d0cf2a98ae0a51fa2c32badc8746a7bf40ee990ca9c5f7c",
+      "git_blob_sha": "dc285f8d37a4ce0a728749fe42989ed9958a2339"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/REPRODUCE.md",
+      "sha256": "af252431b79782195115ff2497426d95733adf95e084956951ffef8352f5503e",
+      "git_blob_sha": "5dbdd59c6adbc8288a6141ca876cf6a0ab6f3d6e"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/RESULTS.json",
+      "sha256": "ab6ba5bc961a1753efcb15dfb426a1b6c8f35b6ae588b5730b31d85793b9d351",
+      "git_blob_sha": "8bc323b4753fd43c2bedcde8771aaae929507102"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/RESULTS.md",
+      "sha256": "1395873075694c3710a527d27d16d090ce871c77d1236155cf0753e7a8b2d6e2",
+      "git_blob_sha": "b175c5dc473081a34d6a1a487096cfbcfdcfbfde"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/RUN_LOG.txt",
+      "sha256": "fd61224d91848a1da1077681dc4a030e553a814635aa99c2e056545cee7bbe1a",
+      "git_blob_sha": "d22bd9c845f9773c7d78a97b5258137f26a71445"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/RUN_MANIFEST.json",
+      "sha256": "4914ec420aaec7add38b0b4c516029efa9e5e8c9c86f4455b8811f858aa31655",
+      "git_blob_sha": "907fcd958bc3529e02085acb213f2d615c5e1927"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/SOURCE_PINS.json",
+      "sha256": "98828042fe3191f6330c58ff7772b5a03486d1811157a55e440edaa8f6026b96",
+      "git_blob_sha": "0d87dfb4f744deab88381762bc34062e8d8c8d3d"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/VALIDATION.json",
+      "sha256": "0456bc5230c1b177381d3eb7b2db8cb40d0b98505e948fa888f43daf02e3bf0a",
+      "git_blob_sha": "6a94b02525a5e8ca4032a04eadeb4f9fdd979164"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/check-isolation.mjs",
+      "sha256": "a6dda14d757b3943281974edbc024580a4f419e0eded51a004aeb5780f46185c",
+      "git_blob_sha": "43d7081cd0c7d38c4c4bc3d453130b875b46dca0"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/harness.mjs",
+      "sha256": "cf947020f59be04de61c75ec08cd866606bd4b8af7eceeb6ed09482246de523a",
+      "git_blob_sha": "7bd309c33eb4b95962fc9fcc47e0e5e9a400c649"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/node-compat.mjs",
+      "sha256": "d65977b5b4216781bfc524062f5609448b97eaf26d44d15f74f6055eed4b461a",
+      "git_blob_sha": "a01916bfa5c8a47442293f49f3d3f3df82cf548a"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/A/P01.json",
+      "sha256": "1a7d49fc2bb27a2a8a99d400b534861ff9343c451a1e47641ccb5ed24d71e346",
+      "git_blob_sha": "7c0c0808830fb76c2c738a2555f3110b285627dd"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/A/P02.json",
+      "sha256": "5fec3b9ee0e4bf048650a6d72e37c433af2600ea45e430f55468763827dcf4b7",
+      "git_blob_sha": "4fd94f3d74aeae09470683d2905fd8032c56c5f6"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/A/P03.json",
+      "sha256": "3491350b562423a9bed63435086fdc8919ed67f4aea9dc5a8692b356e5065c73",
+      "git_blob_sha": "760d2ce2228308ff9d9b97f91d63c38a23772f40"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/A/T01.json",
+      "sha256": "1fdf2f35c856485adb938c14d1443f285b7ad0cb2133992a334cc424d877d7d6",
+      "git_blob_sha": "6078f1b8cde9ef91eb3234e009142013007bfc83"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/A/T02.json",
+      "sha256": "efa5084fe87338c57fecc8394fdab7b2ffe7a966d12e3a2dea7261ed4d082858",
+      "git_blob_sha": "7ca3cebd57eb61531c194148f053cbd74b1816e1"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/A/T03.json",
+      "sha256": "44fe4801b0c8705cad1cd1fadb3d08ab4e6adf93b31d755c5417ac9ff3816ff4",
+      "git_blob_sha": "bbbe91702dfd474161c7ab90688df0c6460da235"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/B/P01.json",
+      "sha256": "28e4134484d3d666ab2c616c749fcedc0cef999d1a0ffdf64dd87faf6c6376be",
+      "git_blob_sha": "13aff979731828dbbd7e829eb01251de76717002"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/B/P02.json",
+      "sha256": "46b8f50dc0369bd632df99d218991dd842ea4fbaea5e4d09ffe8171fe12c9fbe",
+      "git_blob_sha": "eb2bb4f95c5c869f9ea2e03db5ced48791aec608"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/B/P03.json",
+      "sha256": "e0317e804aabe091c4334b174ec97b93b2cb97c682befad6826b4da15d408ff4",
+      "git_blob_sha": "dc2f322443d481a0416e817490e92cae207ed10c"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/B/T01.json",
+      "sha256": "343c1285eadbe8c787cd81da0dd0fe5b01f60f50c774e33b2d89fa37e3be9da5",
+      "git_blob_sha": "154f479b604c75c0d4a411e79620a69bb9f79ecb"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/B/T02.json",
+      "sha256": "c45706a9fe58105bae7d16b235dc48b8bef55b5f04cad10d055e5b4bee60282c",
+      "git_blob_sha": "6989f51e5cd6657dd1fa7b4847187cd1755f48ef"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/B/T03.json",
+      "sha256": "fd198fbc0002fca1c958f2ba7a49f20a0d8050aee79dd6641c3e30e0a75b4c0f",
+      "git_blob_sha": "2eb1854f24fd67ffcb48e1210627f835c60f8ff0"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/C/P01.json",
+      "sha256": "392e4bd8c017facb11eda8affa92b7ed63427d3f704b6e3ebacd0711930d984b",
+      "git_blob_sha": "b8f987fe9dab1c83272d831793192a184dee3627"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/C/P02.json",
+      "sha256": "78455ae9c21639477669438a8dd869b97d5eab41a3e6999216458fc2a97bea25",
+      "git_blob_sha": "29d9e7ebc74afc038a6ea2ac339f3f07314c64a4"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/C/P03.json",
+      "sha256": "7f71041335344e148562425538e5c8e3f17ae18cf6f0de94a1b4fda83d89c053",
+      "git_blob_sha": "6ad02d6856d7e9f835a50a3f7ab1f2cc78a57f94"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/C/T01.json",
+      "sha256": "1fdf2f35c856485adb938c14d1443f285b7ad0cb2133992a334cc424d877d7d6",
+      "git_blob_sha": "6078f1b8cde9ef91eb3234e009142013007bfc83"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/C/T02.json",
+      "sha256": "efa5084fe87338c57fecc8394fdab7b2ffe7a966d12e3a2dea7261ed4d082858",
+      "git_blob_sha": "7ca3cebd57eb61531c194148f053cbd74b1816e1"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/C/T03.json",
+      "sha256": "44fe4801b0c8705cad1cd1fadb3d08ab4e6adf93b31d755c5417ac9ff3816ff4",
+      "git_blob_sha": "bbbe91702dfd474161c7ab90688df0c6460da235"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/D/P01.json",
+      "sha256": "cccd5184a2900f44f266650d2eb4190d64520cd6559ef7e9a9c4f32185044594",
+      "git_blob_sha": "ce2b0316e54ca64ed0e8a51d8aac0354e800912c"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/D/P02.json",
+      "sha256": "58134bffbdf736783b2690dc79a7df256ee3a256f5765c71812719930fde384b",
+      "git_blob_sha": "c050d6f598310282cb6b5d64a02704d0e4e94ae4"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/D/P03.json",
+      "sha256": "9cf27782627925bebcdfe759f956a757c4cca41323a939b67fd32308b09db22c",
+      "git_blob_sha": "0244a2db9f2b68ab089f15b75d9a5882da1c1b98"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/D/T01.json",
+      "sha256": "343c1285eadbe8c787cd81da0dd0fe5b01f60f50c774e33b2d89fa37e3be9da5",
+      "git_blob_sha": "154f479b604c75c0d4a411e79620a69bb9f79ecb"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/D/T02.json",
+      "sha256": "c45706a9fe58105bae7d16b235dc48b8bef55b5f04cad10d055e5b4bee60282c",
+      "git_blob_sha": "6989f51e5cd6657dd1fa7b4847187cd1755f48ef"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/D/T03.json",
+      "sha256": "fd198fbc0002fca1c958f2ba7a49f20a0d8050aee79dd6641c3e30e0a75b4c0f",
+      "git_blob_sha": "2eb1854f24fd67ffcb48e1210627f835c60f8ff0"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/P01-reader.json",
+      "sha256": "df5b1763d31e6cd07c31d3b0bc518adfb773227f86c76617484fdd9651658064",
+      "git_blob_sha": "5d3115d8bf501d6692a86c19bd05393a7c9f2969"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/P02-reader.json",
+      "sha256": "27ad77757df4845fedcbd42b2b76e02eea25265f0aa4cd664ae205f679a0124d",
+      "git_blob_sha": "97d317701b4fc56bc689ce85b69b5ea60d960089"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/P03-reader.json",
+      "sha256": "6468b06f37be7ecc1daac2fb43ec84a1069904525e239d62a8fdfa7b183b12a9",
+      "git_blob_sha": "76286ffc87dd1308b97f0b1d6ae825e188d84a8d"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/T01-reader.json",
+      "sha256": "c2ee0cf85f91c0b6d5effa2e8dc5649d9a8126f3d5e3fb92e4195bef15c2fb99",
+      "git_blob_sha": "4258edd6e30346ebb835205058f7ec8a194077b3"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/T02-reader.json",
+      "sha256": "ceffd753ddb7ed73ad38b47c99c7f7f48302de1ddb923ca7f73f97f2da4af044",
+      "git_blob_sha": "2ec8524b1f75e12c5acbf3c4c023e61fdddfaec7"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/T03-reader.json",
+      "sha256": "339e5b3cd0561c9e6865bf796d8354f20b4d4746a77af0073d700454e39e7a56",
+      "git_blob_sha": "7a85a4cf83866fab26c9b4a9b112a99a756cb2e2"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/regressions.mjs",
+      "sha256": "f726443545c4c1e371f1b2b1dbcf8d25d29c6f616fa61272ce97bb8930c4c2e0",
+      "git_blob_sha": "e56d583ea7f416ea715bdfb615138fdaa9f8c56a"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/semantic-parser.mjs",
+      "sha256": "eb864716ff62be4522bf302a1061ba0c01928371e25f85f2d1d6872067b2702d",
+      "git_blob_sha": "9484e170b4b75d1f7a5ad4140e144e4afcb66f14"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/structure.mjs",
+      "sha256": "c0a409793c67b9f01af00b7029eecb191dea379ba7d2ff72d4421499b553b267",
+      "git_blob_sha": "b3623ee883741929c8f158ddc5446fd4df3d9420"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/vocabulary.mjs",
+      "sha256": "d7491b112b8840e8c47152e4f7fc2a709000b5d021cbf455c157eddb1a92bc1f",
+      "git_blob_sha": "4f6190d3d3a44056ca8b8197266de341780f582d"
+    },
+    {
+      "path": "src/acceptance.mjs",
+      "sha256": "d8736bab39590323c23362e4a480de9020b1a02e95a6476548f167c9265a690a",
+      "git_blob_sha": "885b4f89759d29fc29bd5558cc8c24188f707c16"
+    },
+    {
+      "path": "src/csv.mjs",
+      "sha256": "959f42bed43045f664e5d57374f4580917ce99617fc978329dc3f9690b26d504",
+      "git_blob_sha": "bd9c2942b43446e0cfaa3db74b995105af8c495b"
+    },
+    {
+      "path": "src/evidence.mjs",
+      "sha256": "28575f1ae559938256f6d87dc173c90a821a3dae2a753f03f2864d36d7189648",
+      "git_blob_sha": "16b57c7e991870cc36ef51683695b61b9b3a5724"
+    },
+    {
+      "path": "src/holdings.mjs",
+      "sha256": "76334aefc622d20aee1aaa302640f7cb2ceb7ec786808c038452b7161b267466",
+      "git_blob_sha": "5bb4be45c7a42996b2f4746e6371763142095be4"
+    },
+    {
+      "path": "src/layout.mjs",
+      "sha256": "e38dee3fa4fd40b5450debf520fed235eff392bc6d25f590ffdb65eb84a9ae39",
+      "git_blob_sha": "7aa67e9cc1960a71cc65571f66df719b9bf2d8f5"
+    },
+    {
+      "path": "src/numbers.mjs",
+      "sha256": "df344b9f9a42331ba82c8c20c82564b4eb068ee18f606a7a3e8fe92e460edcce",
+      "git_blob_sha": "a9ae0ed4093eff6ffc042f12e4510cc4d84041a0"
+    },
+    {
+      "path": "src/payroll-lines.mjs",
+      "sha256": "148ea4de933dbe938ad4b5a2ca4587e658c60869ad988454eb6f2815d33d5aee",
+      "git_blob_sha": "37d61f9fd3488014b532651937cbf502766deebc"
+    },
+    {
+      "path": "src/payroll-sections.mjs",
+      "sha256": "1252cf3b21d9e7fdad78b9b403030fdb4719e5bda125959460b42b421224d46f",
+      "git_blob_sha": "242894e6981ce3e1a2d7a70257d9d3af3f55ec1c"
+    },
+    {
+      "path": "src/payroll.mjs",
+      "sha256": "4cb5905c6295912af688fcb38f5580e474ab78cfd0f3b8e743c1d7d664afffcb",
+      "git_blob_sha": "818eae52b5bd919c44de459ff51cf83c93d6020a"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/P01.json",
+      "sha256": "561374d3750c735b81af63a913a3df7dcdd3145d619b7471cb9669623fc66426",
+      "git_blob_sha": "a392e87ccb2da207e70e723a49dcc78dfbd039a4"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/P02.json",
+      "sha256": "b08aa4dd7eb02759e3e2ee5cf03191379740071f55c9a93db7293f611b81422e",
+      "git_blob_sha": "982e950e014a9780880dba7cd4ad03f71527ac73"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/P03.json",
+      "sha256": "43ee15fdb0a59eb0b82a51ec9fb69c31b3551838dd6f67c26adf9978a7bc9426",
+      "git_blob_sha": "633fa1959d04e2e0d32036756ca311219f38fa52"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/T01.json",
+      "sha256": "4f5de2992a9424ebe2b7900d098f2885b53072c292c73ac1e58a9b30aaa4f697",
+      "git_blob_sha": "9e31f80843931ca2fba95ac3b27c34489179ac56"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/T02.json",
+      "sha256": "c00695246b13bc65e78109726325922b9e9c1cbb488800c8ae05f8fff1338427",
+      "git_blob_sha": "267d4614dff9e7683cdc80f59e65054d5acaa664"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/T03.json",
+      "sha256": "7c7d2c3462884b7ad57ab280c46b017dbc413cdda789b018410298e0d8de4c56",
+      "git_blob_sha": "1a575c081d4ec1118863c937e51686a5d91a60a4"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/P01.pdf",
+      "sha256": "2edfe9ae3ac7896baa1c2041d87cf4a226675add731b803ef9084e635a021c01",
+      "git_blob_sha": "2e520db36f7265141636adf3414ebd96f1e1d049"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/P02.pdf",
+      "sha256": "75951281d8c88a830b5714c8dd047f174728da2c59bfae0d217bba3a06112361",
+      "git_blob_sha": "a4d2f3ccf6fa18ebb2516cf032394b559bf0e1e6"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/P03.pdf",
+      "sha256": "d217037f46f15ef8cc7447cbec01d0a8cce4beb241175841c09872ff8c9e9950",
+      "git_blob_sha": "a53a5d979b1b5974f85c1af493721d8dc9d05d38"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/T01.pdf",
+      "sha256": "9fcdb7a6f154a85c4ba86ff0ba8d66ad3adc0642882c61f1ba98d1799ba2ff28",
+      "git_blob_sha": "21f0d097606811131e564e8fd2fae79f434c81a2"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/T02.pdf",
+      "sha256": "18b35155d71d2b8b81431eceab20aecc232e504e6578cf165b18713792a13a82",
+      "git_blob_sha": "23f772ecf52c31f91f0511c56c259f8cde35a45d"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/T03.pdf",
+      "sha256": "f5e30b01ef4219cffc0b07a00be024498d7f96e477c8e279d8540649c3408273",
+      "git_blob_sha": "3d2d6b83984f7e6469bf4196426c1570b709d22c"
+    },
+    {
+      "path": "research/blindtest-v1/README.md",
+      "sha256": "80f0ab39808f36e493b368595b1ae4f3e71e4e2445f2ac55911b39f0606b8afc",
+      "git_blob_sha": "ba6df3845fcbb12003065c9d0716effe7a153767"
+    },
+    {
+      "path": "research/blindtest-v1/TEST_PROTOCOL.md",
+      "sha256": "e8273a59637496b359e1c7d34222a5dee9c326179905a0ee5d26f9fa0f008682",
+      "git_blob_sha": "4b2d33a5ea261ad5d8efa0fda2300b8ee5b074ba"
+    },
+    {
+      "path": "research/blindtest-v1/VALIDATION_REPORT.md",
+      "sha256": "0ccb4d1a00306613e2dbfdc9b3f4abb174b8fa42a447bb76cd863735a0807e58",
+      "git_blob_sha": "37bf348419df4da8beecb4f565c93203ca046ea2"
+    },
+    {
+      "path": "research/blindtest-v1/MANIFEST.json",
+      "sha256": "7fa2ec599e8b0c18d473dfcf9b82f021de8558b0adc5376e14275f9ec93b270c",
+      "git_blob_sha": "030c526c7b9c5541a6521fc94525c3b264ae6387"
+    }
+  ],
+  "original_files_unchanged_before_after": 64,
+  "experiment_source_hashes": [
+    {
+      "path": "structure-e.mjs",
+      "sha256": "2fd89f3739a74861dc208bb83dbe764b768e266d49223ba577334a005edbf28f"
+    },
+    {
+      "path": "harness.mjs",
+      "sha256": "730f9e1217e3cebed5cd9823d0ad669888c9a36054b596ed3cdcf78df06a293c"
+    },
+    {
+      "path": "adversarial.mjs",
+      "sha256": "732685b6dfde3bf5b62375ce47e6220b3d41b10123af251df02013d98e492ab0"
+    },
+    {
+      "path": "ADVERSARIAL_CASES.json",
+      "sha256": "45804195628afe1fcba7806de68cdadced699bce7bd3d79c7ae92ac5a75fa55a"
+    },
+    {
+      "path": "PREREGISTRATION.json",
+      "sha256": "fc75850a919c40f0674b4e68927e9a44c6ce6640d501c99392ffb34a528c62b0"
+    },
+    {
+      "path": "SOURCE_PINS.json",
+      "sha256": "edf2eaa0f131f337e8eaa5c56d387bc90c01c55f26053ed1efdf3219223d98ed"
+    },
+    {
+      "path": "e-regressions.mjs",
+      "sha256": "f586215376784597ca98649921cce7aec3a4b9790b645d8a613ad7a46e8b8ffb"
+    },
+    {
+      "path": "benchmark.mjs",
+      "sha256": "d08e351fec40d70bbca4be46c8d94318db1b2a6eaf68cc693da6c6d34a5b6e69"
+    }
+  ],
+  "holdout_accessed_in_this_task": false,
+  "independence": "Same agent authored DEV earlier; development countertests, not independent generalization validation"
+}

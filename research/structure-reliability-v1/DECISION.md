@@ -1,0 +1,14 @@
+# Päätösehdotus
+
+1. **Korjautuivatko väärät solusidokset?** Väärä varmuus korjautui: 7/7 vanhaa virheellistä ehdotusta säilyy uncertain-tilassa. E:llä on 26/26 arvioitavaa varmaa sidosta oikein. Itse seitsemän rivin oikeaa solugridiä ei kokonaan ratkaistu, ja varma recall pysyy 26/87:ssa.
+2. **T01 ja T03:** T01 palautuu 0/2 → 2/2 kokonaiseksi tietueeksi, valuutta mukana; T03 pysyy 2/2. Sama tunnus eri tileillä ei yhdistä tietueita. Kaikkien 16 recordin rivieheys 11/16 → 13/16.
+3. **Kymmenen ydinkenttää:** säilyvät 10/11 oikeina arvo-/otsikkolähteineen. Sanasto, numerotulkinta ja hyväksyntäsäännöt ovat samat kuin D:ssä.
+4. **Uusia vääriä sidoksia?** Ei uusia havaittuja vääriä varmoja sidoksia tai verified-ydinkenttiä. Yksi uusi väärä uncertain-sarakehypoteesi P03:ssa on todellinen vastanäyttö täydelliselle rakennetulkinnalle. Vaarallisia candidate-ready-tuloksia 0/6 kummallakin.
+5. **Milloin epävarmuus on perusteltu?** Useat luvut saman recordin rivillä, useat kilpailevat pystyarvot, pelkkä sarakkeen x-linjaus ilman validoitua gridiä, monirivinen tekstifragmentti ja puuttuva/viivamuotoinen arvo. Kaikki lähteet säilyvät. Yksikköehdotuksen semantiikkaa ei varmenneta yleisessä ytimessä.
+6. **Lisämonimutkaisuus:** rakennekoodi 90 → 158 riviä, +68. E lisää record-, yksikkö- ja sarakehypoteesien rikastuksen sekä uusia rajauksia. Node-erän mediaani kasvoi noin 14 % tässä ajossa; mobiilikustannus on avoin. Mahdolliset neliölliset haut ja tutkimuskopion drift-riski jäävät.
+7. **Avoimet rakenteet:** taulukon päättymisraja, monirivinen record, sivujatkos, yhdistetty solu, aito kortti vs sarakeheader sekä typografisesti samanlaiset jaetut numerot vs erilliset kentät. Kattavuusportin katve ei ole korjautunut rakenteella.
+8. **HOLDOUT-valmius:** **GO E:n jäädyttämiselle rajatuksi tutkimuskandidaatiksi myöhempään riippumattoman arvioijan HOLDOUT-kokeeseen.** Kaikki sovitut DEV-kehitystavoitteet täyttyvät; 32/32 alkuperäistä, 8/8 samoja E-predikaatteja ja 12/12 uusia vastatapauksia. Tämä ei ole väite vakaudesta tuntemattomille dokumenteille. HOLDOUTin tarkoitus on juuri mitata jäljelle jäävä virhevarmuus ja recall; tässä sitä ei avattu eikä ajettu.
+
+Arvioijan tulee käyttää lukittua kandidaatticommittia, samaa D-kontrollia ja ennakkoon lukittuja erillisiä mittareita: väärät varmat, oikein varmat, varma recall, epävarmojen hypoteesien laatu/määrä, record-eheys sekä verified-/acceptance-virheet. Epävarman oikein sisältävän vaihtoehdon löytymistä ei saa laskea varmaksi onnistumiseksi. Jos HOLDOUT-tapaus paljastetaan toteuttajalle korjaukseen, se muuttuu DEV:ksi eikä samaa aineistoa voi kutsua uudelleen sokoksi.
+
+Yhteiseen ytimeen kuuluu lähdehavainto ja geometrinen ehdotus tiloineen. Palkkasanasto kuuluu adapteriin; hyväksyntä-/tallennussäännöt ovat erillinen portti. Tämä raja säilyi kokeessa. Käyttäjä päättää mahdollisesta seuraavasta vaiheesta ja tuotannosta; tuotantointegraatiota ei tehty eikä suositella tämän aineiston perusteella.

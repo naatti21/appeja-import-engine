@@ -1,0 +1,531 @@
+{
+  "scope": "12 pre-implementation development adversarial cases; not independent validation; in-memory observations, not PDFs",
+  "cases": [
+    {
+      "id": "S01",
+      "purpose": "numeric suffix stays with record",
+      "lines": [
+        [
+          0.27,
+          [
+            [
+              0.11,
+              "Mass",
+              0.1
+            ],
+            [
+              0.49,
+              "12",
+              0.03
+            ],
+            [
+              0.54,
+              "kg",
+              0.03
+            ]
+          ]
+        ]
+      ],
+      "expect": {
+        "rows": 1,
+        "certain": 1,
+        "unit_raw": "kg"
+      }
+    },
+    {
+      "id": "S02",
+      "purpose": "text-number-text account row remains intact",
+      "lines": [
+        [
+          0.29,
+          [
+            [
+              0.1,
+              "ACCOUNT-X",
+              0.14
+            ],
+            [
+              0.3,
+              "DEMO",
+              0.08
+            ],
+            [
+              0.46,
+              "9",
+              0.025
+            ],
+            [
+              0.6,
+              "7.25",
+              0.06
+            ],
+            [
+              0.81,
+              "USD",
+              0.05
+            ]
+          ]
+        ]
+      ],
+      "expect": {
+        "rows": 1,
+        "certain": 0,
+        "uncertain_min": 1,
+        "unit_raw": "USD"
+      }
+    },
+    {
+      "id": "S03",
+      "purpose": "multi-value line is not one scalar",
+      "lines": [
+        [
+          0.33,
+          [
+            [
+              0.12,
+              "Part",
+              0.1
+            ],
+            [
+              0.42,
+              "5",
+              0.025
+            ],
+            [
+              0.62,
+              "2.10",
+              0.06
+            ],
+            [
+              0.84,
+              "10.50",
+              0.07
+            ]
+          ]
+        ]
+      ],
+      "expect": {
+        "rows": 1,
+        "certain": 0,
+        "uncertain_min": 1
+      }
+    },
+    {
+      "id": "S04",
+      "purpose": "column hypotheses separate from row label",
+      "lines": [
+        [
+          0.21,
+          [
+            [
+              0.12,
+              "Object",
+              0.1
+            ],
+            [
+              0.43,
+              "Count",
+              0.08
+            ],
+            [
+              0.71,
+              "Cost",
+              0.08
+            ]
+          ]
+        ],
+        [
+          0.25,
+          [
+            [
+              0.12,
+              "Bolt",
+              0.08
+            ],
+            [
+              0.43,
+              "4",
+              0.03
+            ],
+            [
+              0.71,
+              "8.20",
+              0.07
+            ]
+          ]
+        ]
+      ],
+      "expect": {
+        "certain": 0,
+        "uncertain_min": 1,
+        "column_min": 2
+      }
+    },
+    {
+      "id": "S05",
+      "purpose": "two clear local scalar pairs remain available",
+      "lines": [
+        [
+          0.31,
+          [
+            [
+              0.08,
+              "Alpha",
+              0.1
+            ],
+            [
+              0.3,
+              "9.00",
+              0.06
+            ],
+            [
+              0.57,
+              "Beta",
+              0.08
+            ],
+            [
+              0.82,
+              "13.00",
+              0.08
+            ]
+          ]
+        ]
+      ],
+      "expect": {
+        "rows": 2,
+        "certain": 2
+      }
+    },
+    {
+      "id": "S06",
+      "purpose": "repeated headers split parallel records",
+      "lines": [
+        [
+          0.18,
+          [
+            [
+              0.08,
+              "Code",
+              0.07
+            ],
+            [
+              0.24,
+              "Qty",
+              0.05
+            ],
+            [
+              0.38,
+              "Unit",
+              0.06
+            ],
+            [
+              0.59,
+              "Code",
+              0.07
+            ],
+            [
+              0.74,
+              "Qty",
+              0.05
+            ],
+            [
+              0.88,
+              "Unit",
+              0.06
+            ]
+          ]
+        ],
+        [
+          0.23,
+          [
+            [
+              0.08,
+              "0042",
+              0.07
+            ],
+            [
+              0.24,
+              "6",
+              0.025
+            ],
+            [
+              0.38,
+              "m",
+              0.02
+            ],
+            [
+              0.59,
+              "0042",
+              0.07
+            ],
+            [
+              0.74,
+              "11",
+              0.04
+            ],
+            [
+              0.88,
+              "m",
+              0.02
+            ]
+          ]
+        ]
+      ],
+      "expect": {
+        "data_y": 0.23,
+        "data_rows": 2,
+        "no_cross_region_mix": true
+      }
+    },
+    {
+      "id": "S07",
+      "purpose": "competing vertical values retain uncertainty",
+      "lines": [
+        [
+          0.11,
+          [
+            [
+              0.08,
+              "LEFT CARD",
+              0.19
+            ],
+            [
+              0.64,
+              "RIGHT CARD",
+              0.2
+            ]
+          ]
+        ],
+        [
+          0.15,
+          [
+            [
+              0.08,
+              "Caption",
+              0.1
+            ]
+          ]
+        ],
+        [
+          0.168,
+          [
+            [
+              0.2,
+              "13.00",
+              0.08
+            ]
+          ]
+        ],
+        [
+          0.18,
+          [
+            [
+              0.2,
+              "14.00",
+              0.08
+            ]
+          ]
+        ]
+      ],
+      "expect": {
+        "certain": 0,
+        "uncertain_min": 1
+      }
+    },
+    {
+      "id": "S08",
+      "purpose": "multiline fragment stays separate and uncertain",
+      "lines": [
+        [
+          0.36,
+          [
+            [
+              0.14,
+              "Service",
+              0.1
+            ],
+            [
+              0.79,
+              "30.00",
+              0.08
+            ]
+          ]
+        ],
+        [
+          0.374,
+          [
+            [
+              0.14,
+              "continued details",
+              0.2
+            ]
+          ]
+        ]
+      ],
+      "expect": {
+        "rows": 2,
+        "multiline_min": 1
+      }
+    },
+    {
+      "id": "S09",
+      "purpose": "equal values in distinct records retain distinct sources",
+      "lines": [
+        [
+          0.28,
+          [
+            [
+              0.14,
+              "First",
+              0.08
+            ],
+            [
+              0.71,
+              "17.00",
+              0.07
+            ]
+          ]
+        ],
+        [
+          0.34,
+          [
+            [
+              0.14,
+              "Second",
+              0.09
+            ],
+            [
+              0.71,
+              "17.00",
+              0.07
+            ]
+          ]
+        ]
+      ],
+      "expect": {
+        "rows": 2,
+        "certain": 2,
+        "distinct_value_ids": 2
+      }
+    },
+    {
+      "id": "S10",
+      "purpose": "intervening label forbids vertical jump",
+      "lines": [
+        [
+          0.1,
+          [
+            [
+              0.08,
+              "LEFT CARD",
+              0.19
+            ],
+            [
+              0.64,
+              "RIGHT CARD",
+              0.2
+            ]
+          ]
+        ],
+        [
+          0.15,
+          [
+            [
+              0.08,
+              "Caption",
+              0.1
+            ]
+          ]
+        ],
+        [
+          0.163,
+          [
+            [
+              0.08,
+              "Other caption",
+              0.16
+            ]
+          ]
+        ],
+        [
+          0.18,
+          [
+            [
+              0.2,
+              "15.00",
+              0.08
+            ]
+          ]
+        ]
+      ],
+      "expect": {
+        "forbid_label_value": {
+          "label": "Caption",
+          "value": "15.00"
+        }
+      }
+    },
+    {
+      "id": "S11",
+      "purpose": "nearby independent integers are not thousands fragments",
+      "lines": [
+        [
+          0.37,
+          [
+            [
+              0.13,
+              "Count",
+              0.09
+            ],
+            [
+              0.45,
+              "12",
+              0.03
+            ],
+            [
+              0.49,
+              "20",
+              0.03
+            ]
+          ]
+        ]
+      ],
+      "expect": {
+        "rows": 1,
+        "certain": 0,
+        "uncertain_min": 1
+      }
+    },
+    {
+      "id": "S12",
+      "purpose": "split thousands retains both source pieces",
+      "lines": [
+        [
+          0.38,
+          [
+            [
+              0.12,
+              "Balance",
+              0.1
+            ],
+            [
+              0.53,
+              "3",
+              0.02
+            ],
+            [
+              0.56,
+              "456,78",
+              0.09
+            ]
+          ]
+        ]
+      ],
+      "expect": {
+        "rows": 1,
+        "certain": 1,
+        "value_source_count": 2
+      }
+    }
+  ]
+}

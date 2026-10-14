@@ -1,0 +1,162 @@
+[
+  {
+    "id": "foreign-aliases",
+    "variant": "A",
+    "pass": true
+  },
+  {
+    "id": "foreign-aliases",
+    "variant": "B",
+    "pass": true
+  },
+  {
+    "id": "foreign-aliases",
+    "variant": "C",
+    "pass": true
+  },
+  {
+    "id": "foreign-aliases",
+    "variant": "D",
+    "pass": true
+  },
+  {
+    "id": "tax-card-qualified-label",
+    "variant": "A",
+    "pass": true
+  },
+  {
+    "id": "tax-card-qualified-label",
+    "variant": "B",
+    "pass": true
+  },
+  {
+    "id": "tax-card-qualified-label",
+    "variant": "C",
+    "pass": true
+  },
+  {
+    "id": "tax-card-qualified-label",
+    "variant": "D",
+    "pass": true
+  },
+  {
+    "id": "tax-card-section",
+    "variant": "A",
+    "pass": true
+  },
+  {
+    "id": "tax-card-section",
+    "variant": "B",
+    "pass": true
+  },
+  {
+    "id": "tax-card-section",
+    "variant": "C",
+    "pass": true
+  },
+  {
+    "id": "tax-card-section",
+    "variant": "D",
+    "pass": true
+  },
+  {
+    "id": "year-section-not-period-gross",
+    "variant": "A",
+    "pass": true
+  },
+  {
+    "id": "year-section-not-period-gross",
+    "variant": "B",
+    "pass": true
+  },
+  {
+    "id": "year-section-not-period-gross",
+    "variant": "C",
+    "pass": true
+  },
+  {
+    "id": "year-section-not-period-gross",
+    "variant": "D",
+    "pass": true
+  },
+  {
+    "id": "ambiguous-three-decimals",
+    "variant": "A",
+    "pass": true
+  },
+  {
+    "id": "ambiguous-three-decimals",
+    "variant": "B",
+    "pass": true
+  },
+  {
+    "id": "ambiguous-three-decimals",
+    "variant": "C",
+    "pass": true
+  },
+  {
+    "id": "ambiguous-three-decimals",
+    "variant": "D",
+    "pass": true
+  },
+  {
+    "id": "competing-vertical-values",
+    "variant": "A",
+    "pass": true
+  },
+  {
+    "id": "competing-vertical-values",
+    "variant": "B",
+    "pass": true
+  },
+  {
+    "id": "competing-vertical-values",
+    "variant": "C",
+    "pass": true
+  },
+  {
+    "id": "competing-vertical-values",
+    "variant": "D",
+    "pass": true
+  },
+  {
+    "id": "contradictory-same-role",
+    "variant": "A",
+    "pass": true
+  },
+  {
+    "id": "contradictory-same-role",
+    "variant": "B",
+    "pass": true
+  },
+  {
+    "id": "contradictory-same-role",
+    "variant": "C",
+    "pass": true
+  },
+  {
+    "id": "contradictory-same-role",
+    "variant": "D",
+    "pass": true
+  },
+  {
+    "id": "previous-transfer-not-net",
+    "variant": "A",
+    "pass": true
+  },
+  {
+    "id": "previous-transfer-not-net",
+    "variant": "B",
+    "pass": true
+  },
+  {
+    "id": "previous-transfer-not-net",
+    "variant": "C",
+    "pass": true
+  },
+  {
+    "id": "previous-transfer-not-net",
+    "variant": "D",
+    "pass": true
+  }
+]

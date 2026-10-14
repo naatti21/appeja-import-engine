@@ -1,0 +1,131 @@
+Warning: Please use the `legacy` build in Node.js environments.
+Semantic parser differs only by import paths, exported name, and documented lexical hook/context. Numeric rules, payline rules, source binding, resolver and acceptance logic identical.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+[
+  {
+    "id": "P01",
+    "results": {
+      "D": {
+        "core": "4/4",
+        "correct": 8,
+        "wrong": 0,
+        "recall": "8/26",
+        "uncertain": 0
+      },
+      "E": {
+        "core": "4/4",
+        "correct": 8,
+        "wrong": 0,
+        "recall": "8/26",
+        "uncertain": 4
+      }
+    }
+  },
+  {
+    "id": "P02",
+    "results": {
+      "D": {
+        "core": "4/4",
+        "correct": 7,
+        "wrong": 2,
+        "recall": "7/13",
+        "uncertain": 0
+      },
+      "E": {
+        "core": "4/4",
+        "correct": 7,
+        "wrong": 0,
+        "recall": "7/13",
+        "uncertain": 2
+      }
+    }
+  },
+  {
+    "id": "P03",
+    "results": {
+      "D": {
+        "core": "2/3",
+        "correct": 4,
+        "wrong": 2,
+        "recall": "4/14",
+        "uncertain": 0
+      },
+      "E": {
+        "core": "2/3",
+        "correct": 4,
+        "wrong": 0,
+        "recall": "4/14",
+        "uncertain": 3
+      }
+    }
+  },
+  {
+    "id": "T01",
+    "results": {
+      "D": {
+        "core": "0/0",
+        "correct": 1,
+        "wrong": 2,
+        "recall": "1/13",
+        "uncertain": 0
+      },
+      "E": {
+        "core": "0/0",
+        "correct": 1,
+        "wrong": 0,
+        "recall": "1/13",
+        "uncertain": 2
+      }
+    }
+  },
+  {
+    "id": "T02",
+    "results": {
+      "D": {
+        "core": "0/0",
+        "correct": 5,
+        "wrong": 1,
+        "recall": "5/14",
+        "uncertain": 0
+      },
+      "E": {
+        "core": "0/0",
+        "correct": 5,
+        "wrong": 0,
+        "recall": "5/14",
+        "uncertain": 3
+      }
+    }
+  },
+  {
+    "id": "T03",
+    "results": {
+      "D": {
+        "core": "0/0",
+        "correct": 1,
+        "wrong": 0,
+        "recall": "1/7",
+        "uncertain": 0
+      },
+      "E": {
+        "core": "0/0",
+        "correct": 1,
+        "wrong": 0,
+        "recall": "1/7",
+        "uncertain": 2
+      }
+    }
+  }
+]

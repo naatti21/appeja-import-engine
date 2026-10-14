@@ -1,0 +1,280 @@
+[
+  {
+    "id": "S01",
+    "variant": "D",
+    "pass": false,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": false,
+      "certain": true,
+      "unit": false
+    }
+  },
+  {
+    "id": "S01",
+    "variant": "E",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "certain": true,
+      "unit": true
+    }
+  },
+  {
+    "id": "S02",
+    "variant": "D",
+    "pass": false,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": false,
+      "certain": false,
+      "uncertainty": false,
+      "unit": false
+    }
+  },
+  {
+    "id": "S02",
+    "variant": "E",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "certain": true,
+      "uncertainty": true,
+      "unit": true
+    }
+  },
+  {
+    "id": "S03",
+    "variant": "D",
+    "pass": false,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "certain": false,
+      "uncertainty": false
+    }
+  },
+  {
+    "id": "S03",
+    "variant": "E",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "certain": true,
+      "uncertainty": true
+    }
+  },
+  {
+    "id": "S04",
+    "variant": "D",
+    "pass": false,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "certain": true,
+      "uncertainty": false,
+      "columns": false
+    }
+  },
+  {
+    "id": "S04",
+    "variant": "E",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "certain": true,
+      "uncertainty": true,
+      "columns": true
+    }
+  },
+  {
+    "id": "S05",
+    "variant": "D",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "certain": true
+    }
+  },
+  {
+    "id": "S05",
+    "variant": "E",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "certain": true
+    }
+  },
+  {
+    "id": "S06",
+    "variant": "D",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "data_rows": true,
+      "purity": true
+    }
+  },
+  {
+    "id": "S06",
+    "variant": "E",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "data_rows": true,
+      "purity": true
+    }
+  },
+  {
+    "id": "S07",
+    "variant": "D",
+    "pass": false,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "certain": true,
+      "uncertainty": false
+    }
+  },
+  {
+    "id": "S07",
+    "variant": "E",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "certain": true,
+      "uncertainty": true
+    }
+  },
+  {
+    "id": "S08",
+    "variant": "D",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "multiline": true
+    }
+  },
+  {
+    "id": "S08",
+    "variant": "E",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "multiline": true
+    }
+  },
+  {
+    "id": "S09",
+    "variant": "D",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "certain": true,
+      "distinct_values": true
+    }
+  },
+  {
+    "id": "S09",
+    "variant": "E",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "certain": true,
+      "distinct_values": true
+    }
+  },
+  {
+    "id": "S10",
+    "variant": "D",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "no_jump": true
+    }
+  },
+  {
+    "id": "S10",
+    "variant": "E",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "no_jump": true
+    }
+  },
+  {
+    "id": "S11",
+    "variant": "D",
+    "pass": false,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "certain": false,
+      "uncertainty": false
+    }
+  },
+  {
+    "id": "S11",
+    "variant": "E",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "certain": true,
+      "uncertainty": true
+    }
+  },
+  {
+    "id": "S12",
+    "variant": "D",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "certain": true,
+      "split_value": true
+    }
+  },
+  {
+    "id": "S12",
+    "variant": "E",
+    "pass": true,
+    "checks": {
+      "observations_unchanged": true,
+      "token_multiset_preserved": true,
+      "rows": true,
+      "certain": true,
+      "split_value": true
+    }
+  }
+]

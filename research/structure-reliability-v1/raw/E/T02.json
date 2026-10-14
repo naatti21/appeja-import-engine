@@ -1,0 +1,2536 @@
+{
+  "layout": {
+    "schemaVersion": 1,
+    "sourceKind": "pdf-text",
+    "observations": [
+      {
+        "id": "pdf-p1-t1",
+        "kind": "text",
+        "raw": "LASKU / DEMO-INV-28",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.023753,
+          "x1": 0.378175,
+          "y1": 0.045131
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 0,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t3",
+        "kind": "text",
+        "raw": "Kuvitteellinen Hattarapolku Tarvike Oy",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.061758,
+          "x1": 0.339597,
+          "y1": 0.073634
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 2,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t5",
+        "kind": "text",
+        "raw": "SYNTHETIC TEST DATA - FICTIONAL / EI OIKEA ASIAKIRJA",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.963183,
+          "x1": 0.431099,
+          "y1": 0.972684
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 4,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t7",
+        "kind": "text",
+        "raw": "T02 / 1",
+        "page": 1,
+        "box": {
+          "x0": 0.899321,
+          "y0": 0.963183,
+          "x1": 0.941176,
+          "y1": 0.972684
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 6,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t9",
+        "kind": "text",
+        "raw": "Eräpäivä",
+        "page": 1,
+        "box": {
+          "x0": 0.062185,
+          "y0": 0.124703,
+          "x1": 0.121872,
+          "y1": 0.135392
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 8,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t11",
+        "kind": "text",
+        "raw": "16.06.2026",
+        "page": 1,
+        "box": {
+          "x0": 0.799926,
+          "y0": 0.122328,
+          "x1": 0.892437,
+          "y1": 0.135392
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 10,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t13",
+        "kind": "text",
+        "raw": "Laskurivit",
+        "page": 1,
+        "box": {
+          "x0": 0.058824,
+          "y0": 0.206651,
+          "x1": 0.146158,
+          "y1": 0.219715
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 12,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t15",
+        "kind": "text",
+        "raw": "Palvelu / toimitus",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.241093,
+          "x1": 0.193319,
+          "y1": 0.251781
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 14,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t17",
+        "kind": "text",
+        "raw": "kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.438655,
+          "y0": 0.241093,
+          "x1": 0.460513,
+          "y1": 0.251781
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 16,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t19",
+        "kind": "text",
+        "raw": "EUR/kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.556303,
+          "y0": 0.241093,
+          "x1": 0.614296,
+          "y1": 0.251781
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 18,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t21",
+        "kind": "text",
+        "raw": "Netto EUR",
+        "page": 1,
+        "box": {
+          "x0": 0.732773,
+          "y0": 0.241093,
+          "x1": 0.807556,
+          "y1": 0.251781
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 20,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t23",
+        "kind": "text",
+        "raw": "Tarvikepaketti A",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.284442,
+          "x1": 0.177346,
+          "y1": 0.295131
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 22,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t25",
+        "kind": "text",
+        "raw": "4",
+        "page": 1,
+        "box": {
+          "x0": 0.438655,
+          "y0": 0.284442,
+          "x1": 0.447066,
+          "y1": 0.295131
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 24,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t27",
+        "kind": "text",
+        "raw": "49,50",
+        "page": 1,
+        "box": {
+          "x0": 0.556303,
+          "y0": 0.284442,
+          "x1": 0.594148,
+          "y1": 0.295131
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 26,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t29",
+        "kind": "text",
+        "raw": "198,00",
+        "page": 1,
+        "box": {
+          "x0": 0.732773,
+          "y0": 0.284442,
+          "x1": 0.779029,
+          "y1": 0.295131
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 28,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t30",
+        "kind": "text",
+        "raw": "Tarvikepaketti B",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.33076,
+          "x1": 0.177346,
+          "y1": 0.341449
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 29,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t31",
+        "kind": "text",
+        "raw": "kaksi erillistä toimituserää",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.345012,
+          "x1": 0.241208,
+          "y1": 0.355701
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 30,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t33",
+        "kind": "text",
+        "raw": "2",
+        "page": 1,
+        "box": {
+          "x0": 0.438655,
+          "y0": 0.337886,
+          "x1": 0.447066,
+          "y1": 0.348575
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 32,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t35",
+        "kind": "text",
+        "raw": "49,40",
+        "page": 1,
+        "box": {
+          "x0": 0.556303,
+          "y0": 0.337886,
+          "x1": 0.594148,
+          "y1": 0.348575
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 34,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t37",
+        "kind": "text",
+        "raw": "98,80",
+        "page": 1,
+        "box": {
+          "x0": 0.732773,
+          "y0": 0.337886,
+          "x1": 0.770618,
+          "y1": 0.348575
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 36,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t38",
+        "kind": "text",
+        "raw": "Lisätieto: pakkaus sisältyy hintaan",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.39133,
+          "x1": 0.297583,
+          "y1": 0.402019
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 37,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t40",
+        "kind": "text",
+        "raw": "-",
+        "page": 1,
+        "box": {
+          "x0": 0.732773,
+          "y0": 0.39133,
+          "x1": 0.73781,
+          "y1": 0.402019
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 39,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t41",
+        "kind": "text",
+        "raw": "Veroton yhteensä",
+        "page": 1,
+        "box": {
+          "x0": 0.062185,
+          "y0": 0.469121,
+          "x1": 0.180743,
+          "y1": 0.47981
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 40,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t43",
+        "kind": "text",
+        "raw": "296,80",
+        "page": 1,
+        "box": {
+          "x0": 0.852709,
+          "y0": 0.466746,
+          "x1": 0.909244,
+          "y1": 0.47981
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 42,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t45",
+        "kind": "text",
+        "raw": "ALV",
+        "page": 1,
+        "box": {
+          "x0": 0.062185,
+          "y0": 0.514252,
+          "x1": 0.090773,
+          "y1": 0.524941
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 44,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t47",
+        "kind": "text",
+        "raw": "25,5 %",
+        "page": 1,
+        "box": {
+          "x0": 0.851692,
+          "y0": 0.511876,
+          "x1": 0.909244,
+          "y1": 0.524941
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 46,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t49",
+        "kind": "text",
+        "raw": "Vero EUR",
+        "page": 1,
+        "box": {
+          "x0": 0.062185,
+          "y0": 0.555819,
+          "x1": 0.130267,
+          "y1": 0.566508
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 48,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t51",
+        "kind": "text",
+        "raw": "75,68",
+        "page": 1,
+        "box": {
+          "x0": 0.862988,
+          "y0": 0.553444,
+          "x1": 0.909244,
+          "y1": 0.566508
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 50,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t53",
+        "kind": "text",
+        "raw": "Maksettava EUR",
+        "page": 1,
+        "box": {
+          "x0": 0.062185,
+          "y0": 0.611639,
+          "x1": 0.175661,
+          "y1": 0.622328
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 52,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t55",
+        "kind": "text",
+        "raw": "372,48",
+        "page": 1,
+        "box": {
+          "x0": 0.852709,
+          "y0": 0.609264,
+          "x1": 0.909244,
+          "y1": 0.622328
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 54,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t57",
+        "kind": "text",
+        "raw": "Toimitus: kuvitteellinen Nollatie 0 / DEMO",
+        "page": 1,
+        "box": {
+          "x0": 0.070588,
+          "y0": 0.672209,
+          "x1": 0.379731,
+          "y1": 0.684086
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 56,
+        "status": "observed"
+      }
+    ],
+    "pages": [
+      {
+        "page": 1,
+        "width": 595,
+        "height": 842,
+        "observationIds": [
+          "pdf-p1-t1",
+          "pdf-p1-t3",
+          "pdf-p1-t5",
+          "pdf-p1-t7",
+          "pdf-p1-t9",
+          "pdf-p1-t11",
+          "pdf-p1-t13",
+          "pdf-p1-t15",
+          "pdf-p1-t17",
+          "pdf-p1-t19",
+          "pdf-p1-t21",
+          "pdf-p1-t23",
+          "pdf-p1-t25",
+          "pdf-p1-t27",
+          "pdf-p1-t29",
+          "pdf-p1-t30",
+          "pdf-p1-t31",
+          "pdf-p1-t33",
+          "pdf-p1-t35",
+          "pdf-p1-t37",
+          "pdf-p1-t38",
+          "pdf-p1-t40",
+          "pdf-p1-t41",
+          "pdf-p1-t43",
+          "pdf-p1-t45",
+          "pdf-p1-t47",
+          "pdf-p1-t49",
+          "pdf-p1-t51",
+          "pdf-p1-t53",
+          "pdf-p1-t55",
+          "pdf-p1-t57"
+        ],
+        "rows": [
+          {
+            "id": "p1-r1-s1",
+            "page": 1,
+            "y": 0.034442,
+            "tokenIds": [
+              "pdf-p1-t1"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r1"
+            ]
+          },
+          {
+            "id": "p1-r2-s2",
+            "page": 1,
+            "y": 0.067696,
+            "tokenIds": [
+              "pdf-p1-t3"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r2"
+            ]
+          },
+          {
+            "id": "p1-r3-s3",
+            "page": 1,
+            "y": 0.129454,
+            "tokenIds": [
+              "pdf-p1-t9",
+              "pdf-p1-t11"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r3"
+            ]
+          },
+          {
+            "id": "p1-r4-s4",
+            "page": 1,
+            "y": 0.213183,
+            "tokenIds": [
+              "pdf-p1-t13"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r4"
+            ]
+          },
+          {
+            "id": "p1-r5-s5",
+            "page": 1,
+            "y": 0.246437,
+            "tokenIds": [
+              "pdf-p1-t15",
+              "pdf-p1-t17",
+              "pdf-p1-t19",
+              "pdf-p1-t21"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r5"
+            ]
+          },
+          {
+            "id": "p1-r6-s6",
+            "page": 1,
+            "y": 0.289786,
+            "tokenIds": [
+              "pdf-p1-t23",
+              "pdf-p1-t25",
+              "pdf-p1-t27",
+              "pdf-p1-t29"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r6"
+            ]
+          },
+          {
+            "id": "p1-r7-s7",
+            "page": 1,
+            "y": 0.336105,
+            "tokenIds": [
+              "pdf-p1-t30"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r7"
+            ]
+          },
+          {
+            "id": "p1-r8-s8",
+            "page": 1,
+            "y": 0.343231,
+            "tokenIds": [
+              "pdf-p1-t33",
+              "pdf-p1-t35",
+              "pdf-p1-t37"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r8"
+            ]
+          },
+          {
+            "id": "p1-r9-s9",
+            "page": 1,
+            "y": 0.350356,
+            "tokenIds": [
+              "pdf-p1-t31"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r9"
+            ]
+          },
+          {
+            "id": "p1-r10-s10",
+            "page": 1,
+            "y": 0.396675,
+            "tokenIds": [
+              "pdf-p1-t38",
+              "pdf-p1-t40"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r10"
+            ]
+          },
+          {
+            "id": "p1-r11-s11",
+            "page": 1,
+            "y": 0.473872,
+            "tokenIds": [
+              "pdf-p1-t41",
+              "pdf-p1-t43"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r11"
+            ]
+          },
+          {
+            "id": "p1-r12-s12",
+            "page": 1,
+            "y": 0.519003,
+            "tokenIds": [
+              "pdf-p1-t45",
+              "pdf-p1-t47"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r12"
+            ]
+          },
+          {
+            "id": "p1-r13-s13",
+            "page": 1,
+            "y": 0.56057,
+            "tokenIds": [
+              "pdf-p1-t49",
+              "pdf-p1-t51"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r13"
+            ]
+          },
+          {
+            "id": "p1-r14-s14",
+            "page": 1,
+            "y": 0.61639,
+            "tokenIds": [
+              "pdf-p1-t53",
+              "pdf-p1-t55"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r14"
+            ]
+          },
+          {
+            "id": "p1-r15-s15",
+            "page": 1,
+            "y": 0.678147,
+            "tokenIds": [
+              "pdf-p1-t57"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r15"
+            ]
+          },
+          {
+            "id": "p1-r16-s16",
+            "page": 1,
+            "y": 0.967934,
+            "tokenIds": [
+              "pdf-p1-t5"
+            ],
+            "region_id": "p1-region-1-c0",
+            "original_row_ids": [
+              "p1-r16"
+            ]
+          },
+          {
+            "id": "p1-r16-s17",
+            "page": 1,
+            "y": 0.967934,
+            "tokenIds": [
+              "pdf-p1-t7"
+            ],
+            "region_id": "p1-region-1-c1",
+            "original_row_ids": [
+              "p1-r16"
+            ]
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "structure": {
+      "regions": [
+        {
+          "id": "p1-region-1",
+          "page": 1,
+          "cuts": [
+            0.5813445
+          ],
+          "start_y": 0.967934,
+          "last_y": 0.967934,
+          "height": 0.009500999999999982
+        }
+      ],
+      "cells": [
+        {
+          "id": "cell-1",
+          "page": 1,
+          "region_id": null,
+          "label_source_ids": [
+            "pdf-p1-t9"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t11"
+          ],
+          "source_ids": [
+            "pdf-p1-t9",
+            "pdf-p1-t11"
+          ],
+          "unit_source_ids": [],
+          "method": "horizontal-local",
+          "status": "unambiguous",
+          "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+          "box": {
+            "x0": 0.062185,
+            "y0": 0.122328,
+            "x1": 0.892437,
+            "y1": 0.135392
+          },
+          "table_id": null,
+          "record_id": "record-3",
+          "record_candidate_ids": [
+            "record-3"
+          ]
+        },
+        {
+          "id": "cell-2",
+          "page": 1,
+          "region_id": null,
+          "label_source_ids": [
+            "pdf-p1-t23"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t25",
+            "pdf-p1-t27",
+            "pdf-p1-t29"
+          ],
+          "source_ids": [
+            "pdf-p1-t23",
+            "pdf-p1-t25",
+            "pdf-p1-t27",
+            "pdf-p1-t29"
+          ],
+          "unit_source_ids": [],
+          "method": "multi-value-row",
+          "status": "uncertain",
+          "reason": "Multiple values or non-scalar record; row label is not a column header",
+          "box": {
+            "x0": 0.068908,
+            "y0": 0.284442,
+            "x1": 0.779029,
+            "y1": 0.295131
+          },
+          "table_id": "table-1-p1-r5-s5",
+          "record_id": "record-6",
+          "record_candidate_ids": [
+            "record-6"
+          ]
+        },
+        {
+          "id": "cell-3",
+          "page": 1,
+          "region_id": null,
+          "label_source_ids": [],
+          "value_source_ids": [
+            "pdf-p1-t33",
+            "pdf-p1-t35",
+            "pdf-p1-t37"
+          ],
+          "source_ids": [
+            "pdf-p1-t33",
+            "pdf-p1-t35",
+            "pdf-p1-t37"
+          ],
+          "unit_source_ids": [],
+          "method": "multi-value-row",
+          "status": "uncertain",
+          "reason": "Multiple values or non-scalar record; row label is not a column header",
+          "box": {
+            "x0": 0.438655,
+            "y0": 0.337886,
+            "x1": 0.770618,
+            "y1": 0.348575
+          },
+          "table_id": "table-1-p1-r5-s5",
+          "record_id": "record-8",
+          "record_candidate_ids": [
+            "record-8"
+          ]
+        },
+        {
+          "id": "cell-4",
+          "page": 1,
+          "region_id": null,
+          "label_source_ids": [
+            "pdf-p1-t38"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t40"
+          ],
+          "source_ids": [
+            "pdf-p1-t38",
+            "pdf-p1-t40"
+          ],
+          "unit_source_ids": [],
+          "method": "multi-value-row",
+          "status": "uncertain",
+          "reason": "Multiple values or non-scalar record; row label is not a column header",
+          "box": {
+            "x0": 0.068908,
+            "y0": 0.39133,
+            "x1": 0.73781,
+            "y1": 0.402019
+          },
+          "table_id": "table-1-p1-r5-s5",
+          "record_id": "record-10",
+          "record_candidate_ids": [
+            "record-10"
+          ]
+        },
+        {
+          "id": "cell-5",
+          "page": 1,
+          "region_id": null,
+          "label_source_ids": [
+            "pdf-p1-t41"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t43"
+          ],
+          "source_ids": [
+            "pdf-p1-t41",
+            "pdf-p1-t43"
+          ],
+          "unit_source_ids": [],
+          "method": "horizontal-local",
+          "status": "unambiguous",
+          "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+          "box": {
+            "x0": 0.062185,
+            "y0": 0.466746,
+            "x1": 0.909244,
+            "y1": 0.47981
+          },
+          "table_id": null,
+          "record_id": "record-11",
+          "record_candidate_ids": [
+            "record-11"
+          ]
+        },
+        {
+          "id": "cell-6",
+          "page": 1,
+          "region_id": null,
+          "label_source_ids": [
+            "pdf-p1-t45"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t47"
+          ],
+          "source_ids": [
+            "pdf-p1-t45",
+            "pdf-p1-t47"
+          ],
+          "unit_source_ids": [],
+          "method": "horizontal-local",
+          "status": "unambiguous",
+          "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+          "box": {
+            "x0": 0.062185,
+            "y0": 0.511876,
+            "x1": 0.909244,
+            "y1": 0.524941
+          },
+          "table_id": null,
+          "record_id": "record-12",
+          "record_candidate_ids": [
+            "record-12"
+          ]
+        },
+        {
+          "id": "cell-7",
+          "page": 1,
+          "region_id": null,
+          "label_source_ids": [
+            "pdf-p1-t49"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t51"
+          ],
+          "source_ids": [
+            "pdf-p1-t49",
+            "pdf-p1-t51"
+          ],
+          "unit_source_ids": [],
+          "method": "horizontal-local",
+          "status": "unambiguous",
+          "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+          "box": {
+            "x0": 0.062185,
+            "y0": 0.553444,
+            "x1": 0.909244,
+            "y1": 0.566508
+          },
+          "table_id": null,
+          "record_id": "record-13",
+          "record_candidate_ids": [
+            "record-13"
+          ]
+        },
+        {
+          "id": "cell-8",
+          "page": 1,
+          "region_id": null,
+          "label_source_ids": [
+            "pdf-p1-t53"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t55"
+          ],
+          "source_ids": [
+            "pdf-p1-t53",
+            "pdf-p1-t55"
+          ],
+          "unit_source_ids": [],
+          "method": "horizontal-local",
+          "status": "unambiguous",
+          "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+          "box": {
+            "x0": 0.062185,
+            "y0": 0.609264,
+            "x1": 0.909244,
+            "y1": 0.622328
+          },
+          "table_id": null,
+          "record_id": "record-14",
+          "record_candidate_ids": [
+            "record-14"
+          ]
+        }
+      ],
+      "events": [
+        {
+          "kind": "separated-card-header",
+          "source_ids": [
+            "pdf-p1-t5",
+            "pdf-p1-t7"
+          ],
+          "region_id": "p1-region-1"
+        }
+      ],
+      "limitations": [
+        "No page-to-page continuation binding",
+        "No merged-cell grid",
+        "Multiline links remain uncertain proposals",
+        "Column alignment is a hypothesis, not a verified link"
+      ],
+      "records": [
+        {
+          "id": "record-1",
+          "page": 1,
+          "box": {
+            "x0": 0.053782,
+            "y0": 0.023753,
+            "x1": 0.378175,
+            "y1": 0.045131
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r1-s1",
+          "source_ids": [
+            "pdf-p1-t1"
+          ],
+          "original_row_ids": [
+            "p1-r1"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-2",
+          "page": 1,
+          "box": {
+            "x0": 0.053782,
+            "y0": 0.061758,
+            "x1": 0.339597,
+            "y1": 0.073634
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r2-s2",
+          "source_ids": [
+            "pdf-p1-t3"
+          ],
+          "original_row_ids": [
+            "p1-r2"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-3",
+          "page": 1,
+          "box": {
+            "x0": 0.062185,
+            "y0": 0.122328,
+            "x1": 0.892437,
+            "y1": 0.135392
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r3-s3",
+          "source_ids": [
+            "pdf-p1-t9",
+            "pdf-p1-t11"
+          ],
+          "original_row_ids": [
+            "p1-r3"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-4",
+          "page": 1,
+          "box": {
+            "x0": 0.058824,
+            "y0": 0.206651,
+            "x1": 0.146158,
+            "y1": 0.219715
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r4-s4",
+          "source_ids": [
+            "pdf-p1-t13"
+          ],
+          "original_row_ids": [
+            "p1-r4"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-5",
+          "page": 1,
+          "box": {
+            "x0": 0.068908,
+            "y0": 0.241093,
+            "x1": 0.807556,
+            "y1": 0.251781
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r5-s5",
+          "source_ids": [
+            "pdf-p1-t15",
+            "pdf-p1-t17",
+            "pdf-p1-t19",
+            "pdf-p1-t21"
+          ],
+          "original_row_ids": [
+            "p1-r5"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-6",
+          "page": 1,
+          "box": {
+            "x0": 0.068908,
+            "y0": 0.284442,
+            "x1": 0.779029,
+            "y1": 0.295131
+          },
+          "region_id": null,
+          "table_id": "table-1-p1-r5-s5",
+          "row_id": "p1-r6-s6",
+          "source_ids": [
+            "pdf-p1-t23",
+            "pdf-p1-t25",
+            "pdf-p1-t27",
+            "pdf-p1-t29"
+          ],
+          "original_row_ids": [
+            "p1-r6"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-7",
+          "page": 1,
+          "box": {
+            "x0": 0.068908,
+            "y0": 0.33076,
+            "x1": 0.177346,
+            "y1": 0.341449
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r7-s7",
+          "source_ids": [
+            "pdf-p1-t30"
+          ],
+          "original_row_ids": [
+            "p1-r7"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-8",
+          "page": 1,
+          "box": {
+            "x0": 0.438655,
+            "y0": 0.337886,
+            "x1": 0.770618,
+            "y1": 0.348575
+          },
+          "region_id": null,
+          "table_id": "table-1-p1-r5-s5",
+          "row_id": "p1-r8-s8",
+          "source_ids": [
+            "pdf-p1-t33",
+            "pdf-p1-t35",
+            "pdf-p1-t37"
+          ],
+          "original_row_ids": [
+            "p1-r8"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-9",
+          "page": 1,
+          "box": {
+            "x0": 0.068908,
+            "y0": 0.345012,
+            "x1": 0.241208,
+            "y1": 0.355701
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r9-s9",
+          "source_ids": [
+            "pdf-p1-t31"
+          ],
+          "original_row_ids": [
+            "p1-r9"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-10",
+          "page": 1,
+          "box": {
+            "x0": 0.068908,
+            "y0": 0.39133,
+            "x1": 0.73781,
+            "y1": 0.402019
+          },
+          "region_id": null,
+          "table_id": "table-1-p1-r5-s5",
+          "row_id": "p1-r10-s10",
+          "source_ids": [
+            "pdf-p1-t38",
+            "pdf-p1-t40"
+          ],
+          "original_row_ids": [
+            "p1-r10"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-11",
+          "page": 1,
+          "box": {
+            "x0": 0.062185,
+            "y0": 0.466746,
+            "x1": 0.909244,
+            "y1": 0.47981
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r11-s11",
+          "source_ids": [
+            "pdf-p1-t41",
+            "pdf-p1-t43"
+          ],
+          "original_row_ids": [
+            "p1-r11"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-12",
+          "page": 1,
+          "box": {
+            "x0": 0.062185,
+            "y0": 0.511876,
+            "x1": 0.909244,
+            "y1": 0.524941
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r12-s12",
+          "source_ids": [
+            "pdf-p1-t45",
+            "pdf-p1-t47"
+          ],
+          "original_row_ids": [
+            "p1-r12"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-13",
+          "page": 1,
+          "box": {
+            "x0": 0.062185,
+            "y0": 0.553444,
+            "x1": 0.909244,
+            "y1": 0.566508
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r13-s13",
+          "source_ids": [
+            "pdf-p1-t49",
+            "pdf-p1-t51"
+          ],
+          "original_row_ids": [
+            "p1-r13"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-14",
+          "page": 1,
+          "box": {
+            "x0": 0.062185,
+            "y0": 0.609264,
+            "x1": 0.909244,
+            "y1": 0.622328
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r14-s14",
+          "source_ids": [
+            "pdf-p1-t53",
+            "pdf-p1-t55"
+          ],
+          "original_row_ids": [
+            "p1-r14"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-15",
+          "page": 1,
+          "box": {
+            "x0": 0.070588,
+            "y0": 0.672209,
+            "x1": 0.379731,
+            "y1": 0.684086
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r15-s15",
+          "source_ids": [
+            "pdf-p1-t57"
+          ],
+          "original_row_ids": [
+            "p1-r15"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-16",
+          "page": 1,
+          "box": {
+            "x0": 0.053782,
+            "y0": 0.963183,
+            "x1": 0.431099,
+            "y1": 0.972684
+          },
+          "region_id": "p1-region-1-c0",
+          "table_id": null,
+          "row_id": "p1-r16-s16",
+          "source_ids": [
+            "pdf-p1-t5"
+          ],
+          "original_row_ids": [
+            "p1-r16"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-17",
+          "page": 1,
+          "box": {
+            "x0": 0.899321,
+            "y0": 0.963183,
+            "x1": 0.941176,
+            "y1": 0.972684
+          },
+          "region_id": "p1-region-1-c1",
+          "table_id": null,
+          "row_id": "p1-r16-s17",
+          "source_ids": [
+            "pdf-p1-t7"
+          ],
+          "original_row_ids": [
+            "p1-r16"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        }
+      ],
+      "column_header_candidates": [
+        {
+          "id": "column-1",
+          "page": 1,
+          "box": {
+            "x0": 0.068908,
+            "y0": 0.241093,
+            "x1": 0.193319,
+            "y1": 0.295131
+          },
+          "region_id": null,
+          "table_id": "table-1-p1-r5-s5",
+          "record_id": "record-6",
+          "row_id": "p1-r6-s6",
+          "source_ids": [
+            "pdf-p1-t15",
+            "pdf-p1-t23"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t15"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t23"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-2",
+          "page": 1,
+          "box": {
+            "x0": 0.438655,
+            "y0": 0.241093,
+            "x1": 0.460513,
+            "y1": 0.295131
+          },
+          "region_id": null,
+          "table_id": "table-1-p1-r5-s5",
+          "record_id": "record-6",
+          "row_id": "p1-r6-s6",
+          "source_ids": [
+            "pdf-p1-t17",
+            "pdf-p1-t25"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t17"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t25"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-3",
+          "page": 1,
+          "box": {
+            "x0": 0.556303,
+            "y0": 0.241093,
+            "x1": 0.614296,
+            "y1": 0.295131
+          },
+          "region_id": null,
+          "table_id": "table-1-p1-r5-s5",
+          "record_id": "record-6",
+          "row_id": "p1-r6-s6",
+          "source_ids": [
+            "pdf-p1-t19",
+            "pdf-p1-t27"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t19"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t27"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-4",
+          "page": 1,
+          "box": {
+            "x0": 0.732773,
+            "y0": 0.241093,
+            "x1": 0.807556,
+            "y1": 0.295131
+          },
+          "region_id": null,
+          "table_id": "table-1-p1-r5-s5",
+          "record_id": "record-6",
+          "row_id": "p1-r6-s6",
+          "source_ids": [
+            "pdf-p1-t21",
+            "pdf-p1-t29"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t21"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t29"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-5",
+          "page": 1,
+          "box": {
+            "x0": 0.438655,
+            "y0": 0.241093,
+            "x1": 0.460513,
+            "y1": 0.348575
+          },
+          "region_id": null,
+          "table_id": "table-1-p1-r5-s5",
+          "record_id": "record-8",
+          "row_id": "p1-r8-s8",
+          "source_ids": [
+            "pdf-p1-t17",
+            "pdf-p1-t33"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t17"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t33"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-6",
+          "page": 1,
+          "box": {
+            "x0": 0.556303,
+            "y0": 0.241093,
+            "x1": 0.614296,
+            "y1": 0.348575
+          },
+          "region_id": null,
+          "table_id": "table-1-p1-r5-s5",
+          "record_id": "record-8",
+          "row_id": "p1-r8-s8",
+          "source_ids": [
+            "pdf-p1-t19",
+            "pdf-p1-t35"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t19"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t35"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-7",
+          "page": 1,
+          "box": {
+            "x0": 0.732773,
+            "y0": 0.241093,
+            "x1": 0.807556,
+            "y1": 0.348575
+          },
+          "region_id": null,
+          "table_id": "table-1-p1-r5-s5",
+          "record_id": "record-8",
+          "row_id": "p1-r8-s8",
+          "source_ids": [
+            "pdf-p1-t21",
+            "pdf-p1-t37"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t21"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t37"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-8",
+          "page": 1,
+          "box": {
+            "x0": 0.068908,
+            "y0": 0.241093,
+            "x1": 0.297583,
+            "y1": 0.402019
+          },
+          "region_id": null,
+          "table_id": "table-1-p1-r5-s5",
+          "record_id": "record-10",
+          "row_id": "p1-r10-s10",
+          "source_ids": [
+            "pdf-p1-t15",
+            "pdf-p1-t38"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t15"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t38"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-9",
+          "page": 1,
+          "box": {
+            "x0": 0.732773,
+            "y0": 0.241093,
+            "x1": 0.807556,
+            "y1": 0.402019
+          },
+          "region_id": null,
+          "table_id": "table-1-p1-r5-s5",
+          "record_id": "record-10",
+          "row_id": "p1-r10-s10",
+          "source_ids": [
+            "pdf-p1-t21",
+            "pdf-p1-t40"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t21"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t40"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        }
+      ],
+      "schema_version": 1,
+      "states": [
+        "unambiguous",
+        "uncertain",
+        "conflicting",
+        "unresolved"
+      ],
+      "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+    }
+  },
+  "parsed": {
+    "schemaVersion": 2,
+    "adapter": "payroll-sections-experiment",
+    "fields": {
+      "payDate": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "grossPay": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "netPay": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "ytdTaxableIncome": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "previousYearTaxableIncome": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "withholdingPeriod": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "withholdingYtd": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "payPeriodStart": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "payPeriodEnd": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      }
+    },
+    "evidence": {
+      "payDate": [],
+      "grossPay": [],
+      "netPay": [],
+      "ytdTaxableIncome": [],
+      "previousYearTaxableIncome": [],
+      "withholdingPeriod": [],
+      "withholdingYtd": [],
+      "payPeriodStart": [],
+      "payPeriodEnd": []
+    },
+    "payLines": [],
+    "unmatchedPayLines": [],
+    "coverage": {
+      "materialObservations": 7,
+      "coveredObservations": 0,
+      "unresolvedObservations": 7,
+      "unresolvedIds": [
+        "pdf-p1-t27",
+        "pdf-p1-t29",
+        "pdf-p1-t35",
+        "pdf-p1-t37",
+        "pdf-p1-t43",
+        "pdf-p1-t51",
+        "pdf-p1-t55"
+      ],
+      "paylineRowsRecognized": 0,
+      "paylineRowsUnrecognized": 0
+    },
+    "issues": [
+      {
+        "level": "blocking",
+        "code": "UNKNOWN_PAYSLIP_TYPE"
+      }
+    ],
+    "observations": [
+      {
+        "id": "pdf-p1-t1",
+        "raw": "LASKU / DEMO-INV-28",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.023753,
+          "x1": 0.378175,
+          "y1": 0.045131
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t3",
+        "raw": "Kuvitteellinen Hattarapolku Tarvike Oy",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.061758,
+          "x1": 0.339597,
+          "y1": 0.073634
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t5",
+        "raw": "SYNTHETIC TEST DATA - FICTIONAL / EI OIKEA ASIAKIRJA",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.963183,
+          "x1": 0.431099,
+          "y1": 0.972684
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t7",
+        "raw": "T02 / 1",
+        "page": 1,
+        "box": {
+          "x0": 0.899321,
+          "y0": 0.963183,
+          "x1": 0.941176,
+          "y1": 0.972684
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t9",
+        "raw": "Eräpäivä",
+        "page": 1,
+        "box": {
+          "x0": 0.062185,
+          "y0": 0.124703,
+          "x1": 0.121872,
+          "y1": 0.135392
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t11",
+        "raw": "16.06.2026",
+        "page": 1,
+        "box": {
+          "x0": 0.799926,
+          "y0": 0.122328,
+          "x1": 0.892437,
+          "y1": 0.135392
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t13",
+        "raw": "Laskurivit",
+        "page": 1,
+        "box": {
+          "x0": 0.058824,
+          "y0": 0.206651,
+          "x1": 0.146158,
+          "y1": 0.219715
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t15",
+        "raw": "Palvelu / toimitus",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.241093,
+          "x1": 0.193319,
+          "y1": 0.251781
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t17",
+        "raw": "kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.438655,
+          "y0": 0.241093,
+          "x1": 0.460513,
+          "y1": 0.251781
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t19",
+        "raw": "EUR/kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.556303,
+          "y0": 0.241093,
+          "x1": 0.614296,
+          "y1": 0.251781
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t21",
+        "raw": "Netto EUR",
+        "page": 1,
+        "box": {
+          "x0": 0.732773,
+          "y0": 0.241093,
+          "x1": 0.807556,
+          "y1": 0.251781
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t23",
+        "raw": "Tarvikepaketti A",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.284442,
+          "x1": 0.177346,
+          "y1": 0.295131
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t25",
+        "raw": "4",
+        "page": 1,
+        "box": {
+          "x0": 0.438655,
+          "y0": 0.284442,
+          "x1": 0.447066,
+          "y1": 0.295131
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t27",
+        "raw": "49,50",
+        "page": 1,
+        "box": {
+          "x0": 0.556303,
+          "y0": 0.284442,
+          "x1": 0.594148,
+          "y1": 0.295131
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t29",
+        "raw": "198,00",
+        "page": 1,
+        "box": {
+          "x0": 0.732773,
+          "y0": 0.284442,
+          "x1": 0.779029,
+          "y1": 0.295131
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t30",
+        "raw": "Tarvikepaketti B",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.33076,
+          "x1": 0.177346,
+          "y1": 0.341449
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t31",
+        "raw": "kaksi erillistä toimituserää",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.345012,
+          "x1": 0.241208,
+          "y1": 0.355701
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t33",
+        "raw": "2",
+        "page": 1,
+        "box": {
+          "x0": 0.438655,
+          "y0": 0.337886,
+          "x1": 0.447066,
+          "y1": 0.348575
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t35",
+        "raw": "49,40",
+        "page": 1,
+        "box": {
+          "x0": 0.556303,
+          "y0": 0.337886,
+          "x1": 0.594148,
+          "y1": 0.348575
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t37",
+        "raw": "98,80",
+        "page": 1,
+        "box": {
+          "x0": 0.732773,
+          "y0": 0.337886,
+          "x1": 0.770618,
+          "y1": 0.348575
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t38",
+        "raw": "Lisätieto: pakkaus sisältyy hintaan",
+        "page": 1,
+        "box": {
+          "x0": 0.068908,
+          "y0": 0.39133,
+          "x1": 0.297583,
+          "y1": 0.402019
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t40",
+        "raw": "-",
+        "page": 1,
+        "box": {
+          "x0": 0.732773,
+          "y0": 0.39133,
+          "x1": 0.73781,
+          "y1": 0.402019
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t41",
+        "raw": "Veroton yhteensä",
+        "page": 1,
+        "box": {
+          "x0": 0.062185,
+          "y0": 0.469121,
+          "x1": 0.180743,
+          "y1": 0.47981
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t43",
+        "raw": "296,80",
+        "page": 1,
+        "box": {
+          "x0": 0.852709,
+          "y0": 0.466746,
+          "x1": 0.909244,
+          "y1": 0.47981
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t45",
+        "raw": "ALV",
+        "page": 1,
+        "box": {
+          "x0": 0.062185,
+          "y0": 0.514252,
+          "x1": 0.090773,
+          "y1": 0.524941
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t47",
+        "raw": "25,5 %",
+        "page": 1,
+        "box": {
+          "x0": 0.851692,
+          "y0": 0.511876,
+          "x1": 0.909244,
+          "y1": 0.524941
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t49",
+        "raw": "Vero EUR",
+        "page": 1,
+        "box": {
+          "x0": 0.062185,
+          "y0": 0.555819,
+          "x1": 0.130267,
+          "y1": 0.566508
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t51",
+        "raw": "75,68",
+        "page": 1,
+        "box": {
+          "x0": 0.862988,
+          "y0": 0.553444,
+          "x1": 0.909244,
+          "y1": 0.566508
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t53",
+        "raw": "Maksettava EUR",
+        "page": 1,
+        "box": {
+          "x0": 0.062185,
+          "y0": 0.611639,
+          "x1": 0.175661,
+          "y1": 0.622328
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t55",
+        "raw": "372,48",
+        "page": 1,
+        "box": {
+          "x0": 0.852709,
+          "y0": 0.609264,
+          "x1": 0.909244,
+          "y1": 0.622328
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t57",
+        "raw": "Toimitus: kuvitteellinen Nollatie 0 / DEMO",
+        "page": 1,
+        "box": {
+          "x0": 0.070588,
+          "y0": 0.672209,
+          "x1": 0.379731,
+          "y1": 0.684086
+        },
+        "material": false
+      }
+    ],
+    "rows": 17,
+    "decision": {
+      "status": "review-required",
+      "canAutoAccept": false,
+      "canPersist": false,
+      "problems": [
+        {
+          "code": "UNKNOWN_DOCUMENT_TYPE"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "payDate"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "grossPay"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "netPay"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "ytdTaxableIncome"
+        },
+        {
+          "code": "BLOCKING_SOURCE_ISSUE",
+          "detail": "UNKNOWN_PAYSLIP_TYPE"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t27"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t29"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t35"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t37"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t43"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t51"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t55"
+        }
+      ]
+    },
+    "canPersist": false
+  },
+  "core": [],
+  "structure": {
+    "status": "PARTIAL IMPLEMENTATION",
+    "pairs_scored": 7,
+    "pairs_correct": 5,
+    "wrong_pairs": 2,
+    "pair_evaluations": [
+      {
+        "cell_id": "cell-1",
+        "relevant_field_ids": [
+          "T02-f1"
+        ],
+        "correct": true
+      },
+      {
+        "cell_id": "cell-2",
+        "relevant_field_ids": [
+          "T02-f3",
+          "T02-f4",
+          "T02-f5"
+        ],
+        "correct": false
+      },
+      {
+        "cell_id": "cell-3",
+        "relevant_field_ids": [
+          "T02-f7",
+          "T02-f8",
+          "T02-f9"
+        ],
+        "correct": false
+      },
+      {
+        "cell_id": "cell-5",
+        "relevant_field_ids": [
+          "T02-f11"
+        ],
+        "correct": true
+      },
+      {
+        "cell_id": "cell-6",
+        "relevant_field_ids": [
+          "T02-f12"
+        ],
+        "correct": true
+      },
+      {
+        "cell_id": "cell-7",
+        "relevant_field_ids": [
+          "T02-f13"
+        ],
+        "correct": true
+      },
+      {
+        "cell_id": "cell-8",
+        "relevant_field_ids": [
+          "T02-f14"
+        ],
+        "correct": true
+      }
+    ],
+    "record_links": [
+      {
+        "record": "i1",
+        "all_in_single_row": true,
+        "mixed_foreign_record": false
+      },
+      {
+        "record": "i2",
+        "all_in_single_row": false,
+        "mixed_foreign_record": false
+      },
+      {
+        "record": "row3",
+        "all_in_single_row": true,
+        "mixed_foreign_record": false
+      }
+    ]
+  },
+  "bindings": {
+    "unambiguous_correct": 5,
+    "unambiguous_denominator": 5,
+    "unambiguous_wrong": 0,
+    "unscored_unambiguous": 0,
+    "uncertain_primary_scorable": 2,
+    "uncertain_primary_matching": 0,
+    "column_scorable": 8,
+    "column_matching": 8,
+    "certain_binding_recall_numerator": 5,
+    "essential_binding_denominator": 14,
+    "any_state_binding_recall_numerator": 13,
+    "unresolved_essential_binding_ids": [
+      "T02-f2",
+      "T02-f3",
+      "T02-f4",
+      "T02-f5",
+      "T02-f6",
+      "T02-f7",
+      "T02-f8",
+      "T02-f9",
+      "T02-f10"
+    ],
+    "primary_proposal_count": 8,
+    "uncertain_primary_proposals": 3,
+    "column_hypotheses": 9,
+    "record_proposals": 17,
+    "state_counts": {
+      "unambiguous": 5,
+      "uncertain": 3,
+      "unresolved": 0,
+      "conflicting": 0
+    },
+    "evaluations": [
+      {
+        "id": "cell-1",
+        "status": "unambiguous",
+        "method": "horizontal-local",
+        "scorable": true,
+        "matches": [
+          "T02-f1"
+        ],
+        "source_ids": [
+          "pdf-p1-t9",
+          "pdf-p1-t11"
+        ],
+        "correct": true
+      },
+      {
+        "id": "cell-2",
+        "status": "uncertain",
+        "method": "multi-value-row",
+        "scorable": true,
+        "matches": [],
+        "source_ids": [
+          "pdf-p1-t23",
+          "pdf-p1-t25",
+          "pdf-p1-t27",
+          "pdf-p1-t29"
+        ]
+      },
+      {
+        "id": "cell-3",
+        "status": "uncertain",
+        "method": "multi-value-row",
+        "scorable": true,
+        "matches": [],
+        "source_ids": [
+          "pdf-p1-t33",
+          "pdf-p1-t35",
+          "pdf-p1-t37"
+        ]
+      },
+      {
+        "id": "cell-4",
+        "status": "uncertain",
+        "method": "multi-value-row",
+        "scorable": false,
+        "matches": [],
+        "source_ids": [
+          "pdf-p1-t38",
+          "pdf-p1-t40"
+        ]
+      },
+      {
+        "id": "cell-5",
+        "status": "unambiguous",
+        "method": "horizontal-local",
+        "scorable": true,
+        "matches": [
+          "T02-f11"
+        ],
+        "source_ids": [
+          "pdf-p1-t41",
+          "pdf-p1-t43"
+        ],
+        "correct": true
+      },
+      {
+        "id": "cell-6",
+        "status": "unambiguous",
+        "method": "horizontal-local",
+        "scorable": true,
+        "matches": [
+          "T02-f12"
+        ],
+        "source_ids": [
+          "pdf-p1-t45",
+          "pdf-p1-t47"
+        ],
+        "correct": true
+      },
+      {
+        "id": "cell-7",
+        "status": "unambiguous",
+        "method": "horizontal-local",
+        "scorable": true,
+        "matches": [
+          "T02-f13"
+        ],
+        "source_ids": [
+          "pdf-p1-t49",
+          "pdf-p1-t51"
+        ],
+        "correct": true
+      },
+      {
+        "id": "cell-8",
+        "status": "unambiguous",
+        "method": "horizontal-local",
+        "scorable": true,
+        "matches": [
+          "T02-f14"
+        ],
+        "source_ids": [
+          "pdf-p1-t53",
+          "pdf-p1-t55"
+        ],
+        "correct": true
+      }
+    ],
+    "column_evaluations": [
+      {
+        "id": "column-1",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T02-f2"
+        ],
+        "source_ids": [
+          "pdf-p1-t15",
+          "pdf-p1-t23"
+        ]
+      },
+      {
+        "id": "column-2",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T02-f3"
+        ],
+        "source_ids": [
+          "pdf-p1-t17",
+          "pdf-p1-t25"
+        ]
+      },
+      {
+        "id": "column-3",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T02-f4"
+        ],
+        "source_ids": [
+          "pdf-p1-t19",
+          "pdf-p1-t27"
+        ]
+      },
+      {
+        "id": "column-4",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T02-f5"
+        ],
+        "source_ids": [
+          "pdf-p1-t21",
+          "pdf-p1-t29"
+        ]
+      },
+      {
+        "id": "column-5",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T02-f7"
+        ],
+        "source_ids": [
+          "pdf-p1-t17",
+          "pdf-p1-t33"
+        ]
+      },
+      {
+        "id": "column-6",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T02-f8"
+        ],
+        "source_ids": [
+          "pdf-p1-t19",
+          "pdf-p1-t35"
+        ]
+      },
+      {
+        "id": "column-7",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T02-f9"
+        ],
+        "source_ids": [
+          "pdf-p1-t21",
+          "pdf-p1-t37"
+        ]
+      },
+      {
+        "id": "column-8",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T02-f10"
+        ],
+        "source_ids": [
+          "pdf-p1-t15",
+          "pdf-p1-t38"
+        ]
+      },
+      {
+        "id": "column-9",
+        "status": "uncertain",
+        "scorable": false,
+        "matches": [],
+        "source_ids": [
+          "pdf-p1-t21",
+          "pdf-p1-t40"
+        ]
+      }
+    ],
+    "source_references_valid": true
+  }
+}

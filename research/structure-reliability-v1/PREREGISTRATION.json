@@ -1,0 +1,8 @@
+{
+  "registered_at_utc": "2026-10-14T19:08:22.545667+00:00",
+  "oracle_sha256": "45804195628afe1fcba7806de68cdadced699bce7bd3d79c7ae92ac5a75fa55a",
+  "oracle_file": "ADVERSARIAL_CASES.json",
+  "case_count": 12,
+  "before_E_implementation": true,
+  "classification": "Prospective development countertests informed by known failure classes; not a blind corpus"
+}

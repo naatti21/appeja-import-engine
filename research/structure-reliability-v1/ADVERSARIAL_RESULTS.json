@@ -1,0 +1,5364 @@
+{
+  "oracle_sha256": "45804195628afe1fcba7806de68cdadced699bce7bd3d79c7ae92ac5a75fa55a",
+  "scope": "12 pre-implementation development adversarial cases; not independent validation; in-memory observations, not PDFs",
+  "results": [
+    {
+      "id": "S01",
+      "variant": "D",
+      "expect": {
+        "rows": 1,
+        "certain": 1,
+        "unit_raw": "kg"
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": false,
+        "certain": true,
+        "unit": false
+      },
+      "pass": false,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Mass",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.11,
+              "x1": 0.21000000000000002,
+              "y0": 0.27,
+              "y1": 0.28
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "12",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.49,
+              "x1": 0.52,
+              "y0": 0.27,
+              "y1": 0.28
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "kg",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.54,
+              "x1": 0.5700000000000001,
+              "y0": 0.27,
+              "y1": 0.28
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.275,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r1-s2",
+                "page": 1,
+                "y": 0.275,
+                "tokenIds": [
+                  "r0t2"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "method": "horizontal-local"
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain unverified proposals"
+          ]
+        }
+      }
+    },
+    {
+      "id": "S01",
+      "variant": "E",
+      "expect": {
+        "rows": 1,
+        "certain": 1,
+        "unit_raw": "kg"
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "certain": true,
+        "unit": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Mass",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.11,
+              "x1": 0.21000000000000002,
+              "y0": 0.27,
+              "y1": 0.28
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "12",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.49,
+              "x1": 0.52,
+              "y0": 0.27,
+              "y1": 0.28
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "kg",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.54,
+              "x1": 0.5700000000000001,
+              "y0": 0.27,
+              "y1": 0.28
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.275,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1",
+                  "r0t2"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2"
+              ],
+              "unit_source_ids": [
+                "r0t2"
+              ],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.11,
+                "y0": 0.27,
+                "x1": 0.5700000000000001,
+                "y1": 0.28
+              },
+              "table_id": null,
+              "record_id": "record-1",
+              "record_candidate_ids": [
+                "record-1"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.11,
+                "y0": 0.27,
+                "x1": 0.5700000000000001,
+                "y1": 0.28
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": [
+                {
+                  "source_ids": [
+                    "r0t2"
+                  ],
+                  "raw": "kg",
+                  "box": {
+                    "x0": 0.54,
+                    "x1": 0.5700000000000001,
+                    "y0": 0.27,
+                    "y1": 0.28
+                  },
+                  "status": "uncertain",
+                  "reason": "Short text suffix; no semantic unit interpretation"
+                }
+              ]
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      }
+    },
+    {
+      "id": "S02",
+      "variant": "D",
+      "expect": {
+        "rows": 1,
+        "certain": 0,
+        "uncertain_min": 1,
+        "unit_raw": "USD"
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": false,
+        "certain": false,
+        "uncertainty": false,
+        "unit": false
+      },
+      "pass": false,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "ACCOUNT-X",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.1,
+              "x1": 0.24000000000000002,
+              "y0": 0.29,
+              "y1": 0.3
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "DEMO",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.3,
+              "x1": 0.38,
+              "y0": 0.29,
+              "y1": 0.3
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "9",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.46,
+              "x1": 0.48500000000000004,
+              "y0": 0.29,
+              "y1": 0.3
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t3",
+            "raw": "7.25",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.6,
+              "x1": 0.6599999999999999,
+              "y0": 0.29,
+              "y1": 0.3
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t4",
+            "raw": "USD",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.81,
+              "x1": 0.8600000000000001,
+              "y0": 0.29,
+              "y1": 0.3
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.295,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1",
+                  "r0t2",
+                  "r0t3"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r1-s2",
+                "page": 1,
+                "y": 0.295,
+                "tokenIds": [
+                  "r0t4"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2",
+              "r0t3",
+              "r0t4"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "value_source_ids": [
+                "r0t2",
+                "r0t3"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2",
+                "r0t3"
+              ],
+              "method": "horizontal-local"
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain unverified proposals"
+          ]
+        }
+      }
+    },
+    {
+      "id": "S02",
+      "variant": "E",
+      "expect": {
+        "rows": 1,
+        "certain": 0,
+        "uncertain_min": 1,
+        "unit_raw": "USD"
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "certain": true,
+        "uncertainty": true,
+        "unit": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "ACCOUNT-X",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.1,
+              "x1": 0.24000000000000002,
+              "y0": 0.29,
+              "y1": 0.3
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "DEMO",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.3,
+              "x1": 0.38,
+              "y0": 0.29,
+              "y1": 0.3
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "9",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.46,
+              "x1": 0.48500000000000004,
+              "y0": 0.29,
+              "y1": 0.3
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t3",
+            "raw": "7.25",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.6,
+              "x1": 0.6599999999999999,
+              "y0": 0.29,
+              "y1": 0.3
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t4",
+            "raw": "USD",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.81,
+              "x1": 0.8600000000000001,
+              "y0": 0.29,
+              "y1": 0.3
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.295,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1",
+                  "r0t2",
+                  "r0t3",
+                  "r0t4"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2",
+              "r0t3",
+              "r0t4"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "value_source_ids": [
+                "r0t2",
+                "r0t3"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2",
+                "r0t3",
+                "r0t4"
+              ],
+              "unit_source_ids": [
+                "r0t4"
+              ],
+              "method": "multi-value-row",
+              "status": "uncertain",
+              "reason": "Multiple values or non-scalar record; row label is not a column header",
+              "box": {
+                "x0": 0.1,
+                "y0": 0.29,
+                "x1": 0.8600000000000001,
+                "y1": 0.3
+              },
+              "table_id": null,
+              "record_id": "record-1",
+              "record_candidate_ids": [
+                "record-1"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.1,
+                "y0": 0.29,
+                "x1": 0.8600000000000001,
+                "y1": 0.3
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2",
+                "r0t3",
+                "r0t4"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": [
+                {
+                  "source_ids": [
+                    "r0t4"
+                  ],
+                  "raw": "USD",
+                  "box": {
+                    "x0": 0.81,
+                    "x1": 0.8600000000000001,
+                    "y0": 0.29,
+                    "y1": 0.3
+                  },
+                  "status": "uncertain",
+                  "reason": "Short text suffix; no semantic unit interpretation"
+                }
+              ]
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      }
+    },
+    {
+      "id": "S03",
+      "variant": "D",
+      "expect": {
+        "rows": 1,
+        "certain": 0,
+        "uncertain_min": 1
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "certain": false,
+        "uncertainty": false
+      },
+      "pass": false,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Part",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.12,
+              "x1": 0.22,
+              "y0": 0.33,
+              "y1": 0.34
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "5",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.42,
+              "x1": 0.445,
+              "y0": 0.33,
+              "y1": 0.34
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "2.10",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.62,
+              "x1": 0.6799999999999999,
+              "y0": 0.33,
+              "y1": 0.34
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t3",
+            "raw": "10.50",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.84,
+              "x1": 0.9099999999999999,
+              "y0": 0.33,
+              "y1": 0.34
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.335,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1",
+                  "r0t2",
+                  "r0t3"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2",
+              "r0t3"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1",
+                "r0t2",
+                "r0t3"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2",
+                "r0t3"
+              ],
+              "method": "horizontal-local"
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain unverified proposals"
+          ]
+        }
+      }
+    },
+    {
+      "id": "S03",
+      "variant": "E",
+      "expect": {
+        "rows": 1,
+        "certain": 0,
+        "uncertain_min": 1
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "certain": true,
+        "uncertainty": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Part",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.12,
+              "x1": 0.22,
+              "y0": 0.33,
+              "y1": 0.34
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "5",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.42,
+              "x1": 0.445,
+              "y0": 0.33,
+              "y1": 0.34
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "2.10",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.62,
+              "x1": 0.6799999999999999,
+              "y0": 0.33,
+              "y1": 0.34
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t3",
+            "raw": "10.50",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.84,
+              "x1": 0.9099999999999999,
+              "y0": 0.33,
+              "y1": 0.34
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.335,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1",
+                  "r0t2",
+                  "r0t3"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2",
+              "r0t3"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1",
+                "r0t2",
+                "r0t3"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2",
+                "r0t3"
+              ],
+              "unit_source_ids": [],
+              "method": "multi-value-row",
+              "status": "uncertain",
+              "reason": "Multiple values or non-scalar record; row label is not a column header",
+              "box": {
+                "x0": 0.12,
+                "y0": 0.33,
+                "x1": 0.9099999999999999,
+                "y1": 0.34
+              },
+              "table_id": null,
+              "record_id": "record-1",
+              "record_candidate_ids": [
+                "record-1"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.12,
+                "y0": 0.33,
+                "x1": 0.9099999999999999,
+                "y1": 0.34
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2",
+                "r0t3"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      }
+    },
+    {
+      "id": "S04",
+      "variant": "D",
+      "expect": {
+        "certain": 0,
+        "uncertain_min": 1,
+        "column_min": 2
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "certain": true,
+        "uncertainty": false,
+        "columns": false
+      },
+      "pass": false,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Object",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.12,
+              "x1": 0.22,
+              "y0": 0.21,
+              "y1": 0.22
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "Count",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.43,
+              "x1": 0.51,
+              "y0": 0.21,
+              "y1": 0.22
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "Cost",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.71,
+              "x1": 0.7899999999999999,
+              "y0": 0.21,
+              "y1": 0.22
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Bolt",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.12,
+              "x1": 0.2,
+              "y0": 0.25,
+              "y1": 0.26
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t1",
+            "raw": "4",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.43,
+              "x1": 0.45999999999999996,
+              "y0": 0.25,
+              "y1": 0.26
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t2",
+            "raw": "8.20",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.71,
+              "x1": 0.78,
+              "y0": 0.25,
+              "y1": 0.26
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.215,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r1-s2",
+                "page": 1,
+                "y": 0.215,
+                "tokenIds": [
+                  "r0t1"
+                ],
+                "region_id": "p1-region-1-c1",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r1-s3",
+                "page": 1,
+                "y": 0.215,
+                "tokenIds": [
+                  "r0t2"
+                ],
+                "region_id": "p1-region-1-c2",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s4",
+                "page": 1,
+                "y": 0.255,
+                "tokenIds": [
+                  "r1t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r2-s5",
+                "page": 1,
+                "y": 0.255,
+                "tokenIds": [
+                  "r1t1"
+                ],
+                "region_id": "p1-region-1-c1",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r2-s6",
+                "page": 1,
+                "y": 0.255,
+                "tokenIds": [
+                  "r1t2"
+                ],
+                "region_id": "p1-region-1-c2",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2",
+              "r1t0",
+              "r1t1",
+              "r1t2"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [
+            {
+              "id": "p1-region-1",
+              "page": 1,
+              "cuts": [
+                0.31999999999999995,
+                0.61
+              ],
+              "start_y": 0.215,
+              "last_y": 0.255,
+              "height": 0.010000000000000009
+            }
+          ],
+          "cells": [],
+          "events": [
+            {
+              "kind": "separated-card-header",
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2"
+              ],
+              "region_id": "p1-region-1"
+            }
+          ],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain unverified proposals"
+          ]
+        }
+      }
+    },
+    {
+      "id": "S04",
+      "variant": "E",
+      "expect": {
+        "certain": 0,
+        "uncertain_min": 1,
+        "column_min": 2
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "certain": true,
+        "uncertainty": true,
+        "columns": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Object",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.12,
+              "x1": 0.22,
+              "y0": 0.21,
+              "y1": 0.22
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "Count",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.43,
+              "x1": 0.51,
+              "y0": 0.21,
+              "y1": 0.22
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "Cost",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.71,
+              "x1": 0.7899999999999999,
+              "y0": 0.21,
+              "y1": 0.22
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Bolt",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.12,
+              "x1": 0.2,
+              "y0": 0.25,
+              "y1": 0.26
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t1",
+            "raw": "4",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.43,
+              "x1": 0.45999999999999996,
+              "y0": 0.25,
+              "y1": 0.26
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t2",
+            "raw": "8.20",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.71,
+              "x1": 0.78,
+              "y0": 0.25,
+              "y1": 0.26
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.215,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1",
+                  "r0t2"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.255,
+                "tokenIds": [
+                  "r1t0",
+                  "r1t1",
+                  "r1t2"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2",
+              "r1t0",
+              "r1t1",
+              "r1t2"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r1t0"
+              ],
+              "value_source_ids": [
+                "r1t1",
+                "r1t2"
+              ],
+              "source_ids": [
+                "r1t0",
+                "r1t1",
+                "r1t2"
+              ],
+              "unit_source_ids": [],
+              "method": "multi-value-row",
+              "status": "uncertain",
+              "reason": "Multiple values or non-scalar record; row label is not a column header",
+              "box": {
+                "x0": 0.12,
+                "y0": 0.25,
+                "x1": 0.78,
+                "y1": 0.26
+              },
+              "table_id": "table-1-p1-r1-s1",
+              "record_id": "record-2",
+              "record_candidate_ids": [
+                "record-2"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.12,
+                "y0": 0.21,
+                "x1": 0.7899999999999999,
+                "y1": 0.22
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.12,
+                "y0": 0.25,
+                "x1": 0.78,
+                "y1": 0.26
+              },
+              "region_id": null,
+              "table_id": "table-1-p1-r1-s1",
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r1t0",
+                "r1t1",
+                "r1t2"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [
+            {
+              "id": "column-1",
+              "page": 1,
+              "box": {
+                "x0": 0.12,
+                "y0": 0.21,
+                "x1": 0.22,
+                "y1": 0.26
+              },
+              "region_id": null,
+              "table_id": "table-1-p1-r1-s1",
+              "record_id": "record-2",
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r0t0",
+                "r1t0"
+              ],
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r1t0"
+              ],
+              "unit_source_ids": [],
+              "status": "uncertain",
+              "method": "column-alignment",
+              "reason": "Single aligned header, but no validated table grid"
+            },
+            {
+              "id": "column-2",
+              "page": 1,
+              "box": {
+                "x0": 0.43,
+                "y0": 0.21,
+                "x1": 0.51,
+                "y1": 0.26
+              },
+              "region_id": null,
+              "table_id": "table-1-p1-r1-s1",
+              "record_id": "record-2",
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r0t1",
+                "r1t1"
+              ],
+              "label_source_ids": [
+                "r0t1"
+              ],
+              "value_source_ids": [
+                "r1t1"
+              ],
+              "unit_source_ids": [],
+              "status": "uncertain",
+              "method": "column-alignment",
+              "reason": "Single aligned header, but no validated table grid"
+            },
+            {
+              "id": "column-3",
+              "page": 1,
+              "box": {
+                "x0": 0.71,
+                "y0": 0.21,
+                "x1": 0.7899999999999999,
+                "y1": 0.26
+              },
+              "region_id": null,
+              "table_id": "table-1-p1-r1-s1",
+              "record_id": "record-2",
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r0t2",
+                "r1t2"
+              ],
+              "label_source_ids": [
+                "r0t2"
+              ],
+              "value_source_ids": [
+                "r1t2"
+              ],
+              "unit_source_ids": [],
+              "status": "uncertain",
+              "method": "column-alignment",
+              "reason": "Single aligned header, but no validated table grid"
+            }
+          ],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      }
+    },
+    {
+      "id": "S05",
+      "variant": "D",
+      "expect": {
+        "rows": 2,
+        "certain": 2
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "certain": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Alpha",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.18,
+              "y0": 0.31,
+              "y1": 0.32
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "9.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.3,
+              "x1": 0.36,
+              "y0": 0.31,
+              "y1": 0.32
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "Beta",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.57,
+              "x1": 0.6499999999999999,
+              "y0": 0.31,
+              "y1": 0.32
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t3",
+            "raw": "13.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.82,
+              "x1": 0.8999999999999999,
+              "y0": 0.31,
+              "y1": 0.32
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.315,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r1-s2",
+                "page": 1,
+                "y": 0.315,
+                "tokenIds": [
+                  "r0t2",
+                  "r0t3"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2",
+              "r0t3"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "method": "horizontal-local"
+            },
+            {
+              "id": "cell-2",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t2"
+              ],
+              "value_source_ids": [
+                "r0t3"
+              ],
+              "source_ids": [
+                "r0t2",
+                "r0t3"
+              ],
+              "method": "horizontal-local"
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain unverified proposals"
+          ]
+        }
+      }
+    },
+    {
+      "id": "S05",
+      "variant": "E",
+      "expect": {
+        "rows": 2,
+        "certain": 2
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "certain": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Alpha",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.18,
+              "y0": 0.31,
+              "y1": 0.32
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "9.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.3,
+              "x1": 0.36,
+              "y0": 0.31,
+              "y1": 0.32
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "Beta",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.57,
+              "x1": 0.6499999999999999,
+              "y0": 0.31,
+              "y1": 0.32
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t3",
+            "raw": "13.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.82,
+              "x1": 0.8999999999999999,
+              "y0": 0.31,
+              "y1": 0.32
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.315,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r1-s2",
+                "page": 1,
+                "y": 0.315,
+                "tokenIds": [
+                  "r0t2",
+                  "r0t3"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2",
+              "r0t3"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.08,
+                "y0": 0.31,
+                "x1": 0.36,
+                "y1": 0.32
+              },
+              "table_id": null,
+              "record_id": "record-1",
+              "record_candidate_ids": [
+                "record-1"
+              ]
+            },
+            {
+              "id": "cell-2",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t2"
+              ],
+              "value_source_ids": [
+                "r0t3"
+              ],
+              "source_ids": [
+                "r0t2",
+                "r0t3"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.57,
+                "y0": 0.31,
+                "x1": 0.8999999999999999,
+                "y1": 0.32
+              },
+              "table_id": null,
+              "record_id": "record-2",
+              "record_candidate_ids": [
+                "record-2"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.08,
+                "y0": 0.31,
+                "x1": 0.36,
+                "y1": 0.32
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.57,
+                "y0": 0.31,
+                "x1": 0.8999999999999999,
+                "y1": 0.32
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s2",
+              "source_ids": [
+                "r0t2",
+                "r0t3"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      }
+    },
+    {
+      "id": "S06",
+      "variant": "D",
+      "expect": {
+        "data_y": 0.23,
+        "data_rows": 2,
+        "no_cross_region_mix": true
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "data_rows": true,
+        "purity": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Code",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.15000000000000002,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "Qty",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.24,
+              "x1": 0.29,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "Unit",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.38,
+              "x1": 0.44,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t3",
+            "raw": "Code",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.59,
+              "x1": 0.6599999999999999,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t4",
+            "raw": "Qty",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.74,
+              "x1": 0.79,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t5",
+            "raw": "Unit",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.88,
+              "x1": 0.94,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t0",
+            "raw": "0042",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.15000000000000002,
+              "y0": 0.23,
+              "y1": 0.24000000000000002
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t1",
+            "raw": "6",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.24,
+              "x1": 0.265,
+              "y0": 0.23,
+              "y1": 0.24000000000000002
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t2",
+            "raw": "m",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.38,
+              "x1": 0.4,
+              "y0": 0.23,
+              "y1": 0.24000000000000002
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t3",
+            "raw": "0042",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.59,
+              "x1": 0.6599999999999999,
+              "y0": 0.23,
+              "y1": 0.24000000000000002
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t4",
+            "raw": "11",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.74,
+              "x1": 0.78,
+              "y0": 0.23,
+              "y1": 0.24000000000000002
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t5",
+            "raw": "m",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.88,
+              "x1": 0.9,
+              "y0": 0.23,
+              "y1": 0.24000000000000002
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.185,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1",
+                  "r0t2"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r1-s2",
+                "page": 1,
+                "y": 0.185,
+                "tokenIds": [
+                  "r0t3",
+                  "r0t4",
+                  "r0t5"
+                ],
+                "region_id": "p1-region-1-c1",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s3",
+                "page": 1,
+                "y": 0.235,
+                "tokenIds": [
+                  "r1t0",
+                  "r1t1",
+                  "r1t2"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r2-s4",
+                "page": 1,
+                "y": 0.235,
+                "tokenIds": [
+                  "r1t3",
+                  "r1t4",
+                  "r1t5"
+                ],
+                "region_id": "p1-region-1-c1",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2",
+              "r0t3",
+              "r0t4",
+              "r0t5",
+              "r1t0",
+              "r1t1",
+              "r1t2",
+              "r1t3",
+              "r1t4",
+              "r1t5"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [
+            {
+              "id": "p1-region-1",
+              "page": 1,
+              "cuts": [
+                0.515
+              ],
+              "start_y": 0.185,
+              "last_y": 0.235,
+              "height": 0.010000000000000009
+            }
+          ],
+          "cells": [],
+          "events": [
+            {
+              "kind": "repeated-table-header",
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2",
+                "r0t3",
+                "r0t4",
+                "r0t5"
+              ],
+              "region_id": "p1-region-1"
+            }
+          ],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain unverified proposals"
+          ]
+        }
+      }
+    },
+    {
+      "id": "S06",
+      "variant": "E",
+      "expect": {
+        "data_y": 0.23,
+        "data_rows": 2,
+        "no_cross_region_mix": true
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "data_rows": true,
+        "purity": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Code",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.15000000000000002,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "Qty",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.24,
+              "x1": 0.29,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "Unit",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.38,
+              "x1": 0.44,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t3",
+            "raw": "Code",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.59,
+              "x1": 0.6599999999999999,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t4",
+            "raw": "Qty",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.74,
+              "x1": 0.79,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t5",
+            "raw": "Unit",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.88,
+              "x1": 0.94,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t0",
+            "raw": "0042",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.15000000000000002,
+              "y0": 0.23,
+              "y1": 0.24000000000000002
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t1",
+            "raw": "6",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.24,
+              "x1": 0.265,
+              "y0": 0.23,
+              "y1": 0.24000000000000002
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t2",
+            "raw": "m",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.38,
+              "x1": 0.4,
+              "y0": 0.23,
+              "y1": 0.24000000000000002
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t3",
+            "raw": "0042",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.59,
+              "x1": 0.6599999999999999,
+              "y0": 0.23,
+              "y1": 0.24000000000000002
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t4",
+            "raw": "11",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.74,
+              "x1": 0.78,
+              "y0": 0.23,
+              "y1": 0.24000000000000002
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t5",
+            "raw": "m",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.88,
+              "x1": 0.9,
+              "y0": 0.23,
+              "y1": 0.24000000000000002
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.185,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1",
+                  "r0t2"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r1-s2",
+                "page": 1,
+                "y": 0.185,
+                "tokenIds": [
+                  "r0t3",
+                  "r0t4",
+                  "r0t5"
+                ],
+                "region_id": "p1-region-1-c1",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s3",
+                "page": 1,
+                "y": 0.235,
+                "tokenIds": [
+                  "r1t0",
+                  "r1t1",
+                  "r1t2"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r2-s4",
+                "page": 1,
+                "y": 0.235,
+                "tokenIds": [
+                  "r1t3",
+                  "r1t4",
+                  "r1t5"
+                ],
+                "region_id": "p1-region-1-c1",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2",
+              "r0t3",
+              "r0t4",
+              "r0t5",
+              "r1t0",
+              "r1t1",
+              "r1t2",
+              "r1t3",
+              "r1t4",
+              "r1t5"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [
+            {
+              "id": "p1-region-1",
+              "page": 1,
+              "cuts": [
+                0.515
+              ],
+              "start_y": 0.185,
+              "last_y": 0.235,
+              "height": 0.010000000000000009
+            }
+          ],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": "p1-region-1-c0",
+              "label_source_ids": [],
+              "value_source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "source_ids": [
+                "r1t0",
+                "r1t1",
+                "r1t2"
+              ],
+              "unit_source_ids": [
+                "r1t2"
+              ],
+              "method": "multi-value-row",
+              "status": "uncertain",
+              "reason": "Multiple values or non-scalar record; row label is not a column header",
+              "box": {
+                "x0": 0.08,
+                "y0": 0.23,
+                "x1": 0.4,
+                "y1": 0.24000000000000002
+              },
+              "table_id": "table-1-p1-r1-s1",
+              "record_id": "record-3",
+              "record_candidate_ids": [
+                "record-3"
+              ]
+            },
+            {
+              "id": "cell-2",
+              "page": 1,
+              "region_id": "p1-region-1-c1",
+              "label_source_ids": [],
+              "value_source_ids": [
+                "r1t3",
+                "r1t4"
+              ],
+              "source_ids": [
+                "r1t3",
+                "r1t4",
+                "r1t5"
+              ],
+              "unit_source_ids": [
+                "r1t5"
+              ],
+              "method": "multi-value-row",
+              "status": "uncertain",
+              "reason": "Multiple values or non-scalar record; row label is not a column header",
+              "box": {
+                "x0": 0.59,
+                "y0": 0.23,
+                "x1": 0.9,
+                "y1": 0.24000000000000002
+              },
+              "table_id": "table-1-p1-r1-s2",
+              "record_id": "record-4",
+              "record_candidate_ids": [
+                "record-4"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "kind": "repeated-table-header",
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2",
+                "r0t3",
+                "r0t4",
+                "r0t5"
+              ],
+              "region_id": "p1-region-1"
+            }
+          ],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.08,
+                "y0": 0.18,
+                "x1": 0.44,
+                "y1": 0.19
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.59,
+                "y0": 0.18,
+                "x1": 0.94,
+                "y1": 0.19
+              },
+              "region_id": "p1-region-1-c1",
+              "table_id": null,
+              "row_id": "p1-r1-s2",
+              "source_ids": [
+                "r0t3",
+                "r0t4",
+                "r0t5"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-3",
+              "page": 1,
+              "box": {
+                "x0": 0.08,
+                "y0": 0.23,
+                "x1": 0.4,
+                "y1": 0.24000000000000002
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": "table-1-p1-r1-s1",
+              "row_id": "p1-r2-s3",
+              "source_ids": [
+                "r1t0",
+                "r1t1",
+                "r1t2"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": [
+                {
+                  "source_ids": [
+                    "r1t2"
+                  ],
+                  "raw": "m",
+                  "box": {
+                    "x0": 0.38,
+                    "x1": 0.4,
+                    "y0": 0.23,
+                    "y1": 0.24000000000000002
+                  },
+                  "status": "uncertain",
+                  "reason": "Short text suffix; no semantic unit interpretation"
+                }
+              ]
+            },
+            {
+              "id": "record-4",
+              "page": 1,
+              "box": {
+                "x0": 0.59,
+                "y0": 0.23,
+                "x1": 0.9,
+                "y1": 0.24000000000000002
+              },
+              "region_id": "p1-region-1-c1",
+              "table_id": "table-1-p1-r1-s2",
+              "row_id": "p1-r2-s4",
+              "source_ids": [
+                "r1t3",
+                "r1t4",
+                "r1t5"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": [
+                {
+                  "source_ids": [
+                    "r1t5"
+                  ],
+                  "raw": "m",
+                  "box": {
+                    "x0": 0.88,
+                    "x1": 0.9,
+                    "y0": 0.23,
+                    "y1": 0.24000000000000002
+                  },
+                  "status": "uncertain",
+                  "reason": "Short text suffix; no semantic unit interpretation"
+                }
+              ]
+            }
+          ],
+          "column_header_candidates": [
+            {
+              "id": "column-1",
+              "page": 1,
+              "box": {
+                "x0": 0.08,
+                "y0": 0.18,
+                "x1": 0.15000000000000002,
+                "y1": 0.24000000000000002
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": "table-1-p1-r1-s1",
+              "record_id": "record-3",
+              "row_id": "p1-r2-s3",
+              "source_ids": [
+                "r0t0",
+                "r1t0"
+              ],
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r1t0"
+              ],
+              "unit_source_ids": [],
+              "status": "uncertain",
+              "method": "column-alignment",
+              "reason": "Single aligned header, but no validated table grid"
+            },
+            {
+              "id": "column-2",
+              "page": 1,
+              "box": {
+                "x0": 0.24,
+                "y0": 0.18,
+                "x1": 0.29,
+                "y1": 0.24000000000000002
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": "table-1-p1-r1-s1",
+              "record_id": "record-3",
+              "row_id": "p1-r2-s3",
+              "source_ids": [
+                "r0t1",
+                "r1t1"
+              ],
+              "label_source_ids": [
+                "r0t1"
+              ],
+              "value_source_ids": [
+                "r1t1"
+              ],
+              "unit_source_ids": [],
+              "status": "uncertain",
+              "method": "column-alignment",
+              "reason": "Single aligned header, but no validated table grid"
+            },
+            {
+              "id": "column-3",
+              "page": 1,
+              "box": {
+                "x0": 0.38,
+                "y0": 0.18,
+                "x1": 0.44,
+                "y1": 0.24000000000000002
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": "table-1-p1-r1-s1",
+              "record_id": "record-3",
+              "row_id": "p1-r2-s3",
+              "source_ids": [
+                "r0t2",
+                "r1t2"
+              ],
+              "label_source_ids": [
+                "r0t2"
+              ],
+              "value_source_ids": [
+                "r1t2"
+              ],
+              "unit_source_ids": [],
+              "status": "uncertain",
+              "method": "column-alignment",
+              "reason": "Single aligned header, but no validated table grid"
+            },
+            {
+              "id": "column-4",
+              "page": 1,
+              "box": {
+                "x0": 0.59,
+                "y0": 0.18,
+                "x1": 0.6599999999999999,
+                "y1": 0.24000000000000002
+              },
+              "region_id": "p1-region-1-c1",
+              "table_id": "table-1-p1-r1-s2",
+              "record_id": "record-4",
+              "row_id": "p1-r2-s4",
+              "source_ids": [
+                "r0t3",
+                "r1t3"
+              ],
+              "label_source_ids": [
+                "r0t3"
+              ],
+              "value_source_ids": [
+                "r1t3"
+              ],
+              "unit_source_ids": [],
+              "status": "uncertain",
+              "method": "column-alignment",
+              "reason": "Single aligned header, but no validated table grid"
+            },
+            {
+              "id": "column-5",
+              "page": 1,
+              "box": {
+                "x0": 0.74,
+                "y0": 0.18,
+                "x1": 0.79,
+                "y1": 0.24000000000000002
+              },
+              "region_id": "p1-region-1-c1",
+              "table_id": "table-1-p1-r1-s2",
+              "record_id": "record-4",
+              "row_id": "p1-r2-s4",
+              "source_ids": [
+                "r0t4",
+                "r1t4"
+              ],
+              "label_source_ids": [
+                "r0t4"
+              ],
+              "value_source_ids": [
+                "r1t4"
+              ],
+              "unit_source_ids": [],
+              "status": "uncertain",
+              "method": "column-alignment",
+              "reason": "Single aligned header, but no validated table grid"
+            },
+            {
+              "id": "column-6",
+              "page": 1,
+              "box": {
+                "x0": 0.88,
+                "y0": 0.18,
+                "x1": 0.94,
+                "y1": 0.24000000000000002
+              },
+              "region_id": "p1-region-1-c1",
+              "table_id": "table-1-p1-r1-s2",
+              "record_id": "record-4",
+              "row_id": "p1-r2-s4",
+              "source_ids": [
+                "r0t5",
+                "r1t5"
+              ],
+              "label_source_ids": [
+                "r0t5"
+              ],
+              "value_source_ids": [
+                "r1t5"
+              ],
+              "unit_source_ids": [],
+              "status": "uncertain",
+              "method": "column-alignment",
+              "reason": "Single aligned header, but no validated table grid"
+            }
+          ],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      }
+    },
+    {
+      "id": "S07",
+      "variant": "D",
+      "expect": {
+        "certain": 0,
+        "uncertain_min": 1
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "certain": true,
+        "uncertainty": false
+      },
+      "pass": false,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "LEFT CARD",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.27,
+              "y0": 0.11,
+              "y1": 0.12
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "RIGHT CARD",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.64,
+              "x1": 0.8400000000000001,
+              "y0": 0.11,
+              "y1": 0.12
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Caption",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.18,
+              "y0": 0.15,
+              "y1": 0.16
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r2t0",
+            "raw": "13.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.2,
+              "x1": 0.28,
+              "y0": 0.168,
+              "y1": 0.17800000000000002
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r3t0",
+            "raw": "14.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.2,
+              "x1": 0.28,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.115,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r1-s2",
+                "page": 1,
+                "y": 0.115,
+                "tokenIds": [
+                  "r0t1"
+                ],
+                "region_id": "p1-region-1-c1",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s3",
+                "page": 1,
+                "y": 0.155,
+                "tokenIds": [
+                  "r1t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r3-s4",
+                "page": 1,
+                "y": 0.173,
+                "tokenIds": [
+                  "r2t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r3"
+                ]
+              },
+              {
+                "id": "p1-r4-s5",
+                "page": 1,
+                "y": 0.185,
+                "tokenIds": [
+                  "r3t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r4"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r1t0",
+              "r2t0",
+              "r3t0"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [
+            {
+              "id": "p1-region-1",
+              "page": 1,
+              "cuts": [
+                0.4575
+              ],
+              "start_y": 0.115,
+              "last_y": 0.185,
+              "height": 0.009999999999999995
+            }
+          ],
+          "cells": [],
+          "events": [
+            {
+              "kind": "separated-card-header",
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "region_id": "p1-region-1"
+            },
+            {
+              "kind": "ambiguous-vertical-link",
+              "label_source_ids": [
+                "r1t0"
+              ],
+              "value_source_ids": [
+                "r2t0",
+                "r3t0"
+              ],
+              "status": "unverified"
+            }
+          ],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain unverified proposals"
+          ]
+        }
+      }
+    },
+    {
+      "id": "S07",
+      "variant": "E",
+      "expect": {
+        "certain": 0,
+        "uncertain_min": 1
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "certain": true,
+        "uncertainty": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "LEFT CARD",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.27,
+              "y0": 0.11,
+              "y1": 0.12
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "RIGHT CARD",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.64,
+              "x1": 0.8400000000000001,
+              "y0": 0.11,
+              "y1": 0.12
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Caption",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.18,
+              "y0": 0.15,
+              "y1": 0.16
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r2t0",
+            "raw": "13.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.2,
+              "x1": 0.28,
+              "y0": 0.168,
+              "y1": 0.17800000000000002
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r3t0",
+            "raw": "14.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.2,
+              "x1": 0.28,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.115,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r1-s2",
+                "page": 1,
+                "y": 0.115,
+                "tokenIds": [
+                  "r0t1"
+                ],
+                "region_id": "p1-region-1-c1",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s3",
+                "page": 1,
+                "y": 0.155,
+                "tokenIds": [
+                  "r1t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r3-s4",
+                "page": 1,
+                "y": 0.173,
+                "tokenIds": [
+                  "r2t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r3"
+                ]
+              },
+              {
+                "id": "p1-r4-s5",
+                "page": 1,
+                "y": 0.185,
+                "tokenIds": [
+                  "r3t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r4"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r1t0",
+              "r2t0",
+              "r3t0"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [
+            {
+              "id": "p1-region-1",
+              "page": 1,
+              "cuts": [
+                0.4575
+              ],
+              "start_y": 0.115,
+              "last_y": 0.185,
+              "height": 0.009999999999999995
+            }
+          ],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": "p1-region-1-c0",
+              "label_source_ids": [
+                "r1t0"
+              ],
+              "value_source_ids": [
+                "r2t0",
+                "r3t0"
+              ],
+              "source_ids": [
+                "r1t0",
+                "r2t0",
+                "r3t0"
+              ],
+              "method": "vertical-competing",
+              "status": "uncertain",
+              "reason": "Multiple nearby value rows compete",
+              "box": {
+                "x0": 0.08,
+                "y0": 0.15,
+                "x1": 0.28,
+                "y1": 0.19
+              },
+              "table_id": null,
+              "record_id": null,
+              "record_candidate_ids": [
+                "record-3",
+                "record-4",
+                "record-5"
+              ],
+              "unit_source_ids": []
+            },
+            {
+              "id": "cell-2",
+              "page": 1,
+              "region_id": "p1-region-1-c0",
+              "label_source_ids": [],
+              "value_source_ids": [
+                "r2t0"
+              ],
+              "source_ids": [
+                "r2t0"
+              ],
+              "unit_source_ids": [],
+              "method": "multi-value-row",
+              "status": "uncertain",
+              "reason": "Multiple values or non-scalar record; row label is not a column header",
+              "box": {
+                "x0": 0.2,
+                "y0": 0.168,
+                "x1": 0.28,
+                "y1": 0.17800000000000002
+              },
+              "table_id": null,
+              "record_id": "record-4",
+              "record_candidate_ids": [
+                "record-4"
+              ]
+            },
+            {
+              "id": "cell-3",
+              "page": 1,
+              "region_id": "p1-region-1-c0",
+              "label_source_ids": [],
+              "value_source_ids": [
+                "r3t0"
+              ],
+              "source_ids": [
+                "r3t0"
+              ],
+              "unit_source_ids": [],
+              "method": "multi-value-row",
+              "status": "uncertain",
+              "reason": "Multiple values or non-scalar record; row label is not a column header",
+              "box": {
+                "x0": 0.2,
+                "y0": 0.18,
+                "x1": 0.28,
+                "y1": 0.19
+              },
+              "table_id": null,
+              "record_id": "record-5",
+              "record_candidate_ids": [
+                "record-5"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "kind": "separated-card-header",
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "region_id": "p1-region-1"
+            },
+            {
+              "kind": "ambiguous-vertical-link",
+              "label_source_ids": [
+                "r1t0"
+              ],
+              "value_source_ids": [
+                "r2t0",
+                "r3t0"
+              ],
+              "status": "unverified"
+            }
+          ],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.08,
+                "y0": 0.11,
+                "x1": 0.27,
+                "y1": 0.12
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.64,
+                "y0": 0.11,
+                "x1": 0.8400000000000001,
+                "y1": 0.12
+              },
+              "region_id": "p1-region-1-c1",
+              "table_id": null,
+              "row_id": "p1-r1-s2",
+              "source_ids": [
+                "r0t1"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-3",
+              "page": 1,
+              "box": {
+                "x0": 0.08,
+                "y0": 0.15,
+                "x1": 0.18,
+                "y1": 0.16
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": null,
+              "row_id": "p1-r2-s3",
+              "source_ids": [
+                "r1t0"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-4",
+              "page": 1,
+              "box": {
+                "x0": 0.2,
+                "y0": 0.168,
+                "x1": 0.28,
+                "y1": 0.17800000000000002
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": null,
+              "row_id": "p1-r3-s4",
+              "source_ids": [
+                "r2t0"
+              ],
+              "original_row_ids": [
+                "p1-r3"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-5",
+              "page": 1,
+              "box": {
+                "x0": 0.2,
+                "y0": 0.18,
+                "x1": 0.28,
+                "y1": 0.19
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": null,
+              "row_id": "p1-r4-s5",
+              "source_ids": [
+                "r3t0"
+              ],
+              "original_row_ids": [
+                "p1-r4"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      }
+    },
+    {
+      "id": "S08",
+      "variant": "D",
+      "expect": {
+        "rows": 2,
+        "multiline_min": 1
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "multiline": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Service",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.14,
+              "x1": 0.24000000000000002,
+              "y0": 0.36,
+              "y1": 0.37
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "30.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.79,
+              "x1": 0.87,
+              "y0": 0.36,
+              "y1": 0.37
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t0",
+            "raw": "continued details",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.14,
+              "x1": 0.34,
+              "y0": 0.374,
+              "y1": 0.384
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.365,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.379,
+                "tokenIds": [
+                  "r1t0"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r1t0"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "method": "horizontal-local"
+            },
+            {
+              "id": "cell-2",
+              "page": 1,
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r1t0"
+              ],
+              "method": "multiline-proposal",
+              "status": "unverified"
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain unverified proposals"
+          ]
+        }
+      }
+    },
+    {
+      "id": "S08",
+      "variant": "E",
+      "expect": {
+        "rows": 2,
+        "multiline_min": 1
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "multiline": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Service",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.14,
+              "x1": 0.24000000000000002,
+              "y0": 0.36,
+              "y1": 0.37
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "30.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.79,
+              "x1": 0.87,
+              "y0": 0.36,
+              "y1": 0.37
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t0",
+            "raw": "continued details",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.14,
+              "x1": 0.34,
+              "y0": 0.374,
+              "y1": 0.384
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.365,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.379,
+                "tokenIds": [
+                  "r1t0"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r1t0"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.14,
+                "y0": 0.36,
+                "x1": 0.87,
+                "y1": 0.37
+              },
+              "table_id": null,
+              "record_id": "record-1",
+              "record_candidate_ids": [
+                "record-1"
+              ]
+            },
+            {
+              "id": "cell-2",
+              "page": 1,
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r1t0"
+              ],
+              "method": "multiline-proposal",
+              "status": "uncertain",
+              "box": {
+                "x0": 0.14,
+                "y0": 0.36,
+                "x1": 0.87,
+                "y1": 0.384
+              },
+              "region_id": null,
+              "table_id": null,
+              "record_id": null,
+              "record_candidate_ids": [
+                "record-1",
+                "record-2"
+              ],
+              "unit_source_ids": [],
+              "label_source_ids": [],
+              "value_source_ids": [],
+              "reason": "Geometric multiline proposal; fragments remain separate"
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.14,
+                "y0": 0.36,
+                "x1": 0.87,
+                "y1": 0.37
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.14,
+                "y0": 0.374,
+                "x1": 0.34,
+                "y1": 0.384
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r1t0"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      }
+    },
+    {
+      "id": "S09",
+      "variant": "D",
+      "expect": {
+        "rows": 2,
+        "certain": 2,
+        "distinct_value_ids": 2
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "certain": true,
+        "distinct_values": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "First",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.14,
+              "x1": 0.22000000000000003,
+              "y0": 0.28,
+              "y1": 0.29000000000000004
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "17.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.71,
+              "x1": 0.78,
+              "y0": 0.28,
+              "y1": 0.29000000000000004
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Second",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.14,
+              "x1": 0.23,
+              "y0": 0.34,
+              "y1": 0.35000000000000003
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t1",
+            "raw": "17.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.71,
+              "x1": 0.78,
+              "y0": 0.34,
+              "y1": 0.35000000000000003
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.285,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.345,
+                "tokenIds": [
+                  "r1t0",
+                  "r1t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r1t0",
+              "r1t1"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "method": "horizontal-local"
+            },
+            {
+              "id": "cell-2",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r1t0"
+              ],
+              "value_source_ids": [
+                "r1t1"
+              ],
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "method": "horizontal-local"
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain unverified proposals"
+          ]
+        }
+      }
+    },
+    {
+      "id": "S09",
+      "variant": "E",
+      "expect": {
+        "rows": 2,
+        "certain": 2,
+        "distinct_value_ids": 2
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "certain": true,
+        "distinct_values": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "First",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.14,
+              "x1": 0.22000000000000003,
+              "y0": 0.28,
+              "y1": 0.29000000000000004
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "17.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.71,
+              "x1": 0.78,
+              "y0": 0.28,
+              "y1": 0.29000000000000004
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Second",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.14,
+              "x1": 0.23,
+              "y0": 0.34,
+              "y1": 0.35000000000000003
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t1",
+            "raw": "17.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.71,
+              "x1": 0.78,
+              "y0": 0.34,
+              "y1": 0.35000000000000003
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.285,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.345,
+                "tokenIds": [
+                  "r1t0",
+                  "r1t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r1t0",
+              "r1t1"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.14,
+                "y0": 0.28,
+                "x1": 0.78,
+                "y1": 0.29000000000000004
+              },
+              "table_id": null,
+              "record_id": "record-1",
+              "record_candidate_ids": [
+                "record-1"
+              ]
+            },
+            {
+              "id": "cell-2",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r1t0"
+              ],
+              "value_source_ids": [
+                "r1t1"
+              ],
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.14,
+                "y0": 0.34,
+                "x1": 0.78,
+                "y1": 0.35000000000000003
+              },
+              "table_id": null,
+              "record_id": "record-2",
+              "record_candidate_ids": [
+                "record-2"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.14,
+                "y0": 0.28,
+                "x1": 0.78,
+                "y1": 0.29000000000000004
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.14,
+                "y0": 0.34,
+                "x1": 0.78,
+                "y1": 0.35000000000000003
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      }
+    },
+    {
+      "id": "S10",
+      "variant": "D",
+      "expect": {
+        "forbid_label_value": {
+          "label": "Caption",
+          "value": "15.00"
+        }
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "no_jump": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "LEFT CARD",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.27,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "RIGHT CARD",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.64,
+              "x1": 0.8400000000000001,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Caption",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.18,
+              "y0": 0.15,
+              "y1": 0.16
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r2t0",
+            "raw": "Other caption",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.24,
+              "y0": 0.163,
+              "y1": 0.17300000000000001
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r3t0",
+            "raw": "15.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.2,
+              "x1": 0.28,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.105,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r1-s2",
+                "page": 1,
+                "y": 0.105,
+                "tokenIds": [
+                  "r0t1"
+                ],
+                "region_id": "p1-region-1-c1",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s3",
+                "page": 1,
+                "y": 0.155,
+                "tokenIds": [
+                  "r1t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r3-s4",
+                "page": 1,
+                "y": 0.168,
+                "tokenIds": [
+                  "r2t0",
+                  "r3t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r3",
+                  "p1-r4"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r1t0",
+              "r2t0",
+              "r3t0"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [
+            {
+              "id": "p1-region-1",
+              "page": 1,
+              "cuts": [
+                0.4575
+              ],
+              "start_y": 0.105,
+              "last_y": 0.185,
+              "height": 0.009999999999999995
+            }
+          ],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": "p1-region-1-c0",
+              "label_source_ids": [
+                "r2t0"
+              ],
+              "value_source_ids": [
+                "r3t0"
+              ],
+              "source_ids": [
+                "r2t0",
+                "r3t0"
+              ],
+              "method": "vertical-local"
+            }
+          ],
+          "events": [
+            {
+              "kind": "separated-card-header",
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "region_id": "p1-region-1"
+            }
+          ],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain unverified proposals"
+          ]
+        }
+      }
+    },
+    {
+      "id": "S10",
+      "variant": "E",
+      "expect": {
+        "forbid_label_value": {
+          "label": "Caption",
+          "value": "15.00"
+        }
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "no_jump": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "LEFT CARD",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.27,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "RIGHT CARD",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.64,
+              "x1": 0.8400000000000001,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Caption",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.18,
+              "y0": 0.15,
+              "y1": 0.16
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r2t0",
+            "raw": "Other caption",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.08,
+              "x1": 0.24,
+              "y0": 0.163,
+              "y1": 0.17300000000000001
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r3t0",
+            "raw": "15.00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.2,
+              "x1": 0.28,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.105,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r1-s2",
+                "page": 1,
+                "y": 0.105,
+                "tokenIds": [
+                  "r0t1"
+                ],
+                "region_id": "p1-region-1-c1",
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s3",
+                "page": 1,
+                "y": 0.155,
+                "tokenIds": [
+                  "r1t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r3-s4",
+                "page": 1,
+                "y": 0.168,
+                "tokenIds": [
+                  "r2t0",
+                  "r3t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r3",
+                  "p1-r4"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r1t0",
+              "r2t0",
+              "r3t0"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [
+            {
+              "id": "p1-region-1",
+              "page": 1,
+              "cuts": [
+                0.4575
+              ],
+              "start_y": 0.105,
+              "last_y": 0.185,
+              "height": 0.009999999999999995
+            }
+          ],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": "p1-region-1-c0",
+              "label_source_ids": [
+                "r2t0"
+              ],
+              "value_source_ids": [
+                "r3t0"
+              ],
+              "source_ids": [
+                "r2t0",
+                "r3t0"
+              ],
+              "method": "vertical-local",
+              "status": "unambiguous",
+              "reason": "One nearby numeric run in the same region",
+              "box": {
+                "x0": 0.08,
+                "y0": 0.163,
+                "x1": 0.28,
+                "y1": 0.19
+              },
+              "table_id": null,
+              "record_id": "record-4",
+              "record_candidate_ids": [
+                "record-4"
+              ],
+              "unit_source_ids": []
+            }
+          ],
+          "events": [
+            {
+              "kind": "separated-card-header",
+              "source_ids": [
+                "r0t0",
+                "r0t1"
+              ],
+              "region_id": "p1-region-1"
+            }
+          ],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.08,
+                "y0": 0.1,
+                "x1": 0.27,
+                "y1": 0.11
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.64,
+                "y0": 0.1,
+                "x1": 0.8400000000000001,
+                "y1": 0.11
+              },
+              "region_id": "p1-region-1-c1",
+              "table_id": null,
+              "row_id": "p1-r1-s2",
+              "source_ids": [
+                "r0t1"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-3",
+              "page": 1,
+              "box": {
+                "x0": 0.08,
+                "y0": 0.15,
+                "x1": 0.18,
+                "y1": 0.16
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": null,
+              "row_id": "p1-r2-s3",
+              "source_ids": [
+                "r1t0"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-4",
+              "page": 1,
+              "box": {
+                "x0": 0.08,
+                "y0": 0.163,
+                "x1": 0.28,
+                "y1": 0.19
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": null,
+              "row_id": "p1-r3-s4",
+              "source_ids": [
+                "r2t0",
+                "r3t0"
+              ],
+              "original_row_ids": [
+                "p1-r3",
+                "p1-r4"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      }
+    },
+    {
+      "id": "S11",
+      "variant": "D",
+      "expect": {
+        "rows": 1,
+        "certain": 0,
+        "uncertain_min": 1
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "certain": false,
+        "uncertainty": false
+      },
+      "pass": false,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Count",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.13,
+              "x1": 0.22,
+              "y0": 0.37,
+              "y1": 0.38
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "12",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.45,
+              "x1": 0.48,
+              "y0": 0.37,
+              "y1": 0.38
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "20",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.49,
+              "x1": 0.52,
+              "y0": 0.37,
+              "y1": 0.38
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.375,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1",
+                  "r0t2"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1",
+                "r0t2"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2"
+              ],
+              "method": "horizontal-local"
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain unverified proposals"
+          ]
+        }
+      }
+    },
+    {
+      "id": "S11",
+      "variant": "E",
+      "expect": {
+        "rows": 1,
+        "certain": 0,
+        "uncertain_min": 1
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "certain": true,
+        "uncertainty": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Count",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.13,
+              "x1": 0.22,
+              "y0": 0.37,
+              "y1": 0.38
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "12",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.45,
+              "x1": 0.48,
+              "y0": 0.37,
+              "y1": 0.38
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "20",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.49,
+              "x1": 0.52,
+              "y0": 0.37,
+              "y1": 0.38
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.375,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1",
+                  "r0t2"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1",
+                "r0t2"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2"
+              ],
+              "unit_source_ids": [],
+              "method": "multi-value-row",
+              "status": "uncertain",
+              "reason": "Multiple values or non-scalar record; row label is not a column header",
+              "box": {
+                "x0": 0.13,
+                "y0": 0.37,
+                "x1": 0.52,
+                "y1": 0.38
+              },
+              "table_id": null,
+              "record_id": "record-1",
+              "record_candidate_ids": [
+                "record-1"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.13,
+                "y0": 0.37,
+                "x1": 0.52,
+                "y1": 0.38
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      }
+    },
+    {
+      "id": "S12",
+      "variant": "D",
+      "expect": {
+        "rows": 1,
+        "certain": 1,
+        "value_source_count": 2
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "certain": true,
+        "split_value": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Balance",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.12,
+              "x1": 0.22,
+              "y0": 0.38,
+              "y1": 0.39
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "3",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.53,
+              "x1": 0.55,
+              "y0": 0.38,
+              "y1": 0.39
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "456,78",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.56,
+              "x1": 0.65,
+              "y0": 0.38,
+              "y1": 0.39
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.385,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1",
+                  "r0t2"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1",
+                "r0t2"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2"
+              ],
+              "method": "horizontal-local"
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain unverified proposals"
+          ]
+        }
+      }
+    },
+    {
+      "id": "S12",
+      "variant": "E",
+      "expect": {
+        "rows": 1,
+        "certain": 1,
+        "value_source_count": 2
+      },
+      "checks": {
+        "observations_unchanged": true,
+        "token_multiset_preserved": true,
+        "rows": true,
+        "certain": true,
+        "split_value": true
+      },
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Balance",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.12,
+              "x1": 0.22,
+              "y0": 0.38,
+              "y1": 0.39
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t1",
+            "raw": "3",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.53,
+              "x1": 0.55,
+              "y0": 0.38,
+              "y1": 0.39
+            },
+            "method": "adversarial-in-memory"
+          },
+          {
+            "id": "r0t2",
+            "raw": "456,78",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.56,
+              "x1": 0.65,
+              "y0": 0.38,
+              "y1": 0.39
+            },
+            "method": "adversarial-in-memory"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.385,
+                "tokenIds": [
+                  "r0t0",
+                  "r0t1",
+                  "r0t2"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r0t1",
+              "r0t2"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r0t0"
+              ],
+              "value_source_ids": [
+                "r0t1",
+                "r0t2"
+              ],
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.12,
+                "y0": 0.38,
+                "x1": 0.65,
+                "y1": 0.39
+              },
+              "table_id": null,
+              "record_id": "record-1",
+              "record_candidate_ids": [
+                "record-1"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.12,
+                "y0": 0.38,
+                "x1": 0.65,
+                "y1": 0.39
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0",
+                "r0t1",
+                "r0t2"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      }
+    }
+  ]
+}

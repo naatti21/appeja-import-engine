@@ -1,0 +1,3428 @@
+{
+  "scope": "Supplemental synthetic observations, no PDF.js; not DEV accuracy",
+  "results": [
+    {
+      "id": "foreign-aliases",
+      "variant": "E",
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Invoice",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Gross pay",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t1",
+            "raw": "100,00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r2t0",
+            "raw": "Net",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.15,
+              "y1": 0.16
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r2t1",
+            "raw": "80,00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.15,
+              "y1": 0.16
+            },
+            "method": "synthetic-regression"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.025,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.105,
+                "tokenIds": [
+                  "r1t0",
+                  "r1t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r3-s3",
+                "page": 1,
+                "y": 0.155,
+                "tokenIds": [
+                  "r2t0",
+                  "r2t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r3"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r1t0",
+              "r1t1",
+              "r2t0",
+              "r2t1"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r1t0"
+              ],
+              "value_source_ids": [
+                "r1t1"
+              ],
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.05,
+                "y0": 0.1,
+                "x1": 0.85,
+                "y1": 0.11
+              },
+              "table_id": null,
+              "record_id": "record-2",
+              "record_candidate_ids": [
+                "record-2"
+              ]
+            },
+            {
+              "id": "cell-2",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r2t0"
+              ],
+              "value_source_ids": [
+                "r2t1"
+              ],
+              "source_ids": [
+                "r2t0",
+                "r2t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.05,
+                "y0": 0.15,
+                "x1": 0.85,
+                "y1": 0.16
+              },
+              "table_id": null,
+              "record_id": "record-3",
+              "record_candidate_ids": [
+                "record-3"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.02,
+                "x1": 0.2,
+                "y1": 0.03
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.1,
+                "x1": 0.85,
+                "y1": 0.11
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-3",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.15,
+                "x1": 0.85,
+                "y1": 0.16
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r3-s3",
+              "source_ids": [
+                "r2t0",
+                "r2t1"
+              ],
+              "original_row_ids": [
+                "p1-r3"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      },
+      "parsed": {
+        "schemaVersion": 2,
+        "adapter": "payroll-sections-experiment",
+        "fields": {
+          "payDate": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "grossPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "netPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "ytdTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "previousYearTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingPeriod": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingYtd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodStart": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodEnd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          }
+        },
+        "evidence": {
+          "payDate": [],
+          "grossPay": [],
+          "netPay": [],
+          "ytdTaxableIncome": [],
+          "previousYearTaxableIncome": [],
+          "withholdingPeriod": [],
+          "withholdingYtd": [],
+          "payPeriodStart": [],
+          "payPeriodEnd": []
+        },
+        "payLines": [],
+        "unmatchedPayLines": [],
+        "coverage": {
+          "materialObservations": 2,
+          "coveredObservations": 0,
+          "unresolvedObservations": 2,
+          "unresolvedIds": [
+            "r1t1",
+            "r2t1"
+          ],
+          "paylineRowsRecognized": 0,
+          "paylineRowsUnrecognized": 0
+        },
+        "issues": [
+          {
+            "level": "blocking",
+            "code": "UNKNOWN_PAYSLIP_TYPE"
+          }
+        ],
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Invoice",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "material": false
+          },
+          {
+            "id": "r1t0",
+            "raw": "Gross pay",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "material": false
+          },
+          {
+            "id": "r1t1",
+            "raw": "100,00",
+            "page": 1,
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "material": true
+          },
+          {
+            "id": "r2t0",
+            "raw": "Net",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.15,
+              "y1": 0.16
+            },
+            "material": false
+          },
+          {
+            "id": "r2t1",
+            "raw": "80,00",
+            "page": 1,
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.15,
+              "y1": 0.16
+            },
+            "material": true
+          }
+        ],
+        "rows": 3,
+        "decision": {
+          "status": "review-required",
+          "canAutoAccept": false,
+          "canPersist": false,
+          "problems": [
+            {
+              "code": "UNKNOWN_DOCUMENT_TYPE"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "payDate"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "grossPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "netPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "ytdTaxableIncome"
+            },
+            {
+              "code": "BLOCKING_SOURCE_ISSUE",
+              "detail": "UNKNOWN_PAYSLIP_TYPE"
+            },
+            {
+              "code": "UNACCOUNTED_MATERIAL",
+              "detail": "r1t1"
+            },
+            {
+              "code": "UNACCOUNTED_MATERIAL",
+              "detail": "r2t1"
+            }
+          ]
+        },
+        "canPersist": false
+      }
+    },
+    {
+      "id": "tax-card-qualified-label",
+      "variant": "E",
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Verokortin veronalainen palkkakertymä",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.55,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t1",
+            "raw": "999,00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "method": "synthetic-regression"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.025,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.105,
+                "tokenIds": [
+                  "r1t0",
+                  "r1t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r1t0",
+              "r1t1"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r1t0"
+              ],
+              "value_source_ids": [
+                "r1t1"
+              ],
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.05,
+                "y0": 0.1,
+                "x1": 0.85,
+                "y1": 0.11
+              },
+              "table_id": null,
+              "record_id": "record-2",
+              "record_candidate_ids": [
+                "record-2"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.02,
+                "x1": 0.2,
+                "y1": 0.03
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.1,
+                "x1": 0.85,
+                "y1": 0.11
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      },
+      "parsed": {
+        "schemaVersion": 2,
+        "adapter": "payroll-sections-experiment",
+        "fields": {
+          "payDate": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "grossPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "netPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "ytdTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "previousYearTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingPeriod": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingYtd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodStart": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodEnd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          }
+        },
+        "evidence": {
+          "payDate": [],
+          "grossPay": [],
+          "netPay": [],
+          "ytdTaxableIncome": [],
+          "previousYearTaxableIncome": [],
+          "withholdingPeriod": [],
+          "withholdingYtd": [],
+          "payPeriodStart": [],
+          "payPeriodEnd": []
+        },
+        "payLines": [],
+        "unmatchedPayLines": [],
+        "coverage": {
+          "materialObservations": 1,
+          "coveredObservations": 0,
+          "unresolvedObservations": 1,
+          "unresolvedIds": [
+            "r1t1"
+          ],
+          "paylineRowsRecognized": 0,
+          "paylineRowsUnrecognized": 0
+        },
+        "issues": [],
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "material": false
+          },
+          {
+            "id": "r1t0",
+            "raw": "Verokortin veronalainen palkkakertymä",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.55,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "material": false
+          },
+          {
+            "id": "r1t1",
+            "raw": "999,00",
+            "page": 1,
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "material": true
+          }
+        ],
+        "rows": 2,
+        "decision": {
+          "status": "review-required",
+          "canAutoAccept": false,
+          "canPersist": false,
+          "problems": [
+            {
+              "code": "MISSING_FIELD",
+              "field": "payDate"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "grossPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "netPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "ytdTaxableIncome"
+            },
+            {
+              "code": "UNACCOUNTED_MATERIAL",
+              "detail": "r1t1"
+            }
+          ]
+        },
+        "canPersist": false
+      }
+    },
+    {
+      "id": "tax-card-section",
+      "variant": "E",
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Verokortti",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.08,
+              "y1": 0.09
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r2t0",
+            "raw": "Taxable YTD",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r2t1",
+            "raw": "999,00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "method": "synthetic-regression"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.025,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.085,
+                "tokenIds": [
+                  "r1t0"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r3-s3",
+                "page": 1,
+                "y": 0.135,
+                "tokenIds": [
+                  "r2t0",
+                  "r2t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r3"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r1t0",
+              "r2t0",
+              "r2t1"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r2t0"
+              ],
+              "value_source_ids": [
+                "r2t1"
+              ],
+              "source_ids": [
+                "r2t0",
+                "r2t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.05,
+                "y0": 0.13,
+                "x1": 0.85,
+                "y1": 0.14
+              },
+              "table_id": null,
+              "record_id": "record-3",
+              "record_candidate_ids": [
+                "record-3"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.02,
+                "x1": 0.2,
+                "y1": 0.03
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.08,
+                "x1": 0.2,
+                "y1": 0.09
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r1t0"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-3",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.13,
+                "x1": 0.85,
+                "y1": 0.14
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r3-s3",
+              "source_ids": [
+                "r2t0",
+                "r2t1"
+              ],
+              "original_row_ids": [
+                "p1-r3"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      },
+      "parsed": {
+        "schemaVersion": 2,
+        "adapter": "payroll-sections-experiment",
+        "fields": {
+          "payDate": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "grossPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "netPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "ytdTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "previousYearTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingPeriod": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingYtd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodStart": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodEnd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          }
+        },
+        "evidence": {
+          "payDate": [],
+          "grossPay": [],
+          "netPay": [],
+          "ytdTaxableIncome": [],
+          "previousYearTaxableIncome": [],
+          "withholdingPeriod": [],
+          "withholdingYtd": [],
+          "payPeriodStart": [],
+          "payPeriodEnd": []
+        },
+        "payLines": [],
+        "unmatchedPayLines": [],
+        "coverage": {
+          "materialObservations": 1,
+          "coveredObservations": 0,
+          "unresolvedObservations": 1,
+          "unresolvedIds": [
+            "r2t1"
+          ],
+          "paylineRowsRecognized": 0,
+          "paylineRowsUnrecognized": 0
+        },
+        "issues": [],
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "material": false
+          },
+          {
+            "id": "r1t0",
+            "raw": "Verokortti",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.08,
+              "y1": 0.09
+            },
+            "material": false
+          },
+          {
+            "id": "r2t0",
+            "raw": "Taxable YTD",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "material": false
+          },
+          {
+            "id": "r2t1",
+            "raw": "999,00",
+            "page": 1,
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "material": true
+          }
+        ],
+        "rows": 3,
+        "decision": {
+          "status": "review-required",
+          "canAutoAccept": false,
+          "canPersist": false,
+          "problems": [
+            {
+              "code": "MISSING_FIELD",
+              "field": "payDate"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "grossPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "netPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "ytdTaxableIncome"
+            },
+            {
+              "code": "UNACCOUNTED_MATERIAL",
+              "detail": "r2t1"
+            }
+          ]
+        },
+        "canPersist": false
+      }
+    },
+    {
+      "id": "year-section-not-period-gross",
+      "variant": "E",
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Vuoden tiedot",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.08,
+              "y1": 0.09
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r2t0",
+            "raw": "Ansiot yhteensä",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r2t1",
+            "raw": "999,00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "method": "synthetic-regression"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.025,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.085,
+                "tokenIds": [
+                  "r1t0"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r3-s3",
+                "page": 1,
+                "y": 0.135,
+                "tokenIds": [
+                  "r2t0",
+                  "r2t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r3"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r1t0",
+              "r2t0",
+              "r2t1"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r2t0"
+              ],
+              "value_source_ids": [
+                "r2t1"
+              ],
+              "source_ids": [
+                "r2t0",
+                "r2t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.05,
+                "y0": 0.13,
+                "x1": 0.85,
+                "y1": 0.14
+              },
+              "table_id": null,
+              "record_id": "record-3",
+              "record_candidate_ids": [
+                "record-3"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.02,
+                "x1": 0.2,
+                "y1": 0.03
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.08,
+                "x1": 0.2,
+                "y1": 0.09
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r1t0"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-3",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.13,
+                "x1": 0.85,
+                "y1": 0.14
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r3-s3",
+              "source_ids": [
+                "r2t0",
+                "r2t1"
+              ],
+              "original_row_ids": [
+                "p1-r3"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      },
+      "parsed": {
+        "schemaVersion": 2,
+        "adapter": "payroll-sections-experiment",
+        "fields": {
+          "payDate": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "grossPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "netPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "ytdTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "previousYearTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingPeriod": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingYtd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodStart": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodEnd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          }
+        },
+        "evidence": {
+          "payDate": [],
+          "grossPay": [],
+          "netPay": [],
+          "ytdTaxableIncome": [],
+          "previousYearTaxableIncome": [],
+          "withholdingPeriod": [],
+          "withholdingYtd": [],
+          "payPeriodStart": [],
+          "payPeriodEnd": []
+        },
+        "payLines": [],
+        "unmatchedPayLines": [],
+        "coverage": {
+          "materialObservations": 1,
+          "coveredObservations": 0,
+          "unresolvedObservations": 1,
+          "unresolvedIds": [
+            "r2t1"
+          ],
+          "paylineRowsRecognized": 0,
+          "paylineRowsUnrecognized": 0
+        },
+        "issues": [],
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "material": false
+          },
+          {
+            "id": "r1t0",
+            "raw": "Vuoden tiedot",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.08,
+              "y1": 0.09
+            },
+            "material": false
+          },
+          {
+            "id": "r2t0",
+            "raw": "Ansiot yhteensä",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "material": false
+          },
+          {
+            "id": "r2t1",
+            "raw": "999,00",
+            "page": 1,
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "material": true
+          }
+        ],
+        "rows": 3,
+        "decision": {
+          "status": "review-required",
+          "canAutoAccept": false,
+          "canPersist": false,
+          "problems": [
+            {
+              "code": "MISSING_FIELD",
+              "field": "payDate"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "grossPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "netPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "ytdTaxableIncome"
+            },
+            {
+              "code": "UNACCOUNTED_MATERIAL",
+              "detail": "r2t1"
+            }
+          ]
+        },
+        "canPersist": false
+      }
+    },
+    {
+      "id": "ambiguous-three-decimals",
+      "variant": "E",
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Net",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t1",
+            "raw": "1,234",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "method": "synthetic-regression"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.025,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.135,
+                "tokenIds": [
+                  "r1t0",
+                  "r1t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r1t0",
+              "r1t1"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r1t0"
+              ],
+              "value_source_ids": [
+                "r1t1"
+              ],
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.05,
+                "y0": 0.13,
+                "x1": 0.85,
+                "y1": 0.14
+              },
+              "table_id": null,
+              "record_id": "record-2",
+              "record_candidate_ids": [
+                "record-2"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.02,
+                "x1": 0.2,
+                "y1": 0.03
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.13,
+                "x1": 0.85,
+                "y1": 0.14
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      },
+      "parsed": {
+        "schemaVersion": 2,
+        "adapter": "payroll-sections-experiment",
+        "fields": {
+          "payDate": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "grossPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "netPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "ytdTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "previousYearTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingPeriod": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingYtd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodStart": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodEnd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          }
+        },
+        "evidence": {
+          "payDate": [],
+          "grossPay": [],
+          "netPay": [],
+          "ytdTaxableIncome": [],
+          "previousYearTaxableIncome": [],
+          "withholdingPeriod": [],
+          "withholdingYtd": [],
+          "payPeriodStart": [],
+          "payPeriodEnd": []
+        },
+        "payLines": [],
+        "unmatchedPayLines": [],
+        "coverage": {
+          "materialObservations": 1,
+          "coveredObservations": 0,
+          "unresolvedObservations": 1,
+          "unresolvedIds": [
+            "r1t1"
+          ],
+          "paylineRowsRecognized": 0,
+          "paylineRowsUnrecognized": 0
+        },
+        "issues": [
+          {
+            "level": "blocking",
+            "code": "UNPARSEABLE_LABELED_AMOUNT",
+            "field": "netPay",
+            "page": 1,
+            "observationId": "r1t0"
+          }
+        ],
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "material": false
+          },
+          {
+            "id": "r1t0",
+            "raw": "Net",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "material": false
+          },
+          {
+            "id": "r1t1",
+            "raw": "1,234",
+            "page": 1,
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "material": true
+          }
+        ],
+        "rows": 2,
+        "decision": {
+          "status": "review-required",
+          "canAutoAccept": false,
+          "canPersist": false,
+          "problems": [
+            {
+              "code": "MISSING_FIELD",
+              "field": "payDate"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "grossPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "netPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "ytdTaxableIncome"
+            },
+            {
+              "code": "BLOCKING_SOURCE_ISSUE",
+              "detail": "UNPARSEABLE_LABELED_AMOUNT"
+            },
+            {
+              "code": "UNACCOUNTED_MATERIAL",
+              "detail": "r1t1"
+            }
+          ]
+        },
+        "canPersist": false
+      }
+    },
+    {
+      "id": "competing-vertical-values",
+      "variant": "E",
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t0",
+            "raw": "CURRENT PAY",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.25,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t1",
+            "raw": "YEAR TRACKER",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.65,
+              "x1": 0.8500000000000001,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r2t0",
+            "raw": "Net",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.1,
+              "y0": 0.14,
+              "y1": 0.15000000000000002
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r3t0",
+            "raw": "100,00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.15,
+              "x1": 0.22999999999999998,
+              "y0": 0.155,
+              "y1": 0.165
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r4t0",
+            "raw": "200,00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.15,
+              "x1": 0.22999999999999998,
+              "y0": 0.17,
+              "y1": 0.18000000000000002
+            },
+            "method": "synthetic-regression"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.025,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.105,
+                "tokenIds": [
+                  "r1t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r2-s3",
+                "page": 1,
+                "y": 0.105,
+                "tokenIds": [
+                  "r1t1"
+                ],
+                "region_id": "p1-region-1-c1",
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r3-s4",
+                "page": 1,
+                "y": 0.145,
+                "tokenIds": [
+                  "r2t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r3"
+                ]
+              },
+              {
+                "id": "p1-r4-s5",
+                "page": 1,
+                "y": 0.16,
+                "tokenIds": [
+                  "r3t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r4"
+                ]
+              },
+              {
+                "id": "p1-r5-s6",
+                "page": 1,
+                "y": 0.175,
+                "tokenIds": [
+                  "r4t0"
+                ],
+                "region_id": "p1-region-1-c0",
+                "original_row_ids": [
+                  "p1-r5"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r1t0",
+              "r1t1",
+              "r2t0",
+              "r3t0",
+              "r4t0"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [
+            {
+              "id": "p1-region-1",
+              "page": 1,
+              "cuts": [
+                0.45
+              ],
+              "start_y": 0.105,
+              "last_y": 0.175,
+              "height": 0.009999999999999995
+            }
+          ],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": "p1-region-1-c0",
+              "label_source_ids": [
+                "r2t0"
+              ],
+              "value_source_ids": [
+                "r3t0",
+                "r4t0"
+              ],
+              "source_ids": [
+                "r2t0",
+                "r3t0",
+                "r4t0"
+              ],
+              "method": "vertical-competing",
+              "status": "uncertain",
+              "reason": "Multiple nearby value rows compete",
+              "box": {
+                "x0": 0.05,
+                "y0": 0.14,
+                "x1": 0.22999999999999998,
+                "y1": 0.18000000000000002
+              },
+              "table_id": null,
+              "record_id": null,
+              "record_candidate_ids": [
+                "record-4",
+                "record-5",
+                "record-6"
+              ],
+              "unit_source_ids": []
+            },
+            {
+              "id": "cell-2",
+              "page": 1,
+              "region_id": "p1-region-1-c0",
+              "label_source_ids": [],
+              "value_source_ids": [
+                "r3t0"
+              ],
+              "source_ids": [
+                "r3t0"
+              ],
+              "unit_source_ids": [],
+              "method": "multi-value-row",
+              "status": "uncertain",
+              "reason": "Multiple values or non-scalar record; row label is not a column header",
+              "box": {
+                "x0": 0.15,
+                "y0": 0.155,
+                "x1": 0.22999999999999998,
+                "y1": 0.165
+              },
+              "table_id": null,
+              "record_id": "record-5",
+              "record_candidate_ids": [
+                "record-5"
+              ]
+            },
+            {
+              "id": "cell-3",
+              "page": 1,
+              "region_id": "p1-region-1-c0",
+              "label_source_ids": [],
+              "value_source_ids": [
+                "r4t0"
+              ],
+              "source_ids": [
+                "r4t0"
+              ],
+              "unit_source_ids": [],
+              "method": "multi-value-row",
+              "status": "uncertain",
+              "reason": "Multiple values or non-scalar record; row label is not a column header",
+              "box": {
+                "x0": 0.15,
+                "y0": 0.17,
+                "x1": 0.22999999999999998,
+                "y1": 0.18000000000000002
+              },
+              "table_id": null,
+              "record_id": "record-6",
+              "record_candidate_ids": [
+                "record-6"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "kind": "separated-card-header",
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "region_id": "p1-region-1"
+            },
+            {
+              "kind": "ambiguous-vertical-link",
+              "label_source_ids": [
+                "r2t0"
+              ],
+              "value_source_ids": [
+                "r3t0",
+                "r4t0"
+              ],
+              "status": "unverified"
+            }
+          ],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.02,
+                "x1": 0.2,
+                "y1": 0.03
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.1,
+                "x1": 0.25,
+                "y1": 0.11
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": null,
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r1t0"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-3",
+              "page": 1,
+              "box": {
+                "x0": 0.65,
+                "y0": 0.1,
+                "x1": 0.8500000000000001,
+                "y1": 0.11
+              },
+              "region_id": "p1-region-1-c1",
+              "table_id": null,
+              "row_id": "p1-r2-s3",
+              "source_ids": [
+                "r1t1"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-4",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.14,
+                "x1": 0.1,
+                "y1": 0.15000000000000002
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": null,
+              "row_id": "p1-r3-s4",
+              "source_ids": [
+                "r2t0"
+              ],
+              "original_row_ids": [
+                "p1-r3"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-5",
+              "page": 1,
+              "box": {
+                "x0": 0.15,
+                "y0": 0.155,
+                "x1": 0.22999999999999998,
+                "y1": 0.165
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": null,
+              "row_id": "p1-r4-s5",
+              "source_ids": [
+                "r3t0"
+              ],
+              "original_row_ids": [
+                "p1-r4"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-6",
+              "page": 1,
+              "box": {
+                "x0": 0.15,
+                "y0": 0.17,
+                "x1": 0.22999999999999998,
+                "y1": 0.18000000000000002
+              },
+              "region_id": "p1-region-1-c0",
+              "table_id": null,
+              "row_id": "p1-r5-s6",
+              "source_ids": [
+                "r4t0"
+              ],
+              "original_row_ids": [
+                "p1-r5"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      },
+      "parsed": {
+        "schemaVersion": 2,
+        "adapter": "payroll-sections-experiment",
+        "fields": {
+          "payDate": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "grossPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "netPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "ytdTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "previousYearTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingPeriod": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingYtd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodStart": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodEnd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          }
+        },
+        "evidence": {
+          "payDate": [],
+          "grossPay": [],
+          "netPay": [],
+          "ytdTaxableIncome": [],
+          "previousYearTaxableIncome": [],
+          "withholdingPeriod": [],
+          "withholdingYtd": [],
+          "payPeriodStart": [],
+          "payPeriodEnd": []
+        },
+        "payLines": [],
+        "unmatchedPayLines": [],
+        "coverage": {
+          "materialObservations": 2,
+          "coveredObservations": 0,
+          "unresolvedObservations": 2,
+          "unresolvedIds": [
+            "r3t0",
+            "r4t0"
+          ],
+          "paylineRowsRecognized": 0,
+          "paylineRowsUnrecognized": 0
+        },
+        "issues": [],
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "material": false
+          },
+          {
+            "id": "r1t0",
+            "raw": "CURRENT PAY",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.25,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "material": false
+          },
+          {
+            "id": "r1t1",
+            "raw": "YEAR TRACKER",
+            "page": 1,
+            "box": {
+              "x0": 0.65,
+              "x1": 0.8500000000000001,
+              "y0": 0.1,
+              "y1": 0.11
+            },
+            "material": false
+          },
+          {
+            "id": "r2t0",
+            "raw": "Net",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.1,
+              "y0": 0.14,
+              "y1": 0.15000000000000002
+            },
+            "material": false
+          },
+          {
+            "id": "r3t0",
+            "raw": "100,00",
+            "page": 1,
+            "box": {
+              "x0": 0.15,
+              "x1": 0.22999999999999998,
+              "y0": 0.155,
+              "y1": 0.165
+            },
+            "material": true
+          },
+          {
+            "id": "r4t0",
+            "raw": "200,00",
+            "page": 1,
+            "box": {
+              "x0": 0.15,
+              "x1": 0.22999999999999998,
+              "y0": 0.17,
+              "y1": 0.18000000000000002
+            },
+            "material": true
+          }
+        ],
+        "rows": 6,
+        "decision": {
+          "status": "review-required",
+          "canAutoAccept": false,
+          "canPersist": false,
+          "problems": [
+            {
+              "code": "MISSING_FIELD",
+              "field": "payDate"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "grossPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "netPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "ytdTaxableIncome"
+            },
+            {
+              "code": "UNACCOUNTED_MATERIAL",
+              "detail": "r3t0"
+            },
+            {
+              "code": "UNACCOUNTED_MATERIAL",
+              "detail": "r4t0"
+            }
+          ]
+        },
+        "canPersist": false
+      }
+    },
+    {
+      "id": "contradictory-same-role",
+      "variant": "E",
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Nettopalkka",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t1",
+            "raw": "100,00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r2t0",
+            "raw": "Nettopalkka",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r2t1",
+            "raw": "200,00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "method": "synthetic-regression"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.025,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.135,
+                "tokenIds": [
+                  "r1t0",
+                  "r1t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              },
+              {
+                "id": "p1-r3-s3",
+                "page": 1,
+                "y": 0.185,
+                "tokenIds": [
+                  "r2t0",
+                  "r2t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r3"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r1t0",
+              "r1t1",
+              "r2t0",
+              "r2t1"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r1t0"
+              ],
+              "value_source_ids": [
+                "r1t1"
+              ],
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.05,
+                "y0": 0.13,
+                "x1": 0.85,
+                "y1": 0.14
+              },
+              "table_id": null,
+              "record_id": "record-2",
+              "record_candidate_ids": [
+                "record-2"
+              ]
+            },
+            {
+              "id": "cell-2",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r2t0"
+              ],
+              "value_source_ids": [
+                "r2t1"
+              ],
+              "source_ids": [
+                "r2t0",
+                "r2t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.05,
+                "y0": 0.18,
+                "x1": 0.85,
+                "y1": 0.19
+              },
+              "table_id": null,
+              "record_id": "record-3",
+              "record_candidate_ids": [
+                "record-3"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.02,
+                "x1": 0.2,
+                "y1": 0.03
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.13,
+                "x1": 0.85,
+                "y1": 0.14
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-3",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.18,
+                "x1": 0.85,
+                "y1": 0.19
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r3-s3",
+              "source_ids": [
+                "r2t0",
+                "r2t1"
+              ],
+              "original_row_ids": [
+                "p1-r3"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      },
+      "parsed": {
+        "schemaVersion": 2,
+        "adapter": "payroll-sections-experiment",
+        "fields": {
+          "payDate": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "grossPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "netPay": {
+            "status": "conflict",
+            "value": null,
+            "sourceIds": [
+              "r1t0",
+              "r1t1",
+              "r2t0",
+              "r2t1"
+            ],
+            "candidates": [
+              {
+                "value": 100,
+                "raw": "100,00",
+                "sourceIds": [
+                  "r1t0",
+                  "r1t1"
+                ],
+                "page": 1,
+                "rowId": "p1-r2-s2",
+                "observationId": "r1t0"
+              },
+              {
+                "value": 200,
+                "raw": "200,00",
+                "sourceIds": [
+                  "r2t0",
+                  "r2t1"
+                ],
+                "page": 1,
+                "rowId": "p1-r3-s3",
+                "observationId": "r2t0"
+              }
+            ]
+          },
+          "ytdTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "previousYearTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingPeriod": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingYtd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodStart": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodEnd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          }
+        },
+        "evidence": {
+          "payDate": [],
+          "grossPay": [],
+          "netPay": [
+            {
+              "value": 100,
+              "raw": "100,00",
+              "sourceIds": [
+                "r1t0",
+                "r1t1"
+              ],
+              "page": 1,
+              "rowId": "p1-r2-s2",
+              "observationId": "r1t0"
+            },
+            {
+              "value": 200,
+              "raw": "200,00",
+              "sourceIds": [
+                "r2t0",
+                "r2t1"
+              ],
+              "page": 1,
+              "rowId": "p1-r3-s3",
+              "observationId": "r2t0"
+            }
+          ],
+          "ytdTaxableIncome": [],
+          "previousYearTaxableIncome": [],
+          "withholdingPeriod": [],
+          "withholdingYtd": [],
+          "payPeriodStart": [],
+          "payPeriodEnd": []
+        },
+        "payLines": [],
+        "unmatchedPayLines": [],
+        "coverage": {
+          "materialObservations": 2,
+          "coveredObservations": 0,
+          "unresolvedObservations": 2,
+          "unresolvedIds": [
+            "r1t1",
+            "r2t1"
+          ],
+          "paylineRowsRecognized": 0,
+          "paylineRowsUnrecognized": 0
+        },
+        "issues": [],
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "material": false
+          },
+          {
+            "id": "r1t0",
+            "raw": "Nettopalkka",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "material": false
+          },
+          {
+            "id": "r1t1",
+            "raw": "100,00",
+            "page": 1,
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "material": true
+          },
+          {
+            "id": "r2t0",
+            "raw": "Nettopalkka",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "material": false
+          },
+          {
+            "id": "r2t1",
+            "raw": "200,00",
+            "page": 1,
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.18,
+              "y1": 0.19
+            },
+            "material": true
+          }
+        ],
+        "rows": 3,
+        "decision": {
+          "status": "review-required",
+          "canAutoAccept": false,
+          "canPersist": false,
+          "problems": [
+            {
+              "code": "MISSING_FIELD",
+              "field": "payDate"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "grossPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "netPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "ytdTaxableIncome"
+            },
+            {
+              "code": "CONFLICT",
+              "field": "netPay"
+            },
+            {
+              "code": "UNACCOUNTED_MATERIAL",
+              "detail": "r1t1"
+            },
+            {
+              "code": "UNACCOUNTED_MATERIAL",
+              "detail": "r2t1"
+            }
+          ]
+        },
+        "canPersist": false
+      }
+    },
+    {
+      "id": "previous-transfer-not-net",
+      "variant": "E",
+      "pass": true,
+      "layout": {
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t0",
+            "raw": "Edellinen tilisiirto",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "method": "synthetic-regression"
+          },
+          {
+            "id": "r1t1",
+            "raw": "200,00",
+            "page": 1,
+            "kind": "text",
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "method": "synthetic-regression"
+          }
+        ],
+        "pages": [
+          {
+            "page": 1,
+            "width": 600,
+            "height": 840,
+            "rows": [
+              {
+                "id": "p1-r1-s1",
+                "page": 1,
+                "y": 0.025,
+                "tokenIds": [
+                  "r0t0"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r1"
+                ]
+              },
+              {
+                "id": "p1-r2-s2",
+                "page": 1,
+                "y": 0.135,
+                "tokenIds": [
+                  "r1t0",
+                  "r1t1"
+                ],
+                "region_id": null,
+                "original_row_ids": [
+                  "p1-r2"
+                ]
+              }
+            ],
+            "observationIds": [
+              "r0t0",
+              "r1t0",
+              "r1t1"
+            ]
+          }
+        ],
+        "issues": [],
+        "structure": {
+          "regions": [],
+          "cells": [
+            {
+              "id": "cell-1",
+              "page": 1,
+              "region_id": null,
+              "label_source_ids": [
+                "r1t0"
+              ],
+              "value_source_ids": [
+                "r1t1"
+              ],
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "unit_source_ids": [],
+              "method": "horizontal-local",
+              "status": "unambiguous",
+              "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+              "box": {
+                "x0": 0.05,
+                "y0": 0.13,
+                "x1": 0.85,
+                "y1": 0.14
+              },
+              "table_id": null,
+              "record_id": "record-2",
+              "record_candidate_ids": [
+                "record-2"
+              ]
+            }
+          ],
+          "events": [],
+          "limitations": [
+            "No page-to-page continuation binding",
+            "No merged-cell grid",
+            "Multiline links remain uncertain proposals",
+            "Column alignment is a hypothesis, not a verified link"
+          ],
+          "records": [
+            {
+              "id": "record-1",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.02,
+                "x1": 0.2,
+                "y1": 0.03
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r1-s1",
+              "source_ids": [
+                "r0t0"
+              ],
+              "original_row_ids": [
+                "p1-r1"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            },
+            {
+              "id": "record-2",
+              "page": 1,
+              "box": {
+                "x0": 0.05,
+                "y0": 0.13,
+                "x1": 0.85,
+                "y1": 0.14
+              },
+              "region_id": null,
+              "table_id": null,
+              "row_id": "p1-r2-s2",
+              "source_ids": [
+                "r1t0",
+                "r1t1"
+              ],
+              "original_row_ids": [
+                "p1-r2"
+              ],
+              "status": "unresolved",
+              "unit_candidates": []
+            }
+          ],
+          "column_header_candidates": [],
+          "schema_version": 1,
+          "states": [
+            "unambiguous",
+            "uncertain",
+            "conflicting",
+            "unresolved"
+          ],
+          "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+        }
+      },
+      "parsed": {
+        "schemaVersion": 2,
+        "adapter": "payroll-sections-experiment",
+        "fields": {
+          "payDate": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "grossPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "netPay": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "ytdTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "previousYearTaxableIncome": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingPeriod": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "withholdingYtd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodStart": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          },
+          "payPeriodEnd": {
+            "status": "missing",
+            "value": null,
+            "sourceIds": [],
+            "candidates": []
+          }
+        },
+        "evidence": {
+          "payDate": [],
+          "grossPay": [],
+          "netPay": [],
+          "ytdTaxableIncome": [],
+          "previousYearTaxableIncome": [],
+          "withholdingPeriod": [],
+          "withholdingYtd": [],
+          "payPeriodStart": [],
+          "payPeriodEnd": []
+        },
+        "payLines": [],
+        "unmatchedPayLines": [],
+        "coverage": {
+          "materialObservations": 1,
+          "coveredObservations": 0,
+          "unresolvedObservations": 1,
+          "unresolvedIds": [
+            "r1t1"
+          ],
+          "paylineRowsRecognized": 0,
+          "paylineRowsUnrecognized": 0
+        },
+        "issues": [],
+        "observations": [
+          {
+            "id": "r0t0",
+            "raw": "Palkkalaskelma",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.02,
+              "y1": 0.03
+            },
+            "material": false
+          },
+          {
+            "id": "r1t0",
+            "raw": "Edellinen tilisiirto",
+            "page": 1,
+            "box": {
+              "x0": 0.05,
+              "x1": 0.2,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "material": false
+          },
+          {
+            "id": "r1t1",
+            "raw": "200,00",
+            "page": 1,
+            "box": {
+              "x0": 0.7,
+              "x1": 0.85,
+              "y0": 0.13,
+              "y1": 0.14
+            },
+            "material": true
+          }
+        ],
+        "rows": 2,
+        "decision": {
+          "status": "review-required",
+          "canAutoAccept": false,
+          "canPersist": false,
+          "problems": [
+            {
+              "code": "MISSING_FIELD",
+              "field": "payDate"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "grossPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "netPay"
+            },
+            {
+              "code": "MISSING_FIELD",
+              "field": "ytdTaxableIncome"
+            },
+            {
+              "code": "UNACCOUNTED_MATERIAL",
+              "detail": "r1t1"
+            }
+          ]
+        },
+        "canPersist": false
+      }
+    }
+  ]
+}

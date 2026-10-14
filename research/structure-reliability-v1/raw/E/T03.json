@@ -1,0 +1,1674 @@
+{
+  "layout": {
+    "schemaVersion": 1,
+    "sourceKind": "pdf-text",
+    "observations": [
+      {
+        "id": "pdf-p1-t1",
+        "kind": "text",
+        "raw": "Varastoluettelo / inventaario",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.023753,
+          "x1": 0.458948,
+          "y1": 0.045131
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 0,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t3",
+        "kind": "text",
+        "raw": "Kuvitteellinen Poutavarasto Oy",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.061758,
+          "x1": 0.28358,
+          "y1": 0.073634
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 2,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t5",
+        "kind": "text",
+        "raw": "SYNTHETIC TEST DATA - FICTIONAL / EI OIKEA ASIAKIRJA",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.963183,
+          "x1": 0.431099,
+          "y1": 0.972684
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 4,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t7",
+        "kind": "text",
+        "raw": "T03 / 1",
+        "page": 1,
+        "box": {
+          "x0": 0.899321,
+          "y0": 0.963183,
+          "x1": 0.941176,
+          "y1": 0.972684
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 6,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t9",
+        "kind": "text",
+        "raw": "Hylly A",
+        "page": 1,
+        "box": {
+          "x0": 0.05042,
+          "y0": 0.188836,
+          "x1": 0.113092,
+          "y1": 0.2019
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 8,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t11",
+        "kind": "text",
+        "raw": "Nimike",
+        "page": 1,
+        "box": {
+          "x0": 0.060504,
+          "y0": 0.218527,
+          "x1": 0.106714,
+          "y1": 0.229216
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 10,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t13",
+        "kind": "text",
+        "raw": "Saldo",
+        "page": 1,
+        "box": {
+          "x0": 0.220168,
+          "y0": 0.218527,
+          "x1": 0.258845,
+          "y1": 0.229216
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 12,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t15",
+        "kind": "text",
+        "raw": "Yks.",
+        "page": 1,
+        "box": {
+          "x0": 0.388235,
+          "y0": 0.218527,
+          "x1": 0.417655,
+          "y1": 0.229216
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 14,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t16",
+        "kind": "text",
+        "raw": "0007",
+        "page": 1,
+        "box": {
+          "x0": 0.060504,
+          "y0": 0.251781,
+          "x1": 0.094145,
+          "y1": 0.26247
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 15,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t18",
+        "kind": "text",
+        "raw": "1,234",
+        "page": 1,
+        "box": {
+          "x0": 0.220168,
+          "y0": 0.251781,
+          "x1": 0.258013,
+          "y1": 0.26247
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 17,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t20",
+        "kind": "text",
+        "raw": "kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.388235,
+          "y0": 0.251781,
+          "x1": 0.407566,
+          "y1": 0.26247
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 19,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t22",
+        "kind": "text",
+        "raw": "Hylly B",
+        "page": 1,
+        "box": {
+          "x0": 0.521008,
+          "y0": 0.188836,
+          "x1": 0.583681,
+          "y1": 0.2019
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 21,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t24",
+        "kind": "text",
+        "raw": "Nimike",
+        "page": 1,
+        "box": {
+          "x0": 0.531092,
+          "y0": 0.218527,
+          "x1": 0.577303,
+          "y1": 0.229216
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 23,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t26",
+        "kind": "text",
+        "raw": "Saldo",
+        "page": 1,
+        "box": {
+          "x0": 0.690756,
+          "y0": 0.218527,
+          "x1": 0.729434,
+          "y1": 0.229216
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 25,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t28",
+        "kind": "text",
+        "raw": "Yks.",
+        "page": 1,
+        "box": {
+          "x0": 0.858824,
+          "y0": 0.218527,
+          "x1": 0.888244,
+          "y1": 0.229216
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 27,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t29",
+        "kind": "text",
+        "raw": "0007",
+        "page": 1,
+        "box": {
+          "x0": 0.531092,
+          "y0": 0.251781,
+          "x1": 0.564733,
+          "y1": 0.26247
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 28,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t31",
+        "kind": "text",
+        "raw": "8",
+        "page": 1,
+        "box": {
+          "x0": 0.690756,
+          "y0": 0.251781,
+          "x1": 0.699166,
+          "y1": 0.26247
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 30,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t33",
+        "kind": "text",
+        "raw": "kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.858824,
+          "y0": 0.251781,
+          "x1": 0.878155,
+          "y1": 0.26247
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 32,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t34",
+        "kind": "text",
+        "raw": "Kustannus / kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.421615,
+          "x1": 0.157198,
+          "y1": 0.432304
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 33,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t36",
+        "kind": "text",
+        "raw": "3.25",
+        "page": 1,
+        "box": {
+          "x0": 0.898477,
+          "y0": 0.41924,
+          "x1": 0.934454,
+          "y1": 0.432304
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 35,
+        "status": "observed"
+      }
+    ],
+    "pages": [
+      {
+        "page": 1,
+        "width": 595,
+        "height": 842,
+        "observationIds": [
+          "pdf-p1-t1",
+          "pdf-p1-t3",
+          "pdf-p1-t5",
+          "pdf-p1-t7",
+          "pdf-p1-t9",
+          "pdf-p1-t11",
+          "pdf-p1-t13",
+          "pdf-p1-t15",
+          "pdf-p1-t16",
+          "pdf-p1-t18",
+          "pdf-p1-t20",
+          "pdf-p1-t22",
+          "pdf-p1-t24",
+          "pdf-p1-t26",
+          "pdf-p1-t28",
+          "pdf-p1-t29",
+          "pdf-p1-t31",
+          "pdf-p1-t33",
+          "pdf-p1-t34",
+          "pdf-p1-t36"
+        ],
+        "rows": [
+          {
+            "id": "p1-r1-s1",
+            "page": 1,
+            "y": 0.034442,
+            "tokenIds": [
+              "pdf-p1-t1"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r1"
+            ]
+          },
+          {
+            "id": "p1-r2-s2",
+            "page": 1,
+            "y": 0.067696,
+            "tokenIds": [
+              "pdf-p1-t3"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r2"
+            ]
+          },
+          {
+            "id": "p1-r3-s3",
+            "page": 1,
+            "y": 0.195368,
+            "tokenIds": [
+              "pdf-p1-t9"
+            ],
+            "region_id": "p1-region-1-c0",
+            "original_row_ids": [
+              "p1-r3"
+            ]
+          },
+          {
+            "id": "p1-r3-s4",
+            "page": 1,
+            "y": 0.195368,
+            "tokenIds": [
+              "pdf-p1-t22"
+            ],
+            "region_id": "p1-region-1-c1",
+            "original_row_ids": [
+              "p1-r3"
+            ]
+          },
+          {
+            "id": "p1-r4-s5",
+            "page": 1,
+            "y": 0.223872,
+            "tokenIds": [
+              "pdf-p1-t11",
+              "pdf-p1-t13",
+              "pdf-p1-t15"
+            ],
+            "region_id": "p1-region-2-c0",
+            "original_row_ids": [
+              "p1-r4"
+            ]
+          },
+          {
+            "id": "p1-r4-s6",
+            "page": 1,
+            "y": 0.223872,
+            "tokenIds": [
+              "pdf-p1-t24",
+              "pdf-p1-t26",
+              "pdf-p1-t28"
+            ],
+            "region_id": "p1-region-2-c1",
+            "original_row_ids": [
+              "p1-r4"
+            ]
+          },
+          {
+            "id": "p1-r5-s7",
+            "page": 1,
+            "y": 0.257125,
+            "tokenIds": [
+              "pdf-p1-t16",
+              "pdf-p1-t18",
+              "pdf-p1-t20"
+            ],
+            "region_id": "p1-region-2-c0",
+            "original_row_ids": [
+              "p1-r5"
+            ]
+          },
+          {
+            "id": "p1-r5-s8",
+            "page": 1,
+            "y": 0.257125,
+            "tokenIds": [
+              "pdf-p1-t29",
+              "pdf-p1-t31",
+              "pdf-p1-t33"
+            ],
+            "region_id": "p1-region-2-c1",
+            "original_row_ids": [
+              "p1-r5"
+            ]
+          },
+          {
+            "id": "p1-r6-s9",
+            "page": 1,
+            "y": 0.426366,
+            "tokenIds": [
+              "pdf-p1-t34",
+              "pdf-p1-t36"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r6"
+            ]
+          },
+          {
+            "id": "p1-r7-s10",
+            "page": 1,
+            "y": 0.967934,
+            "tokenIds": [
+              "pdf-p1-t5"
+            ],
+            "region_id": "p1-region-3-c0",
+            "original_row_ids": [
+              "p1-r7"
+            ]
+          },
+          {
+            "id": "p1-r7-s11",
+            "page": 1,
+            "y": 0.967934,
+            "tokenIds": [
+              "pdf-p1-t7"
+            ],
+            "region_id": "p1-region-3-c1",
+            "original_row_ids": [
+              "p1-r7"
+            ]
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "structure": {
+      "regions": [
+        {
+          "id": "p1-region-1",
+          "page": 1,
+          "cuts": [
+            0.31705025
+          ],
+          "start_y": 0.195368,
+          "last_y": 0.195368,
+          "height": 0.013063999999999992
+        },
+        {
+          "id": "p1-region-2",
+          "page": 1,
+          "cuts": [
+            0.4743735
+          ],
+          "start_y": 0.223872,
+          "last_y": 0.257125,
+          "height": 0.010689000000000004
+        },
+        {
+          "id": "p1-region-3",
+          "page": 1,
+          "cuts": [
+            0.5813445
+          ],
+          "start_y": 0.967934,
+          "last_y": 0.967934,
+          "height": 0.009500999999999982
+        }
+      ],
+      "cells": [
+        {
+          "id": "cell-1",
+          "page": 1,
+          "region_id": "p1-region-2-c0",
+          "label_source_ids": [],
+          "value_source_ids": [
+            "pdf-p1-t16",
+            "pdf-p1-t18"
+          ],
+          "source_ids": [
+            "pdf-p1-t16",
+            "pdf-p1-t18",
+            "pdf-p1-t20"
+          ],
+          "unit_source_ids": [
+            "pdf-p1-t20"
+          ],
+          "method": "multi-value-row",
+          "status": "uncertain",
+          "reason": "Multiple values or non-scalar record; row label is not a column header",
+          "box": {
+            "x0": 0.060504,
+            "y0": 0.251781,
+            "x1": 0.407566,
+            "y1": 0.26247
+          },
+          "table_id": "table-1-p1-r4-s5",
+          "record_id": "record-7",
+          "record_candidate_ids": [
+            "record-7"
+          ]
+        },
+        {
+          "id": "cell-2",
+          "page": 1,
+          "region_id": "p1-region-2-c1",
+          "label_source_ids": [],
+          "value_source_ids": [
+            "pdf-p1-t29",
+            "pdf-p1-t31"
+          ],
+          "source_ids": [
+            "pdf-p1-t29",
+            "pdf-p1-t31",
+            "pdf-p1-t33"
+          ],
+          "unit_source_ids": [
+            "pdf-p1-t33"
+          ],
+          "method": "multi-value-row",
+          "status": "uncertain",
+          "reason": "Multiple values or non-scalar record; row label is not a column header",
+          "box": {
+            "x0": 0.531092,
+            "y0": 0.251781,
+            "x1": 0.878155,
+            "y1": 0.26247
+          },
+          "table_id": "table-1-p1-r4-s6",
+          "record_id": "record-8",
+          "record_candidate_ids": [
+            "record-8"
+          ]
+        },
+        {
+          "id": "cell-3",
+          "page": 1,
+          "region_id": null,
+          "label_source_ids": [
+            "pdf-p1-t34"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t36"
+          ],
+          "source_ids": [
+            "pdf-p1-t34",
+            "pdf-p1-t36"
+          ],
+          "unit_source_ids": [],
+          "method": "horizontal-local",
+          "status": "unambiguous",
+          "reason": "One lexical numeric run after one label; suffix retained as unit candidate",
+          "box": {
+            "x0": 0.053782,
+            "y0": 0.41924,
+            "x1": 0.934454,
+            "y1": 0.432304
+          },
+          "table_id": null,
+          "record_id": "record-9",
+          "record_candidate_ids": [
+            "record-9"
+          ]
+        }
+      ],
+      "events": [
+        {
+          "kind": "separated-card-header",
+          "source_ids": [
+            "pdf-p1-t9",
+            "pdf-p1-t22"
+          ],
+          "region_id": "p1-region-1"
+        },
+        {
+          "kind": "repeated-table-header",
+          "source_ids": [
+            "pdf-p1-t11",
+            "pdf-p1-t13",
+            "pdf-p1-t15",
+            "pdf-p1-t24",
+            "pdf-p1-t26",
+            "pdf-p1-t28"
+          ],
+          "region_id": "p1-region-2"
+        },
+        {
+          "kind": "separated-card-header",
+          "source_ids": [
+            "pdf-p1-t5",
+            "pdf-p1-t7"
+          ],
+          "region_id": "p1-region-3"
+        }
+      ],
+      "limitations": [
+        "No page-to-page continuation binding",
+        "No merged-cell grid",
+        "Multiline links remain uncertain proposals",
+        "Column alignment is a hypothesis, not a verified link"
+      ],
+      "records": [
+        {
+          "id": "record-1",
+          "page": 1,
+          "box": {
+            "x0": 0.053782,
+            "y0": 0.023753,
+            "x1": 0.458948,
+            "y1": 0.045131
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r1-s1",
+          "source_ids": [
+            "pdf-p1-t1"
+          ],
+          "original_row_ids": [
+            "p1-r1"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-2",
+          "page": 1,
+          "box": {
+            "x0": 0.053782,
+            "y0": 0.061758,
+            "x1": 0.28358,
+            "y1": 0.073634
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r2-s2",
+          "source_ids": [
+            "pdf-p1-t3"
+          ],
+          "original_row_ids": [
+            "p1-r2"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-3",
+          "page": 1,
+          "box": {
+            "x0": 0.05042,
+            "y0": 0.188836,
+            "x1": 0.113092,
+            "y1": 0.2019
+          },
+          "region_id": "p1-region-1-c0",
+          "table_id": null,
+          "row_id": "p1-r3-s3",
+          "source_ids": [
+            "pdf-p1-t9"
+          ],
+          "original_row_ids": [
+            "p1-r3"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-4",
+          "page": 1,
+          "box": {
+            "x0": 0.521008,
+            "y0": 0.188836,
+            "x1": 0.583681,
+            "y1": 0.2019
+          },
+          "region_id": "p1-region-1-c1",
+          "table_id": null,
+          "row_id": "p1-r3-s4",
+          "source_ids": [
+            "pdf-p1-t22"
+          ],
+          "original_row_ids": [
+            "p1-r3"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-5",
+          "page": 1,
+          "box": {
+            "x0": 0.060504,
+            "y0": 0.218527,
+            "x1": 0.417655,
+            "y1": 0.229216
+          },
+          "region_id": "p1-region-2-c0",
+          "table_id": null,
+          "row_id": "p1-r4-s5",
+          "source_ids": [
+            "pdf-p1-t11",
+            "pdf-p1-t13",
+            "pdf-p1-t15"
+          ],
+          "original_row_ids": [
+            "p1-r4"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-6",
+          "page": 1,
+          "box": {
+            "x0": 0.531092,
+            "y0": 0.218527,
+            "x1": 0.888244,
+            "y1": 0.229216
+          },
+          "region_id": "p1-region-2-c1",
+          "table_id": null,
+          "row_id": "p1-r4-s6",
+          "source_ids": [
+            "pdf-p1-t24",
+            "pdf-p1-t26",
+            "pdf-p1-t28"
+          ],
+          "original_row_ids": [
+            "p1-r4"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-7",
+          "page": 1,
+          "box": {
+            "x0": 0.060504,
+            "y0": 0.251781,
+            "x1": 0.407566,
+            "y1": 0.26247
+          },
+          "region_id": "p1-region-2-c0",
+          "table_id": "table-1-p1-r4-s5",
+          "row_id": "p1-r5-s7",
+          "source_ids": [
+            "pdf-p1-t16",
+            "pdf-p1-t18",
+            "pdf-p1-t20"
+          ],
+          "original_row_ids": [
+            "p1-r5"
+          ],
+          "status": "unresolved",
+          "unit_candidates": [
+            {
+              "source_ids": [
+                "pdf-p1-t20"
+              ],
+              "raw": "kpl",
+              "box": {
+                "x0": 0.388235,
+                "y0": 0.251781,
+                "x1": 0.407566,
+                "y1": 0.26247
+              },
+              "status": "uncertain",
+              "reason": "Short text suffix; no semantic unit interpretation"
+            }
+          ]
+        },
+        {
+          "id": "record-8",
+          "page": 1,
+          "box": {
+            "x0": 0.531092,
+            "y0": 0.251781,
+            "x1": 0.878155,
+            "y1": 0.26247
+          },
+          "region_id": "p1-region-2-c1",
+          "table_id": "table-1-p1-r4-s6",
+          "row_id": "p1-r5-s8",
+          "source_ids": [
+            "pdf-p1-t29",
+            "pdf-p1-t31",
+            "pdf-p1-t33"
+          ],
+          "original_row_ids": [
+            "p1-r5"
+          ],
+          "status": "unresolved",
+          "unit_candidates": [
+            {
+              "source_ids": [
+                "pdf-p1-t33"
+              ],
+              "raw": "kpl",
+              "box": {
+                "x0": 0.858824,
+                "y0": 0.251781,
+                "x1": 0.878155,
+                "y1": 0.26247
+              },
+              "status": "uncertain",
+              "reason": "Short text suffix; no semantic unit interpretation"
+            }
+          ]
+        },
+        {
+          "id": "record-9",
+          "page": 1,
+          "box": {
+            "x0": 0.053782,
+            "y0": 0.41924,
+            "x1": 0.934454,
+            "y1": 0.432304
+          },
+          "region_id": null,
+          "table_id": null,
+          "row_id": "p1-r6-s9",
+          "source_ids": [
+            "pdf-p1-t34",
+            "pdf-p1-t36"
+          ],
+          "original_row_ids": [
+            "p1-r6"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-10",
+          "page": 1,
+          "box": {
+            "x0": 0.053782,
+            "y0": 0.963183,
+            "x1": 0.431099,
+            "y1": 0.972684
+          },
+          "region_id": "p1-region-3-c0",
+          "table_id": null,
+          "row_id": "p1-r7-s10",
+          "source_ids": [
+            "pdf-p1-t5"
+          ],
+          "original_row_ids": [
+            "p1-r7"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        },
+        {
+          "id": "record-11",
+          "page": 1,
+          "box": {
+            "x0": 0.899321,
+            "y0": 0.963183,
+            "x1": 0.941176,
+            "y1": 0.972684
+          },
+          "region_id": "p1-region-3-c1",
+          "table_id": null,
+          "row_id": "p1-r7-s11",
+          "source_ids": [
+            "pdf-p1-t7"
+          ],
+          "original_row_ids": [
+            "p1-r7"
+          ],
+          "status": "unresolved",
+          "unit_candidates": []
+        }
+      ],
+      "column_header_candidates": [
+        {
+          "id": "column-1",
+          "page": 1,
+          "box": {
+            "x0": 0.060504,
+            "y0": 0.218527,
+            "x1": 0.106714,
+            "y1": 0.26247
+          },
+          "region_id": "p1-region-2-c0",
+          "table_id": "table-1-p1-r4-s5",
+          "record_id": "record-7",
+          "row_id": "p1-r5-s7",
+          "source_ids": [
+            "pdf-p1-t11",
+            "pdf-p1-t16"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t11"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t16"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-2",
+          "page": 1,
+          "box": {
+            "x0": 0.220168,
+            "y0": 0.218527,
+            "x1": 0.258845,
+            "y1": 0.26247
+          },
+          "region_id": "p1-region-2-c0",
+          "table_id": "table-1-p1-r4-s5",
+          "record_id": "record-7",
+          "row_id": "p1-r5-s7",
+          "source_ids": [
+            "pdf-p1-t13",
+            "pdf-p1-t18"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t13"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t18"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-3",
+          "page": 1,
+          "box": {
+            "x0": 0.388235,
+            "y0": 0.218527,
+            "x1": 0.417655,
+            "y1": 0.26247
+          },
+          "region_id": "p1-region-2-c0",
+          "table_id": "table-1-p1-r4-s5",
+          "record_id": "record-7",
+          "row_id": "p1-r5-s7",
+          "source_ids": [
+            "pdf-p1-t15",
+            "pdf-p1-t20"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t15"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t20"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-4",
+          "page": 1,
+          "box": {
+            "x0": 0.531092,
+            "y0": 0.218527,
+            "x1": 0.577303,
+            "y1": 0.26247
+          },
+          "region_id": "p1-region-2-c1",
+          "table_id": "table-1-p1-r4-s6",
+          "record_id": "record-8",
+          "row_id": "p1-r5-s8",
+          "source_ids": [
+            "pdf-p1-t24",
+            "pdf-p1-t29"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t24"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t29"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-5",
+          "page": 1,
+          "box": {
+            "x0": 0.690756,
+            "y0": 0.218527,
+            "x1": 0.729434,
+            "y1": 0.26247
+          },
+          "region_id": "p1-region-2-c1",
+          "table_id": "table-1-p1-r4-s6",
+          "record_id": "record-8",
+          "row_id": "p1-r5-s8",
+          "source_ids": [
+            "pdf-p1-t26",
+            "pdf-p1-t31"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t26"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t31"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        },
+        {
+          "id": "column-6",
+          "page": 1,
+          "box": {
+            "x0": 0.858824,
+            "y0": 0.218527,
+            "x1": 0.888244,
+            "y1": 0.26247
+          },
+          "region_id": "p1-region-2-c1",
+          "table_id": "table-1-p1-r4-s6",
+          "record_id": "record-8",
+          "row_id": "p1-r5-s8",
+          "source_ids": [
+            "pdf-p1-t28",
+            "pdf-p1-t33"
+          ],
+          "label_source_ids": [
+            "pdf-p1-t28"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t33"
+          ],
+          "unit_source_ids": [],
+          "status": "uncertain",
+          "method": "column-alignment",
+          "reason": "Single aligned header, but no validated table grid"
+        }
+      ],
+      "schema_version": 1,
+      "states": [
+        "unambiguous",
+        "uncertain",
+        "conflicting",
+        "unresolved"
+      ],
+      "certainty_scope": "Unambiguous refers only to the structural heuristic, not domain semantics or calibrated probability"
+    }
+  },
+  "parsed": {
+    "schemaVersion": 2,
+    "adapter": "payroll-sections-experiment",
+    "fields": {
+      "payDate": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "grossPay": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "netPay": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "ytdTaxableIncome": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "previousYearTaxableIncome": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "withholdingPeriod": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "withholdingYtd": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "payPeriodStart": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "payPeriodEnd": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      }
+    },
+    "evidence": {
+      "payDate": [],
+      "grossPay": [],
+      "netPay": [],
+      "ytdTaxableIncome": [],
+      "previousYearTaxableIncome": [],
+      "withholdingPeriod": [],
+      "withholdingYtd": [],
+      "payPeriodStart": [],
+      "payPeriodEnd": []
+    },
+    "payLines": [],
+    "unmatchedPayLines": [],
+    "coverage": {
+      "materialObservations": 1,
+      "coveredObservations": 0,
+      "unresolvedObservations": 1,
+      "unresolvedIds": [
+        "pdf-p1-t18"
+      ],
+      "paylineRowsRecognized": 0,
+      "paylineRowsUnrecognized": 0
+    },
+    "issues": [
+      {
+        "level": "blocking",
+        "code": "UNKNOWN_PAYSLIP_TYPE"
+      }
+    ],
+    "observations": [
+      {
+        "id": "pdf-p1-t1",
+        "raw": "Varastoluettelo / inventaario",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.023753,
+          "x1": 0.458948,
+          "y1": 0.045131
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t3",
+        "raw": "Kuvitteellinen Poutavarasto Oy",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.061758,
+          "x1": 0.28358,
+          "y1": 0.073634
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t5",
+        "raw": "SYNTHETIC TEST DATA - FICTIONAL / EI OIKEA ASIAKIRJA",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.963183,
+          "x1": 0.431099,
+          "y1": 0.972684
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t7",
+        "raw": "T03 / 1",
+        "page": 1,
+        "box": {
+          "x0": 0.899321,
+          "y0": 0.963183,
+          "x1": 0.941176,
+          "y1": 0.972684
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t9",
+        "raw": "Hylly A",
+        "page": 1,
+        "box": {
+          "x0": 0.05042,
+          "y0": 0.188836,
+          "x1": 0.113092,
+          "y1": 0.2019
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t11",
+        "raw": "Nimike",
+        "page": 1,
+        "box": {
+          "x0": 0.060504,
+          "y0": 0.218527,
+          "x1": 0.106714,
+          "y1": 0.229216
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t13",
+        "raw": "Saldo",
+        "page": 1,
+        "box": {
+          "x0": 0.220168,
+          "y0": 0.218527,
+          "x1": 0.258845,
+          "y1": 0.229216
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t15",
+        "raw": "Yks.",
+        "page": 1,
+        "box": {
+          "x0": 0.388235,
+          "y0": 0.218527,
+          "x1": 0.417655,
+          "y1": 0.229216
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t16",
+        "raw": "0007",
+        "page": 1,
+        "box": {
+          "x0": 0.060504,
+          "y0": 0.251781,
+          "x1": 0.094145,
+          "y1": 0.26247
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t18",
+        "raw": "1,234",
+        "page": 1,
+        "box": {
+          "x0": 0.220168,
+          "y0": 0.251781,
+          "x1": 0.258013,
+          "y1": 0.26247
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t20",
+        "raw": "kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.388235,
+          "y0": 0.251781,
+          "x1": 0.407566,
+          "y1": 0.26247
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t22",
+        "raw": "Hylly B",
+        "page": 1,
+        "box": {
+          "x0": 0.521008,
+          "y0": 0.188836,
+          "x1": 0.583681,
+          "y1": 0.2019
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t24",
+        "raw": "Nimike",
+        "page": 1,
+        "box": {
+          "x0": 0.531092,
+          "y0": 0.218527,
+          "x1": 0.577303,
+          "y1": 0.229216
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t26",
+        "raw": "Saldo",
+        "page": 1,
+        "box": {
+          "x0": 0.690756,
+          "y0": 0.218527,
+          "x1": 0.729434,
+          "y1": 0.229216
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t28",
+        "raw": "Yks.",
+        "page": 1,
+        "box": {
+          "x0": 0.858824,
+          "y0": 0.218527,
+          "x1": 0.888244,
+          "y1": 0.229216
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t29",
+        "raw": "0007",
+        "page": 1,
+        "box": {
+          "x0": 0.531092,
+          "y0": 0.251781,
+          "x1": 0.564733,
+          "y1": 0.26247
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t31",
+        "raw": "8",
+        "page": 1,
+        "box": {
+          "x0": 0.690756,
+          "y0": 0.251781,
+          "x1": 0.699166,
+          "y1": 0.26247
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t33",
+        "raw": "kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.858824,
+          "y0": 0.251781,
+          "x1": 0.878155,
+          "y1": 0.26247
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t34",
+        "raw": "Kustannus / kpl",
+        "page": 1,
+        "box": {
+          "x0": 0.053782,
+          "y0": 0.421615,
+          "x1": 0.157198,
+          "y1": 0.432304
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t36",
+        "raw": "3.25",
+        "page": 1,
+        "box": {
+          "x0": 0.898477,
+          "y0": 0.41924,
+          "x1": 0.934454,
+          "y1": 0.432304
+        },
+        "material": false
+      }
+    ],
+    "rows": 11,
+    "decision": {
+      "status": "review-required",
+      "canAutoAccept": false,
+      "canPersist": false,
+      "problems": [
+        {
+          "code": "UNKNOWN_DOCUMENT_TYPE"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "payDate"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "grossPay"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "netPay"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "ytdTaxableIncome"
+        },
+        {
+          "code": "BLOCKING_SOURCE_ISSUE",
+          "detail": "UNKNOWN_PAYSLIP_TYPE"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t18"
+        }
+      ]
+    },
+    "canPersist": false
+  },
+  "core": [],
+  "structure": {
+    "status": "PARTIAL IMPLEMENTATION",
+    "pairs_scored": 3,
+    "pairs_correct": 1,
+    "wrong_pairs": 2,
+    "pair_evaluations": [
+      {
+        "cell_id": "cell-1",
+        "relevant_field_ids": [
+          "T03-f1",
+          "T03-f2"
+        ],
+        "correct": false
+      },
+      {
+        "cell_id": "cell-2",
+        "relevant_field_ids": [
+          "T03-f4",
+          "T03-f5"
+        ],
+        "correct": false
+      },
+      {
+        "cell_id": "cell-3",
+        "relevant_field_ids": [
+          "T03-f7"
+        ],
+        "correct": true
+      }
+    ],
+    "record_links": [
+      {
+        "record": "s1",
+        "all_in_single_row": true,
+        "mixed_foreign_record": false
+      },
+      {
+        "record": "s2",
+        "all_in_single_row": true,
+        "mixed_foreign_record": false
+      }
+    ]
+  },
+  "bindings": {
+    "unambiguous_correct": 1,
+    "unambiguous_denominator": 1,
+    "unambiguous_wrong": 0,
+    "unscored_unambiguous": 0,
+    "uncertain_primary_scorable": 2,
+    "uncertain_primary_matching": 0,
+    "column_scorable": 6,
+    "column_matching": 6,
+    "certain_binding_recall_numerator": 1,
+    "essential_binding_denominator": 7,
+    "any_state_binding_recall_numerator": 7,
+    "unresolved_essential_binding_ids": [
+      "T03-f1",
+      "T03-f2",
+      "T03-f3",
+      "T03-f4",
+      "T03-f5",
+      "T03-f6"
+    ],
+    "primary_proposal_count": 3,
+    "uncertain_primary_proposals": 2,
+    "column_hypotheses": 6,
+    "record_proposals": 11,
+    "state_counts": {
+      "unambiguous": 1,
+      "uncertain": 2,
+      "unresolved": 0,
+      "conflicting": 0
+    },
+    "evaluations": [
+      {
+        "id": "cell-1",
+        "status": "uncertain",
+        "method": "multi-value-row",
+        "scorable": true,
+        "matches": [],
+        "source_ids": [
+          "pdf-p1-t16",
+          "pdf-p1-t18",
+          "pdf-p1-t20"
+        ]
+      },
+      {
+        "id": "cell-2",
+        "status": "uncertain",
+        "method": "multi-value-row",
+        "scorable": true,
+        "matches": [],
+        "source_ids": [
+          "pdf-p1-t29",
+          "pdf-p1-t31",
+          "pdf-p1-t33"
+        ]
+      },
+      {
+        "id": "cell-3",
+        "status": "unambiguous",
+        "method": "horizontal-local",
+        "scorable": true,
+        "matches": [
+          "T03-f7"
+        ],
+        "source_ids": [
+          "pdf-p1-t34",
+          "pdf-p1-t36"
+        ],
+        "correct": true
+      }
+    ],
+    "column_evaluations": [
+      {
+        "id": "column-1",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T03-f1"
+        ],
+        "source_ids": [
+          "pdf-p1-t11",
+          "pdf-p1-t16"
+        ]
+      },
+      {
+        "id": "column-2",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T03-f2"
+        ],
+        "source_ids": [
+          "pdf-p1-t13",
+          "pdf-p1-t18"
+        ]
+      },
+      {
+        "id": "column-3",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T03-f3"
+        ],
+        "source_ids": [
+          "pdf-p1-t15",
+          "pdf-p1-t20"
+        ]
+      },
+      {
+        "id": "column-4",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T03-f4"
+        ],
+        "source_ids": [
+          "pdf-p1-t24",
+          "pdf-p1-t29"
+        ]
+      },
+      {
+        "id": "column-5",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T03-f5"
+        ],
+        "source_ids": [
+          "pdf-p1-t26",
+          "pdf-p1-t31"
+        ]
+      },
+      {
+        "id": "column-6",
+        "status": "uncertain",
+        "scorable": true,
+        "matches": [
+          "T03-f6"
+        ],
+        "source_ids": [
+          "pdf-p1-t28",
+          "pdf-p1-t33"
+        ]
+      }
+    ],
+    "source_references_valid": true
+  }
+}

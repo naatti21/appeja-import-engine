@@ -1,0 +1,1289 @@
+{
+  "layout": {
+    "schemaVersion": 1,
+    "sourceKind": "pdf-text",
+    "observations": [
+      {
+        "id": "pdf-p1-t1",
+        "kind": "text",
+        "raw": "Omistuserittely / keksitty salkku",
+        "page": 1,
+        "box": {
+          "x0": 0.038005,
+          "y0": 0.033613,
+          "x1": 0.363565,
+          "y1": 0.063866
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 0,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t3",
+        "kind": "text",
+        "raw": "Kuvitteellinen Pilvikori Säilytys - DEMO ACCOUNT",
+        "page": 1,
+        "box": {
+          "x0": 0.038005,
+          "y0": 0.087395,
+          "x1": 0.305261,
+          "y1": 0.104202
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 2,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t5",
+        "kind": "text",
+        "raw": "SYNTHETIC TEST DATA - FICTIONAL / EI OIKEA ASIAKIRJA",
+        "page": 1,
+        "box": {
+          "x0": 0.038005,
+          "y0": 0.947899,
+          "x1": 0.304637,
+          "y1": 0.961345
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 4,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t7",
+        "kind": "text",
+        "raw": "T01 / 1",
+        "page": 1,
+        "box": {
+          "x0": 0.928855,
+          "y0": 0.947899,
+          "x1": 0.958432,
+          "y1": 0.961345
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 6,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t9",
+        "kind": "text",
+        "raw": "Arvopaperierät",
+        "page": 1,
+        "box": {
+          "x0": 0.035629,
+          "y0": 0.22521,
+          "x1": 0.128555,
+          "y1": 0.243697
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 8,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t11",
+        "kind": "text",
+        "raw": "Tili",
+        "page": 1,
+        "box": {
+          "x0": 0.042755,
+          "y0": 0.268908,
+          "x1": 0.058201,
+          "y1": 0.284034
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 10,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t13",
+        "kind": "text",
+        "raw": "Instrumentti",
+        "page": 1,
+        "box": {
+          "x0": 0.16152,
+          "y0": 0.268908,
+          "x1": 0.22328,
+          "y1": 0.284034
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 12,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t15",
+        "kind": "text",
+        "raw": "Tunnus",
+        "page": 1,
+        "box": {
+          "x0": 0.404988,
+          "y0": 0.268908,
+          "x1": 0.443586,
+          "y1": 0.284034
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 14,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t17",
+        "kind": "text",
+        "raw": "Määrä",
+        "page": 1,
+        "box": {
+          "x0": 0.5,
+          "y0": 0.268908,
+          "x1": 0.530891,
+          "y1": 0.284034
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 16,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t19",
+        "kind": "text",
+        "raw": "Hankintahinta",
+        "page": 1,
+        "box": {
+          "x0": 0.612827,
+          "y0": 0.268908,
+          "x1": 0.683501,
+          "y1": 0.284034
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 18,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t21",
+        "kind": "text",
+        "raw": "Valuutta",
+        "page": 1,
+        "box": {
+          "x0": 0.743468,
+          "y0": 0.268908,
+          "x1": 0.785635,
+          "y1": 0.284034
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 20,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t23",
+        "kind": "text",
+        "raw": "A-TEST",
+        "page": 1,
+        "box": {
+          "x0": 0.042755,
+          "y0": 0.315966,
+          "x1": 0.080765,
+          "y1": 0.331092
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 22,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t25",
+        "kind": "text",
+        "raw": "Valo Demo / listaus A",
+        "page": 1,
+        "box": {
+          "x0": 0.16152,
+          "y0": 0.315966,
+          "x1": 0.263695,
+          "y1": 0.331092
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 24,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t27",
+        "kind": "text",
+        "raw": "VALA",
+        "page": 1,
+        "box": {
+          "x0": 0.404988,
+          "y0": 0.315966,
+          "x1": 0.432319,
+          "y1": 0.331092
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 26,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t29",
+        "kind": "text",
+        "raw": "12.500",
+        "page": 1,
+        "box": {
+          "x0": 0.5,
+          "y0": 0.315966,
+          "x1": 0.532686,
+          "y1": 0.331092
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 28,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t31",
+        "kind": "text",
+        "raw": "18.375",
+        "page": 1,
+        "box": {
+          "x0": 0.612827,
+          "y0": 0.315966,
+          "x1": 0.645513,
+          "y1": 0.331092
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 30,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t33",
+        "kind": "text",
+        "raw": "EUR",
+        "page": 1,
+        "box": {
+          "x0": 0.743468,
+          "y0": 0.315966,
+          "x1": 0.766032,
+          "y1": 0.331092
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 32,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t34",
+        "kind": "text",
+        "raw": "B-TEST",
+        "page": 1,
+        "box": {
+          "x0": 0.042755,
+          "y0": 0.394958,
+          "x1": 0.080765,
+          "y1": 0.410084
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 33,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t36",
+        "kind": "text",
+        "raw": "Valo Demo / listaus B",
+        "page": 1,
+        "box": {
+          "x0": 0.16152,
+          "y0": 0.394958,
+          "x1": 0.263695,
+          "y1": 0.410084
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 35,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t38",
+        "kind": "text",
+        "raw": "VALA",
+        "page": 1,
+        "box": {
+          "x0": 0.404988,
+          "y0": 0.394958,
+          "x1": 0.432319,
+          "y1": 0.410084
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 37,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t40",
+        "kind": "text",
+        "raw": "4,00",
+        "page": 1,
+        "box": {
+          "x0": 0.5,
+          "y0": 0.394958,
+          "x1": 0.5208,
+          "y1": 0.410084
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 39,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t42",
+        "kind": "text",
+        "raw": "47,20",
+        "page": 1,
+        "box": {
+          "x0": 0.612827,
+          "y0": 0.394958,
+          "x1": 0.63957,
+          "y1": 0.410084
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 41,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t44",
+        "kind": "text",
+        "raw": "USD",
+        "page": 1,
+        "box": {
+          "x0": 0.743468,
+          "y0": 0.394958,
+          "x1": 0.766032,
+          "y1": 0.410084
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 43,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t46",
+        "kind": "text",
+        "raw": "Instrumentit ovat kuvitteellisia. Sama tunnus ei yhdistä tilejä tai listauksia.",
+        "page": 1,
+        "box": {
+          "x0": 0.035629,
+          "y0": 0.554622,
+          "x1": 0.419786,
+          "y1": 0.571429
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 45,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t48",
+        "kind": "text",
+        "raw": "Markkina-arvo EUR-erä",
+        "page": 1,
+        "box": {
+          "x0": 0.043943,
+          "y0": 0.663866,
+          "x1": 0.156186,
+          "y1": 0.678992
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 47,
+        "status": "observed"
+      },
+      {
+        "id": "pdf-p1-t50",
+        "kind": "text",
+        "raw": "229,69",
+        "page": 1,
+        "box": {
+          "x0": 0.709456,
+          "y0": 0.660504,
+          "x1": 0.749406,
+          "y1": 0.678992
+        },
+        "method": "pdfjs-text",
+        "ocrConfidence": null,
+        "sourceIndex": 49,
+        "status": "observed"
+      }
+    ],
+    "pages": [
+      {
+        "page": 1,
+        "width": 842,
+        "height": 595,
+        "observationIds": [
+          "pdf-p1-t1",
+          "pdf-p1-t3",
+          "pdf-p1-t5",
+          "pdf-p1-t7",
+          "pdf-p1-t9",
+          "pdf-p1-t11",
+          "pdf-p1-t13",
+          "pdf-p1-t15",
+          "pdf-p1-t17",
+          "pdf-p1-t19",
+          "pdf-p1-t21",
+          "pdf-p1-t23",
+          "pdf-p1-t25",
+          "pdf-p1-t27",
+          "pdf-p1-t29",
+          "pdf-p1-t31",
+          "pdf-p1-t33",
+          "pdf-p1-t34",
+          "pdf-p1-t36",
+          "pdf-p1-t38",
+          "pdf-p1-t40",
+          "pdf-p1-t42",
+          "pdf-p1-t44",
+          "pdf-p1-t46",
+          "pdf-p1-t48",
+          "pdf-p1-t50"
+        ],
+        "rows": [
+          {
+            "id": "p1-r1-s1",
+            "page": 1,
+            "y": 0.04874,
+            "tokenIds": [
+              "pdf-p1-t1"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r1"
+            ]
+          },
+          {
+            "id": "p1-r2-s2",
+            "page": 1,
+            "y": 0.095799,
+            "tokenIds": [
+              "pdf-p1-t3"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r2"
+            ]
+          },
+          {
+            "id": "p1-r3-s3",
+            "page": 1,
+            "y": 0.234453,
+            "tokenIds": [
+              "pdf-p1-t9"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r3"
+            ]
+          },
+          {
+            "id": "p1-r4-s4",
+            "page": 1,
+            "y": 0.276471,
+            "tokenIds": [
+              "pdf-p1-t11",
+              "pdf-p1-t13",
+              "pdf-p1-t15",
+              "pdf-p1-t17",
+              "pdf-p1-t19",
+              "pdf-p1-t21"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r4"
+            ]
+          },
+          {
+            "id": "p1-r5-s5",
+            "page": 1,
+            "y": 0.323529,
+            "tokenIds": [
+              "pdf-p1-t23",
+              "pdf-p1-t25",
+              "pdf-p1-t27",
+              "pdf-p1-t29",
+              "pdf-p1-t31"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r5"
+            ]
+          },
+          {
+            "id": "p1-r5-s6",
+            "page": 1,
+            "y": 0.323529,
+            "tokenIds": [
+              "pdf-p1-t33"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r5"
+            ]
+          },
+          {
+            "id": "p1-r6-s7",
+            "page": 1,
+            "y": 0.402521,
+            "tokenIds": [
+              "pdf-p1-t34",
+              "pdf-p1-t36",
+              "pdf-p1-t38",
+              "pdf-p1-t40",
+              "pdf-p1-t42"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r6"
+            ]
+          },
+          {
+            "id": "p1-r6-s8",
+            "page": 1,
+            "y": 0.402521,
+            "tokenIds": [
+              "pdf-p1-t44"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r6"
+            ]
+          },
+          {
+            "id": "p1-r7-s9",
+            "page": 1,
+            "y": 0.563026,
+            "tokenIds": [
+              "pdf-p1-t46"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r7"
+            ]
+          },
+          {
+            "id": "p1-r8-s10",
+            "page": 1,
+            "y": 0.670589,
+            "tokenIds": [
+              "pdf-p1-t48",
+              "pdf-p1-t50"
+            ],
+            "region_id": null,
+            "original_row_ids": [
+              "p1-r8"
+            ]
+          },
+          {
+            "id": "p1-r9-s11",
+            "page": 1,
+            "y": 0.954622,
+            "tokenIds": [
+              "pdf-p1-t5"
+            ],
+            "region_id": "p1-region-1-c0",
+            "original_row_ids": [
+              "p1-r9"
+            ]
+          },
+          {
+            "id": "p1-r9-s12",
+            "page": 1,
+            "y": 0.954622,
+            "tokenIds": [
+              "pdf-p1-t7"
+            ],
+            "region_id": "p1-region-1-c1",
+            "original_row_ids": [
+              "p1-r9"
+            ]
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "structure": {
+      "regions": [
+        {
+          "id": "p1-region-1",
+          "page": 1,
+          "cuts": [
+            0.55748225
+          ],
+          "start_y": 0.954622,
+          "last_y": 0.954622,
+          "height": 0.013445999999999958
+        }
+      ],
+      "cells": [
+        {
+          "id": "cell-1",
+          "page": 1,
+          "region_id": null,
+          "label_source_ids": [
+            "pdf-p1-t23",
+            "pdf-p1-t25",
+            "pdf-p1-t27"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t29",
+            "pdf-p1-t31"
+          ],
+          "source_ids": [
+            "pdf-p1-t23",
+            "pdf-p1-t25",
+            "pdf-p1-t27",
+            "pdf-p1-t29",
+            "pdf-p1-t31"
+          ],
+          "method": "horizontal-local"
+        },
+        {
+          "id": "cell-2",
+          "page": 1,
+          "region_id": null,
+          "label_source_ids": [
+            "pdf-p1-t34",
+            "pdf-p1-t36",
+            "pdf-p1-t38"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t40",
+            "pdf-p1-t42"
+          ],
+          "source_ids": [
+            "pdf-p1-t34",
+            "pdf-p1-t36",
+            "pdf-p1-t38",
+            "pdf-p1-t40",
+            "pdf-p1-t42"
+          ],
+          "method": "horizontal-local"
+        },
+        {
+          "id": "cell-3",
+          "page": 1,
+          "region_id": null,
+          "label_source_ids": [
+            "pdf-p1-t48"
+          ],
+          "value_source_ids": [
+            "pdf-p1-t50"
+          ],
+          "source_ids": [
+            "pdf-p1-t48",
+            "pdf-p1-t50"
+          ],
+          "method": "horizontal-local"
+        }
+      ],
+      "events": [
+        {
+          "kind": "separated-card-header",
+          "source_ids": [
+            "pdf-p1-t5",
+            "pdf-p1-t7"
+          ],
+          "region_id": "p1-region-1"
+        }
+      ],
+      "limitations": [
+        "No page-to-page continuation binding",
+        "No merged-cell grid",
+        "Multiline links remain unverified proposals"
+      ]
+    }
+  },
+  "parsed": {
+    "schemaVersion": 2,
+    "adapter": "payroll-sections-experiment",
+    "fields": {
+      "payDate": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "grossPay": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "netPay": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "ytdTaxableIncome": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "previousYearTaxableIncome": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "withholdingPeriod": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "withholdingYtd": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "payPeriodStart": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      },
+      "payPeriodEnd": {
+        "status": "missing",
+        "value": null,
+        "sourceIds": [],
+        "candidates": []
+      }
+    },
+    "evidence": {
+      "payDate": [],
+      "grossPay": [],
+      "netPay": [],
+      "ytdTaxableIncome": [],
+      "previousYearTaxableIncome": [],
+      "withholdingPeriod": [],
+      "withholdingYtd": [],
+      "payPeriodStart": [],
+      "payPeriodEnd": []
+    },
+    "payLines": [],
+    "unmatchedPayLines": [],
+    "coverage": {
+      "materialObservations": 3,
+      "coveredObservations": 0,
+      "unresolvedObservations": 3,
+      "unresolvedIds": [
+        "pdf-p1-t40",
+        "pdf-p1-t42",
+        "pdf-p1-t50"
+      ],
+      "paylineRowsRecognized": 0,
+      "paylineRowsUnrecognized": 0
+    },
+    "issues": [
+      {
+        "level": "blocking",
+        "code": "UNKNOWN_PAYSLIP_TYPE"
+      }
+    ],
+    "observations": [
+      {
+        "id": "pdf-p1-t1",
+        "raw": "Omistuserittely / keksitty salkku",
+        "page": 1,
+        "box": {
+          "x0": 0.038005,
+          "y0": 0.033613,
+          "x1": 0.363565,
+          "y1": 0.063866
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t3",
+        "raw": "Kuvitteellinen Pilvikori Säilytys - DEMO ACCOUNT",
+        "page": 1,
+        "box": {
+          "x0": 0.038005,
+          "y0": 0.087395,
+          "x1": 0.305261,
+          "y1": 0.104202
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t5",
+        "raw": "SYNTHETIC TEST DATA - FICTIONAL / EI OIKEA ASIAKIRJA",
+        "page": 1,
+        "box": {
+          "x0": 0.038005,
+          "y0": 0.947899,
+          "x1": 0.304637,
+          "y1": 0.961345
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t7",
+        "raw": "T01 / 1",
+        "page": 1,
+        "box": {
+          "x0": 0.928855,
+          "y0": 0.947899,
+          "x1": 0.958432,
+          "y1": 0.961345
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t9",
+        "raw": "Arvopaperierät",
+        "page": 1,
+        "box": {
+          "x0": 0.035629,
+          "y0": 0.22521,
+          "x1": 0.128555,
+          "y1": 0.243697
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t11",
+        "raw": "Tili",
+        "page": 1,
+        "box": {
+          "x0": 0.042755,
+          "y0": 0.268908,
+          "x1": 0.058201,
+          "y1": 0.284034
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t13",
+        "raw": "Instrumentti",
+        "page": 1,
+        "box": {
+          "x0": 0.16152,
+          "y0": 0.268908,
+          "x1": 0.22328,
+          "y1": 0.284034
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t15",
+        "raw": "Tunnus",
+        "page": 1,
+        "box": {
+          "x0": 0.404988,
+          "y0": 0.268908,
+          "x1": 0.443586,
+          "y1": 0.284034
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t17",
+        "raw": "Määrä",
+        "page": 1,
+        "box": {
+          "x0": 0.5,
+          "y0": 0.268908,
+          "x1": 0.530891,
+          "y1": 0.284034
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t19",
+        "raw": "Hankintahinta",
+        "page": 1,
+        "box": {
+          "x0": 0.612827,
+          "y0": 0.268908,
+          "x1": 0.683501,
+          "y1": 0.284034
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t21",
+        "raw": "Valuutta",
+        "page": 1,
+        "box": {
+          "x0": 0.743468,
+          "y0": 0.268908,
+          "x1": 0.785635,
+          "y1": 0.284034
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t23",
+        "raw": "A-TEST",
+        "page": 1,
+        "box": {
+          "x0": 0.042755,
+          "y0": 0.315966,
+          "x1": 0.080765,
+          "y1": 0.331092
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t25",
+        "raw": "Valo Demo / listaus A",
+        "page": 1,
+        "box": {
+          "x0": 0.16152,
+          "y0": 0.315966,
+          "x1": 0.263695,
+          "y1": 0.331092
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t27",
+        "raw": "VALA",
+        "page": 1,
+        "box": {
+          "x0": 0.404988,
+          "y0": 0.315966,
+          "x1": 0.432319,
+          "y1": 0.331092
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t29",
+        "raw": "12.500",
+        "page": 1,
+        "box": {
+          "x0": 0.5,
+          "y0": 0.315966,
+          "x1": 0.532686,
+          "y1": 0.331092
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t31",
+        "raw": "18.375",
+        "page": 1,
+        "box": {
+          "x0": 0.612827,
+          "y0": 0.315966,
+          "x1": 0.645513,
+          "y1": 0.331092
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t33",
+        "raw": "EUR",
+        "page": 1,
+        "box": {
+          "x0": 0.743468,
+          "y0": 0.315966,
+          "x1": 0.766032,
+          "y1": 0.331092
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t34",
+        "raw": "B-TEST",
+        "page": 1,
+        "box": {
+          "x0": 0.042755,
+          "y0": 0.394958,
+          "x1": 0.080765,
+          "y1": 0.410084
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t36",
+        "raw": "Valo Demo / listaus B",
+        "page": 1,
+        "box": {
+          "x0": 0.16152,
+          "y0": 0.394958,
+          "x1": 0.263695,
+          "y1": 0.410084
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t38",
+        "raw": "VALA",
+        "page": 1,
+        "box": {
+          "x0": 0.404988,
+          "y0": 0.394958,
+          "x1": 0.432319,
+          "y1": 0.410084
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t40",
+        "raw": "4,00",
+        "page": 1,
+        "box": {
+          "x0": 0.5,
+          "y0": 0.394958,
+          "x1": 0.5208,
+          "y1": 0.410084
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t42",
+        "raw": "47,20",
+        "page": 1,
+        "box": {
+          "x0": 0.612827,
+          "y0": 0.394958,
+          "x1": 0.63957,
+          "y1": 0.410084
+        },
+        "material": true
+      },
+      {
+        "id": "pdf-p1-t44",
+        "raw": "USD",
+        "page": 1,
+        "box": {
+          "x0": 0.743468,
+          "y0": 0.394958,
+          "x1": 0.766032,
+          "y1": 0.410084
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t46",
+        "raw": "Instrumentit ovat kuvitteellisia. Sama tunnus ei yhdistä tilejä tai listauksia.",
+        "page": 1,
+        "box": {
+          "x0": 0.035629,
+          "y0": 0.554622,
+          "x1": 0.419786,
+          "y1": 0.571429
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t48",
+        "raw": "Markkina-arvo EUR-erä",
+        "page": 1,
+        "box": {
+          "x0": 0.043943,
+          "y0": 0.663866,
+          "x1": 0.156186,
+          "y1": 0.678992
+        },
+        "material": false
+      },
+      {
+        "id": "pdf-p1-t50",
+        "raw": "229,69",
+        "page": 1,
+        "box": {
+          "x0": 0.709456,
+          "y0": 0.660504,
+          "x1": 0.749406,
+          "y1": 0.678992
+        },
+        "material": true
+      }
+    ],
+    "rows": 12,
+    "decision": {
+      "status": "review-required",
+      "canAutoAccept": false,
+      "canPersist": false,
+      "problems": [
+        {
+          "code": "UNKNOWN_DOCUMENT_TYPE"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "payDate"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "grossPay"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "netPay"
+        },
+        {
+          "code": "MISSING_FIELD",
+          "field": "ytdTaxableIncome"
+        },
+        {
+          "code": "BLOCKING_SOURCE_ISSUE",
+          "detail": "UNKNOWN_PAYSLIP_TYPE"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t40"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t42"
+        },
+        {
+          "code": "UNACCOUNTED_MATERIAL",
+          "detail": "pdf-p1-t50"
+        }
+      ]
+    },
+    "canPersist": false
+  },
+  "core": [],
+  "structure": {
+    "status": "PARTIAL IMPLEMENTATION",
+    "pairs_scored": 3,
+    "pairs_correct": 1,
+    "wrong_pairs": 2,
+    "pair_evaluations": [
+      {
+        "cell_id": "cell-1",
+        "relevant_field_ids": [
+          "T01-f4",
+          "T01-f5"
+        ],
+        "correct": false
+      },
+      {
+        "cell_id": "cell-2",
+        "relevant_field_ids": [
+          "T01-f10",
+          "T01-f11"
+        ],
+        "correct": false
+      },
+      {
+        "cell_id": "cell-3",
+        "relevant_field_ids": [
+          "T01-f13"
+        ],
+        "correct": true
+      }
+    ],
+    "record_links": [
+      {
+        "record": "h1",
+        "all_in_single_row": false,
+        "mixed_foreign_record": false
+      },
+      {
+        "record": "h2",
+        "all_in_single_row": false,
+        "mixed_foreign_record": false
+      }
+    ]
+  },
+  "bindings": {
+    "unambiguous_correct": 1,
+    "unambiguous_denominator": 3,
+    "unambiguous_wrong": 2,
+    "unscored_unambiguous": 0,
+    "uncertain_primary_scorable": 0,
+    "uncertain_primary_matching": 0,
+    "column_scorable": 0,
+    "column_matching": 0,
+    "certain_binding_recall_numerator": 1,
+    "essential_binding_denominator": 13,
+    "any_state_binding_recall_numerator": 1,
+    "unresolved_essential_binding_ids": [
+      "T01-f1",
+      "T01-f2",
+      "T01-f3",
+      "T01-f4",
+      "T01-f5",
+      "T01-f6",
+      "T01-f7",
+      "T01-f8",
+      "T01-f9",
+      "T01-f10",
+      "T01-f11",
+      "T01-f12"
+    ],
+    "primary_proposal_count": 3,
+    "uncertain_primary_proposals": 0,
+    "column_hypotheses": 0,
+    "record_proposals": null,
+    "state_counts": {
+      "unambiguous": 3,
+      "uncertain": 0,
+      "unresolved": 0,
+      "conflicting": 0
+    },
+    "evaluations": [
+      {
+        "id": "cell-1",
+        "status": "unambiguous",
+        "method": "horizontal-local",
+        "scorable": true,
+        "matches": [],
+        "source_ids": [
+          "pdf-p1-t23",
+          "pdf-p1-t25",
+          "pdf-p1-t27",
+          "pdf-p1-t29",
+          "pdf-p1-t31"
+        ],
+        "correct": false
+      },
+      {
+        "id": "cell-2",
+        "status": "unambiguous",
+        "method": "horizontal-local",
+        "scorable": true,
+        "matches": [],
+        "source_ids": [
+          "pdf-p1-t34",
+          "pdf-p1-t36",
+          "pdf-p1-t38",
+          "pdf-p1-t40",
+          "pdf-p1-t42"
+        ],
+        "correct": false
+      },
+      {
+        "id": "cell-3",
+        "status": "unambiguous",
+        "method": "horizontal-local",
+        "scorable": true,
+        "matches": [
+          "T01-f13"
+        ],
+        "source_ids": [
+          "pdf-p1-t48",
+          "pdf-p1-t50"
+        ],
+        "correct": true
+      }
+    ],
+    "column_evaluations": [],
+    "source_references_valid": true
+  }
+}

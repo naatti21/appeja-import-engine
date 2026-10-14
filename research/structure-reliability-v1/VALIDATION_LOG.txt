@@ -1,0 +1,21 @@
+{
+  "status": "DEV_TARGETS_MET",
+  "documents": 6,
+  "real_PDFjs_reader": true,
+  "D_exact_reproductions": "6/6",
+  "core_D": "10/11",
+  "core_E": "10/11",
+  "E_certain_bindings": "26/26",
+  "E_certain_recall": "26/87",
+  "E_original_raw_conserved": "201/201",
+  "old_failures_retained_uncertain": "7/7",
+  "original_regressions": "32/32",
+  "old_predicates_on_E": "8/8",
+  "new_E_adversarial": "12/12",
+  "T01": "2/2",
+  "T03": "2/2",
+  "node_only": true,
+  "browser": "NOT RUN",
+  "holdout_opened": false,
+  "production_approval": false
+}

@@ -1,0 +1,953 @@
+{
+  "parent_sha": "7d7498983c78825c9fde48d31893ae5a3a416601",
+  "baseline_sha": "8f28544651a27225c1212228753fbc6c6a265c38",
+  "fixture_sha": "72520b612444994741f6d09655e8c2f08f279308",
+  "parent_files": [
+    {
+      "path": ".github/workflows/test.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f6a9c8823b603827e5b1b56c636b46c10383295c",
+      "size": 784,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/f6a9c8823b603827e5b1b56c636b46c10383295c"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bfa3340eb82301818f444ccc05f3d62b8f117dc6",
+      "size": 72,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/bfa3340eb82301818f444ccc05f3d62b8f117dc6"
+    },
+    {
+      "path": "ACCEPTANCE_CONTRACT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea8e9a07e9bc3e984eb4a06a065c9e5b2a37af37",
+      "size": 4915,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/ea8e9a07e9bc3e984eb4a06a065c9e5b2a37af37"
+    },
+    {
+      "path": "QA_STATUS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "116c345021dbc1db63f772073076208a88bc3e4d",
+      "size": 8434,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/116c345021dbc1db63f772073076208a88bc3e4d"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0e373389b3d03265de6feda4a573c5a79809735c",
+      "size": 12790,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/0e373389b3d03265de6feda4a573c5a79809735c"
+    },
+    {
+      "path": "demo/app.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "959a6aac217cf1e1b2573e6b52cb9faee5437701",
+      "size": 5800,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/959a6aac217cf1e1b2573e6b52cb9faee5437701"
+    },
+    {
+      "path": "demo/complete-pdf.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d32de7517761b25f365ff5a4b2d7f7646c93d71d",
+      "size": 2243,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/d32de7517761b25f365ff5a4b2d7f7646c93d71d"
+    },
+    {
+      "path": "demo/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "920db06b842db6ed7f9cf08c8221a45f80cb6ff2",
+      "size": 5020,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/920db06b842db6ed7f9cf08c8221a45f80cb6ff2"
+    },
+    {
+      "path": "demo/native-pdf.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2fba367de01dfbd46e23da9654d02d6550b019f0",
+      "size": 3897,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/2fba367de01dfbd46e23da9654d02d6550b019f0"
+    },
+    {
+      "path": "demo/synthetic.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "847a1b12a0b1fe0fc466573a44baaf4d3a6c7913",
+      "size": 1475,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/847a1b12a0b1fe0fc466573a44baaf4d3a6c7913"
+    },
+    {
+      "path": "package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "903b14923a2b12c3023ebe576e17131ddbeb757d",
+      "size": 10622,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/903b14923a2b12c3023ebe576e17131ddbeb757d"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "402ea622b0b6ee4e7a5980ef2046e5bfef2d4f47",
+      "size": 607,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/402ea622b0b6ee4e7a5980ef2046e5bfef2d4f47"
+    },
+    {
+      "path": "playwright.config.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ffc0f242bffd0e6c0b2df37bfc2e1a5619088e88",
+      "size": 341,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/ffc0f242bffd0e6c0b2df37bfc2e1a5619088e88"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/ARTIFACT_HASHES.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "46a4fa57ea65b13d0961eb505707a6798abf0cc3",
+      "size": 7957,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/46a4fa57ea65b13d0961eb505707a6798abf0cc3"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/BROWSER_INSTALL_LOG.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f78469011a40168dcb11e31de225f6aa52a2fb01",
+      "size": 4961,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/f78469011a40168dcb11e31de225f6aa52a2fb01"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/BROWSER_STATUS.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92f1f4e5a304b212e3b62c119427d6ffdb539652",
+      "size": 326,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/92f1f4e5a304b212e3b62c119427d6ffdb539652"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/DECISION.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb249ff33ce9135ce3338a33932b46c224ae015a",
+      "size": 3772,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/bb249ff33ce9135ce3338a33932b46c224ae015a"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/EXPERIMENT_DESIGN.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "da3b393060b5edbabc2121bf9bd6b82adab97038",
+      "size": 5496,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/da3b393060b5edbabc2121bf9bd6b82adab97038"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/FAILURES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2426f3863b6389c80aa7bb2a3bd4fd1b81003ae0",
+      "size": 4207,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/2426f3863b6389c80aa7bb2a3bd4fd1b81003ae0"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3efe8809e72375a496d02449fd3f96ec11c9e2f9",
+      "size": 1907,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/3efe8809e72375a496d02449fd3f96ec11c9e2f9"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/REGRESSION_LOG.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e038482edffa71fbaa22783d6ca6f12a98eda5a4",
+      "size": 2647,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/e038482edffa71fbaa22783d6ca6f12a98eda5a4"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/REGRESSION_RESULTS.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dc285f8d37a4ce0a728749fe42989ed9958a2339",
+      "size": 238661,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/dc285f8d37a4ce0a728749fe42989ed9958a2339"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/REPRODUCE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5dbdd59c6adbc8288a6141ca876cf6a0ab6f3d6e",
+      "size": 3773,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/5dbdd59c6adbc8288a6141ca876cf6a0ab6f3d6e"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/RESULTS.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8bc323b4753fd43c2bedcde8771aaae929507102",
+      "size": 336449,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/8bc323b4753fd43c2bedcde8771aaae929507102"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/RESULTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b175c5dc473081a34d6a1a487096cfbcfdcfbfde",
+      "size": 7594,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/b175c5dc473081a34d6a1a487096cfbcfdcfbfde"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/RUN_LOG.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d22bd9c845f9773c7d78a97b5258137f26a71445",
+      "size": 4226,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/d22bd9c845f9773c7d78a97b5258137f26a71445"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/RUN_MANIFEST.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "907fcd958bc3529e02085acb213f2d615c5e1927",
+      "size": 8815,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/907fcd958bc3529e02085acb213f2d615c5e1927"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/SOURCE_PINS.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d87dfb4f744deab88381762bc34062e8d8c8d3d",
+      "size": 14661,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/0d87dfb4f744deab88381762bc34062e8d8c8d3d"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/VALIDATION.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a94b02525a5e8ca4032a04eadeb4f9fdd979164",
+      "size": 506,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/6a94b02525a5e8ca4032a04eadeb4f9fdd979164"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/check-isolation.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43d7081cd0c7d38c4c4bc3d453130b875b46dca0",
+      "size": 1534,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/43d7081cd0c7d38c4c4bc3d453130b875b46dca0"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/harness.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7bd309c33eb4b95962fc9fcc47e0e5e9a400c649",
+      "size": 13446,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/7bd309c33eb4b95962fc9fcc47e0e5e9a400c649"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/node-compat.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a01916bfa5c8a47442293f49f3d3f3df82cf548a",
+      "size": 463,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/a01916bfa5c8a47442293f49f3d3f3df82cf548a"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/A/P01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c0c0808830fb76c2c738a2555f3110b285627dd",
+      "size": 42016,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/7c0c0808830fb76c2c738a2555f3110b285627dd"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/A/P02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4fd94f3d74aeae09470683d2905fd8032c56c5f6",
+      "size": 31283,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/4fd94f3d74aeae09470683d2905fd8032c56c5f6"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/A/P03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "760d2ce2228308ff9d9b97f91d63c38a23772f40",
+      "size": 35773,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/760d2ce2228308ff9d9b97f91d63c38a23772f40"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/A/T01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6078f1b8cde9ef91eb3234e009142013007bfc83",
+      "size": 22278,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/6078f1b8cde9ef91eb3234e009142013007bfc83"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/A/T02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ca3cebd57eb61531c194148f053cbd74b1816e1",
+      "size": 27039,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/7ca3cebd57eb61531c194148f053cbd74b1816e1"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/A/T03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bbbe91702dfd474161c7ab90688df0c6460da235",
+      "size": 17481,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/bbbe91702dfd474161c7ab90688df0c6460da235"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/B/P01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "13aff979731828dbbd7e829eb01251de76717002",
+      "size": 48855,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/13aff979731828dbbd7e829eb01251de76717002"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/B/P02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb2bb4f95c5c869f9ea2e03db5ced48791aec608",
+      "size": 38620,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/eb2bb4f95c5c869f9ea2e03db5ced48791aec608"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/B/P03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dc2f322443d481a0416e817490e92cae207ed10c",
+      "size": 41931,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/dc2f322443d481a0416e817490e92cae207ed10c"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/B/T01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "154f479b604c75c0d4a411e79620a69bb9f79ecb",
+      "size": 26087,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/154f479b604c75c0d4a411e79620a69bb9f79ecb"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/B/T02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6989f51e5cd6657dd1fa7b4847187cd1755f48ef",
+      "size": 32357,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/6989f51e5cd6657dd1fa7b4847187cd1755f48ef"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/B/T03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2eb1854f24fd67ffcb48e1210627f835c60f8ff0",
+      "size": 21298,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/2eb1854f24fd67ffcb48e1210627f835c60f8ff0"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/C/P01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b8f987fe9dab1c83272d831793192a184dee3627",
+      "size": 42989,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/b8f987fe9dab1c83272d831793192a184dee3627"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/C/P02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "29d9e7ebc74afc038a6ea2ac339f3f07314c64a4",
+      "size": 33443,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/29d9e7ebc74afc038a6ea2ac339f3f07314c64a4"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/C/P03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ad02d6856d7e9f835a50a3f7ab1f2cc78a57f94",
+      "size": 37722,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/6ad02d6856d7e9f835a50a3f7ab1f2cc78a57f94"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/C/T01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6078f1b8cde9ef91eb3234e009142013007bfc83",
+      "size": 22278,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/6078f1b8cde9ef91eb3234e009142013007bfc83"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/C/T02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ca3cebd57eb61531c194148f053cbd74b1816e1",
+      "size": 27039,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/7ca3cebd57eb61531c194148f053cbd74b1816e1"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/C/T03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bbbe91702dfd474161c7ab90688df0c6460da235",
+      "size": 17481,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/bbbe91702dfd474161c7ab90688df0c6460da235"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/D/P01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce2b0316e54ca64ed0e8a51d8aac0354e800912c",
+      "size": 50825,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/ce2b0316e54ca64ed0e8a51d8aac0354e800912c"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/D/P02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c050d6f598310282cb6b5d64a02704d0e4e94ae4",
+      "size": 43087,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/c050d6f598310282cb6b5d64a02704d0e4e94ae4"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/D/P03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0244a2db9f2b68ab089f15b75d9a5882da1c1b98",
+      "size": 43904,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/0244a2db9f2b68ab089f15b75d9a5882da1c1b98"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/D/T01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "154f479b604c75c0d4a411e79620a69bb9f79ecb",
+      "size": 26087,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/154f479b604c75c0d4a411e79620a69bb9f79ecb"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/D/T02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6989f51e5cd6657dd1fa7b4847187cd1755f48ef",
+      "size": 32357,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/6989f51e5cd6657dd1fa7b4847187cd1755f48ef"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/D/T03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2eb1854f24fd67ffcb48e1210627f835c60f8ff0",
+      "size": 21298,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/2eb1854f24fd67ffcb48e1210627f835c60f8ff0"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/P01-reader.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5d3115d8bf501d6692a86c19bd05393a7c9f2969",
+      "size": 29942,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/5d3115d8bf501d6692a86c19bd05393a7c9f2969"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/P02-reader.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "97d317701b4fc56bc689ce85b69b5ea60d960089",
+      "size": 21447,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/97d317701b4fc56bc689ce85b69b5ea60d960089"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/P03-reader.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76286ffc87dd1308b97f0b1d6ae825e188d84a8d",
+      "size": 24131,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/76286ffc87dd1308b97f0b1d6ae825e188d84a8d"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/T01-reader.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4258edd6e30346ebb835205058f7ec8a194077b3",
+      "size": 16090,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/4258edd6e30346ebb835205058f7ec8a194077b3"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/T02-reader.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2ec8524b1f75e12c5acbf3c4c023e61fdddfaec7",
+      "size": 19579,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/2ec8524b1f75e12c5acbf3c4c023e61fdddfaec7"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/raw/T03-reader.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7a85a4cf83866fab26c9b4a9b112a99a756cb2e2",
+      "size": 11468,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/7a85a4cf83866fab26c9b4a9b112a99a756cb2e2"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/regressions.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e56d583ea7f416ea715bdfb615138fdaa9f8c56a",
+      "size": 3325,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/e56d583ea7f416ea715bdfb615138fdaa9f8c56a"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/semantic-parser.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9484e170b4b75d1f7a5ad4140e144e4afcb66f14",
+      "size": 7759,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/9484e170b4b75d1f7a5ad4140e144e4afcb66f14"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/structure.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b3623ee883741929c8f158ddc5446fd4df3d9420",
+      "size": 5750,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/b3623ee883741929c8f158ddc5446fd4df3d9420"
+    },
+    {
+      "path": "research/ablation-layout-vocab-v1/vocabulary.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f6190d3d3a44056ca8b8197266de341780f582d",
+      "size": 1563,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/4f6190d3d3a44056ca8b8197266de341780f582d"
+    },
+    {
+      "path": "scripts/prepare-pdfjs.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c71a1c70497fdb2b375fe369f7e34421b184229a",
+      "size": 422,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/c71a1c70497fdb2b375fe369f7e34421b184229a"
+    },
+    {
+      "path": "src/acceptance.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "885b4f89759d29fc29bd5558cc8c24188f707c16",
+      "size": 5005,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/885b4f89759d29fc29bd5558cc8c24188f707c16"
+    },
+    {
+      "path": "src/csv.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd9c2942b43446e0cfaa3db74b995105af8c495b",
+      "size": 3458,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/bd9c2942b43446e0cfaa3db74b995105af8c495b"
+    },
+    {
+      "path": "src/evidence.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "16b57c7e991870cc36ef51683695b61b9b3a5724",
+      "size": 1087,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/16b57c7e991870cc36ef51683695b61b9b3a5724"
+    },
+    {
+      "path": "src/holdings.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5bb4be45c7a42996b2f4746e6371763142095be4",
+      "size": 4356,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/5bb4be45c7a42996b2f4746e6371763142095be4"
+    },
+    {
+      "path": "src/layout.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7aa67e9cc1960a71cc65571f66df719b9bf2d8f5",
+      "size": 5532,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/7aa67e9cc1960a71cc65571f66df719b9bf2d8f5"
+    },
+    {
+      "path": "src/numbers.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9ae0ed4093eff6ffc042f12e4510cc4d84041a0",
+      "size": 1970,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/a9ae0ed4093eff6ffc042f12e4510cc4d84041a0"
+    },
+    {
+      "path": "src/payroll-lines.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "37d61f9fd3488014b532651937cbf502766deebc",
+      "size": 4304,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/37d61f9fd3488014b532651937cbf502766deebc"
+    },
+    {
+      "path": "src/payroll-sections.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "242894e6981ce3e1a2d7a70257d9d3af3f55ec1c",
+      "size": 7233,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/242894e6981ce3e1a2d7a70257d9d3af3f55ec1c"
+    },
+    {
+      "path": "src/payroll.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "818eae52b5bd919c44de459ff51cf83c93d6020a",
+      "size": 5605,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/818eae52b5bd919c44de459ff51cf83c93d6020a"
+    },
+    {
+      "path": "tests/acceptance-contract.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99fb59919b4fb74a381c96d69bfa56d4b9da0a40",
+      "size": 4963,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/99fb59919b4fb74a381c96d69bfa56d4b9da0a40"
+    },
+    {
+      "path": "tests/benchmark-fixtures.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3443b937c0a9c4d2f6667d34ad323fc8bdb20a2b",
+      "size": 1214,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/3443b937c0a9c4d2f6667d34ad323fc8bdb20a2b"
+    },
+    {
+      "path": "tests/complete-pdf.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a623c286efaec32fc43434d69dd3eb8ea9c159a7",
+      "size": 989,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/a623c286efaec32fc43434d69dd3eb8ea9c159a7"
+    },
+    {
+      "path": "tests/csv.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7db9ece1a8cdabdfdb8066ce007a73fe86e763b2",
+      "size": 5423,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/7db9ece1a8cdabdfdb8066ce007a73fe86e763b2"
+    },
+    {
+      "path": "tests/e2e/frozen-parser-benchmark.spec.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c2421c426faf90c6190ae96d3591052d08854226",
+      "size": 6045,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/c2421c426faf90c6190ae96d3591052d08854226"
+    },
+    {
+      "path": "tests/e2e/full-slip-contract.spec.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "78f06a7ce4c12c7e09ea66044cf31773b1fbd9cf",
+      "size": 3714,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/78f06a7ce4c12c7e09ea66044cf31773b1fbd9cf"
+    },
+    {
+      "path": "tests/e2e/layout-matrix.spec.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a96891c90f72d9d28576280f944cdcfa3f8c54ca",
+      "size": 3644,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/a96891c90f72d9d28576280f944cdcfa3f8c54ca"
+    },
+    {
+      "path": "tests/e2e/payroll-lines.spec.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "42a14176b2c8bb4b36974d7a22bbcb0d864ecab2",
+      "size": 4108,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/42a14176b2c8bb4b36974d7a22bbcb0d864ecab2"
+    },
+    {
+      "path": "tests/e2e/payroll-sections.spec.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "daabb8a05c30d9c601c313e5ac3aec31e2594426",
+      "size": 5004,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/daabb8a05c30d9c601c313e5ac3aec31e2594426"
+    },
+    {
+      "path": "tests/e2e/real-pdfjs.spec.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "748a5080e946d16ea6dd584a118fa106016b1e2e",
+      "size": 2911,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/748a5080e946d16ea6dd584a118fa106016b1e2e"
+    },
+    {
+      "path": "tests/fixtures.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "672f44ca2a86cf938437f7ba9c5a980335684c9e",
+      "size": 64,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/672f44ca2a86cf938437f7ba9c5a980335684c9e"
+    },
+    {
+      "path": "tests/fixtures/benchmark-75.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc161d0946d6f364ae923d46cea25442ac678a35",
+      "size": 2454,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/fc161d0946d6f364ae923d46cea25442ac678a35"
+    },
+    {
+      "path": "tests/fixtures/complete-payslips/SOURCE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5ddb3b1c7d4b7d23c9451c8113d41ca55c631589",
+      "size": 851,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/5ddb3b1c7d4b7d23c9451c8113d41ca55c631589"
+    },
+    {
+      "path": "tests/fixtures/complete-payslips/a-modern.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ca3e898506f29bc860c039c25223ef87417e742",
+      "size": 879,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/1ca3e898506f29bc860c039c25223ef87417e742"
+    },
+    {
+      "path": "tests/fixtures/complete-payslips/b-compact.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aff815bbe5fd0ad448c8d562d1ca41caeae9f5cb",
+      "size": 913,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/aff815bbe5fd0ad448c8d562d1ca41caeae9f5cb"
+    },
+    {
+      "path": "tests/fixtures/complete-payslips/c-alt-terms.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dfee4b38ccaf3faf40dead7e515fd1a56b94cc13",
+      "size": 700,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/dfee4b38ccaf3faf40dead7e515fd1a56b94cc13"
+    },
+    {
+      "path": "tests/fixtures/layout-cases.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2c293fce6418ea9dc349eceed4521e1e0cef41d",
+      "size": 2232,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/f2c293fce6418ea9dc349eceed4521e1e0cef41d"
+    },
+    {
+      "path": "tests/fixtures/legacy-lines.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "208017d2269a626bc196a166f98dead149068aa2",
+      "size": 832,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/208017d2269a626bc196a166f98dead149068aa2"
+    },
+    {
+      "path": "tests/fixtures/palkka-frozen/SOURCE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "65c86a8515b177dd22d946e78a6715b8a9eae7d5",
+      "size": 887,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/65c86a8515b177dd22d946e78a6715b8a9eae7d5"
+    },
+    {
+      "path": "tests/fixtures/palkka-frozen/parser.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "96be27de2cd65076fa3aaa71e6bf4be6e6203531",
+      "size": 42157,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/96be27de2cd65076fa3aaa71e6bf4be6e6203531"
+    },
+    {
+      "path": "tests/fixtures/palkka-frozen/semantic-evidence.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e5384aa322898623168858ab085cd61ff0f92fb8",
+      "size": 4259,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/e5384aa322898623168858ab085cd61ff0f92fb8"
+    },
+    {
+      "path": "tests/layout.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3ccc3f3ad0781a45dbd7baf65b5058e543d57d5e",
+      "size": 6161,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/3ccc3f3ad0781a45dbd7baf65b5058e543d57d5e"
+    },
+    {
+      "path": "tests/payroll-lines.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8beefdcd43adf77a338b1928cda5e5c778b55190",
+      "size": 4869,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/8beefdcd43adf77a338b1928cda5e5c778b55190"
+    },
+    {
+      "path": "tests/payroll-sections.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "98f615946adfdadedaf896b7640c98f8432d45ea",
+      "size": 4816,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/98f615946adfdadedaf896b7640c98f8432d45ea"
+    },
+    {
+      "path": "tests/pdf-generator.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cf9b06d5aad4d47269d5784a002ca2c804075e0f",
+      "size": 748,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/cf9b06d5aad4d47269d5784a002ca2c804075e0f"
+    }
+  ],
+  "fixture_files": [
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "89faab64602affd9ee3720f3e8ce55f2ecf15f4c",
+      "size": 22,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/89faab64602affd9ee3720f3e8ce55f2ecf15f4c"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/P01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a392e87ccb2da207e70e723a49dcc78dfbd039a4",
+      "size": 19660,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/a392e87ccb2da207e70e723a49dcc78dfbd039a4"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/P02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "982e950e014a9780880dba7cd4ad03f71527ac73",
+      "size": 10371,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/982e950e014a9780880dba7cd4ad03f71527ac73"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/P03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "633fa1959d04e2e0d32036756ca311219f38fa52",
+      "size": 11945,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/633fa1959d04e2e0d32036756ca311219f38fa52"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/T01.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e31f80843931ca2fba95ac3b27c34489179ac56",
+      "size": 10821,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/9e31f80843931ca2fba95ac3b27c34489179ac56"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/T02.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "267d4614dff9e7683cdc80f59e65054d5acaa664",
+      "size": 11192,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/267d4614dff9e7683cdc80f59e65054d5acaa664"
+    },
+    {
+      "path": "research/blindtest-v1/ANNOTATIONS/DEV/T03.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a575c081d4ec1118863c937e51686a5d91a60a4",
+      "size": 6626,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/1a575c081d4ec1118863c937e51686a5d91a60a4"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/P01.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e520db36f7265141636adf3414ebd96f1e1d049",
+      "size": 2710,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/2e520db36f7265141636adf3414ebd96f1e1d049"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/P02.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a4d2f3ccf6fa18ebb2516cf032394b559bf0e1e6",
+      "size": 9830,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/a4d2f3ccf6fa18ebb2516cf032394b559bf0e1e6"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/P03.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a53a5d979b1b5974f85c1af493721d8dc9d05d38",
+      "size": 3347,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/a53a5d979b1b5974f85c1af493721d8dc9d05d38"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/T01.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "21f0d097606811131e564e8fd2fae79f434c81a2",
+      "size": 2370,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/21f0d097606811131e564e8fd2fae79f434c81a2"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/T02.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "23f772ecf52c31f91f0511c56c259f8cde35a45d",
+      "size": 2464,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/23f772ecf52c31f91f0511c56c259f8cde35a45d"
+    },
+    {
+      "path": "research/blindtest-v1/DEV/T03.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d2d6b83984f7e6469bf4196426c1570b709d22c",
+      "size": 6212,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/3d2d6b83984f7e6469bf4196426c1570b709d22c"
+    },
+    {
+      "path": "research/blindtest-v1/MANIFEST.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "030c526c7b9c5541a6521fc94525c3b264ae6387",
+      "size": 5286,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/030c526c7b9c5541a6521fc94525c3b264ae6387"
+    },
+    {
+      "path": "research/blindtest-v1/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba6df3845fcbb12003065c9d0716effe7a153767",
+      "size": 1425,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/ba6df3845fcbb12003065c9d0716effe7a153767"
+    },
+    {
+      "path": "research/blindtest-v1/TEST_PROTOCOL.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b2d33a5ea261ad5d8efa0fda2300b8ee5b074ba",
+      "size": 6762,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/4b2d33a5ea261ad5d8efa0fda2300b8ee5b074ba"
+    },
+    {
+      "path": "research/blindtest-v1/VALIDATION_REPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "37bf348419df4da8beecb4f565c93203ca046ea2",
+      "size": 1205,
+      "url": "https://api.github.com/repos/naatti21/appeja-import-engine/git/blobs/37bf348419df4da8beecb4f565c93203ca046ea2"
+    }
+  ]
+}
