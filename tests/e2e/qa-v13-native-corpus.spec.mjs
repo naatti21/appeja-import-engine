@@ -110,3 +110,32 @@ test('QA v1.3 generated 60 native PDFs: independent cell oracle and fail-closed 
  expect(counts.correctKnownFields).toBe(counts.expectedKnownFields);
  expect(counts.unmatchedOrWrong).toEqual([]);
 });
+
+test('QA v1.3 visible mobile review: real corpus PDF displays traced holdings without saving',async({page})=>{
+ const source=await readFile('qa-output/corpus/S130000-clean/source.pdf');
+ await page.setViewportSize({width:360,height:740});
+ await page.goto('/demo/review.html');
+ await page.locator('#sourceFile').setInputFiles({
+  name:'synthetic-portfolio.pdf',mimeType:'application/pdf',buffer:source
+ });
+ await page.locator('#analyzeBtn').click();
+ await expect(page.locator('#status')).toContainText('Esitarkistus valmis');
+ await expect(page.locator('#candidates')).toContainText('Sijaintiin perustuva ehdokas');
+ await expect(page.locator('#candidates')).toContainText('Synthetic Asset');
+ await expect(page.locator('#candidates')).toContainText('lähteet: pdf-p1-t');
+ await expect(page.locator('#issues')).toContainText('POSITIONAL_CANDIDATES_REQUIRE_REVIEW');
+ await expect(page.locator('button')).toHaveCount(2);
+ await expect(page.locator('#results')).toBeVisible();
+});
+test('QA v1.3 duplicated column cannot become accepted mobile holdings',async({page})=>{
+ const source=await readFile('qa-output/corpus/S130009-duplicate_column/source.pdf');
+ await page.goto('/demo/review.html');
+ await page.locator('#sourceFile').setInputFiles({
+  name:'synthetic-invalid.pdf',mimeType:'application/pdf',buffer:source
+ });
+ await page.locator('#analyzeBtn').click();
+ await expect(page.locator('#status')).toContainText('Esitarkistus valmis');
+ await expect(page.locator('#issues')).toContainText('DUPLICATE_SEMANTIC_HEADER');
+ await expect(page.locator('#candidates')).not.toContainText('Sijaintiin perustuva ehdokas');
+ await expect(page.locator('#results')).toBeVisible();
+});
