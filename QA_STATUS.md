@@ -125,3 +125,10 @@ The latest laboratory-only fixture puts one `Ennakonpid.al.tulo` label beside ea
 - `QA_ARCHIVE.md`, `qa/reports/INDEX.md` ja `qa/HANDOFF_TEMPLATE.md` määrittävät raportin pysyvän sijainnin sekä Actions-ZIPien käsittelyn.
 - Node-, Chromium-, generoitu QA- ja oikean OCR:n workflow’t tuottavat jokaisesta ajosta QA-artifaktin, joka sisältää paikallisen testiraportin, manifestin (todellinen SHA) ja testilokit. Vain synteettiset CI-syötteet.
 - Arkiston käyttöönotto ei muuta aiemmin testattua v1.2-sovelluskoodia, eikä merkitse riippumatonta QA:ta tehdyn tai v1.3:aa testatun. Status NO-GO.
+
+
+## LAB v1.3 — format-neutral positional holdings resolution
+
+- Uusi `src/positioned-holdings.mjs` sekä CSV/XLSX:n ennallaan säilyttävä PDF/OCR-UI-sovitus.
+- 60 synteettisen natiivin PDF:n kenttä- ja lähdeviiteoraakkeli. Välittäjän oikeat kuvat, OCR→rivisidonta, riippumaton QA ja fyysinen Android NOT RUN.
+- Uuden SHA:n CI PENDING ennen hyväksyntää. `canPersist=false`, tuotanto NO-GO.

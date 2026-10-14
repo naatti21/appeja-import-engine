@@ -5,6 +5,10 @@ on:
       - 'scripts/qa-corpus/**'
       - 'tests/fixtures/native-xlsx.mjs'
       - 'src/xlsx.mjs'
+      - 'src/positioned-holdings.mjs'
+      - 'src/import-observations.mjs'
+      - 'tests/e2e/qa-v13-native-corpus.spec.mjs'
+      - 'demo/review.mjs'
       - '.github/workflows/qa-corpus-generate.yml'
       - 'QA_ARCHIVE.md'
       - 'qa/reports/**'
@@ -45,6 +49,15 @@ jobs:
               qa-output/corpus qa-output/repro-corpus
             rm -rf qa-output/repro-corpus
           } 2>&1 | tee qa-output/logs/corpus-generator.log
+      - name: Install Chromium for the LAB v1.3 field-level PDF QA
+        run: npx playwright install --with-deps chromium
+      - name: Test actual 60 PDFs against independent oracle and source IDs
+        id: v13qa
+        env:
+          QA_CORPUS_READY: '1'
+        run: |
+          set -o pipefail
+          npm run test:e2e -- --grep "QA v1.3" 2>&1 | tee qa-output/logs/v13-real-pdf-oracle.log
       - name: Write ZIP manifest and QA report
         if: always()
         env:
