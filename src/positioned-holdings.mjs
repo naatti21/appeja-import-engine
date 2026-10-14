@@ -131,16 +131,20 @@ export function resolvePositionedHoldings(evidence){
   const match=recognizeHeader(line.words);
   if(match.length<5)continue;
   const byField=new Map();
-  for(const h of match){if(byField.has(h.field))
-   problems.push(issue('DUPLICATE_SEMANTIC_HEADER',{page:line.page,field:h.field}));
-   else byField.set(h.field,h);}
+  let hasDuplicateHeader=false;
+  for(const h of match){
+   if(byField.has(h.field)){
+    hasDuplicateHeader=true;
+    problems.push(issue('DUPLICATE_SEMANTIC_HEADER',{page:line.page,field:h.field}));
+   }else byField.set(h.field,h);
+  }
   const missing=REQUIRED.filter(k=>!byField.has(k));
   if(missing.length)problems.push(issue('MISSING_REQUIRED_HEADER',{page:line.page,fields:missing}));
   // Reject other headers or substantial unlabeled cells (including "unmapped money").
   const matchedIds=new Set(match.flatMap(h=>h.sourceIds));
   const rest=line.words.filter(o=>!matchedIds.has(o.id));
   if(rest.length)problems.push(issue('UNKNOWN_OR_UNMAPPED_HEADER',{page:line.page,sourceIds:rest.map(o=>o.id)}));
-  if(byField.size===REQUIRED.length&&missing.length===0&&!rest.length){
+  if(!hasDuplicateHeader&&byField.size===REQUIRED.length&&missing.length===0&&!rest.length){
    const entries=[...byField.values()].sort((a,b)=>a.start-b.start);
    if(entries.some((h,i)=>i>0&&h.start-entries[i-1].start<0.032))
     problems.push(issue('COLUMN_GEOMETRY_AMBIGUOUS',{page:line.page}));

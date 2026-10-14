@@ -123,3 +123,11 @@ test('Finnish and Swedish headers resolve to the same canonical fields',()=>{
   assert.equal(r.rows[0].fields.quantity.value,3);
  }
 });
+
+test('extra ninth duplicate header blocks whole otherwise valid table',()=>{
+ const matrix=[names.concat('Current price'),...values.map(r=>r.concat('99,99'))];
+ const r=resolvePositionedHoldings(mock({matrix}));
+ assert.equal(r.rows.length,0,'do not parse candidate rows under duplicated header');
+ assert.ok(codes(r).includes('DUPLICATE_SEMANTIC_HEADER'));
+ assert.equal(r.canPersist,false);
+});
