@@ -133,3 +133,8 @@ Uusi `src/portfolio-review.mjs` on **post-extraction REVIEW GATE**, ei vielä va
 ## LAB v1.1 — automaattinen QA-agentti
 
 [QA-protokolla](./QA_AGENT_PROTOCOL.md) määrittelee itsenäiset oracle-tarkistukset, siemenillä toistettavat CSV/XLSX/OCR/PDF-vaihtelut ja GitHub Actions -portit. Varsinaisten tuotantosovellusten testaus, merge ja deploy eivät ole automaattisia.
+
+
+## LAB v1.2 — oikea selaimen kuva-OCR
+
+[QA-kokeen scope](./V1_2_REAL_OCR_QA.md): aidot renderöidyt synteettiset salkkukuvat, Tesseract.js:n selaintyöntekijä ja kielimallit samasta alkuperästä. Ei käyttäjän kuvaa ulkopuoliseen palveluun eikä tuotantointegraatiota. 

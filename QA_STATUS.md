@@ -110,3 +110,11 @@ The latest laboratory-only fixture puts one `Ennakonpid.al.tulo` label beside ea
 - Testin tulos on hyväksytty vasta exact SHA:n molempien workflow-ajojen jälkeen. **PENDING** tässä commitin luontivaiheessa.
 - Aiempi CSV-salkkuadapteri saattoi hyväksyä tyhjän/muotovirheisen valuutan; lisätty `CURRENCY_NOT_VERIFIED`-esto regressiotesteineen LABiin.
 - Aidot käyttäjän aineistot eivät kuulu julkiseen repoon/CI:hin. Riippumaton QA, todellinen kuva-OCR ja fyysinen Android NOT RUN. Tuotanto NO-GO.
+
+
+## LAB v1.2: real pixel OCR (QA gate)
+
+- Chrome/Tesseract.js käsittelee aitoja synteettisiä PNG/JPEG-pikseleitä ja vertaa neljää kenttää renderöintiarvoista muodostettuun oracleen.
+- OCR-kirjaston worker/core/lang tarjotaan same-origin QA-preparoinnin jälkeen; CDN-ajonaikainen riippuvuus poistettu kokeen UI:sta. Build lataa upstream-resurssit, kaikki transitiiviset versiot eivät vielä ole lockfile-pinnattuja.
+- Keskeiset tulosrajat: per-kenttä exact, rivin exact, stressin epävarmuus, blocked third-party network ja UI remains review-required.
+- **Exact SHA CI NOT YET VERIFIED** tämän lisäyksen luontivaiheessa. Riippumaton QA / fyysinen Android / tuotanto NO-GO.
