@@ -16,6 +16,8 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -26,12 +28,27 @@ jobs:
         run: node scripts/prepare-local-ocr.mjs
       - run: npx playwright install --with-deps chromium
       - name: Real synthetic pixels -> same-origin Tesseract OCR -> independent oracle
+        id: qa
         env:
           REAL_OCR_QA: '1'
-        run: npm run test:e2e -- --grep "QA genuine same-origin|QA real on-device"
-      - uses: actions/upload-artifact@v4
-        if: failure()
+        run: |
+          mkdir -p qa-output/logs
+          set -o pipefail
+          npm run test:e2e -- --grep "QA genuine same-origin|QA real on-device" 2>&1 | tee qa-output/logs/real-ocr.log
+      - name: Build QA report manifest
+        if: always()
+        env:
+          QA_SUITE: real-ocr
+          QA_TEST_OUTCOME: ${{ steps.qa.outcome }}
+        run: node scripts/qa-artifact-manifest.mjs
+      - name: Archive real OCR QA ZIP
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: real-ocr-synthetic-failures
-          path: test-results/
-          retention-days: 3
+          name: qa-real-ocr-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            qa-output/
+            test-results/
+            playwright-report/
+          retention-days: 14
+          if-no-files-found: warn

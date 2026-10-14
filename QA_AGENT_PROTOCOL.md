@@ -31,3 +31,13 @@ Tämä on **GitHub Actions -pohjainen automaattinen QA-ajuri**, ei itsenäinen t
 Generoidut variaatiot ovat **saman rajatun kieliopin muunnelmia**, eivät tuhansia erilaisten pankkien, palkanlaskentajärjestelmien tai tosielämän asiakirjojen edustavia näytteitä. Vihreä testimatriisi ei todista todellista OCR-tarkkuutta, uuden työnantajan PDF-luettavuutta tai kattavaa mobiilisaavutettavuutta.
 
 Riippumaton QA, oikeiden yksityisten aineistojen hyväksyntätestaus paikallisesti, oikea Tesseract.js-pikselintunnistus ja fyysisen puhelimen testaus: **NOT RUN**. Tuotantointegraatio: **NO-GO**.
+
+
+## QA-agentin arkistointi- ja raportointiohje (v1.2, 14.10.2026)
+
+- Lue aina `QA_ARCHIVE.md` ja `qa/HANDOFF_TEMPLATE.md` ennen QA-ajon raportointia.
+- Lukitse kohteena oleva PR:n SHA: tähän koodiin ei saa siirtää GO:ta toisesta PR:stä tai suunnitellusta versiosta.
+- Käytä GitHub Actionsin `qa-*`-nimisiä Artifacts-ZIP-paketteja. Manifestin SHA, testin outcome, alkuperäinen ajolinkki ja SHA-256 ovat lähdetotuus. Artefakti on määräaikainen, PR-kommentti pysyvä.
+- Tee erillinen täsmällinen QA-kommentti samaan PR:ään, johon sisältyvät PASS/FAIL/PARTIAL/NOT RUN ja GO/NO-GO. Tarkista linkit ennen onnistumisväitettä.
+- Älä siirrä raakaa käyttäjädataa, oikeita pankki-/palkka-PDF:iä, todellisia kuvakaappauksia tai OCR-tietoja julkiseen repo-/CI-artifaktiin. Suuret syntetisoidut ZIP-korpuksetkin jätetään Git-historian ulkopuolelle.
+- Jos paketti on vain QA-agentin työtilassa, sen sijainti GitHubissa merkitään NOT VERIFIED, ei arkistoiduksi; mitään ei yhdistetä/julkaista ilman käyttäjän nimenomaista lupaa.

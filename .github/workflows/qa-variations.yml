@@ -28,28 +28,65 @@ jobs:
       QA_SEEDS: ${{ inputs.seeds || '17,43,97,211' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - run: npm ci
       - name: Deterministic synthetic QA matrix
-        run: node --test tests/qa-variants.test.mjs tests/qa-ocr-variations.test.mjs
+        id: qa
+        run: |
+          mkdir -p qa-output/logs
+          set -o pipefail
+          node --test tests/qa-variants.test.mjs tests/qa-ocr-variations.test.mjs 2>&1 | tee qa-output/logs/oracle.log
+      - name: Build QA report manifest
+        if: always()
+        env:
+          QA_SUITE: generated-oracle
+          QA_TEST_OUTCOME: ${{ steps.qa.outcome }}
+        run: node scripts/qa-artifact-manifest.mjs
+      - name: Archive generator QA ZIP
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-generated-oracle-${{ github.run_id }}-${{ github.run_attempt }}
+          path: qa-output/
+          retention-days: 14
+          if-no-files-found: warn
   native-pdf-and-mobile:
     name: Real PDF.js and Mobile UI Variations
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - name: Native PDF variants plus phone widths
-        run: npm run test:e2e -- --grep "QA generated|QA mobile"
-      - uses: actions/upload-artifact@v4
-        if: failure()
+        id: qa
+        run: |
+          mkdir -p qa-output/logs
+          set -o pipefail
+          npm run test:e2e -- --grep "QA generated|QA mobile" 2>&1 | tee qa-output/logs/variations.log
+      - name: Build QA report manifest
+        if: always()
+        env:
+          QA_SUITE: native-variants
+          QA_TEST_OUTCOME: ${{ steps.qa.outcome }}
+        run: node scripts/qa-artifact-manifest.mjs
+      - name: Archive variants QA ZIP
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: synthetic-qa-failures
-          path: test-results/
-          retention-days: 3
+          name: qa-native-variants-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            qa-output/
+            test-results/
+            playwright-report/
+          retention-days: 14
+          if-no-files-found: warn

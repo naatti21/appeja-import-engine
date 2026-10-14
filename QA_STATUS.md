@@ -118,3 +118,10 @@ The latest laboratory-only fixture puts one `Ennakonpid.al.tulo` label beside ea
 - OCR-kirjaston worker/core/lang tarjotaan same-origin QA-preparoinnin jälkeen; CDN-ajonaikainen riippuvuus poistettu kokeen UI:sta. Build lataa upstream-resurssit, kaikki transitiiviset versiot eivät vielä ole lockfile-pinnattuja.
 - Keskeiset tulosrajat: per-kenttä exact, rivin exact, stressin epävarmuus, blocked third-party network ja UI remains review-required.
 - **Exact SHA CI NOT YET VERIFIED** tämän lisäyksen luontivaiheessa. Riippumaton QA / fyysinen Android / tuotanto NO-GO.
+
+
+## QA-arkiston infrastruktuuri (erillinen test-only PR)
+
+- `QA_ARCHIVE.md`, `qa/reports/INDEX.md` ja `qa/HANDOFF_TEMPLATE.md` määrittävät raportin pysyvän sijainnin sekä Actions-ZIPien käsittelyn.
+- Node-, Chromium-, generoitu QA- ja oikean OCR:n workflow’t tuottavat jokaisesta ajosta QA-artifaktin, joka sisältää paikallisen testiraportin, manifestin (todellinen SHA) ja testilokit. Vain synteettiset CI-syötteet.
+- Arkiston käyttöönotto ei muuta aiemmin testattua v1.2-sovelluskoodia, eikä merkitse riippumatonta QA:ta tehdyn tai v1.3:aa testatun. Status NO-GO.
