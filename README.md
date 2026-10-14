@@ -35,3 +35,8 @@ Kun erilliselle pitkäikäiselle suurelle QA-korpukselle tarvitaan säilytyspaik
 ## Ulkoisen QA:n korpuksen uudelleengenerointi
 
 [Ohje ja rajaukset](./QA_CORPUS_GENERATOR.md) · [QA-arkisto](./QA_ARCHIVE.md). Oma Actions-työnkulku luo 60 synteettistä salkkua, 300 oikeaa lähdetiedostoa, oraakkelit ja lähdeviitteet ZIP-artifaktiksi ilman, että alkuperäinen käyttäjän ZIP tai tuotantodata tuodaan repoarkistoon. Korpusgenerointi ei ole LAB v1.3 -tuontimoottorin QA eikä tuotantohyväksyntä.
+
+
+## LAB v1.3 — omistusrivien sijaintitulkinta
+
+[Lue testiscope](./V1_3_POSITIONAL_HOLDINGS_QA.md). PDF- ja OCR-havaintojen riviyhdistäminen, lähdeviitteet ja ihmisen tarkistus. 60 aidon synteettisen PDF:n riippumaton oracle-testi; kuva-OCR→riveiksi-vaiheen täysi hyväksyntä edelleen erillinen portti. Tuotantointegraatio NO-GO.

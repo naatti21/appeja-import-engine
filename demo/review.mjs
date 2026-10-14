@@ -3,6 +3,7 @@ import {evidenceFromDelimited,evidenceFromPdfLayout,evidenceFromOcrTsv,evidenceF
 import {parseXlsx,xlsxSheetToHoldingsTable} from '../src/xlsx.mjs';
 import {parsePayrollSections} from '../src/payroll-sections.mjs';
 import {readPdfWithPdfJs} from '../src/layout.mjs';
+import {resolvePositionedHoldings} from '../src/positioned-holdings.mjs';
 const $=id=>document.getElementById(id);
 const fileInput=$('sourceFile'),status=$('status'),error=$('error'),results=$('results');
 const MAX_SIZE=10*1024*1024;
@@ -96,6 +97,23 @@ async function handleWorkbook(file){
   candidates:parsed?holdingEntries(parsed,'xlsx',workbook,selected):[],
   summary:'Välilehtiä '+workbook.sheets.length+'. Luettu ehdokasvälilehti: '+(selected??'ei tunnistettu')+'. Kaavat ja muut välilehdet vaativat tarkistuksen.'});
 }
+const spatialTitles={
+ row_id:'Rivitunnus',account:'Tili',name:'Instrumentti',currency:'Valuutta',
+ quantity:'Määrä',current_price:'Nykykurssi',current_value:'Nykyarvo',purchase_price:'Hankintahinta'
+};
+function spatialCards(result){
+ return result.rows.slice(0,50).map((r,i)=>({
+  name:'Sijaintiin perustuva ehdokas '+(i+1)+' — tarkistettava',
+  fields:[
+   ...Object.entries(spatialTitles).map(([key,title])=>{
+    const f=r.fields[key];
+    return [title,f.status==='candidate'?String(f.value)+' · lähteet: '+f.sourceIds.join(', '):
+     'Ei varmistettu: '+f.status+(f.sourceIds.length?' · '+f.sourceIds.join(', '):'')];
+   }),
+   ['Tila',r.problems.map(x=>x.code).join(', ')||'Vain ehdotus: käyttäjän tarkistus vaaditaan']
+  ]
+ }));
+}
 async function handlePdf(file){
  const pdfjs=await import('./vendor/pdfjs/pdf.min.mjs');
  pdfjs.GlobalWorkerOptions.workerSrc='./vendor/pdfjs/pdf.worker.min.mjs';
@@ -111,7 +129,13 @@ async function handlePdf(file){
      f?.status==='conflict'?'RISTIRIITA':'Ei vahvistettua arvoa'];
   })}];
   issues.push(...data.issues,...data.decision.problems);
- }else issues.push({code:'DOCUMENT_TYPE_NOT_INTERPRETED'});
+ }else{
+  const spatial=resolvePositionedHoldings(evidence);
+  if(spatial.rows.length){
+   candidates=spatialCards(spatial);
+   issues.push(...spatial.problems,{code:'POSITIONAL_CANDIDATES_REQUIRE_REVIEW'});
+  }else issues.push({code:'DOCUMENT_TYPE_NOT_INTERPRETED'},...spatial.problems);
+ }
  renderReport({format:'PDF',observations:evidence.observations,issues,candidates,
   summary:'PDF-sivuja '+layout.pages.length+'. Tekstihavaintoja '+evidence.observations.length+'. '+(isPayslip?'Palkkakentät ovat tarkistettavia ehdokkaita.':'Dokumentin arvoja ei ole kohdistettu mihinkään sovellukseen.')});
 }
@@ -155,15 +179,18 @@ async function handleImage(file){
    if(!grouped.has(key))grouped.set(key,[]);
    grouped.get(key).push(word);
   }
-  const candidates=[...grouped.values()].slice(0,65).map((words,i)=>{
+  const fallbackCandidates=[...grouped.values()].slice(0,65).map((words,i)=>{
    words.sort((a,b)=>a.source.box.x0-b.source.box.x0);
    return {name:'OCR-tekstirivi '+(i+1)+' · ei hyväksytty omistus',
     fields:[['Teksti',words.map(o=>o.raw).join(' ')],
     ['Sanatodisteet',words.map(o=>o.id).join(', ')],
     ['Tila','Numerot ja sarakeroolit vaativat erillisen tarkistuksen']]};
   });
+  const spatial=resolvePositionedHoldings(evidence);
+  const candidates=spatial.rows.length?spatialCards(spatial):fallbackCandidates;
   renderReport({format:'Kuva/OCR',observations:evidence.observations,
-   issues:[...evidence.issues,{code:'OCR_NOT_SEMANTICALLY_VERIFIED'},{code:'OCR_DECIMAL_PUNCTUATION_RISK'}],
+   issues:[...evidence.issues,...spatial.problems,
+    {code:'OCR_NOT_SEMANTICALLY_VERIFIED'},{code:'OCR_DECIMAL_PUNCTUATION_RISK'}],
    candidates,image:true,
    summary:'OCR sanoja '+evidence.observations.length+', tekstirivejä '+grouped.size+'. Kuvaa ei tulkita valmiiksi salkuksi eikä ostohintoja päätellä.'});
  }finally{await worker?.terminate();}
