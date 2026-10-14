@@ -147,9 +147,7 @@ async function handleImage(file){
   const recognized=await worker.recognize(file,{}, {text:true,tsv:true});
   const tsv=String(recognized?.data?.tsv??'');
   if(!tsv.trim())throw new Error('OCR_TSV_MISSING_FORMAT: '+Object.keys(recognized?.data??{}).join(','));
-  if(!tsv.trim().startsWith('level')){
-   throw new Error('OCR_TSV_BAD_HEADER: '+tsv.slice(0,120).replace(/\s/g,' '));
-  }
+  // Headerless Tesseract v5 TSV is validated by the shared evidence adapter.
   const evidence=evidenceFromOcrTsv(tsv,{imageWidth,imageHeight});
   const grouped=new Map();
   for(const word of evidence.observations){

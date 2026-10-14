@@ -43,7 +43,20 @@ export function evidenceFromPdfLayout(layout){
 }
 /** Input is Tesseract TSV *already extracted from a screenshot*, not pixels. */
 export function evidenceFromOcrTsv(tsv,{imageWidth,imageHeight}={}){
- const rows=String(tsv??'').replace(/\r/g,'').split('\n');
+ const normalized=String(tsv??'').replace(/^\uFEFF/,'').replace(/\r/g,'');
+ const rows=normalized.split('\n');
+ const standard=['level','page_num','block_num','par_num','line_num','word_num',
+   'left','top','width','height','conf','text'];
+ // Tesseract.js 5 emits the canonical 12 TSV columns without a header.
+ // Validate the exact schema before assigning semantics; do not guess positions.
+ if(!rows[0]?.startsWith('level\t')){
+   if(!/^1\t\d+\t/.test(rows[0]??'')||
+      rows.some(line=>line.trim()&&(
+        line.split('\t').length!==12||
+        !/^[1-5]$/.test(line.split('\t')[0]))))
+     throw new Error('OCR_TSV_METADATA_MISSING');
+   rows.unshift(standard.join('\t'));
+ }
  const keys=rows.shift()?.split('\t')??[];
  const needed=['level','text','left','top','width','height','conf','page_num','line_num','word_num'];
  const index=Object.fromEntries(keys.map((key,i)=>[key,i]));

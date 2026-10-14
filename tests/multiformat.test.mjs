@@ -98,3 +98,19 @@ test('OCR malformed geometry and confidence trigger source blockers',()=>{
 test('OCR cannot run without image dimensions or word metadata',()=>{
  assert.throws(()=>evidenceFromOcrTsv('hello'),/OCR_TSV_METADATA_MISSING/);
 });
+
+test('real Tesseract.js v5 headerless TSV is normalized with explicit columns',()=>{
+ const words=[
+ '1\t1\t0\t0\t0\t0\t0\t0\t400\t200\t-1\t',
+ '5\t1\t1\t1\t1\t1\t12\t20\t44\t18\t93\tSYNTHETIC',
+ '5\t1\t1\t1\t1\t2\t170\t20\t18\t18\t90\t10'
+ ].join('\n');
+ const parsed=evidenceFromOcrTsv(words,{imageWidth:400,imageHeight:200});
+ assert.deepEqual(parsed.observations.map(x=>x.raw),['SYNTHETIC','10']);
+ assert.equal(parsed.observations[0].ocrConfidence,93);
+ assert.equal(parsed.requiresReview,true);
+});
+test('broken Tesseract TSV lacking expected columns must be rejected',()=>{
+ const broken='1\t1\t0\t0\t0\t0\t0\t0\t400\t200\t-1\n5\t1\t1\t1\t1\t1\t12\t20\t44\t18\t93\tTEST';
+ assert.throws(()=>evidenceFromOcrTsv(broken,{imageWidth:400,imageHeight:200}),/OCR_TSV_METADATA_MISSING/);
+});
