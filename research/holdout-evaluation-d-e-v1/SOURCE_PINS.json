@@ -1,0 +1,62 @@
+[
+  {
+    "path": "src/layout.mjs",
+    "sha256": "e38dee3fa4fd40b5450debf520fed235eff392bc6d25f590ffdb65eb84a9ae39",
+    "commit": "8f28544651a27225c1212228753fbc6c6a265c38"
+  },
+  {
+    "path": "src/payroll-sections.mjs",
+    "sha256": "1252cf3b21d9e7fdad78b9b403030fdb4719e5bda125959460b42b421224d46f",
+    "commit": "8f28544651a27225c1212228753fbc6c6a265c38"
+  },
+  {
+    "path": "src/payroll-lines.mjs",
+    "sha256": "148ea4de933dbe938ad4b5a2ca4587e658c60869ad988454eb6f2815d33d5aee",
+    "commit": "8f28544651a27225c1212228753fbc6c6a265c38"
+  },
+  {
+    "path": "src/acceptance.mjs",
+    "sha256": "d8736bab39590323c23362e4a480de9020b1a02e95a6476548f167c9265a690a",
+    "commit": "8f28544651a27225c1212228753fbc6c6a265c38"
+  },
+  {
+    "path": "src/numbers.mjs",
+    "sha256": "df344b9f9a42331ba82c8c20c82564b4eb068ee18f606a7a3e8fe92e460edcce",
+    "commit": "8f28544651a27225c1212228753fbc6c6a265c38"
+  },
+  {
+    "path": "src/evidence.mjs",
+    "sha256": "28575f1ae559938256f6d87dc173c90a821a3dae2a753f03f2864d36d7189648",
+    "commit": "8f28544651a27225c1212228753fbc6c6a265c38"
+  },
+  {
+    "path": "package.json",
+    "sha256": "db88768e258a1ec33bba3d22f5f37e311809edd7e3c582c1648ddfc8341ff53a",
+    "commit": "8f28544651a27225c1212228753fbc6c6a265c38"
+  },
+  {
+    "path": "package-lock.json",
+    "sha256": "b2bad056f385ef60e6827c2e509a5720181203bf40037eadbea54d6faa69c9fe",
+    "commit": "8f28544651a27225c1212228753fbc6c6a265c38"
+  },
+  {
+    "path": "research/ablation-layout-vocab-v1/semantic-parser.mjs",
+    "sha256": "eb864716ff62be4522bf302a1061ba0c01928371e25f85f2d1d6872067b2702d",
+    "commit": "7d7498983c78825c9fde48d31893ae5a3a416601"
+  },
+  {
+    "path": "research/ablation-layout-vocab-v1/vocabulary.mjs",
+    "sha256": "d7491b112b8840e8c47152e4f7fc2a709000b5d021cbf455c157eddb1a92bc1f",
+    "commit": "7d7498983c78825c9fde48d31893ae5a3a416601"
+  },
+  {
+    "path": "research/ablation-layout-vocab-v1/structure.mjs",
+    "sha256": "c0a409793c67b9f01af00b7029eecb191dea379ba7d2ff72d4421499b553b267",
+    "commit": "7d7498983c78825c9fde48d31893ae5a3a416601"
+  },
+  {
+    "path": "research/structure-reliability-v1/structure-e.mjs",
+    "sha256": "2fd89f3739a74861dc208bb83dbe764b768e266d49223ba577334a005edbf28f",
+    "commit": "4bbcb110acecbe4cd162115dc699f9b951fe7093"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "D_sha": "7d7498983c78825c9fde48d31893ae5a3a416601",
+  "E_sha": "4bbcb110acecbe4cd162115dc699f9b951fe7093",
+  "baseline_sha": "8f28544651a27225c1212228753fbc6c6a265c38",
+  "DEV_archive_sha": "72520b612444994741f6d09655e8c2f08f279308",
+  "holdout_zip_sha256": "762f0ac71a1c9134ba9e932bd11480e012e42eb07e1b24540f63b0566d002cbc",
+  "protocol_lock": {
+    "locked_at_utc": "2026-10-14T20:54:26.758709+00:00",
+    "before_pdf_and_annotation_access": true,
+    "files": {
+      "run.mjs": "7e03441c31ed4b0bc25c973109a148d7e964c2df57289b1c7de6ff5f651c9c99",
+      "evaluate.mjs": "b8b2d952fe26f0e3c970487dba41257cb46725ba4d6d7a0c844c4bce4f4b7bcc",
+      "scoring.mjs": "9c371e22d9d4e965b01d387e3b872d4ddf1d3d601f96d1435b7a717888b2a236",
+      "SOURCE_PINS.json": "ddfc1d2652a4ccf6f842c9980bb586ce2259cd5e124dabf832e00a5b00137104",
+      "EVALUATION_PROTOCOL.md": "a816be3d46b96eb22e22d6726ddd688047bc2e2affa584c62d8b846050297f1e"
+    },
+    "node": "v24.19.0",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39"
+  },
+  "output_freeze_sha256": "6ff62f0fc8f7803440bf744a3dbb0f7a87e38b8b3ef29888818220cc891224f4",
+  "evaluation_at": "2026-10-14T20:54:37.374Z",
+  "candidate_or_harness_changes_after_lock": false,
+  "ground_truth_parser_runtime_input": false,
+  "browser": "NOT RUN",
+  "DEV_reproduction": "D exact 6/6; D/E core 10/11",
+  "original_regressions": "32/32",
+  "independence": "Synthetic prior Work-agent authored material; procedural separation only"
+}
