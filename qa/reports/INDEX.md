@@ -10,3 +10,5 @@ Pysyvä julkaisu-/QA-päätös kuuluu saman muutoksen PR-keskusteluun. Suuret ZI
 Menettelytapa: [QA_ARCHIVE.md](../../QA_ARCHIVE.md). Agentin lomake: [HANDOFF_TEMPLATE.md](../HANDOFF_TEMPLATE.md).
 
 Uudet vahvistetut QA-tulokset lisätään tähän **vain** jos niiden linkki ja tarkka SHA on tiedossa. Virheitä tai jo vanhentuneita ZIP-linkkejä ei väitetä toimiviksi.
+
+Generoitujen QA-korpusten **vahvistetut ajot** kirjataan tänne vasta, kun Actions on todellisuudessa luonut ladattavan ZIPin ja sen SHA/raportti on tarkistettu. [Generointiohje](../../QA_CORPUS_GENERATOR.md).

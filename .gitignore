@@ -3,3 +3,5 @@ demo/vendor/pdfjs/
 test-results/
 playwright-report/
 *.log
+qa-output/
+scripts/qa-corpus/corpus/
