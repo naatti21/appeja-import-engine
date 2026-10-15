@@ -1,0 +1,43 @@
+name: Semantic document review
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  semantic-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Node regressions
+        run: |
+          mkdir -p qa-output
+          npm test > qa-output/node.log 2>&1
+      - name: Actual Chromium PDF review
+        run: npx playwright test tests/e2e/semantic-review.spec.mjs > qa-output/browser.log 2>&1
+      - name: Frozen final evaluation (only after development freeze)
+        if: hashFiles('research/semantic-review-v1/evaluation/RUN_FINAL') != ''
+        run: node research/semantic-review-v1/evaluation/run.mjs > qa-output/evaluation.json
+      - name: Evidence
+        if: always()
+        run: |
+          mkdir -p qa-output/screenshots
+          cp -r test-results/semantic-screenshots/. qa-output/screenshots/ 2>/dev/null || true
+          git rev-parse HEAD > qa-output/tested-sha.txt
+          cp research/semantic-review-v1/evaluation/LOCK.json qa-output/evaluation-lock.json
+          cd qa-output
+          find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: qa-output/
+          retention-days: 14
