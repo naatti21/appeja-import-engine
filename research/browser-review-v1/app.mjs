@@ -4,7 +4,7 @@ import {syntheticPayrollPdf} from '../../demo/native-pdf.mjs';
 const $=id=>document.getElementById(id);
 const text=(tag,value,cls)=>{const e=document.createElement(tag);e.textContent=String(value??'');if(cls)e.className=cls;return e;};
 let model=null,pdfDoc=null,pdfTask=null,image=null,shown=50,worker=null,revision=0;
-const message={VALUE_SOURCE_SET_NOT_EXACT:'Arvolähteiden koko teksti ei muodosta ehdotettua arvoa.',HEADER_SOURCE_ROLE_MISMATCH:'Otsikko ei vastaa kenttää tai on eri rivillä. Sarakekohtainen sidonta puuttuu.',CONTEXT_SOURCE_CONFLICT:'Konteksti on ristiriitainen tai eri rivillä. Dokumenttitason sidontaa ei tueta.',UNTYPED_OR_MISSING_VALUE_CLAIM:'Lähteiden rooleja ei ole erotettu. Nimeä arvo- ja otsikkolähteet erikseen.',UNREVIEWED_SOURCE_OBSERVATION:'Luokittelematon lähdehavainto: voi olla tärkeä tieto tai metatietoa. Säilytetty tarkistettavaksi.'};
+const message={AT_LEAST_ONE_UNVERIFIED_RECORD:'Vähintään yhdeltä sijoitusriviltä puuttuu tieto tai sen tulkinta on epävarma.',REQUIRED_HEADERS_MISSING:'CSV:stä puuttuu määrän tai instrumentin tunnistamiseen tarvittava otsikko.',DUPLICATE_SEMANTIC_HEADER:'Sama kenttä on useassa CSV-sarakkeessa. Tarkista kaikki alkuperäiset solut.',NO_HOLDINGS_ROWS:'CSV:ssä ei ole sijoitusrivejä.',INCONSISTENT_CSV_WIDTH:'CSV-rivien sarakemäärät poikkeavat toisistaan.',VALUE_SOURCE_SET_NOT_EXACT:'Arvolähteiden koko teksti ei muodosta ehdotettua arvoa.',HEADER_SOURCE_ROLE_MISMATCH:'Otsikko ei vastaa kenttää tai on eri rivillä. Sarakekohtainen sidonta puuttuu.',CONTEXT_SOURCE_CONFLICT:'Konteksti on ristiriitainen tai eri rivillä. Dokumenttitason sidontaa ei tueta.',UNTYPED_OR_MISSING_VALUE_CLAIM:'Lähteiden rooleja ei ole erotettu. Nimeä arvo- ja otsikkolähteet erikseen.',UNREVIEWED_SOURCE_OBSERVATION:'Luokittelematon lähdehavainto: voi olla tärkeä tieto tai metatietoa. Säilytetty tarkistettavaksi.'};
 function busy(on){for(const id of ['analyze','payrollExample','holdingsExample','probeExample','sourceFile'])$(id).disabled=on;}
 function clearResult(){
  model=null;image?.close();image=null;shown=50;$('results').hidden=true;$('error').hidden=true;$('error').textContent='';
@@ -57,7 +57,7 @@ function render(){
  const r=review(model),layout=model.original.layout;$('results').hidden=false;
  const warnings=[...r.result.issues,...(r.result.audit?.newWarnings??[])];
  $('summary').textContent=`${model.format} · ${layout.observations.length} alkuperäistä havaintoa · ${Object.keys(r.fields).length} kenttäehdotusta · ${warnings.length} tarkistettavaa kohtaa.`;
- $('notes').replaceChildren(...model.notes.map(n=>text('p',n,'muted')));
+ $('notes').replaceChildren(...model.notes.map(n=>text('p',message[n]??n,'muted')));
  $('warnings').replaceChildren();
  const grouped=new Map();for(const w of warnings){const o=layout.observations.find(o=>o.id===w.sourceId);const key=o?.kind==='cell'?'CSV-rivi '+o.sourceLine:w.page?'Sivu '+w.page:'Yleiset';if(!grouped.has(key))grouped.set(key,[]);grouped.get(key).push(w);}
  for(const [group,items]of grouped){const d=document.createElement('details');d.append(text('summary',`${group} · ${items.length} kohtaa`));for(const w of items)d.append(text('p',(message[w.code]??w.code)+(w.sourceId?' · '+w.sourceId:''),'audit'));$('warnings').append(d);}

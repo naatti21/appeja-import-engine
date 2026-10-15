@@ -18,6 +18,8 @@ test.describe('Y12 read-only browser review',()=>{
   const uploads=[];page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))uploads.push(r.url());});
   await upload(page,'synthetic.csv',csv);
   await expect(page.locator('#summary')).toContainText('CSV');
+  await expect(page.locator('#notes')).toContainText('Vähintään yhdeltä sijoitusriviltä puuttuu tieto');
+  await expect(page.locator('#notes')).not.toContainText('AT_LEAST_ONE_UNVERIFIED_RECORD');
   await expect(page.locator('#fields')).toContainText('SYN-1');await expect(page.locator('#fields')).toContainText('SYN-2');
   await expect(page.locator('[data-field="row2:buyPrice"] [data-claim-state]')).toContainText('vaatii tarkistuksen');
   const card=page.locator('[data-field="row1:quantity"]');

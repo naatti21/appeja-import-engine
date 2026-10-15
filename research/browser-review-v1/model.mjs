@@ -5,7 +5,7 @@ import {parseHoldingsCsv} from '../../src/holdings.mjs';
 import {inspectReadOnlyHandoff} from '../reader-bridge-v1/bridge.mjs';
 import {parseNumber} from '../../src/numbers.mjs';
 import {base,observation} from '../source-evidence-v1/fixtures.mjs';
-export const labels={payDate:'Maksupäivä',grossPay:'Bruttotulo',netPay:'Nettopalkka',ytdTaxableIncome:'Veronalainen kertymä',quantity:'Määrä',buyPrice:'Hankintahinta',currency:'Valuutta',name:'Instrumentti',account:'Tili'};
+export const labels={payDate:'Maksupäivä',grossPay:'Bruttotulo',netPay:'Nettopalkka',ytdTaxableIncome:'Veronalainen kertymä',previousYearTaxableIncome:'Edellisen vuoden veronalainen tulo',withholdingPeriod:'Kauden ennakonpidätys',withholdingYtd:'Vuoden ennakonpidätyskertymä',payPeriodStart:'Palkkakauden alku',payPeriodEnd:'Palkkakauden loppu',quantity:'Määrä',buyPrice:'Hankintahinta',currency:'Valuutta',name:'Instrumentti',account:'Tili'};
 function freeze(x){if(x&&typeof x==='object'){Object.values(x).forEach(freeze);Object.freeze(x);}return x;}
 export function makeModel(layout,fields,format,notes=[]){
  return {original:freeze(structuredClone({layout,fields})),format,notes:[...notes],edits:{}};
