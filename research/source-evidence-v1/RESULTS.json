@@ -1,0 +1,69 @@
+{
+  "baseSha": "35bb5c228fdadcae177973a07c0c67318d6187ca",
+  "redCommit": "18e479ebb2182da92ee291cfa7bd7e94f503bc09",
+  "localNode": "v24.19.0",
+  "localTargetedTests": 45,
+  "localFullTests": 146,
+  "summary": {
+    "controls": 42,
+    "expectedOutcomePass": 42,
+    "expectedOutcomeFail": 0,
+    "positiveControls": 11,
+    "positiveControlsAllowed": 11,
+    "adversarialControls": 26,
+    "unsafeParentAcceptsBlocked": [
+      "D1",
+      "extra-unresolved-text",
+      "extra-unit-to-money",
+      "repeated-date-observation",
+      "shared-value-between-fields",
+      "wrong-header-role",
+      "extra-money-as-header",
+      "surplus-flat-source-id",
+      "shared-conflicting-context",
+      "contradictory-currency",
+      "unclaimed-context",
+      "overlapping-fragments",
+      "cross-page-fragments",
+      "same-value-overlapping-source-boxes",
+      "payline-extra-text",
+      "payline-nonstring-label",
+      "payline-field-value-reuse"
+    ],
+    "compatibilityProbes": [
+      {
+        "id": "legacy-heading-compatibility",
+        "parent": true,
+        "patched": false,
+        "newFalseBlock": true
+      },
+      {
+        "id": "distant-global-context-compatibility",
+        "parent": true,
+        "patched": false,
+        "newFalseBlock": true
+      },
+      {
+        "id": "distant-column-heading-compatibility",
+        "parent": true,
+        "patched": false,
+        "newFalseBlock": true
+      },
+      {
+        "id": "ambiguous-integer-fragments-compatibility",
+        "parent": false,
+        "patched": false,
+        "newFalseBlock": false
+      }
+    ],
+    "productionDecision": "NO-GO",
+    "independentQA": "NOT RUN"
+  },
+  "impactSHA256": "b113d08d4461f68a5d82d553385aac66c1f01ee522d99f2da305065f458e9967",
+  "sourceSHA256": {
+    "gate.mjs": "bb5670d3d2f224ca33540e2ca3fe94b5cf79b151e5ceedebe591a710d98aeb9f",
+    "fixtures.mjs": "fc69a215c291043ef1e3debca562a3c6b13209f4372f2a53d3b5345065a1f2a5",
+    "cases.mjs": "a2224c33289cb0e24503b4bfb4fb2d9715c01fba1c32ad4a5c58f12f0c953b4f",
+    "impact.mjs": "873de990b00df8e17474fb15c27fb880adc9bfeedfdc0aed616908a6667491ed"
+  }
+}
