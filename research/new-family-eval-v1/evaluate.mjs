@@ -2,6 +2,7 @@
  * This evaluator cannot establish parser semantic accuracy or production safety.
  */
 import {createHash} from 'node:crypto';
+import {writeFileSync} from 'node:fs';
 import {newFamilyCases,expectedDesign} from './cases.mjs';
 import {auditNumericCoverage} from '../coverage-gate-v1/gate.mjs';
 import {auditSourceCoverage} from '../coverage-gate-v2/gate.mjs';
@@ -109,6 +110,7 @@ export function evaluateNewFamilies(){
 }
 if(process.argv[1]&&import.meta.url==='file://'+process.argv[1]){
  const obj=evaluateNewFamilies();
+ if(process.argv[2])writeFileSync(process.argv[2],JSON.stringify(obj,null,2)+'\n');
  console.log('Y14_SUMMARY '+JSON.stringify({dataset:obj.dataset,
   baselines:Object.fromEntries(Object.entries(obj.variants).map(([key,v])=>[key,
    {totals:v.totals,metrics:v.metrics,criteria:v.criteria,
