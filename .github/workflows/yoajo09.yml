@@ -1,0 +1,53 @@
+name: YOAJO 09 - preregistered source coverage
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  coverage-experiment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Evaluate locked DEV and EVAL corpora
+        run: |
+          mkdir -p qa-output
+          node research/coverage-gate-v2/evaluate.mjs dev qa-output > qa-output/dev.log 2>&1
+          node research/coverage-gate-v2/evaluate.mjs eval qa-output > qa-output/eval.log 2>&1
+      - name: Record manifest and assert research thresholds separately
+        id: thresholds
+        continue-on-error: true
+        run: |
+          node --input-type=module <<'JS'
+          import {readFileSync,writeFileSync} from 'node:fs';
+          import {createHash} from 'node:crypto';
+          import {execFileSync} from 'node:child_process';
+          const result=JSON.parse(readFileSync('qa-output/eval-results.json'));
+          const files=['dev-results.json','eval-results.json','dev.log','eval.log'].map(file=>{
+            const b=readFileSync('qa-output/'+file);return {file,bytes:b.length,sha256:createHash('sha256').update(b).digest('hex')};
+          });
+          const m={testedCommitSha:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
+            baseSha:'abaa437ecc5ccfc6e293863a0b3a10b8d212ed46',
+            evaluationComplete:true,researchThresholdsPass:result.researchThresholdsPass,
+            criteria:result.criteria,productionDecision:'NO-GO',independentQA:'NOT RUN',
+            retentionDays:14,files};
+          writeFileSync('qa-output/manifest.json',JSON.stringify(m,null,2));
+          writeFileSync('qa-output/report.md','# YÖAJO 09\n\n'+JSON.stringify(m,null,2));
+          if(!result.researchThresholdsPass){console.error('RESEARCH THRESHOLDS FAIL: '+JSON.stringify(result.criteria));process.exitCode=1;}
+          JS
+      - name: Visible advisory failure summary
+        if: always()
+        run: |
+          echo 'Research threshold step outcome: ${{ steps.thresholds.outcome }} (advisory; production NO-GO)' >> "$GITHUB_STEP_SUMMARY"
+          cat qa-output/report.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-yoajo09-${{ github.run_id }}-${{ github.run_attempt }}
+          path: qa-output/
+          retention-days: 14
