@@ -1,0 +1,130 @@
+{
+  "parentSha": "abaa437ecc5ccfc6e293863a0b3a10b8d212ed46",
+  "preregistrationSha": "c8ee1eb56cb19faaf1cf9e019a57a654b65c9191",
+  "frozenCandidateSha": "7fa1ddf445c9ae0b4155687492f283e244d42961",
+  "independentQA": "NOT RUN (same author development experiment)",
+  "productionDecision": "NO-GO",
+  "dev": {
+    "baseline": {
+      "counts": {
+        "documents": 90,
+        "essential": 85,
+        "essentialWarned": 50,
+        "nuisance": 290,
+        "nuisanceWarned": 200,
+        "contextWarned": 0,
+        "essentialDocuments": 65,
+        "essentialMissDocuments": 30,
+        "benignDocuments": 20,
+        "falseBlockedBenignDocuments": 20,
+        "newWarnings": 240,
+        "warningGroups": 240,
+        "relaxedUpstream": 0,
+        "canPersist": 0
+      },
+      "metrics": {
+        "essentialWarningRecall": 0.5882352941176471,
+        "nuisanceFPR": 0.6896551724137931,
+        "warningPrecision": 0.2,
+        "benignDocumentFalseBlockRate": 1
+      }
+    },
+    "candidate": {
+      "counts": {
+        "documents": 90,
+        "essential": 85,
+        "essentialWarned": 85,
+        "nuisance": 290,
+        "nuisanceWarned": 5,
+        "contextWarned": 5,
+        "essentialDocuments": 65,
+        "essentialMissDocuments": 0,
+        "benignDocuments": 20,
+        "falseBlockedBenignDocuments": 5,
+        "newWarnings": 85,
+        "warningGroups": 65,
+        "relaxedUpstream": 0,
+        "canPersist": 0
+      },
+      "metrics": {
+        "essentialWarningRecall": 1,
+        "nuisanceFPR": 0.017241379310344827,
+        "warningPrecision": 0.9444444444444444,
+        "benignDocumentFalseBlockRate": 0.25
+      }
+    },
+    "criteria": {
+      "essentialRecall": true,
+      "nuisanceFPR": true,
+      "benignFalseBlock": false,
+      "invariants": true
+    },
+    "researchThresholdsPass": false
+  },
+  "eval": {
+    "baseline": {
+      "counts": {
+        "documents": 90,
+        "essential": 85,
+        "essentialWarned": 50,
+        "nuisance": 290,
+        "nuisanceWarned": 200,
+        "contextWarned": 0,
+        "essentialDocuments": 65,
+        "essentialMissDocuments": 30,
+        "benignDocuments": 20,
+        "falseBlockedBenignDocuments": 20,
+        "newWarnings": 240,
+        "warningGroups": 240,
+        "relaxedUpstream": 0,
+        "canPersist": 0
+      },
+      "metrics": {
+        "essentialWarningRecall": 0.5882352941176471,
+        "nuisanceFPR": 0.6896551724137931,
+        "warningPrecision": 0.2,
+        "benignDocumentFalseBlockRate": 1
+      }
+    },
+    "candidate": {
+      "counts": {
+        "documents": 90,
+        "essential": 85,
+        "essentialWarned": 85,
+        "nuisance": 290,
+        "nuisanceWarned": 5,
+        "contextWarned": 5,
+        "essentialDocuments": 65,
+        "essentialMissDocuments": 0,
+        "benignDocuments": 20,
+        "falseBlockedBenignDocuments": 5,
+        "newWarnings": 85,
+        "warningGroups": 65,
+        "relaxedUpstream": 0,
+        "canPersist": 0
+      },
+      "metrics": {
+        "essentialWarningRecall": 1,
+        "nuisanceFPR": 0.017241379310344827,
+        "warningPrecision": 0.9444444444444444,
+        "benignDocumentFalseBlockRate": 0.25
+      }
+    },
+    "criteria": {
+      "essentialRecall": true,
+      "nuisanceFPR": true,
+      "benignFalseBlock": false,
+      "invariants": true
+    },
+    "researchThresholdsPass": false
+  },
+  "rawResultsSHA256": {
+    "dev": "e94f6e5f60e5874faa73fde33d2c6607cf1006a233cf6e7abad52ec215ae4ddc",
+    "eval": "acbd1da75332e86950c9201e8a4599b74ee68e9f8e07f0508424f9397371d301"
+  },
+  "candidateSourceSHA256": {
+    "gate.mjs": "86e64c97585e62b607951313d90a0a74339f691c221bdf81c9ece359f2d86157",
+    "evaluate.mjs": "1fd724802f04f1aaed8eee61130286a62af0f4e88cde958113e732178277d6b4",
+    "corpus.mjs": "4565c287c0befdef1392cdc17735dab87ee379ed491bfbec628b137b50d7e530"
+  }
+}
