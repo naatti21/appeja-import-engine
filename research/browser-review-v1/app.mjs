@@ -1,6 +1,5 @@
-import {makeModel,csvModel,review,sourceLabel,exampleModel,labels,normalizeOcrTsv} from './model.mjs';
+import {makeModel,csvModel,payrollModel,review,sourceLabel,exampleModel,labels,normalizeOcrTsv} from './model.mjs';
 import {fromPdfJsTextItems,fromTesseractWordTsv} from '../reader-bridge-v1/bridge.mjs';
-import {parsePayrollSections} from '../../src/payroll-sections.mjs';
 import {syntheticPayrollPdf} from '../../demo/native-pdf.mjs';
 const $=id=>document.getElementById(id);
 const text=(tag,value,cls)=>{const e=document.createElement(tag);e.textContent=String(value??'');if(cls)e.className=cls;return e;};
@@ -24,10 +23,12 @@ async function pdfModel(bytes){
  pdfDoc=await pdfjs.getDocument({data:bytes}).promise;
  if(pdfDoc.numPages>20)throw new Error('PDF:ssä on yli 20 sivua. Rajaa synteettistä koetta.');
  const pages=[];
- for(let i=1;i<=pdfDoc.numPages;i++){const p=await pdfDoc.getPage(i),v=p.getViewport({scale:1});pages.push({width:v.width,height:v.height,items:(await p.getTextContent()).items});}
+ for(let i=1;i<=pdfDoc.numPages;i++){const p=await pdfDoc.getPage(i),v=p.getViewport({scale:1});
+  if(v.rotation!==0)throw new Error('Kierrettyä PDF-sivua ei tueta turvallisena lähdekoordinaattina.');
+  if(!Array.isArray(p.view)||Math.abs(p.view[0])>0.0001||Math.abs(p.view[1])>0.0001||Math.abs(p.view[2]-p.view[0]-v.width)>0.0001||Math.abs(p.view[3]-p.view[1]-v.height)>0.0001)throw new Error('Rajattua PDF-sivua ei tueta turvallisena lähdekoordinaattina.');
+  pages.push({width:v.width,height:v.height,items:(await p.getTextContent()).items});}
  const layout=fromPdfJsTextItems(pages),salary=/palkka|payroll/i.test(layout.observations.map(o=>o.raw).join(' '));
- const parsed=salary?parsePayrollSections(layout):null;
- return makeModel(layout,parsed?.fields??{},'PDF',salary?['Palkkakentät ovat rajatun parserin ehdotuksia. Päivämäärän muunnos tai yhdistetty otsikko–arvoteksti ei automaattisesti ole todennettu lähdesidos.']:['PDF:n dokumenttityyppiä ei tunnistettu. Lähdeteksti näkyy, mutta kenttiä ei arvata.']);
+ return salary?payrollModel(layout):makeModel(layout,{},'PDF',['PDF:n dokumenttityyppiä ei tunnistettu. Lähdeteksti näkyy, mutta kenttiä ei arvata.']);
 }
 async function loadOcr(){
  if(window.Tesseract?.createWorker)return window.Tesseract;
@@ -66,7 +67,7 @@ function render(){
    text('small','Alkuperäiset lähteet: '+(original.sourceIds??[]).join(', ')));
   const field=(suffix,label,value,parent=card)=>{const id=key+'-'+suffix;const l=text('label',label);l.htmlFor=id;const input=document.createElement('input');input.id=id;input.value=value??'';parent.append(l,input);return input;};
   const edit=model.edits[key],value=field('value',name+' · luonnosarvo',edit?.value??f.value??''),roles=edit??f.sourceRoles??{valueIds:f.sourceIds??[],headerIds:[],contextIds:[]};
-  const ids=new Set(f.sourceIds??[]),blocked=r.result.issues.some(i=>i.field===key||i.owner==='field:'+key)||
+  const ids=new Set(f.sourceIds??[]),blocked=f.status!=='verified'||!ids.size||r.result.issues.some(i=>i.field===key||i.owner==='field:'+key)||
    (r.result.audit?.newWarnings??[]).some(w=>ids.has(w.sourceId));
   const state=text('p',blocked?'Lähdesidos vaatii tarkistuksen.':'Lähdeteksti täsmää; taloudellista merkitystä ei ole vahvistettu.','audit');state.dataset.claimState='';card.append(state);
   const roleEditor=document.createElement('details');roleEditor.append(text('summary','Lähderoolien tarkistus'));card.append(roleEditor);
@@ -77,7 +78,7 @@ function render(){
    model.edits[key]={value:value.value,valueIds:split(values),headerIds:split(headers),contextIds:split(contexts),currency:currency.value.trim()};review(model);$('error').hidden=true;render();$('status').textContent='Luonnos tarkistettu. Lähteet säilyivät; mitään ei hyväksytty eikä tallennettu.';
   }catch(e){if(old)model.edits[key]=old;else delete model.edits[key];$('error').hidden=false;$('error').textContent='Luonnosta ei sovellettu: '+e.message;$('status').textContent='Edellinen ehdotus ja alkuperäiset lähteet säilyivät. Ei tallennusta.';}});
   restore.addEventListener('click',()=>{delete model.edits[key];$('error').hidden=true;render();$('status').textContent='Alkuperäinen ehdotus palautettu. Mitään ei tallennettu.';});
-  const show=text('button','Näytä kentän lähde');show.addEventListener('click',()=>{const o=layout.observations.find(o=>(original.sourceIds??[]).includes(o.id));if(o)void selectSource(o).catch(e=>{$('sourceText').textContent='Esikatselu keskeytyi: '+e.message;});});
+  const show=text('button','Näytä kentän lähde');show.disabled=!(original.sourceIds??[]).length;show.addEventListener('click',()=>{const o=layout.observations.find(o=>(original.sourceIds??[]).includes(o.id));if(o)void selectSource(o).catch(e=>{$('sourceText').textContent='Esikatselu keskeytyi: '+e.message;});});
   card.append(apply,restore,show,text('small',edit?'Oma luonnosehdotus · ei alkuperäistä lähdetietoa':'Muuttumaton alkuperäinen ehdotus'));$('fields').append(card);
  }
  renderSources();

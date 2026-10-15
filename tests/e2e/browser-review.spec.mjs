@@ -18,6 +18,7 @@ test.describe('Y12 read-only browser review',()=>{
   await upload(page,'synthetic.csv',csv);
   await expect(page.locator('#summary')).toContainText('CSV');
   await expect(page.locator('#fields')).toContainText('SYN-1');await expect(page.locator('#fields')).toContainText('SYN-2');
+  await expect(page.locator('[data-field="row2:buyPrice"] [data-claim-state]')).toContainText('vaatii tarkistuksen');
   const card=page.locator('[data-field="row1:quantity"]');
   await expect(card.locator('[data-claim-state]')).toContainText('Lähdeteksti täsmää');
   await card.getByRole('button',{name:'Näytä kentän lähde'}).click();
@@ -33,6 +34,8 @@ test.describe('Y12 read-only browser review',()=>{
  test('actual payroll PDF file, proposals and original page/box preview',async({page})=>{
   await upload(page,'synthetic-payroll.pdf',syntheticPayrollPdf([{fullSlip:true}]),'application/pdf');
   await expect(page.locator('#summary')).toContainText('PDF');await expect(page.locator('#fields')).toContainText('Bruttotulo');
+  await expect(page.locator('[data-field="grossPay"]')).toContainText('Alkuperäinen ehdotus: 3200');
+  await expect(page.locator('[data-field="ytdTaxableIncome"]')).toContainText('Alkuperäinen ehdotus: 42000');
   const field=page.locator('[data-field="grossPay"]');await field.getByRole('button',{name:'Näytä kentän lähde'}).click();
   await expect(page.locator('#sourceText')).toContainText('Sivu 1');await expect(page.locator('#sourceText')).toContainText('"box": {');await expect(page.locator('#preview')).toBeVisible();
   await page.locator('#sourceDetails').scrollIntoViewIfNeeded();await shot(page,'payroll-source-desktop');
@@ -53,6 +56,12 @@ test.describe('Y12 read-only browser review',()=>{
   for(const [name,bytes]of [['bad.csv','Name;Quantity\n"unclosed;8'],['bad.txt','not a document'],['empty.csv',''],['big.csv',Buffer.alloc(5*1024*1024+1)]]){
    await upload(page,'good.csv',csv);await expect(page.locator('#results')).toBeVisible();
    await upload(page,name,bytes);await expect(page.locator('#error')).toBeVisible();await expect(page.locator('#results')).toBeHidden();await expect(page.locator('#status')).toContainText('Aiemmat tulokset poistettiin');
+  }
+ });
+ test('rotated/cropped/malformed PDFs fail visibly instead of showing false coordinates',async({page})=>{
+  for(const bytes of [syntheticPayrollPdf([{fullSlip:true,rotate:90}]),syntheticPayrollPdf([{fullSlip:true,crop:true}]),Buffer.from('not a PDF')]){
+   await upload(page,'safe.csv',csv);await expect(page.locator('#results')).toBeVisible();
+   await upload(page,'unsupported.pdf',bytes,'application/pdf');await expect(page.locator('#error')).toBeVisible();await expect(page.locator('#results')).toBeHidden();
   }
  });
  test('invalid correction keeps previous proposal and gives actionable error',async({page})=>{

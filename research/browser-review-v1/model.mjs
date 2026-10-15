@@ -1,4 +1,6 @@
 import {parseDelimited} from '../../src/csv.mjs';
+import {parsePayrollSections} from '../../src/payroll-sections.mjs';
+import {parsePayrollLayout} from '../../src/payroll.mjs';
 import {parseHoldingsCsv} from '../../src/holdings.mjs';
 import {inspectReadOnlyHandoff} from '../reader-bridge-v1/bridge.mjs';
 import {parseNumber} from '../../src/numbers.mjs';
@@ -7,6 +9,22 @@ export const labels={payDate:'Maksupäivä',grossPay:'Bruttotulo',netPay:'Nettop
 function freeze(x){if(x&&typeof x==='object'){Object.values(x).forEach(freeze);Object.freeze(x);}return x;}
 export function makeModel(layout,fields,format,notes=[]){
  return {original:freeze(structuredClone({layout,fields})),format,notes:[...notes],edits:{}};
+}
+/** Both frozen proposal adapters stay visible; disagreement never chooses a winner. */
+export function payrollModel(layout){
+ const section=parsePayrollSections(layout),table=parsePayrollLayout(layout),fields=structuredClone(section.fields);
+ for(const [key,t]of Object.entries(table.fields)){
+  if(!t.candidates?.length)continue;
+  const sourceIds=[...new Set(t.candidates.map(c=>c.observationId))];
+  const proposal={...t,status:t.status==='unique'?'verified':t.status,sourceIds};
+  const s=fields[key];
+  if(!s||['missing','optional-missing'].includes(s.status)){fields[key]=proposal;continue;}
+  const agreed=s.status==='verified'&&proposal.status==='verified'&&s.value===proposal.value;
+  fields[key]={status:agreed?'verified':'conflict',value:agreed?s.value:null,
+   sourceIds:[...new Set([...s.sourceIds,...sourceIds])],candidates:[...s.candidates,...t.candidates]};
+ }
+ return makeModel(layout,fields,'PDF',['Osio- ja taulukkoparserin ehdotukset näytetään yhdessä. Ristiriita säilyy ristiriitana. Lähderooleja ei päätellä automaattisesti; päivämäärän muunnos tai taulukon sarake ei vielä ole todennettu lähdesidos.',
+  ...[...section.issues,...table.issues].map(i=>'Parserihavainto: '+i.code)]);
 }
 export function csvModel(text){
  const table=parseDelimited(text),parsed=parseHoldingsCsv(table);
