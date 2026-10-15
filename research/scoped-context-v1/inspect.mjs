@@ -47,6 +47,10 @@ export function inspectScopedClaims(layout,fields){
   if(!layout||!Array.isArray(layout.observations)||!fields||
     typeof fields!=='object'||Array.isArray(fields))
     return {...fallback,issues:[resultFailure('INVALID_SCOPED_INPUT')]};
+  if(!Array.isArray(layout.issues)||layout.issues.length||
+    (layout.unplacedObservations!==undefined&&
+      (!Array.isArray(layout.unplacedObservations)||layout.unplacedObservations.length)))
+    return {...fallback,issues:[resultFailure('SOURCE_READER_HAS_ISSUES')]};
   const byId=new Map(),issues=[],supported=[],valueOwners=new Map();
   for(const o of layout.observations){
     if(!o||typeof o.id!=='string'||!o.id.trim()||byId.has(o.id)||
