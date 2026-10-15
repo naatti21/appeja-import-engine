@@ -1,0 +1,56 @@
+name: YOAJO 10 - source evidence safety
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Reproduce assertion-red D1 on frozen parent gate
+        run: |
+          mkdir -p qa-output
+          node --input-type=module <<'JS'
+          import {spawnSync} from 'node:child_process';
+          import {writeFileSync} from 'node:fs';
+          const r=spawnSync(process.execPath,['--test','--test-name-pattern=D1 extra','tests/source-evidence-research.test.mjs'],{
+            env:{...process.env,SOURCE_EVIDENCE_BASELINE:'1'},encoding:'utf8'});
+          const log=r.stdout+r.stderr;writeFileSync('qa-output/baseline-red.log',log);
+          const line=log.split('\n').find(s=>s.includes('D1_OBSERVED '));
+          const observed=line?JSON.parse(line.slice(line.indexOf('D1_OBSERVED ')+12)):null;
+          if(r.status!==1||!log.includes('ERR_ASSERTION')||observed?.canAutoAccept!==true||observed.newWarnings.length!==0)
+            throw new Error('BASELINE_NOT_THE_EXPECTED_D1_ASSERTION_FAILURE');
+          console.log('D1_RED_CONFIRMED: actual=true, expected=false; no import/harness failure');
+          JS
+      - name: Corrected targeted regressions and fresh impact controls
+        run: |
+          node --test tests/source-evidence-research.test.mjs > qa-output/targeted.log 2>&1
+          node research/source-evidence-v1/impact.mjs qa-output > qa-output/impact.log 2>&1
+      - name: Checksummed exact-head manifest
+        if: always()
+        run: |
+          node --input-type=module <<'JS'
+          import {readFileSync,writeFileSync,existsSync} from 'node:fs';
+          import {createHash} from 'node:crypto';import {execFileSync} from 'node:child_process';
+          const files=['baseline-red.log','targeted.log','impact.json','impact.log'].filter(f=>existsSync('qa-output/'+f)).map(file=>{
+            const b=readFileSync('qa-output/'+file);return {file,bytes:b.length,sha256:createHash('sha256').update(b).digest('hex')};});
+          const summary=existsSync('qa-output/impact.json')?JSON.parse(readFileSync('qa-output/impact.json')).summary:null;
+          const m={testedCommitSha:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
+            baseSha:'35bb5c228fdadcae177973a07c0c67318d6187ca',summary,
+            files,retentionDays:14,productionDecision:'NO-GO',independentQA:'NOT RUN'};
+          writeFileSync('qa-output/manifest.json',JSON.stringify(m,null,2));
+          writeFileSync('qa-output/report.md','# YÖAJO 10\n\n'+JSON.stringify(m,null,2));
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-yoajo10-${{ github.run_id }}-${{ github.run_attempt }}
+          path: qa-output/
+          retention-days: 14
