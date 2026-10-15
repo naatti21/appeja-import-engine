@@ -1,0 +1,11 @@
+{
+  "developmentSha": "693fe8efa17e837ab80a57230d82605e3eb84282",
+  "preregistrationSha": "2dfb05dd66c4adaf21715306db5313d1e9ecf072",
+  "developmentBrowserRun": 38809917675,
+  "files": {
+    "classify.mjs": "e2b148aad3a7cd3a7c146335183b60ff091672795702734930b32dd29fde43ff",
+    "app.mjs": "d027862dfae2b58286f37b8b9324ff938b8ceb10ffb7eef38deb4b846c46f7c1",
+    "index.html": "3b05a5afc868150c80d6003c618459c592f2aac4bb86ffc6d0b211236edf0bdf",
+    "example-pdf.mjs": "18d8fbf511b6774b45f5e2c92475ff3522ed70e997620babc3e246ee17369b98"
+  }
+}

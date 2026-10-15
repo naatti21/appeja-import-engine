@@ -7,6 +7,8 @@ import {auditSourceCoverage} from '../../coverage-gate-v2/gate.mjs';
 const root=new URL('../',import.meta.url),read=p=>readFileSync(new URL(p,root));
 const lock=JSON.parse(read('evaluation/LOCK.json'));
 for(const [file,hash]of Object.entries(lock))assert.equal(createHash('sha256').update(read(file)).digest('hex'),hash,'Preregistered input changed: '+file);
+const freeze=JSON.parse(read('evaluation/FREEZE.json'));
+for(const [file,hash]of Object.entries(freeze.files))assert.equal(createHash('sha256').update(read(file)).digest('hex'),hash,'Frozen candidate changed: '+file);
 const cases=JSON.parse(read('evaluation/cases.json'));
 const metric=()=>({essential:0,warnedEssential:0,benign:0,warnedBenign:0,benignDocuments:0,blockedBenignDocuments:0,falseAcceptance:0});
 const current=metric(),baseline=metric(),results=[];
@@ -27,5 +29,5 @@ for(const c of cases){
 }
 function verdict(m){return {coverage:m.warnedEssential/m.essential,nuisanceRate:m.warnedBenign/m.benign,falseBlockRate:m.blockedBenignDocuments/m.benignDocuments,pass:m.warnedEssential===m.essential&&m.warnedBenign/m.benign<=.1&&m.blockedBenignDocuments/m.benignDocuments<=.1&&m.falseAcceptance===0};}
 const verdicts={candidate:verdict(current),baseline:verdict(baseline)};
-console.log(JSON.stringify({protocolLock:lock,current,baseline,verdicts,results,scope:'new synthetic source envelopes; no external independent QA; false acceptance includes triage misses, not just disabled save button'},null,2));
+console.log(JSON.stringify({protocolLock:lock,freeze,current,baseline,verdicts,results,scope:'new synthetic source envelopes; no external independent QA; false acceptance includes triage misses, not just disabled save button'},null,2));
 if(!verdicts.candidate.pass)process.exitCode=1;
