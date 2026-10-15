@@ -128,3 +128,17 @@ test('input permutations preserve document currency and column evidence',()=>{
  const r=run(d);assert.equal(r.scopeSupported,expected.scopeSupported);
  assert.deepEqual(r.supported,expected.supported);
 });
+
+test('upstream extraction problems or unplaced OCR observations cannot produce supported scopes',()=>{
+ const changes=[
+  d=>d.layout.issues.push({code:'INVALID_GEOMETRY',sourceId:'value'}),
+  d=>d.layout.unplacedObservations=[{id:'badocr',raw:'99.00'}],
+  d=>d.layout.issues='invalid'
+ ];
+ for(const change of changes){
+  const d=documentField();change(d);
+  const r=run(d);assert.equal(r.scopeSupported,false);
+  assert.equal(r.issues[0].code,'SOURCE_READER_HAS_ISSUES');
+  assert.equal(r.canPersist,false);
+ }
+});
