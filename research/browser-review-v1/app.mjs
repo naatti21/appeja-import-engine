@@ -18,8 +18,8 @@ async function execute(action){const ticket=++revision;clearResult();busy(true);
  finally{if(ticket===revision)busy(false);}
 }
 async function pdfModel(bytes){
- const pdfjs=await import('../../demo/vendor/pdfjs/pdf.min.mjs');
- pdfjs.GlobalWorkerOptions.workerSrc=new URL('../../demo/vendor/pdfjs/pdf.worker.min.mjs',import.meta.url).href;
+ const pdfjs=await import('./vendor/pdfjs/pdf.min.mjs');
+ pdfjs.GlobalWorkerOptions.workerSrc=new URL('./vendor/pdfjs/pdf.worker.min.mjs',import.meta.url).href;
  pdfDoc=await pdfjs.getDocument({data:bytes}).promise;
  if(pdfDoc.numPages>20)throw new Error('PDF:ssä on yli 20 sivua. Rajaa synteettistä koetta.');
  const pages=[];

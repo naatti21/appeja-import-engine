@@ -1,3 +1,4 @@
+import '../../research/browser-review-v1/stage-pdf.mjs';
 import {test,expect} from '@playwright/test';
 import {mkdirSync} from 'node:fs';
 import {syntheticPayrollPdf} from '../../demo/native-pdf.mjs';

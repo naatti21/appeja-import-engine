@@ -10,6 +10,7 @@ Node >=22:
 npm ci
 npm test
 npm run prepare:pdfjs
+node research/browser-review-v1/stage-pdf.mjs
 # Optional actual image OCR; no service/CDN fallback:
 npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0 @tesseract.js-data/eng@1.0.0
 node research/browser-review-v1/stage-ocr.mjs
@@ -53,6 +54,7 @@ Fixtures are deterministic literals, not pseudo-random draws: case IDs below are
 | Y12-04 | PDF rotate=90 or nonzero crop origin must not claim valid normalized source coordinates | Review found direct bridge use bypassed parent reader's metadata guard. New UI rejects these PDFs with visible error and clears stale results. Regression covers rotated, cropped and corrupt PDFs. |
 | Y12-05 | Genuine Tesseract v5 output must preserve strict word TSV structure | Real engine returns headerless 12-column TSV. Strict normalizer adds canonical header only after validating levels/column count; malformed text rejected. Actual pixels→word boxes passed first CI run. |
 | Y12-06 | CSV blank source line must retain actual line 3, not logical row 2 | Source display explicitly shows both line 3 and R2C2; independent Node/browser checks. |
+| Y12-08 | PDF source preview must render in the locked Chromium | Second CI head `c4bd7f130777912d306f3a1d62ffab4da2919e22`: FAIL, standard PDF.js rendering used unsupported `Map.getOrInsertComputed`; malformed-PDF flow also remained reading. UI now uses the official legacy build of the SAME locked PDF.js 6.4.299 (included compatibility polyfills), prepared only for this research screen. Original demo/vendor preparation and version unchanged. |
 | Y12-07 | Correction 8→800 with the same source must stay blocked and revert to 8 | Original remains frozen; exact gate warns; revert discards draft only. Invalid numeric draft leaves prior proposal/source intact and shows actionable error. |
 
 First red Y12 run: https://github.com/naatti21/appeja-import-engine/actions/runs/38794004655 — 8 PASS / 1 FAIL, actual OCR PASS. Red artifact: https://github.com/naatti21/appeja-import-engine/actions/runs/38794004655/artifacts/12001736385 (expires 2026-10-29T19:27:58Z). Manifest exact head and every included file hash verified after download. This failure is retained and is not a passing result for the corrected head. Final re-test counts and ZIP are added to PR #23 after execution.

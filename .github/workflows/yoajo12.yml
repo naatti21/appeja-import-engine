@@ -32,6 +32,7 @@ jobs:
           mkdir -p qa-output/screenshots
           cp -r test-results/y12-screenshots/. qa-output/screenshots/ 2>/dev/null || true
           cp research/browser-review-v1/vendor/ocr/manifest.json qa-output/ocr-assets.json 2>/dev/null || true
+          cp research/browser-review-v1/vendor/pdfjs/manifest.json qa-output/pdfjs-assets.json 2>/dev/null || true
           node --input-type=module <<'JS'
           import {readFileSync,writeFileSync,readdirSync} from 'node:fs';
           import {createHash} from 'node:crypto';import {execFileSync} from 'node:child_process';
