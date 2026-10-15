@@ -1,0 +1,51 @@
+name: YOAJO 12 - browser review and real local OCR
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Stage pinned same-origin OCR resources (no runtime CDN)
+        run: |
+          npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0 @tesseract.js-data/eng@1.0.0
+          node research/browser-review-v1/stage-ocr.mjs
+      - run: npx playwright install --with-deps chromium
+      - name: Node and actual browser impact checks
+        run: |
+          mkdir -p qa-output
+          npm test > qa-output/node.log 2>&1
+          Y12_REAL_OCR=1 npm run test:e2e -- --grep Y12 > qa-output/browser.log 2>&1
+      - name: Collect evidence and exact-head hashes
+        if: always()
+        run: |
+          mkdir -p qa-output/screenshots
+          cp -r test-results/y12-screenshots/. qa-output/screenshots/ 2>/dev/null || true
+          cp research/browser-review-v1/vendor/ocr/manifest.json qa-output/ocr-assets.json 2>/dev/null || true
+          cp research/browser-review-v1/vendor/pdfjs/manifest.json qa-output/pdfjs-assets.json 2>/dev/null || true
+          node --input-type=module <<'JS'
+          import {readFileSync,writeFileSync,readdirSync} from 'node:fs';
+          import {createHash} from 'node:crypto';import {execFileSync} from 'node:child_process';
+          const files=readdirSync('qa-output',{recursive:true,withFileTypes:true}).filter(e=>e.isFile()).map(e=>{
+            const file=(e.parentPath??e.path).replace(/^qa-output\/?/,'')+'/'+e.name;
+            const normalized=file.replace(/^\//,'');const b=readFileSync('qa-output/'+normalized);
+            return {file:normalized,bytes:b.length,sha256:createHash('sha256').update(b).digest('hex')};
+          });
+          writeFileSync('qa-output/manifest.json',JSON.stringify({testedCommitSha:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),baseSha:'63bc172e5fbc732b52fa667b0d62650a45ed39bc',retentionDays:14,data:'synthetic only',workCloudManual:'BLOCKED by reachability/URL policy; no workaround',physicalAndroid:'NOT RUN',independentHumanQA:'NOT RUN',autoAccept:false,persistence:false,files},null,2));
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-yoajo12-${{ github.run_id }}-${{ github.run_attempt }}
+          path: qa-output/
+          retention-days: 14

@@ -1,0 +1,11 @@
+# YÖAJO 12 — read-only browser review
+
+Base PR #22 `63bc172e5fbc732b52fa667b0d62650a45ed39bc`. Original demo lacks file import, source selection and correction/revert. New isolated UI/model; frozen gates/bridge, domain parsers and production unchanged.
+
+Acceptance fixed before implementation: PDF bytes and CSV file inputs must produce visible original source identities; malformed/oversized inputs visibly fail and clear stale results; no silent format fallback. Draft edits must remain separate from immutable original source/claims, validate through the existing read-only bridge, and be revertible. Source selection must show original raw text/page/box or CSV source line/cell. No localStorage/IndexedDB/network upload/save/auto-accept path. DOM must use textContent, not inject imported HTML. At 360 and 412 CSS pixels, no horizontal document overflow; controls >=44px. Stress source lists must disclose pagination and total counts.
+
+Reproduce all three Y10 compatibility probes. A user-declared local heading may resolve through the frozen typed-role gate, but distant/global context remains blocked with an explanation. Unclassified Y09 metadata alerts remain visible; group/display improvements cannot alter the original failed precision threshold. No old EVAL corpus/generator imported or tuned. Genuine pixels→Tesseract distinct from supplied TSV; runtime OCR resources same-origin, no CDN fallback. English-only model limitations explicit.
+
+Work cloud browser attempts: local loopback refused, terminal.local blocked, file protocol explicitly forbidden by browser URL policy. No workaround or security change. Further Work interaction stops; independently requested repository/CI browser regressions remain permitted and are reported separately. Thus Work manual UI testing PARTIAL/BLOCKED, not replaced by an independent-QA claim.
+
+Use only fictional data. User permits screenshot deliverables. Capture key synthetic-only UI states; no personal docs/screenshots. Existing Chromium regression is not physical Android. Node/Chromium/real OCR counts and missing capabilities are reported separately with exact SHA and 14-day QA artifact retention. Same author development tests; external independent QA NOT RUN.
