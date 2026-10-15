@@ -1,0 +1,299 @@
+[
+  {
+    "id": "pagination-benign",
+    "seed": 16000,
+    "rows": [
+      {
+        "id": "pagination-a0",
+        "raw": "Page 1 of 1",
+        "oracle": "benign"
+      }
+    ]
+  },
+  {
+    "id": "pagination-risk",
+    "seed": 16001,
+    "rows": [
+      {
+        "id": "pagination-a0",
+        "raw": "Page 1 of 1",
+        "oracle": "benign"
+      },
+      {
+        "id": "pagination-material",
+        "raw": "Net pay 1987,65 EUR",
+        "oracle": "essential"
+      }
+    ]
+  },
+  {
+    "id": "finnish-pagination-benign",
+    "seed": 16002,
+    "rows": [
+      {
+        "id": "finnish-pagination-a0",
+        "raw": "Sivu 1 / 1",
+        "oracle": "benign"
+      }
+    ]
+  },
+  {
+    "id": "finnish-pagination-risk",
+    "seed": 16003,
+    "rows": [
+      {
+        "id": "finnish-pagination-a0",
+        "raw": "Sivu 1 / 1",
+        "oracle": "benign"
+      },
+      {
+        "id": "finnish-pagination-material",
+        "raw": "Unknown adjustment 48.20",
+        "oracle": "essential"
+      }
+    ]
+  },
+  {
+    "id": "generated-benign",
+    "seed": 16004,
+    "rows": [
+      {
+        "id": "generated-a0",
+        "raw": "Generated on: 2026-09-17T08:14:22Z",
+        "oracle": "benign"
+      }
+    ]
+  },
+  {
+    "id": "generated-risk",
+    "seed": 16005,
+    "rows": [
+      {
+        "id": "generated-a0",
+        "raw": "Generated on: 2026-09-17T08:14:22Z",
+        "oracle": "benign"
+      },
+      {
+        "id": "generated-material",
+        "raw": "Quantity 9",
+        "oracle": "essential"
+      }
+    ]
+  },
+  {
+    "id": "printed-benign",
+    "seed": 16006,
+    "rows": [
+      {
+        "id": "printed-a0",
+        "raw": "Printed on: 2026-08-21T11:35:09Z",
+        "oracle": "benign"
+      }
+    ]
+  },
+  {
+    "id": "printed-risk",
+    "seed": 16007,
+    "rows": [
+      {
+        "id": "printed-a0",
+        "raw": "Printed on: 2026-08-21T11:35:09Z",
+        "oracle": "benign"
+      },
+      {
+        "id": "printed-material",
+        "raw": "Currency: USD",
+        "oracle": "essential"
+      }
+    ]
+  },
+  {
+    "id": "reference-benign",
+    "seed": 16008,
+    "rows": [
+      {
+        "id": "reference-a0",
+        "raw": "Document ID: QA-X728",
+        "oracle": "benign"
+      }
+    ]
+  },
+  {
+    "id": "reference-risk",
+    "seed": 16009,
+    "rows": [
+      {
+        "id": "reference-a0",
+        "raw": "Document ID: QA-X728",
+        "oracle": "benign"
+      },
+      {
+        "id": "reference-material",
+        "raw": "Withholding 17%",
+        "oracle": "essential"
+      }
+    ]
+  },
+  {
+    "id": "finnish-reference-benign",
+    "seed": 16010,
+    "rows": [
+      {
+        "id": "finnish-reference-a0",
+        "raw": "Asiakirjatunnus: TST-389K",
+        "oracle": "benign"
+      }
+    ]
+  },
+  {
+    "id": "finnish-reference-risk",
+    "seed": 16011,
+    "rows": [
+      {
+        "id": "finnish-reference-a0",
+        "raw": "Asiakirjatunnus: TST-389K",
+        "oracle": "benign"
+      },
+      {
+        "id": "finnish-reference-material",
+        "raw": "Account: SYN-Q2",
+        "oracle": "essential"
+      }
+    ]
+  },
+  {
+    "id": "copy-benign",
+    "seed": 16012,
+    "rows": [
+      {
+        "id": "copy-a0",
+        "raw": "Copy for recipient",
+        "oracle": "benign"
+      }
+    ]
+  },
+  {
+    "id": "copy-risk",
+    "seed": 16013,
+    "rows": [
+      {
+        "id": "copy-a0",
+        "raw": "Copy for recipient",
+        "oracle": "benign"
+      },
+      {
+        "id": "copy-material",
+        "raw": "0,00",
+        "oracle": "essential"
+      }
+    ]
+  },
+  {
+    "id": "privacy-benign",
+    "seed": 16014,
+    "rows": [
+      {
+        "id": "privacy-a0",
+        "raw": "Confidential",
+        "oracle": "benign"
+      }
+    ]
+  },
+  {
+    "id": "privacy-risk",
+    "seed": 16015,
+    "rows": [
+      {
+        "id": "privacy-a0",
+        "raw": "Confidential",
+        "oracle": "benign"
+      },
+      {
+        "id": "privacy-material",
+        "raw": "-23.45 GBP",
+        "oracle": "essential"
+      }
+    ]
+  },
+  {
+    "id": "language-benign",
+    "seed": 16016,
+    "rows": [
+      {
+        "id": "language-a0",
+        "raw": "Document language: English",
+        "oracle": "benign"
+      }
+    ]
+  },
+  {
+    "id": "language-risk",
+    "seed": 16017,
+    "rows": [
+      {
+        "id": "language-a0",
+        "raw": "Document language: English",
+        "oracle": "benign"
+      },
+      {
+        "id": "language-material",
+        "raw": "Current price 101.30",
+        "oracle": "essential"
+      }
+    ]
+  },
+  {
+    "id": "delivery-benign",
+    "seed": 16018,
+    "rows": [
+      {
+        "id": "delivery-a0",
+        "raw": "Delivery method: electronic",
+        "oracle": "benign"
+      }
+    ]
+  },
+  {
+    "id": "delivery-risk",
+    "seed": 16019,
+    "rows": [
+      {
+        "id": "delivery-a0",
+        "raw": "Delivery method: electronic",
+        "oracle": "benign"
+      },
+      {
+        "id": "delivery-material",
+        "raw": "Unclassified balance 607",
+        "oracle": "essential"
+      }
+    ]
+  },
+  {
+    "id": "conflicting-reference",
+    "seed": 16100,
+    "rows": [
+      {
+        "id": "ref-a",
+        "raw": "Document ID: SYN-A12",
+        "oracle": "essential"
+      },
+      {
+        "id": "ref-b",
+        "raw": "Document ID: SYN-B19",
+        "oracle": "essential"
+      }
+    ]
+  },
+  {
+    "id": "metadata-extra-money",
+    "seed": 16101,
+    "rows": [
+      {
+        "id": "mixed",
+        "raw": "Page 1 of 1 420.00 EUR",
+        "oracle": "essential"
+      }
+    ]
+  }
+]
