@@ -13,7 +13,7 @@ async function probe(page,kind){await page.getByText('Valmiit fiktiiviset kokeet
 async function shot(page,name){mkdirSync('test-results/y12-screenshots',{recursive:true});await page.screenshot({path:`test-results/y12-screenshots/${name}.jpg`,type:'jpeg',quality:85});}
 
 test.describe('Y12 read-only browser review',()=>{
- test.beforeEach(async({page})=>{await page.goto(root);});
+ test.beforeEach(async({page})=>{page.on('pageerror',e=>console.error('Y12_UNCAUGHT',e.message));await page.goto(root);});
  test('CSV file, distinct accounts, source lines, draft warning, revert and no persistence',async({page})=>{
   const uploads=[];page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))uploads.push(r.url());});
   await upload(page,'synthetic.csv',csv);
@@ -40,6 +40,8 @@ test.describe('Y12 read-only browser review',()=>{
   const field=page.locator('[data-field="grossPay"]');await field.getByRole('button',{name:'Näytä kentän lähde'}).click();
   await expect(page.locator('#sourceText')).toContainText('Sivu 1');await expect(page.locator('#sourceText')).toContainText('"box": {');await expect(page.locator('#preview')).toBeVisible();
   await page.locator('#sourceDetails').scrollIntoViewIfNeeded();await shot(page,'payroll-source-desktop');
+  await page.locator('#clear').click();await expect(page.locator('#results')).toBeHidden();
+  await upload(page,'after-pdf.csv',csv);await expect(page.locator('#summary')).toContainText('CSV');
  });
  test('local heading split is explicit and revertible, not source rewriting',async({page})=>{
   await probe(page,'heading');const field=page.locator('[data-field="payDate"]');
@@ -60,7 +62,8 @@ test.describe('Y12 read-only browser review',()=>{
   }
  });
  test('rotated/cropped/malformed PDFs fail visibly instead of showing false coordinates',async({page})=>{
-  for(const bytes of [syntheticPayrollPdf([{fullSlip:true,rotate:90}]),syntheticPayrollPdf([{fullSlip:true,crop:true}]),Buffer.from('not a PDF')]){
+  for(const [kind,bytes]of [['rotate',syntheticPayrollPdf([{fullSlip:true,rotate:90}])],['crop',syntheticPayrollPdf([{fullSlip:true,crop:true}])],['corrupt',Buffer.from('not a PDF')]]){
+   console.log('Y12_PDF_REJECTION',kind);
    await upload(page,'safe.csv',csv);await expect(page.locator('#results')).toBeVisible();
    await upload(page,'unsupported.pdf',bytes,'application/pdf');await expect(page.locator('#error')).toBeVisible();await expect(page.locator('#results')).toBeHidden();
   }

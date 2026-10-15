@@ -3,13 +3,13 @@ import {fromPdfJsTextItems,fromTesseractWordTsv} from '../reader-bridge-v1/bridg
 import {syntheticPayrollPdf} from '../../demo/native-pdf.mjs';
 const $=id=>document.getElementById(id);
 const text=(tag,value,cls)=>{const e=document.createElement(tag);e.textContent=String(value??'');if(cls)e.className=cls;return e;};
-let model=null,pdfDoc=null,image=null,shown=50,worker=null,revision=0;
+let model=null,pdfDoc=null,pdfTask=null,image=null,shown=50,worker=null,revision=0;
 const message={VALUE_SOURCE_SET_NOT_EXACT:'Arvolähteiden koko teksti ei muodosta ehdotettua arvoa.',HEADER_SOURCE_ROLE_MISMATCH:'Otsikko ei vastaa kenttää tai on eri rivillä. Sarakekohtainen sidonta puuttuu.',CONTEXT_SOURCE_CONFLICT:'Konteksti on ristiriitainen tai eri rivillä. Dokumenttitason sidontaa ei tueta.',UNTYPED_OR_MISSING_VALUE_CLAIM:'Lähteiden rooleja ei ole erotettu. Nimeä arvo- ja otsikkolähteet erikseen.',UNREVIEWED_SOURCE_OBSERVATION:'Luokittelematon lähdehavainto: voi olla tärkeä tieto tai metatietoa. Säilytetty tarkistettavaksi.'};
 function busy(on){for(const id of ['analyze','payrollExample','holdingsExample','probeExample','sourceFile'])$(id).disabled=on;}
 function clearResult(){
  model=null;image?.close();image=null;shown=50;$('results').hidden=true;$('error').hidden=true;$('error').textContent='';
  for(const id of ['fields','warnings','sources','notes'])$(id).replaceChildren();$('sourceText').textContent='';$('preview').hidden=true;
- if(pdfDoc){void pdfDoc.destroy();pdfDoc=null;}
+ const task=pdfTask;pdfTask=null;pdfDoc=null;if(task)void task.destroy().catch(()=>{});
 }
 function showError(error){$('error').textContent='Tuonti keskeytyi: '+String(error?.message??error);$('error').hidden=false;$('status').textContent='Esitarkistus epäonnistui. Aiemmat tulokset poistettiin; mitään ei tallennettu.';}
 async function execute(action){const ticket=++revision;clearResult();busy(true);$('status').textContent='Lähdettä luetaan paikallisesti…';
@@ -17,10 +17,12 @@ async function execute(action){const ticket=++revision;clearResult();busy(true);
  catch(e){if(ticket===revision){clearResult();showError(e);}}
  finally{if(ticket===revision)busy(false);}
 }
-async function pdfModel(bytes){
+async function pdfModel(bytes,ticket=revision){
  const pdfjs=await import('./vendor/pdfjs/pdf.min.mjs');
  pdfjs.GlobalWorkerOptions.workerSrc=new URL('./vendor/pdfjs/pdf.worker.min.mjs',import.meta.url).href;
- pdfDoc=await pdfjs.getDocument({data:bytes}).promise;
+ if(ticket!==revision)throw new Error('Koe peruttiin.');
+ const task=pdfjs.getDocument({data:bytes});pdfTask=task;const doc=await task.promise;
+ if(ticket!==revision){void task.destroy().catch(()=>{});throw new Error('Koe peruttiin.');}pdfDoc=doc;
  if(pdfDoc.numPages>20)throw new Error('PDF:ssä on yli 20 sivua. Rajaa synteettistä koetta.');
  const pages=[];
  for(let i=1;i<=pdfDoc.numPages;i++){const p=await pdfDoc.getPage(i),v=p.getViewport({scale:1});
