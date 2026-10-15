@@ -1,0 +1,50 @@
+name: YOAJO 14 - new family nuisance and essential evaluation
+on:
+  pull_request:
+    paths:
+      - 'research/new-family-eval-v1/**'
+      - 'tests/new-family-eval-research.test.mjs'
+      - '.github/workflows/yoajo14.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  frozen-family-evaluation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run integrity checks without relaxing thresholds
+        run: node --test tests/new-family-eval-research.test.mjs
+      - name: Evaluate frozen source gates and preserve all family decisions
+        run: |
+          mkdir -p qa-yoajo14
+          node research/new-family-eval-v1/evaluate.mjs qa-yoajo14/results.json | tee qa-yoajo14/summary.log
+          git rev-parse HEAD > qa-yoajo14/tested-head.txt
+          node --version > qa-yoajo14/node-version.txt
+          (cd qa-yoajo14 && sha256sum results.json summary.log tested-head.txt node-version.txt > MANIFEST.sha256)
+      - name: Advisory preregistered acceptance gates (FAIL is real FAIL)
+        continue-on-error: true
+        run: |
+          node --input-type=module -e '
+            import fs from "node:fs";
+            const r=JSON.parse(fs.readFileSync("qa-yoajo14/results.json","utf8"));
+            for(const [name,v] of Object.entries(r.variants))console.log(
+              "Y14_GATE "+name+" thresholds="+(v.researchThresholdsPass?"PASS":"FAIL")+
+              " essential="+v.metrics.essentialRecall+
+              " nuisance="+v.metrics.nuisanceFPR+
+              " benign-doc-block="+v.metrics.benignDocumentFalseBlockRate);
+            if(Object.values(r.variants).some(x=>!x.researchThresholdsPass)){
+              console.error("Y14 RESEARCH THRESHOLDS FAIL; workflow success does not imply research GO");
+              process.exit(1);
+            }
+          '
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-yoajo14-${{ github.run_id }}-${{ github.run_attempt }}
+          path: qa-yoajo14/
+          retention-days: 14
