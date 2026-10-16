@@ -49,8 +49,11 @@ export function evaluateImportCandidate(candidate) {
     if(!o||typeof o.id!=='string'||ids.has(o.id))problems.push(failure('INVALID_SOURCE_OBSERVATION'));
     else ids.add(o.id);
   }
-  const consumed=new Set(accountedEvidenceIds);
-  for(const id of accountedEvidenceIds)if(!ids.has(id))problems.push(failure('BAD_SOURCE_REFERENCE',null,id));
+  // Only verified field sources justify a material observation for readiness.
+  // Ledger IDs are diagnostic coverage hints, not independent field proof.
+  const consumed=new Set();
+  for(const id of accountedEvidenceIds)
+    if(!ids.has(id))problems.push(failure('BAD_SOURCE_REFERENCE',null,id));
   const required=fieldsToCheck(app,fields);
   for(const k of required){
     if(!fields[k]||fields[k].value===null||fields[k].value===undefined||fields[k].status==='missing')
