@@ -1,0 +1,54 @@
+name: Opt-in QA handoff pilot
+on:
+  pull_request:
+    branches: [codex/qa-handoff-pilot]
+    types: [opened, synchronize, reopened]
+permissions:
+  contents: read
+jobs:
+  handoff:
+    # Exact child branch + same-repository PR is the explicit pilot opt-in.
+    if: github.head_ref == 'codex/qa-handoff-ci-pilot' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      QA_EXPECTED_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned dependencies
+        id: dependencies
+        run: npm ci
+      - name: Install real Chromium
+        id: chromium
+        run: npx playwright install --with-deps chromium
+      - name: Capture real tests and generate five-field handoff
+        if: always()
+        env:
+          QA_NODE_READY: ${{ steps.dependencies.outcome == 'success' }}
+          QA_CHROMIUM_READY: ${{ steps.dependencies.outcome == 'success' && steps.chromium.outcome == 'success' }}
+        run: node scripts/qa-handoff-ci.mjs "$RUNNER_TEMP/qa-handoff-pilot"
+      - name: Publish handoff in job summary
+        if: always()
+        run: |
+          if test -f "$RUNNER_TEMP/qa-handoff-pilot/report.md"; then
+            cat "$RUNNER_TEMP/qa-handoff-pilot/report.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Handoff unavailable: setup/capture failed. Tests NOT VERIFIED; independent QA NOT RUN; merge/deployment NO-GO.' >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+      - name: Archive evidence and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-handoff-${{ github.event.pull_request.head.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/qa-handoff-pilot/
+            test-results/
+          retention-days: 14
+          if-no-files-found: error
