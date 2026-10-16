@@ -1,3 +1,41 @@
+import {parseNumber} from './numbers.mjs';
+
+const DATE_FIELDS=new Set(['payDate','payPeriodStart','payPeriodEnd']);
+const ABSOLUTE_WITHHOLDING=new Set(['withholdingPeriod','withholdingYtd']);
+/**
+ * Conservative value-level source check; NOT a semantic-role or OCR proof.
+ * PDF header references are allowed as context, but a verified field must
+ * also point to at least one raw source that actually contains its value.
+ */
+function sourceSupportsValue(key,value,raw){
+  if(typeof raw!=='string'||typeof value==='undefined'||value===null)return false;
+  if(DATE_FIELDS.has(key)){
+    if(typeof value!=='string')return false;
+    const iso=[...(raw.match(/\b\d{4}-\d{2}-\d{2}\b/g)??[])];
+    const finnish=[...(raw.match(/\b\d{1,2}\.\d{1,2}\.\d{4}\b/g)??[])].map(s=>{
+      const [d,m,y]=s.split('.');
+      return y+'-'+m.padStart(2,'0')+'-'+d.padStart(2,'0');
+    });
+    const dates=[...iso,...finnish];
+    return (key!=='payDate'||dates.length===1)&&dates.includes(value);
+  }
+  if(typeof value==='number'){
+    // Do not choose one convenient amount from a multi-number row.
+    const numbers=raw.match(/[+\-−]?(?:\d{1,3}(?:[ \u00a0\u202f.,]\d{3})+(?:[,.]\d{1,2})?|\d+(?:[,.]\d{1,2})?)/g)??[];
+    if(numbers.length!==1)return false;
+    const n=parseNumber(numbers[0]);
+    return n.status==='valid'&&
+      (Math.abs(n.value-value)<1e-8||
+       (ABSOLUTE_WITHHOLDING.has(key)&&Math.abs(Math.abs(n.value)-value)<1e-8));
+  }
+  if(typeof value!=='string'||!value.trim())return false;
+  const actual=raw.trim().normalize('NFKC').toUpperCase();
+  const expected=value.trim().normalize('NFKC').toUpperCase();
+  // Identifiers must not be established by loose substring matching.
+  if(['currency','isin','mic','ticker'].includes(key))return actual===expected;
+  return actual===expected||actual.includes(expected);
+}
+
 /**
  * Import acceptance contract v1 — pure, local, no persistence.
  * Field shape: {value, status:'verified'|'missing'|'ambiguous'|'conflict'|'invalid'|'unverified', sourceIds:string[]}.
@@ -45,9 +83,10 @@ export function evaluateImportCandidate(candidate) {
   if(!Array.isArray(observations)||!Array.isArray(issues)||!Array.isArray(accountedEvidenceIds)||!fields||typeof fields!=='object')
     return {status:'review-required',canPersist:false,canAutoAccept:false,problems:[failure('INVALID_INPUT')]};
   const ids=new Set();
+  const byId=new Map();
   for(const o of observations){
     if(!o||typeof o.id!=='string'||ids.has(o.id))problems.push(failure('INVALID_SOURCE_OBSERVATION'));
-    else ids.add(o.id);
+    else {ids.add(o.id);byId.set(o.id,o);}
   }
   // Only verified field sources justify a material observation for readiness.
   // Ledger IDs are diagnostic coverage hints, not independent field proof.
@@ -70,10 +109,19 @@ export function evaluateImportCandidate(candidate) {
     if(!Array.isArray(f.sourceIds)||f.sourceIds.length===0){
       problems.push(failure('MISSING_SOURCE_EVIDENCE',key));continue;
     }
+    let substantiated=false;
     for(const id of f.sourceIds){
-      if(!ids.has(id))problems.push(failure('BAD_SOURCE_REFERENCE',key,id));
-      else consumed.add(id);
+      if(!ids.has(id)){problems.push(failure('BAD_SOURCE_REFERENCE',key,id));continue;}
+      const observation=byId.get(id);
+      if(sourceSupportsValue(key,f.value,observation.raw)){
+        substantiated=true;
+        consumed.add(id);
+      } else if(observation.material===true) {
+        // A wrong material amount/date/identifier is never silently consumed.
+        problems.push(failure('SOURCE_VALUE_MISMATCH',key,id));
+      }
     }
+    if(!substantiated)problems.push(failure('UNSUBSTANTIATED_FIELD',key));
   }
   if(app==='palkka' && fields.netPay?.status==='verified' && fields.grossPay?.status==='verified'
       && validValue('netPay',fields.netPay.value) && validValue('grossPay',fields.grossPay.value)
