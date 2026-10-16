@@ -98,3 +98,11 @@ test('control: signed withholding source may support its separately parsed posit
   assert.equal(r.status,'candidate-ready');
   assert.equal(r.canPersist,false);
 });
+
+test('P0: a prefix-only company name is not the same raw instrument name',()=>{
+  const c=holdings();
+  c.fields.name={status:'verified',value:'Nokia',sourceIds:['unrelated-name']};
+  c.observations.push({id:'unrelated-name',raw:'NokiaPlus',material:true,row:3,column:1});
+  const r=evaluateImportCandidate(c);
+  assertMismatch(r,'name','unrelated-name');
+});
