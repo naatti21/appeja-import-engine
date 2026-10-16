@@ -1,0 +1,55 @@
+name: Isolated intentionally failing QA handoff probe
+on:
+  pull_request:
+    branches: [codex/qa-handoff-ci-pilot]
+    types: [opened, synchronize, reopened]
+permissions:
+  contents: read
+jobs:
+  fail-path:
+    # Intentionally red probe: never runs on default/research branches.
+    if: github.head_ref == 'qa/negative-handoff-probe-v1' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      QA_EXPECTED_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned dependencies
+        id: dependencies
+        run: npm ci
+      - name: Install real Chromium
+        id: chromium
+        run: npx playwright install --with-deps chromium
+      - name: Intentionally fail one synthetic Node assertion and preserve handoff
+        if: always()
+        env:
+          QA_FORCE_NODE_FAILURE: '1'
+          QA_NODE_READY: ${{ steps.dependencies.outcome == 'success' }}
+          QA_CHROMIUM_READY: ${{ steps.dependencies.outcome == 'success' && steps.chromium.outcome == 'success' }}
+        run: node scripts/qa-handoff-ci.mjs "$RUNNER_TEMP/qa-handoff-negative-probe"
+      - name: Preserve red evidence in job summary
+        if: always()
+        run: |
+          if test -f "$RUNNER_TEMP/qa-handoff-negative-probe/report.md"; then
+            cat "$RUNNER_TEMP/qa-handoff-negative-probe/report.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'FAIL probe did not produce a handoff. Evidence NOT VERIFIED; independent QA NOT RUN; deployment NO-GO.' >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+      - name: Preserve red evidence as downloadable artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: negative-handoff-${{ github.event.pull_request.head.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/qa-handoff-negative-probe/
+            test-results/
+          retention-days: 14
+          if-no-files-found: error

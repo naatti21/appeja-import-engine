@@ -138,3 +138,11 @@ test('skipped outcomes remain visible through collection and block aggregate PAS
   assert.equal(result.status, 'PARTIAL'); assert.equal(result.exitCode, 2);
   assert.match(result.markdown, /skipped=1/);
 });
+
+// This negative probe is only registered in the isolated opt-in CI failure workflow.
+// No normal test suite or production runner sees a deliberate failure.
+if (process.env.QA_FORCE_NODE_FAILURE === '1') {
+  test('intentional CI negative probe: synthetic Node failure must remain FAIL', () => {
+    assert.fail('EXPECTED_NEGATIVE_PROBE: a real failing Node test must leave FAIL evidence and an uploaded artifact');
+  });
+}
