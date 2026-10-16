@@ -33,3 +33,15 @@ test('control: explicit uppercase ISO-shaped currency keeps candidate-only statu
   assert.equal(result.status,'candidate-only');
   assert.equal(result.canAutoAccept,true); // Research flag only; never persistence GO.
 });
+
+test('P0: one bad currency blocks the entire multi-row candidate batch',()=>{
+  const result=parseHoldingsCsv(
+    'Name;Quantity;Buy Price;Currency\nSynthetic A;5;4.25;EUR\nSynthetic B;6;7.50;'
+  );
+  assert.equal(result.records.length,2);
+  assert.equal(result.records[0].status,'candidate-only');
+  assert.equal(result.records[1].status,'review-required');
+  assert.equal(result.canAutoAccept,false);
+  assert.equal(result.status,'review-required');
+  assert.ok(result.issues.some(i=>i.code==='AT_LEAST_ONE_UNVERIFIED_RECORD'));
+});
