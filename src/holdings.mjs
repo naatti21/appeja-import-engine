@@ -60,6 +60,12 @@ export function parseHoldingsCsv(input) {
     if(fields.quantity?.status!=='valid') localIssues.push({code:'QUANTITY_NOT_VERIFIED'});
     if(!fields.buyPrice || fields.buyPrice.status==='missing') localIssues.push({code:'BUY_PRICE_MISSING_REVIEW'});
     if(fields.buyPrice?.status==='ambiguous') localIssues.push({code:'PRICE_AMBIGUOUS_REVIEW'});
+    // Currency is mandatory: absent, empty and malformed codes require review.
+    // Do not infer currency from the ticker, broker or market.
+    if(!fields.currency || fields.currency.status==='missing')
+      localIssues.push({code:'CURRENCY_MISSING_REVIEW',role:'currency'});
+    else if(fields.currency.status!=='valid' || !/^[A-Z]{3}$/.test(fields.currency.value))
+      localIssues.push({code:'CURRENCY_INVALID_REVIEW',role:'currency',observationId:fields.currency.observationId});
     records.push({sourceRow:ri+1,fields,issues:localIssues,status:localIssues.length?'review-required':'candidate-only'});
   }
   if(!records.length) issues.push({code:'NO_HOLDINGS_ROWS'});
