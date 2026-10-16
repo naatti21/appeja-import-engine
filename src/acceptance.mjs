@@ -31,9 +31,9 @@ function sourceSupportsValue(key,value,raw){
   if(typeof value!=='string'||!value.trim())return false;
   const actual=raw.trim().normalize('NFKC').toUpperCase();
   const expected=value.trim().normalize('NFKC').toUpperCase();
-  // Identifiers must not be established by loose substring matching.
-  if(['currency','isin','mic','ticker'].includes(key))return actual===expected;
-  return actual===expected||actual.includes(expected);
+  // Do not accept prefixes or substrings as evidence for any text field.
+  // Adapter-specific labeled or multi-token matches need their own proven rule.
+  return actual===expected;
 }
 
 /**
