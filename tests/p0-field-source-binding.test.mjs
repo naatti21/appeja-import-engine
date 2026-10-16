@@ -74,3 +74,27 @@ test('control: material verified currency, zero buy price and quantity stay vali
   assert.equal(r.status,'candidate-ready');
   assert.equal(r.canPersist,false);
 });
+
+test('P0: a title-only source cannot verify a required amount',()=>{
+  const c=payroll();
+  c.fields.grossPay.sourceIds=['title'];
+  c.observations.push({id:'title',raw:'Palkkalaskelma',page:1,material:false});
+  const r=evaluateImportCandidate(c);
+  assert.equal(r.status,'review-required');
+  assert.ok(r.problems.some(p=>p.code==='UNSUBSTANTIATED_FIELD'&&p.field==='grossPay'));
+  assert.ok(r.problems.some(p=>p.code==='UNACCOUNTED_MATERIAL'&&p.detail==='s1'));
+  assert.equal(r.canPersist,false);
+});
+test('P0: multiple distinct amounts in one raw source remain ambiguous evidence',()=>{
+  const c=payroll();
+  const r=forged(c,'grossPay','two-values','Kauden brutto 3 200,00; vuosi 43 000,00',{page:2});
+  assertMismatch(r,'grossPay','two-values');
+});
+test('control: signed withholding source may support its separately parsed positive magnitude',()=>{
+  const c=payroll();
+  c.fields.withholdingPeriod={status:'verified',value:750,sourceIds:['wh']};
+  c.observations.push({id:'wh',raw:'Ennakonpidätys -750,00',material:true,page:1});
+  const r=evaluateImportCandidate(c);
+  assert.equal(r.status,'candidate-ready');
+  assert.equal(r.canPersist,false);
+});
