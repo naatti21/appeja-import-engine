@@ -5,6 +5,11 @@ on:
     paths:
       - 'src/structure-learning.mjs'
       - 'src/mobile-card-holdings.mjs'
+      - 'src/mobile-review-session.mjs'
+      - 'src/review-draft.mjs'
+      - 'tests/mobile-review-session.test.mjs'
+      - 'tests/e2e/mobile-corrections.spec.mjs'
+      - 'scripts/prepare-local-ocr.mjs'
       - 'src/import-observations.mjs'
       - 'src/numbers.mjs'
       - 'demo/structure-learning.*'
@@ -27,14 +32,14 @@ jobs:
           node-version: '22'
       - run: npm ci
       - run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
-      - run: node scripts/prepare-local-ocr.mjs
+      - run: node scripts/prepare-local-ocr.mjs --swedish
       - run: npx playwright install --with-deps chromium
       - run: git rev-parse HEAD > structure-tested-sha.txt
       - run: npm test
       - name: Real OCR and mobile learning, synthetic input only
         env:
           REAL_OCR_QA: '1'
-        run: npx playwright test structure-learning.spec.mjs --reporter=list,json > structure-qa.log 2>&1
+        run: npx playwright test structure-learning.spec.mjs mobile-corrections.spec.mjs --reporter=list,json > structure-qa.log 2>&1
       - uses: actions/upload-artifact@v4
         if: always()
         with:

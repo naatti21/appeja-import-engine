@@ -6,11 +6,21 @@
 <h1>Mobiilisalkun rakenneoppiminen</h1>
 <p>Tutkimuskokeilu. Ehdotukset vaativat tarkistuksen. Ei salkkuun tallennusta.</p>
 <label>Kuvakaappaus <input id="image" type="file" accept="image/png,image/jpeg,image/webp"></label>
-<details><summary>Kuvan lukemisen asetukset</summary><label>OCR-kieli <select id="language"><option value="fin+eng">Suomi ja englanti</option><option value="eng">Englanti</option></select></label><p>Väärä kielimalli voi muuttaa myös tunnisteita. OCR-varmuus ei todenna instrumenttia.</p></details>
+<details><summary>Kuvan lukemisen asetukset</summary><label>OCR-kieli <select id="language"><option value="fin+eng">Suomi ja englanti</option><option value="eng">Englanti</option><option value="swe+eng">Ruotsi ja englanti</option></select></label><p>Väärä kielimalli voi muuttaa myös tunnisteita. OCR-varmuus ei todenna instrumenttia.</p></details>
 <button id="cancel">Tyhjennä lähde</button>
 <p id="message" role="status">Valitse kuva. Käsittely tapahtuu tässä selaimessa.</p>
 <section id="result" hidden><h2 id="count"></h2><div id="rows"></div><button id="more" hidden>Näytä loput ehdotukset</button>
 <button id="review">Vahvista näkyvät lähde-ehdotukset</button><p id="reviewState"></p>
+<details id="correction"><summary>Korjaa yksi väärin luettu tieto</summary>
+<p>Valitse alkuperäinen lähderivi. Korjaus jää vain tämän tuonnin tarkistusluonnokseen. Se ei varmista instrumenttia markkinoilta.</p>
+<label>Lähderivi <select id="correctionLine"></select></label>
+<p id="originalText"></p><canvas id="sourceCrop" style="max-width:100%;height:auto" aria-label="Valitun lähderivin kuva"></canvas>
+<label>Korjattava tieto <select id="correctionField"><option value="name">Nimi</option><option value="identity">Tunniste</option><option value="quantity">Kappalemäärä</option></select></label>
+<label>Korjattu arvo <input id="correctionValue" maxlength="120" autocomplete="off"></label>
+<p>Tunniste: ISIN: … tai Ticker: … MIC: … . Määrä: pelkkä positiivinen luku.</p>
+<button id="confirmCorrection">Vahvistan korjauksen lähdekuvasta</button><button id="undoCorrection">Poista tämän rivin korjaus</button>
+<p id="correctionStatus"></p>
+</details>
 <details id="teaching"><summary>Tarkista epävarmat ja opeta rakenne</summary>
 <p>Kaksi eri aineistoa ja omat vahvistuksesi tarvitaan. Valitse yksi kortti ja sen kolme lähderiviä. Älä vahvista väärää tekstiä instrumentiksi.</p>
 <label>Kortti <select id="card"></select></label><p id="reason"></p>

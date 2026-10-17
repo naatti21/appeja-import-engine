@@ -9,7 +9,8 @@ import {createHash} from 'node:crypto';
 
 const TARGET=resolve('demo/vendor/ocr');
 const TESSDATA_COMMIT='87416418657359cb625c412a48b6e1d6d41c29bd';
-const LANGUAGES=['eng','fin'];
+// Opt-in only: existing LAB builds retain the original two-language asset set.
+const LANGUAGES=process.argv.includes('--swedish')?['eng','fin','swe']:['eng','fin'];
 const MAX_MODEL_BYTES=12*1024*1024;
 const digest=b=>createHash('sha256').update(b).digest('hex');
 await mkdir(resolve(TARGET,'core'),{recursive:true});

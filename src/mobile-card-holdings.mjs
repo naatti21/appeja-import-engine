@@ -12,38 +12,42 @@ function isinValid(s) {
   return sum % 10 === 0;
 }
 function roleOf(text) {
+  // Fold accents ONLY for closed field labels; never for names or identifiers.
+  const labels = text.normalize('NFD').replace(/\p{M}/gu, '');
   let m;
   if ((m = /^ISIN\s*:?\s*([A-Z0-9]+)$/i.exec(text)))
     return isinValid(m[1].toUpperCase()) ? {role:'identity', value:{isin:m[1].toUpperCase()}} : {role:'unknown'};
   if ((m = /^(?:Ticker|Symbol)\s*:?\s*([A-Z0-9][A-Z0-9.\/-]{0,14})\s+(?:MIC|Exchange|Pörssi|Börs)\s*:?\s*([A-Z0-9]{4})$/.exec(text)))
     return {role:'identity', value:{ticker:m[1], mic:m[2]}};
-  if ((m = /^(?:Quantity|Qty|Määrä|Antal)\s*:?\s*([\d., +−-]+)(?:\s+(?:pcs|kpl|st))?$/i.exec(text)) ||
+  if ((m = /^(?:Quantity|Qty|Maara|Antal)\s*:?\s*([\d., +−-]+)(?:\s+(?:pcs|kpl|st))?$/i.exec(labels)) ||
       (m = /^([\d., +−-]+)\s+(?:pcs|kpl|st)$/i.exec(text)))
     return {role:'measure', value:numeric(m[1])};
   if (/^(?:Quantity|Qty|Määrä|Antal|ISIN|Ticker|Symbol)\b/i.test(text)) return {role:'unknown'};
   if ((m = /^(?:Account|Tili|Konto)\s*:\s*(\S.{0,79})$/i.exec(text))) return {role:'scope', value:m[1]};
   if ((m = /^(?:Currency|Valuutta|Valuta)\s*:?\s*([A-Z]{3})$/.exec(text))) return {role:'currency', value:m[1]};
   if (/^(?:Current price|Quote|Kurssi|Marknadspris)\b/i.test(text)) return {role:'price'};
-  if (/^(?:Current value|Value|Arvo|Värde)\b/i.test(text)) return {role:'total'};
-  if (/^(?:Purchase price|Hankintahinta|Inköpspris)\b/i.test(text)) return {role:'cost'};
-  if (/^(?:Day change|Change|Päivän muutos|Tuotto|Förändring)\b/i.test(text)) return {role:'change'};
-  if (/^(?:(?:Show sources|Näytä lähteet|More|Enemmän|Visa mer|Portfolio|Salkku|Overview|Yhteenveto)|(?:Balance|Saldo|Cash|Käteinen)\s*:?\s*[\d., ]+(?:\s+[A-Z]{3})?)$/i.test(text)) return {role:'control'};
+  if (/^(?:Current value|Value|Arvo|Varde)\b/i.test(labels)) return {role:'total'};
+  if (/^(?:Purchase price|Hankintahinta|Inkopspris)\b/i.test(labels)) return {role:'cost'};
+  if (/^(?:Day change|Change|Paivan muutos|Tuotto|F(?:o|oe)r(?:a|ae)ndring)\b/i.test(labels)) return {role:'change'};
+  if (/^(?:(?:Show sources|Nayta lahteet|More|Enemman|Visa mer|Portfolio|Salkku|Overview|Yhteenveto)|(?:Balance|Saldo|Cash|Kateinen)\s*:?\s*[\d., ]+(?:\s+[A-Z]{3})?)$/i.test(labels)) return {role:'control'};
   if (/\d|[%€$£]/.test(text) || text.length > 100 || !/\p{L}/u.test(text)) return {role:'unknown'};
   return {role:'text', value:text};
 }
-const field = (value, line) => ({value, status:'candidate', sourceIds:[...line.ids]});
-function linesFrom(source) {
+const field = (value, line) => ({value, status:'candidate', sourceIds:[...line.ids], reviewState:line.corrected?'user-corrected':'untouched'});
+export function mobileSourceLines(source, confirmedCorrections=new Map()) {
   if (!source || source.issues?.some(i => i.blocking || i.level === 'blocking') || !Array.isArray(source.observations) || source.observations.length > 2000)
     throw Error('INVALID_SOURCE');
   const seen = new Set();
   const words = source.observations.map(o => {
     const b = o.source?.box;
+    const correction=confirmedCorrections.get(o.id);
     if (!o.id || seen.has(o.id) || !b || ![b.x0,b.y0,b.x1,b.y1].every(Number.isFinite) ||
         b.x0 < 0 || b.y0 < 0 || b.x1 > 1 || b.y1 > 1 || b.x1 <= b.x0 || b.y1 <= b.y0 ||
         !Number.isInteger(o.source.page) || o.source.page < 1 || typeof o.raw !== 'string') throw Error('INVALID_GEOMETRY');
     seen.add(o.id);
     return {...b, raw:norm(o.raw), id:o.id, page:o.source.page,
-      weak:o.source.format === 'image-ocr' ? !(o.ocrConfidence >= 85) : false,
+      weak:o.source.format === 'image-ocr' && !correction ? !(o.ocrConfidence >= 85) : false,
+      corrected:!!correction, correctionField:correction?.field, ids:correction?.sourceIds??[o.id],
       identityDisagreement:o.identityDisagreement === true};
   }).filter(o => o.raw);
   words.sort((a,b) => a.page-b.page || a.y0-b.y0 || a.x0-b.x0);
@@ -57,13 +61,13 @@ function linesFrom(source) {
   return lines.map(l => {
     l.words.sort((a,b) => a.x0-b.x0);
     const text = norm(l.words.map(w => w.raw).join(' '));
-    return {page:l.page, y0:l.y0,y1:l.y1,text,ids:l.words.map(w=>w.id),
-      weak:l.words.some(w=>w.weak), identityDisagreement:l.words.some(w=>w.identityDisagreement), split:l.words.some((w,i)=>i>0 && w.x0-l.words[i-1].x1 > 0.22), ...roleOf(text)};
+    return {page:l.page, y0:l.y0,y1:l.y1,text,ids:l.words.flatMap(w=>w.ids),corrected:l.words.some(w=>w.corrected),
+      weak:l.words.some(w=>w.weak), identityDisagreement:l.words.some(w=>w.identityDisagreement), split:l.words.some((w,i)=>i>0 && w.x0-l.words[i-1].x1 > 0.22), ...(l.words.length===1&&l.words[0].correctionField==='name'?{role:'text',value:text}:roleOf(text))};
   });
 }
-export function resolveMobileCards(source, learner) {
+export function resolveMobileCards(source, learner, confirmedCorrections=new Map()) {
   let lines;
-  try {lines=linesFrom(source);} catch {return {rows:[], unresolved:[{reason:'INVALID_SOURCE'}], cards:[], canPersist:false};}
+  try {lines=mobileSourceLines(source,confirmedCorrections);} catch {return {rows:[], unresolved:[{reason:'INVALID_SOURCE'}], cards:[], canPersist:false};}
   if (!lines.length) return {rows:[],unresolved:[{reason:'NO_CARD_EVIDENCE'}],cards:[],canPersist:false};
   const heights=lines.map(l=>l.y1-l.y0).sort((a,b)=>a-b), height=heights[Math.floor(heights.length/2)];
   const groups=[];
@@ -87,7 +91,7 @@ export function resolveMobileCards(source, learner) {
     if(!group.some(l=>l.role==='identity')) account=null;
     const id=`card-${cards.length+1}`;
     const pattern=group.map(l=>l.role);
-    const card={id,pattern,lines:group,account:scopes.length===1?scopes[0]:account, reason:null};
+    const card={id,certainty:'observed',pattern,lines:group,account:scopes.length===1?scopes[0]:account, reason:null};
     cards.push(card);
     const reject=reason=>{card.reason=reason;unresolved.push({id,reason});};
     if(group.some(l=>l.identityDisagreement)){reject('OCR_IDENTITY_DISAGREEMENT');continue;}
@@ -112,6 +116,7 @@ export function resolveMobileCards(source, learner) {
       account:card.account?field(card.account.value,card.account):{value:null,status:'missing',sourceIds:[]},
       currency:currencies.length?field(currencies[0].value,currencies[0]):{value:null,status:'missing',sourceIds:[]},
       buyPrice:{value:null,status:'missing',sourceIds:[]}}, learned:profile?.state==='active',
+      certainty:'candidate',instrumentVerification:{status:'not-verified'},
       warnings:['SOURCE_IDENTITY_NOT_MARKET_VERIFIED','PURCHASE_PRICE_NOT_RESOLVED'], canPersist:false});
   }
   const duplicates=new Map();
@@ -132,9 +137,9 @@ export async function documentKey(source) {
  */
 export function corroborateOcrIdentities(primary, secondary) {
   const out=structuredClone(primary);
-  const lines=linesFrom(primary);
+  const lines=mobileSourceLines(primary);
   let witness;
-  try {witness=linesFrom(secondary);} catch {witness=[];}
+  try {witness=mobileSourceLines(secondary);} catch {witness=[];}
   const disputed=new Set();
   for(const line of lines.filter(l=>l.role==='identity')) {
     const matches=witness.filter(w=>w.page===line.page && Math.abs((w.y0+w.y1-line.y0-line.y1)/2)<Math.max(w.y1-w.y0,line.y1-line.y0)*.5);
