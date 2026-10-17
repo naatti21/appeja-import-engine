@@ -221,6 +221,7 @@ function render(){
       cards.append(reveal);
     }
   }
+  $('issuePanel').hidden=issueCount===0;
   const issues=$('issueItems');issues.replaceChildren();
   if(!issueCount){
     issues.append(node('p','Rakenteellisia estohuomioita ei havaittu. '+
