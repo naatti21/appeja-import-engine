@@ -24,7 +24,7 @@ const moneyKeys=new Set(['quantity','buyPrice','current_price','current_value','
 const dateKeys=new Set(['payDate','payPeriodStart','payPeriodEnd']);
 const supportedStatuses=new Set(['verified','candidate','missing','ambiguous','conflict','invalid','unverified']);
 const MAX_BYTES=10*1024*1024;
-let draft=null,operation=0,imageUrl=null,ocrPromise=null;
+let draft=null,operation=0,imageUrl=null,ocrPromise=null,allHoldingsShown=false;
 
 function node(tag,content,cls=''){
   const el=document.createElement(tag);
@@ -37,7 +37,7 @@ function revokeImage(){
   $('sourcePreview').removeAttribute('src');$('imagePanel').hidden=true;
 }
 function cancel(){
-  operation++;draft=null;revokeImage();
+  operation++;draft=null;allHoldingsShown=false;revokeImage();
   $('draftPanel').hidden=true;$('reviewCards').replaceChildren();$('issueItems').replaceChildren();
   $('documentFile').value='';
   $('feedback').textContent='Peruttu. Luonnos ja mahdolliset korjaukset tyhjennetty.';
@@ -211,8 +211,15 @@ function render(){
       details.append(node('p','Muita OCR-rivejä '+(draft.records.length-12)+'.','tiny'));
     notice.append(details);cards.append(notice);
   }else{
-    for(let i=0;i<draft.records.length;i++)
+    const visibleCount=(!isPayroll&&!allHoldingsShown)?Math.min(4,draft.records.length):draft.records.length;
+    for(let i=0;i<visibleCount;i++)
       addDomainCard(cards,draft.records[i],isPayroll,i);
+    if(visibleCount<draft.records.length){
+      const reveal=node('button','Näytä loput '+(draft.records.length-visibleCount)+' omistusta','reveal-more');
+      reveal.type='button';
+      reveal.addEventListener('click',()=>{allHoldingsShown=true;render();});
+      cards.append(reveal);
+    }
   }
   const issues=$('issueItems');issues.replaceChildren();
   if(!issueCount){
@@ -235,7 +242,7 @@ function render(){
 }
 function showDraft(next,token,imageFile=null){
   if(token!==operation)return;
-  draft=next;revokeImage();
+  draft=next;allHoldingsShown=false;revokeImage();
   if(imageFile){
     imageUrl=URL.createObjectURL(imageFile);
     $('sourcePreview').src=imageUrl;$('imagePanel').hidden=false;
