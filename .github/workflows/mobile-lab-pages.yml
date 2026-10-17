@@ -1,0 +1,63 @@
+name: Isolated Engine LAB mobile preview (no app deployment)
+
+on:
+  push:
+    branches:
+      - feature/mobile-source-review-v1-20261017
+
+permissions:
+  contents: read
+
+concurrency:
+  group: isolated-engine-mobile-preview
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Test and package isolated LAB
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Install pinned local Tesseract runtime
+        run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+      - name: Prepare same-origin PDF and OCR assets (never user documents)
+        run: |
+          npm run prepare:pdfjs
+          node scripts/prepare-local-ocr.mjs
+      - run: npx playwright install --with-deps chromium
+      - name: Run full LAB Node, browser and real-pixel OCR QA before staging
+        env:
+          REAL_OCR_QA: '1'
+        run: npm run test:all
+      - name: Package only allowlisted LAB source and pinned runtimes
+        run: |
+          node scripts/build-mobile-lab-preview.mjs
+          node scripts/verify-mobile-lab-preview.mjs
+      - name: Upload isolated GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./dist
+
+  deploy:
+    name: Publish LAB only after green build (Pages requires one-time activation)
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Configure GitHub Pages (manual one-time repository activation required)
+        uses: actions/configure-pages@v5
+      - id: deployment
+        name: Deploy isolated LAB artifact
+        uses: actions/deploy-pages@v4
