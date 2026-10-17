@@ -29,6 +29,27 @@ input[type="file"],select,.edit-input{width:100%}input[type="file"]::file-select
 #issueItems{max-height:250px;overflow-y:auto}#issueItems>p{margin:7px 0;color:var(--warning)}
 [hidden]{display:none!important}
 @media(max-width:360px){main{padding-inline:10px}.panel{padding:12px}}
+
+/* Progressive mobile review: compact overview first, inputs only on request. */
+.review-card{padding:13px;margin:10px 0}
+.summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0}
+.summary-cell{min-width:0;background:#122839;border:1px solid #2e5261;border-radius:9px;padding:9px 8px}
+.summary-cell .tiny{display:block;font-size:11px;line-height:1.25}
+.summary-value{display:block;font-size:16px;line-height:1.3;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;margin-top:4px}
+.record-details{margin-top:9px;border-top:1px solid #344657}
+.record-details>summary{color:#b3ebdb;min-height:44px;display:list-item;padding:13px 5px;font-size:14px}
+.record-details .field{margin:0;padding:10px 0}
+.field-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.field-heading>div{min-width:0;flex:1}
+.mini-button{padding:7px 11px;min-height:40px;flex:0 0 auto;font-size:13px}
+.field-heading .field-value{font-weight:700;font-size:14px}
+.evidence-toggle{margin-top:3px}
+.evidence-toggle>summary{padding:6px 0;font-size:12px;color:#acc8df;font-weight:600}
+.inline-editor{margin-top:7px;padding:10px;background:#203340;border-radius:10px}
+.inline-editor form>label{margin:0 0 7px}
+.edit-actions{margin-top:7px}.edit-actions button{flex:1}
+.issue-list{max-height:220px;overflow-y:auto;padding-bottom:10px}
+@media(max-width:370px){.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.summary-value{font-size:15px}}
 </style>
 </head>
 <body><main>
@@ -48,13 +69,13 @@ input[type="file"],select,.edit-input{width:100%}input[type="file"]::file-select
 </section>
 <section id="draftPanel" hidden>
 <div class="panel">
-<h2>2. Tarkista jokainen ehdotus</h2>
-<p>Vihreä ”tunnistettu” ei tarkoita tallennuslupaa. Näytä lähde, vertaa alkuperäiseen ja korjaa vain tarvittavat kentät.</p>
+<h2>2. Tunnistuksen yhteenveto</h2>
+<p>Näet tärkeimmät tiedot ensin. Avaa tarkistus vain, jos haluat nähdä lähteen tai korjata yksittäistä kenttää.</p>
 <p id="draftSummary"></p>
 <div id="reviewCards"></div>
 </div>
 <div class="panel" id="imagePanel" hidden><h2>Alkuperäinen kuva</h2><img alt="Valittu kuva paikallisessa esikatselussa" id="sourcePreview"></div>
-<div class="panel"><h2>3. Tarkistettavat ongelmat</h2><div id="issueItems"></div></div>
+<div class="panel"><h2>3. Tarkistushuomiot</h2><div id="issueItems"></div></div>
 <div class="panel notice"><strong>Tallennus on estetty.</strong> Tämä LAB näyttää vain tarkistusluonnoksen. Palkan ja Osakevahdin omat hyväksyntäportit toteutetaan ja testataan erikseen.</div>
 </section>
 <footer class="tiny">Äppejä Import Engine · LAB · Local-first · Ei palvelimelle lähetettäviä henkilötietoja, ei salkun päivitystä.</footer>
