@@ -34,6 +34,7 @@ test('320px holdings: compact two-card summary, source and correction only on de
  const compactHeight=await documentHeight(page);
  console.log('COMPACT_MOBILE_HOLDINGS_HEIGHT '+JSON.stringify({width:320,height:compactHeight}));
  expect(compactHeight).toBeLessThan(1850);
+ await page.screenshot({path:'test-results/compact-mobile-holdings-320.png',fullPage:true});
  const q=await openField(page,'quantity');
  await q.locator('.evidence-toggle summary').click();
  await expect(q).toContainText('Rivi 2, sarake 2');
@@ -66,6 +67,7 @@ test('393px payroll: single summary, no default inputs, source-linked correction
  const compactHeight=await documentHeight(page);
  console.log('COMPACT_MOBILE_PAYROLL_HEIGHT '+JSON.stringify({width:393,height:compactHeight}));
  expect(compactHeight).toBeLessThan(1850);
+ await page.screenshot({path:'test-results/compact-mobile-payroll-393.png',fullPage:true});
  const gross=await openField(page,'grossPay');
  await gross.locator('.evidence-toggle summary').click();
  await expect(gross).toContainText('PDF, sivu 1');
@@ -78,6 +80,7 @@ test('393px payroll: single summary, no default inputs, source-linked correction
 });
 test('uploaded CSV: HTML stays inert and blank edits cannot be confirmed',async({page})=>{
  await prepare(page);
+ await page.locator('#fileImport > summary').click();
  const source='Name;Quantity;Buy Price;Currency\n"<img src=x onerror=alert(1)>";4;7,50;EUR';
  await page.locator('#documentFile').setInputFiles({name:'synthetic.csv',mimeType:'text/csv',buffer:Buffer.from(source)});
  await page.locator('#analyze').click();
@@ -111,6 +114,7 @@ test('OCR without a verified table: ONE summary, no guessed holdings and no edit
    })};
  });
  await prepare(page);
+ await page.locator('#fileImport > summary').click();
  const png=await syntheticPng(page);
  await page.locator('#documentFile').setInputFiles({
    name:'synthetic.png',mimeType:'image/png',buffer:Buffer.from(png,'base64')
@@ -142,6 +146,7 @@ test('cancel while OCR unresolved prevents discarded session from resurfacing',a
    })};
  });
  await prepare(page);
+ await page.locator('#fileImport > summary').click();
  const png=await syntheticPng(page);
  await page.locator('#documentFile').setInputFiles({
    name:'synthetic.png',mimeType:'image/png',buffer:Buffer.from(png,'base64')
@@ -157,6 +162,7 @@ test('cancel while OCR unresolved prevents discarded session from resurfacing',a
 });
 test('invalid input stays blocked and refresh forgets every correction',async({page})=>{
  await prepare(page);
+ await page.locator('#fileImport > summary').click();
  await page.locator('#kind').selectOption('payroll');
  await page.locator('#documentFile').setInputFiles({
    name:'wrong.csv',mimeType:'text/csv',buffer:Buffer.from('Name;Qty\nX;4')
@@ -177,6 +183,7 @@ test('invalid input stays blocked and refresh forgets every correction',async({p
 });
 test('10 holdings start with only four summary cards and expand on demand',async({page})=>{
  await prepare(page,360);
+ await page.locator('#fileImport > summary').click();
  const rows=Array.from({length:10},(_,i)=>'Imaginary Company '+(i+1)+';'+(i+2)+';12,50;EUR');
  const csv=['Name;Quantity;Buy Price;Currency',...rows].join('\n');
  await page.locator('#documentFile').setInputFiles({
