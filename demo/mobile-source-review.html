@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Äppejä LAB – mobiilitarkistus</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color-scheme:dark;--bg:#0c131c;--panel:#172330;--edge:#36495b;--txt:#f1f5f9;--sub:#bdcdd9;--main:#87d8c0;--warning:#ffcf8a;--danger:#ffbdbd;background:var(--bg);color:var(--txt)}
+*{box-sizing:border-box}body{margin:0}main{max-width:680px;margin:0 auto;padding:18px 14px 60px}h1{font-size:clamp(25px,7vw,33px);line-height:1.13;margin:8px 0}h2{font-size:19px;margin:0 0 12px}h3{font-size:16px;margin:0 0 8px}
+p{line-height:1.45;color:var(--sub)}.eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--main)}
+.panel{background:var(--panel);border:1px solid var(--edge);border-radius:16px;padding:16px;margin:13px 0}
+.notice{border-color:#8b693c;background:#2d281f}.notice strong{color:#ffe0a6}
+label{display:block;font-weight:700;margin:12px 0 6px;font-size:14px}
+input,select,button{font:inherit;color:var(--txt);border:1px solid #61798c;border-radius:11px;background:#0e1b29;padding:10px 11px;min-height:46px}
+button{font-weight:700;cursor:pointer}button.primary{background:#26675e;border-color:#55ab9a}button:disabled{opacity:.5;cursor:default}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #8bdff0;outline-offset:2px}
+input[type="file"],select,.edit-input{width:100%}input[type="file"]::file-selector-button{border:0;border-radius:8px;background:#26675e;color:white;padding:11px;margin-right:10px}
+.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.row>*{flex-grow:1}
+.card{border:1px solid #3f5365;border-radius:12px;background:#0e1a25;padding:12px;margin:12px 0}
+.field{padding:12px 0;border-top:1px solid #344657}.field:first-child{border:0}
+.field-name{font-weight:750}.field-value{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.field-note,.tiny{font-size:12px;color:var(--sub)}.warn{color:var(--warning)}.bad{color:var(--danger)}
+.details{margin:6px 0}summary{padding:11px 0;cursor:pointer;font-size:14px;font-weight:700}
+.source-line{font-size:13px;line-height:1.4;border-left:3px solid #4d9a95;padding:6px 9px;margin:6px 0;background:#1c3039;overflow-wrap:anywhere}
+.edit-input{margin-top:7px}.edit-button{margin-top:8px;width:100%}
+#feedback[role="status"]{min-height:28px;font-weight:650;color:#ccebdd}
+#sourcePreview{display:block;width:100%;max-height:480px;object-fit:contain;border-radius:10px}
+#issueItems{max-height:250px;overflow-y:auto}#issueItems>p{margin:7px 0;color:var(--warning)}
+[hidden]{display:none!important}
+@media(max-width:360px){main{padding-inline:10px}.panel{padding:12px}}
+</style>
+</head>
+<body><main>
+<header><div class="eyebrow">ÄPPEJÄ · IMPORT ENGINE · LAB</div><h1>Tarkista tunnistetut tiedot</h1></header>
+<p>Valitse tiedosto tai kokeile esimerkkiä. Näet alkuperäiset havainnot, voit korjata ehdotuksia ja perua koko käsittelyn. Tämä ei päivitä oikeaa salkkua tai palkkahistoriaa.</p>
+<section class="panel notice"><strong>Turvallinen koe.</strong> Tietoja käsitellään vain tämän sivun muistissa. Korjaukset eivät tallennu eikä niitä lähetetä palvelimelle. PDF/OCR tarvitsee LABin oman selainpaketin.</section>
+<section class="panel" aria-label="Tuonnin aloitus">
+<h2>1. Aloita</h2>
+<div class="row"><button type="button" id="sampleHoldings">Kokeile osakesalkkua</button><button type="button" id="samplePayroll">Kokeile palkkaa</button></div>
+<label for="kind">Mitä olet tuomassa?</label>
+<select id="kind"><option value="holdings">Osakesalkku</option><option value="payroll">Palkkalaskelma</option></select>
+<label for="documentFile">Valitse tiedosto puhelimesta</label>
+<input id="documentFile" type="file" accept=".csv,.tsv,.txt,.pdf,.png,.jpg,.jpeg,.webp,text/plain,text/csv,application/pdf,image/png,image/jpeg,image/webp">
+<p class="tiny">Salkku: CSV/TSV tai kuva. Palkka: tekstimuotoinen PDF. Enintään 10 Mt. Epäselvistä kuvista ei arvata omistuksia.</p>
+<div class="row"><button class="primary" id="analyze" type="button">Lue tiedosto</button><button id="cancel" type="button">Peruuta ja tyhjennä</button></div>
+<p id="feedback" role="status" aria-live="polite">Valitse esimerkki tai tiedosto.</p>
+</section>
+<section id="draftPanel" hidden>
+<div class="panel">
+<h2>2. Tarkista jokainen ehdotus</h2>
+<p>Vihreä ”tunnistettu” ei tarkoita tallennuslupaa. Näytä lähde, vertaa alkuperäiseen ja korjaa vain tarvittavat kentät.</p>
+<p id="draftSummary"></p>
+<div id="reviewCards"></div>
+</div>
+<div class="panel" id="imagePanel" hidden><h2>Alkuperäinen kuva</h2><img alt="Valittu kuva paikallisessa esikatselussa" id="sourcePreview"></div>
+<div class="panel"><h2>3. Tarkistettavat ongelmat</h2><div id="issueItems"></div></div>
+<div class="panel notice"><strong>Tallennus on estetty.</strong> Tämä LAB näyttää vain tarkistusluonnoksen. Palkan ja Osakevahdin omat hyväksyntäportit toteutetaan ja testataan erikseen.</div>
+</section>
+<footer class="tiny">Äppejä Import Engine · LAB · Local-first · Ei palvelimelle lähetettäviä henkilötietoja, ei salkun päivitystä.</footer>
+<script type="module" src="./mobile-source-review.mjs"></script>
+</main></body>
+</html>
