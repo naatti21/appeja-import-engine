@@ -24,7 +24,7 @@ const moneyKeys=new Set(['quantity','buyPrice','current_price','current_value','
 const dateKeys=new Set(['payDate','payPeriodStart','payPeriodEnd']);
 const supportedStatuses=new Set(['verified','candidate','missing','ambiguous','conflict','invalid','unverified']);
 const MAX_BYTES=10*1024*1024;
-let draft=null,operation=0,imageUrl=null,ocrPromise=null;
+let draft=null,operation=0,imageUrl=null,ocrPromise=null,allHoldingsShown=false;
 
 function node(tag,content,cls=''){
   const el=document.createElement(tag);
@@ -37,7 +37,7 @@ function revokeImage(){
   $('sourcePreview').removeAttribute('src');$('imagePanel').hidden=true;
 }
 function cancel(){
-  operation++;draft=null;revokeImage();
+  operation++;draft=null;allHoldingsShown=false;revokeImage();
   $('draftPanel').hidden=true;$('reviewCards').replaceChildren();$('issueItems').replaceChildren();
   $('documentFile').value='';
   $('feedback').textContent='Peruttu. Luonnos ja mahdolliset korjaukset tyhjennetty.';
@@ -72,65 +72,178 @@ function correctedValue(key,text){
   return raw;
 }
 
+function valueFor(record,key){
+  const field=record.fields[key];
+  return field?displayValue(field):'Ei tiedossa';
+}
+function summaryCell(record,key){
+  const e=node('div',undefined,'summary-cell');
+  e.append(node('small',friendlyField(key),'tiny'),
+    node('strong',valueFor(record,key),'summary-value'));
+  return e;
+}
+function detailField(record,key,field){
+  const row=node('div',undefined,'field compact-field');
+  row.dataset.field=key;
+  row.dataset.recordId=record.id;
+  const head=node('div',undefined,'field-heading');
+  const about=node('div');
+  about.append(node('span',friendlyField(key),'field-name'),node('div',displayValue(field),'field-value'),
+    node('small',fieldStatus(field),'field-note'));
+  const edit=node('button','Korjaa','mini-button');
+  edit.type='button';edit.setAttribute('aria-label','Korjaa '+friendlyField(key));
+  head.append(about,edit);row.append(head);
+  const detail=document.createElement('details');
+  detail.className='details evidence-toggle';
+  detail.append(node('summary','Näytä lähde ('+field.sourceIds.length+')'));
+  const origins=reviewFieldSources(draft,record.id,key);
+  if(!origins.length)detail.append(node('p','Lähdettä ei voitu varmistaa.','field-note warn'));
+  else {
+    for(const origin of origins.slice(0,8)){
+      const area=node('div',undefined,'source-line'),source=origin.source||{};
+      const caption=source.format==='pdf'?'PDF, sivu '+source.page:
+        source.format==='image-ocr'?'Kuva, rivi '+source.line:
+        source.row?'Rivi '+source.row+', sarake '+source.column:'Lähde '+origin.id;
+      area.append(node('div',origin.raw),node('small',caption,'field-note'));
+      detail.append(area);
+    }
+    if(origins.length>8)detail.append(node('p','Lisää lähdehavaintoja '+(origins.length-8),'tiny'));
+  }
+  row.append(detail);
+  const editor=node('div',undefined,'inline-editor');
+  editor.hidden=true;row.append(editor);
+  edit.addEventListener('click',()=>{
+    edit.hidden=true;editor.hidden=false;
+    const form=document.createElement('form');
+    const label=node('label','Korjaa '+friendlyField(key));
+    const input=document.createElement('input');
+    input.type='text';input.className='edit-input';
+    input.value=field.value==null?'':String(field.value);
+    input.autocomplete='off';input.spellcheck=false;
+    input.setAttribute('aria-label',friendlyField(key)+' uusi arvo');
+    const actions=node('div',undefined,'row edit-actions');
+    const confirm=node('button','Vahvista','primary mini-button');
+    confirm.type='submit';
+    confirm.setAttribute('aria-label','Vahvista '+friendlyField(key));
+    const exit=node('button','Peruuta korjaus','mini-button');
+    exit.type='button';
+    exit.addEventListener('click',()=>{editor.replaceChildren();editor.hidden=true;edit.hidden=false;});
+    actions.append(confirm,exit);
+    form.append(label,input,actions);
+    form.addEventListener('submit',event=>{
+      event.preventDefault();
+      try{
+        const newValue=correctedValue(key,input.value);
+        draft=correctReviewField(draft,{
+          recordId:record.id,fieldName:key,value:newValue,confirmed:true
+        });
+        $('feedback').textContent='Korjaus pysyy vain luonnoksessa. Mitään ei tallennettu.';
+        render();
+      }catch(error){
+        $('feedback').textContent='Korjaus epäonnistui: '+String(error.message||error);
+      }
+    });
+    editor.replaceChildren(form);
+    input.focus();
+  });
+  return row;
+}
+function addDomainCard(host,record,isPayroll,index){
+  const card=node('article',undefined,'card review-card');
+  const title=isPayroll?'Palkkalaskelma':
+    valueFor(record,'name')!=='Ei tiedossa'?valueFor(record,'name'):
+    valueFor(record,'ticker')!=='Ei tiedossa'?valueFor(record,'ticker'):'Omistus '+(index+1);
+  card.append(node('h3',title));
+  const headline=node('div',undefined,'summary-grid');
+  const keys=isPayroll?['payDate','grossPay','netPay','ytdTaxableIncome']:
+    ['quantity','buyPrice','currency'];
+  for(const key of keys)headline.append(summaryCell(record,key));
+  card.append(headline);
+  const fields=Object.entries(record.fields);
+  const uncertainties=fields.filter(([,f])=>f.status==='missing'||f.status==='ambiguous'
+    ||f.status==='invalid'||f.status==='conflict'||f.status==='unverified');
+  if(uncertainties.length)card.append(node('p',uncertainties.length+
+    ' kenttää jäi epäselväksi. Avaa tarvittaessa tarkistus.','tiny warn'));
+  const detail=document.createElement('details');
+  detail.className='record-details';
+  detail.append(node('summary','Tarkista tai korjaa tietoja'));
+  const editorContainer=node('div',undefined,'all-fields');
+  // Human-readable core fields first; technical metadata follows.
+  const ordered=isPayroll?
+    ['payDate','grossPay','netPay','ytdTaxableIncome','withholdingPeriod','withholdingYtd',
+     'payPeriodStart','payPeriodEnd','previousYearTaxableIncome']:
+    ['name','ticker','quantity','buyPrice','currency','account','accountType','broker','isin','mic',
+     'row_id','current_price','current_value','purchase_price'];
+  const visited=new Set();
+  for(const key of ordered){
+    if(record.fields[key]){
+      editorContainer.append(detailField(record,key,record.fields[key]));visited.add(key);
+    }
+  }
+  for(const [key,field] of fields)if(!visited.has(key))editorContainer.append(detailField(record,key,field));
+  detail.append(editorContainer);card.append(detail);
+  host.append(card);
+}
 function render(){
   if(!draft)return;
-  const diag=reviewDiagnostics(draft);
-  $('draftSummary').textContent=diag.recordCount+' tietuetta · '+diag.fieldCount+
-    ' kenttää · '+diag.correctedCount+' korjausta. Ei tallennusta.';
-  const cards=$('reviewCards');cards.replaceChildren();
-  for(const record of draft.records){
-    const card=node('article',undefined,'card');
-    card.append(node('h3',draft.documentType==='payroll'?'Palkkatietojen tarkistus':
-      draft.documentType==='holdings'?'Omistusehdotus':'Havaintoehdotus'));
-    for(const [key,field] of Object.entries(record.fields)){
-      const wrap=node('div',undefined,'field'),head=node('div',friendlyField(key),'field-name');
-      const value=node('div',displayValue(field),'field-value');
-      const status=node('div',fieldStatus(field),'field-note');
-      const detail=document.createElement('details');detail.className='details';
-      detail.append(node('summary','Näytä alkuperäinen lähde ('+field.sourceIds.length+')'));
-      const origins=reviewFieldSources(draft,record.id,key);
-      if(!origins.length)detail.append(node('p','Ei luotettavaa lähdeviitettä.','field-note warn'));
-      else for(const origin of origins){
-        const area=node('div',undefined,'source-line');
-        const s=origin.source||{};
-        area.append(node('div',origin.raw),node('small',
-          s.format==='pdf'?'PDF · sivu '+s.page:
-          s.format==='image-ocr'?'Kuva · sivu '+s.page+' · rivi '+s.line:
-          s.row?'Taulukko · rivi '+s.row+' · sarake '+s.column:
-          'Havaintotunnus: '+origin.id,'field-note'));
-        detail.append(area);
-      }
-      const input=document.createElement('input');
-      input.type='text';input.className='edit-input';input.value=field.value==null?'':String(field.value);
-      input.autocomplete='off';input.spellcheck=false;
-      input.setAttribute('aria-label',friendlyField(key)+' uusi arvo');
-      const action=node('button','Vahvista korjaus','edit-button');
-      action.type='button';
-      action.setAttribute('aria-label','Vahvista '+friendlyField(key));
-      action.addEventListener('click',()=>{
-        try{
-          const newValue=correctedValue(key,input.value);
-          draft=correctReviewField(draft,{recordId:record.id,fieldName:key,value:newValue,confirmed:true});
-          $('feedback').textContent='Korjaus tehty vain tähän luonnokseen. Mitään ei tallennettu.';
-          render();
-        }catch(e){$('feedback').textContent='Korjausta ei hyväksytty: '+String(e.message||e);}
-      });
-      wrap.append(head,value,status,detail,input,action);card.append(wrap);
+  const diag=reviewDiagnostics(draft),cards=$('reviewCards');
+  const isPayroll=draft.documentType==='payroll';
+  const textOnly=draft.documentType==='ocr-text-only';
+  const issueCount=draft.problems.length;
+  $('draftSummary').textContent=textOnly?
+    'Teksti luettu, mutta yhtään luotettavaa omistusriviä ei muodostettu.':
+    (isPayroll?'Palkkalaskelma':'Omistuksia '+diag.recordCount)+
+    ' · '+diag.correctedCount+' korjausta · '+issueCount+' tarkistushuomiota.';
+  cards.replaceChildren();
+  if(textOnly){
+    const notice=node('section',undefined,'card');
+    notice.append(node('h3','Salkkua ei voitu tunnistaa'),
+      node('p','Kuvasta löytyi tekstiä, mutta sarakkeita ei voitu yhdistää turvallisesti. '+
+        'Älä korjaa OCR-rivejä yksitellen.','tiny'));
+    const details=document.createElement('details');
+    details.className='record-details';
+    details.append(node('summary','Näytä luettu teksti ('+diag.recordCount+' riviä)'));
+    for(const record of draft.records.slice(0,12)){
+      const field=record.fields.text;
+      if(field)details.append(node('p',String(field.value),'source-line'));
     }
-    cards.append(card);
+    if(draft.records.length>12)
+      details.append(node('p','Muita OCR-rivejä '+(draft.records.length-12)+'.','tiny'));
+    notice.append(details);cards.append(notice);
+  }else{
+    const visibleCount=(!isPayroll&&!allHoldingsShown)?Math.min(4,draft.records.length):draft.records.length;
+    for(let i=0;i<visibleCount;i++)
+      addDomainCard(cards,draft.records[i],isPayroll,i);
+    if(visibleCount<draft.records.length){
+      const reveal=node('button','Näytä loput '+(draft.records.length-visibleCount)+' omistusta','reveal-more');
+      reveal.type='button';
+      reveal.addEventListener('click',()=>{allHoldingsShown=true;render();});
+      cards.append(reveal);
+    }
   }
+  $('issuePanel').hidden=issueCount===0;
   const issues=$('issueItems');issues.replaceChildren();
-  for(const issue of draft.problems.slice(0,30))
-    issues.append(node('p',String(issue.code||'REVIEW_REQUIRED')+
-      (issue.field?' · '+issue.field:''),'warn'));
-  if(!draft.problems.length)issues.append(node('p',
-    'Ei rakenteellisia estoviestejä, mutta käyttäjän ja sovelluksen oma hyväksyntä puuttuu.','field-note'));
-  if(draft.problems.length>30)issues.append(node('p','Lisäksi '+(draft.problems.length-30)+' huomiota.','warn'));
+  if(!issueCount){
+    issues.append(node('p','Rakenteellisia estohuomioita ei havaittu. '+
+      'Tämä on silti vain testiluonnos.','tiny'));
+  }else{
+    issues.append(node('p',issueCount+' havaintoa vaatii vielä tarkistuksen. '+
+      'Yksityiskohdat ovat kehittäjää varten.','tiny warn'));
+    const advanced=document.createElement('details');advanced.className='record-details';
+    advanced.append(node('summary','Näytä tekniset huomiot'));
+    const issueList=node('div',undefined,'issue-list');
+    for(const item of draft.problems.slice(0,25)){
+      issueList.append(node('div',String(item.code||'REVIEW_REQUIRED')+
+        (item.field?' / '+item.field:''),'tiny'));
+    }
+    if(issueCount>25)issueList.append(node('p','Lisäksi '+(issueCount-25)+' huomiota.','tiny'));
+    advanced.append(issueList);issues.append(advanced);
+  }
   $('draftPanel').hidden=false;
 }
 function showDraft(next,token,imageFile=null){
   if(token!==operation)return;
-  draft=next;revokeImage();
+  draft=next;allHoldingsShown=false;revokeImage();
   if(imageFile){
     imageUrl=URL.createObjectURL(imageFile);
     $('sourcePreview').src=imageUrl;$('imagePanel').hidden=false;

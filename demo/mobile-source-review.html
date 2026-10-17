@@ -29,35 +29,76 @@ input[type="file"],select,.edit-input{width:100%}input[type="file"]::file-select
 #issueItems{max-height:250px;overflow-y:auto}#issueItems>p{margin:7px 0;color:var(--warning)}
 [hidden]{display:none!important}
 @media(max-width:360px){main{padding-inline:10px}.panel{padding:12px}}
+
+/* Progressive mobile review: compact overview first, inputs only on request. */
+.review-card{padding:13px;margin:10px 0}
+.summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0}
+.summary-cell{min-width:0;background:#122839;border:1px solid #2e5261;border-radius:9px;padding:9px 8px}
+.summary-cell .tiny{display:block;font-size:11px;line-height:1.25}
+.summary-value{display:block;font-size:16px;line-height:1.3;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;margin-top:4px}
+.record-details{margin-top:9px;border-top:1px solid #344657}
+.record-details>summary{color:#b3ebdb;min-height:44px;display:list-item;padding:13px 5px;font-size:14px}
+.record-details .field{margin:0;padding:10px 0}
+.field-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.field-heading>div{min-width:0;flex:1}
+.mini-button{padding:7px 11px;min-height:40px;flex:0 0 auto;font-size:13px}
+.field-heading .field-value{font-weight:700;font-size:14px}
+.evidence-toggle{margin-top:3px}
+.evidence-toggle>summary{padding:6px 0;font-size:12px;color:#acc8df;font-weight:600}
+.inline-editor{margin-top:7px;padding:10px;background:#203340;border-radius:10px}
+.inline-editor form>label{margin:0 0 7px}
+.edit-actions{margin-top:7px}.edit-actions button{flex:1}
+.issue-list{max-height:220px;overflow-y:auto;padding-bottom:10px}
+@media(max-width:370px){.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.summary-value{font-size:15px}}
+
+/* Mobile-first: let the result, not the upload form, occupy the screen. */
+main{padding-top:14px;padding-bottom:22px}
+h1{margin:5px 0;font-size:26px}h2{font-size:17px;margin:0 0 8px}
+.intro{margin:5px 0 9px}
+.panel{padding:12px;margin:9px 0;border-radius:13px}
+.start-panel{padding:12px}
+.sample-actions{gap:7px}.sample-actions button{min-height:48px}
+.cancel-action{margin-top:7px}.cancel-action button{width:100%;min-height:40px}
+#fileImport{margin-top:9px}
+#fileImport>summary{min-height:40px;padding:8px 0}
+#fileImport input[type=file]{padding:8px}
+#fileImport #analyze{margin-top:8px;width:100%}
+#feedback[role=status]{margin:8px 0 0;min-height:0;font-size:13px}
+.overview-panel p{margin:0;font-size:13px}
+.review-card{margin:9px 0;padding:11px}
+.review-card h3{margin:0 0 5px}
+.summary-grid{margin:6px 0}
+footer{padding:2px 0}
 </style>
 </head>
 <body><main>
-<header><div class="eyebrow">ÄPPEJÄ · IMPORT ENGINE · LAB</div><h1>Tarkista tunnistetut tiedot</h1></header>
-<p>Valitse tiedosto tai kokeile esimerkkiä. Näet alkuperäiset havainnot, voit korjata ehdotuksia ja perua koko käsittelyn. Tämä ei päivitä oikeaa salkkua tai palkkahistoriaa.</p>
-<section class="panel notice"><strong>Turvallinen koe.</strong> Tietoja käsitellään vain tämän sivun muistissa. Korjaukset eivät tallennu eikä niitä lähetetä palvelimelle. PDF/OCR tarvitsee LABin oman selainpaketin.</section>
-<section class="panel" aria-label="Tuonnin aloitus">
-<h2>1. Aloita</h2>
-<div class="row"><button type="button" id="sampleHoldings">Kokeile osakesalkkua</button><button type="button" id="samplePayroll">Kokeile palkkaa</button></div>
-<label for="kind">Mitä olet tuomassa?</label>
-<select id="kind"><option value="holdings">Osakesalkku</option><option value="payroll">Palkkalaskelma</option></select>
-<label for="documentFile">Valitse tiedosto puhelimesta</label>
-<input id="documentFile" type="file" accept=".csv,.tsv,.txt,.pdf,.png,.jpg,.jpeg,.webp,text/plain,text/csv,application/pdf,image/png,image/jpeg,image/webp">
-<p class="tiny">Salkku: CSV/TSV tai kuva. Palkka: tekstimuotoinen PDF. Enintään 10 Mt. Epäselvistä kuvista ei arvata omistuksia.</p>
-<div class="row"><button class="primary" id="analyze" type="button">Lue tiedosto</button><button id="cancel" type="button">Peruuta ja tyhjennä</button></div>
-<p id="feedback" role="status" aria-live="polite">Valitse esimerkki tai tiedosto.</p>
+<header><div class="eyebrow">ÄPPEJÄ · ENGINE LAB</div><h1>Tuonnin tarkistus</h1></header>
+<p class="tiny intro">Kokeile yhdellä painalluksella. Tässä testissä tietoja ei tallenneta salkkuun tai palkkahistoriaan.</p>
+<section class="panel start-panel" aria-label="Tuonnin aloitus">
+<h2>1. Kokeile</h2>
+<div class="row sample-actions">
+  <button type="button" id="sampleHoldings">Osakesalkku</button>
+  <button type="button" id="samplePayroll">Palkka</button>
+</div>
+<details id="fileImport" class="record-details">
+  <summary>Valitse testitiedosto puhelimesta</summary>
+  <p class="tiny warn">Vain keksittyä testiaineistoa. Älä vielä lisää oikeita palkkalaskelmia tai sijoituskuvia.</p>
+  <label for="kind">Tiedoston sisältö</label>
+  <select id="kind"><option value="holdings">Osakesalkku</option><option value="payroll">Palkkalaskelma</option></select>
+  <label for="documentFile">PDF, kuva tai taulukko</label>
+  <input id="documentFile" type="file" accept=".csv,.tsv,.txt,.pdf,.png,.jpg,.jpeg,.webp,text/plain,text/csv,application/pdf,image/png,image/jpeg,image/webp">
+  <button id="analyze" class="primary" type="button">Lue tiedosto</button>
+</details>
+<div class="row cancel-action"><button id="cancel" type="button">Peruuta ja tyhjennä</button></div>
+<p id="feedback" role="status" aria-live="polite">Valitse esimerkki tai testitiedosto.</p>
 </section>
 <section id="draftPanel" hidden>
-<div class="panel">
-<h2>2. Tarkista jokainen ehdotus</h2>
-<p>Vihreä ”tunnistettu” ei tarkoita tallennuslupaa. Näytä lähde, vertaa alkuperäiseen ja korjaa vain tarvittavat kentät.</p>
-<p id="draftSummary"></p>
+<div class="panel overview-panel"><h2>2. Tulos</h2><p id="draftSummary"></p></div>
 <div id="reviewCards"></div>
-</div>
 <div class="panel" id="imagePanel" hidden><h2>Alkuperäinen kuva</h2><img alt="Valittu kuva paikallisessa esikatselussa" id="sourcePreview"></div>
-<div class="panel"><h2>3. Tarkistettavat ongelmat</h2><div id="issueItems"></div></div>
-<div class="panel notice"><strong>Tallennus on estetty.</strong> Tämä LAB näyttää vain tarkistusluonnoksen. Palkan ja Osakevahdin omat hyväksyntäportit toteutetaan ja testataan erikseen.</div>
+<div class="panel" id="issuePanel" hidden><h2>Tarkistushuomiot</h2><div id="issueItems"></div></div>
 </section>
-<footer class="tiny">Äppejä Import Engine · LAB · Local-first · Ei palvelimelle lähetettäviä henkilötietoja, ei salkun päivitystä.</footer>
+<footer class="tiny">Paikallinen testiversio. Ei tallennusta, ei yhteyttä oikeisiin sovelluksiin.</footer>
 <script type="module" src="./mobile-source-review.mjs"></script>
 </main></body>
 </html>
