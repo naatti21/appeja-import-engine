@@ -16,7 +16,9 @@ assert.match(rootHtml,/src="\.\/demo\/mobile-source-review\.mjs"/);
 assert.match(detailHtml,/src="\.\/mobile-source-review\.mjs"/);
 assert.match(rootHtml,/robots" content="noindex/);
 assert.match(rootHtml,/Peruuta ja tyhjennä/);
-assert.match(rootHtml,/Tallennus on estetty/);
+assert.match(rootHtml,/Ei tallennusta/);
+assert.match(rootHtml,/id="fileImport"/);
+assert.match(rootHtml,/id="issuePanel"/);
 assert.match(await txt('robots.txt'),/Disallow: \//);
 assert.equal((await get('.nojekyll')).byteLength,0);
 for(const target of ['demo/mobile-source-review.mjs','demo/complete-pdf.mjs',
