@@ -110,7 +110,7 @@ test('screenshot without a verified table displays source OCR text, never guesse
   await expect(page.locator('#sourcePreview')).toBeVisible();
   expect(external).toEqual([]);
   await page.locator('#cancel').click();
-  await expect(page.locator('#sourcePreview')).toHaveAttribute('src',null);
+  expect(await page.locator('#sourcePreview').getAttribute('src')).toBe(null);
   expect(await storage(page)).toBe('KEEP_ME');
 });
 
