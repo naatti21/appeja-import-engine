@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rakenneoppimisen tutkimus</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101820;color:#edf4f7;font:16px system-ui}main{max-width:680px;margin:auto;padding:16px}h1{font-size:1.4rem}h2{font-size:1.1rem}p{line-height:1.45}button,input,select{font:inherit;max-width:100%;min-height:44px}button{padding:8px 12px;margin:4px 0;background:#d9e9f0;color:#101820;border:0;border-radius:8px}button:disabled{opacity:.5}article,details{border:1px solid #61727d;border-radius:10px;padding:12px;margin:10px 0}summary{cursor:pointer;min-height:32px}label{display:block;margin:8px 0}select{display:block;width:100%}small{color:#bed0db}#rows p{margin:5px 0}#rows article{overflow-wrap:anywhere}[hidden]{display:none!important}#message{overflow-wrap:anywhere}input[type=file]{width:100%}#preview{width:100%;height:auto}a{color:#aee0ff}
+</style></head><body><main>
+<h1>Mobiilisalkun rakenneoppiminen</h1>
+<p>Tutkimuskokeilu. Ehdotukset vaativat tarkistuksen. Ei salkkuun tallennusta.</p>
+<label>Kuvakaappaus <input id="image" type="file" accept="image/png,image/jpeg,image/webp"></label>
+<details><summary>Kuvan lukemisen asetukset</summary><label>OCR-kieli <select id="language"><option value="fin+eng">Suomi ja englanti</option><option value="eng">Englanti</option><option value="swe+eng">Ruotsi ja englanti</option></select></label><p>Väärä kielimalli voi muuttaa myös tunnisteita. OCR-varmuus ei todenna instrumenttia.</p></details>
+<button id="cancel">Tyhjennä lähde</button>
+<p id="message" role="status">Valitse kuva. Käsittely tapahtuu tässä selaimessa.</p>
+<section id="result" hidden><h2 id="count"></h2><div id="rows"></div><button id="more" hidden>Näytä loput ehdotukset</button>
+<button id="review">Vahvista näkyvät lähde-ehdotukset</button><p id="reviewState"></p>
+<details id="correction"><summary>Korjaa yksi väärin luettu tieto</summary>
+<p>Valitse alkuperäinen lähderivi. Korjaus jää vain tämän tuonnin tarkistusluonnokseen. Se ei varmista instrumenttia markkinoilta.</p>
+<label>Lähderivi <select id="correctionLine"></select></label>
+<p id="originalText"></p><canvas id="sourceCrop" style="max-width:100%;height:auto" aria-label="Valitun lähderivin kuva"></canvas>
+<label>Korjattava tieto <select id="correctionField"><option value="name">Nimi</option><option value="identity">Tunniste</option><option value="quantity">Kappalemäärä</option></select></label>
+<label>Korjattu arvo <input id="correctionValue" maxlength="120" autocomplete="off"></label>
+<p>Tunniste: ISIN: … tai Ticker: … MIC: … . Määrä: pelkkä positiivinen luku.</p>
+<button id="confirmCorrection">Vahvistan korjauksen lähdekuvasta</button><button id="undoCorrection">Poista tämän rivin korjaus</button>
+<p id="correctionStatus"></p>
+</details>
+<details id="teaching"><summary>Tarkista epävarmat ja opeta rakenne</summary>
+<p>Kaksi eri aineistoa ja omat vahvistuksesi tarvitaan. Valitse yksi kortti ja sen kolme lähderiviä. Älä vahvista väärää tekstiä instrumentiksi.</p>
+<label>Kortti <select id="card"></select></label><p id="reason"></p>
+<label>Instrumentin nimi <select id="entity"></select></label>
+<label>ISIN tai ticker ja markkinapaikka <select id="identity"></select></label>
+<label>Omistettu kappalemäärä <select id="measure"></select></label>
+<button id="teach">Vahvistan nämä kolme lähderiviä</button>
+<p id="learningState"></p>
+</details><details><summary>Katso alkuperäinen kuva</summary><img id="preview" alt="Valittu lähde, vain tämän sivun muistissa"></details></section>
+<details><summary>Oppimisen hallinta</summary><p>Vain abstraktit roolit ja rivipaikat tallentuvat. Kuvia, tekstejä, määriä ja tilitietoja ei tallenneta profiiliin. Vahvistukset eivät todenna instrumenttia markkinatietopalvelusta.</p>
+<button id="undo">Peru viimeisin opetus</button><button id="forget">Unohda rakenteet</button>
+<button id="save">Salli rakenteiden tallennus tähän selaimeen</button><button id="export">Vie rakenneprofiilit</button>
+<label>Palauta rakenneprofiilit <input id="restore" type="file" accept="application/json"></label><p>Palautettu varmuuskopio vaatii uuden opetuksen. Rakenneprofiileja ei jaeta Palkkaan tai Osakevahtiin.</p></details>
+<script type="module" src="./structure-learning.mjs"></script></main></body></html>
