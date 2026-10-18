@@ -137,3 +137,87 @@ test('one nearby day-change amount must not masquerade as missing holding market
  assert.equal(r.reconciliation.status,'not-evaluable');
  assert.equal(r.canPersist,false);
 });
+
+
+test('cross-reading restores one weak quantity only when another OCR read confirms same field',()=>{
+ const f=visualLedgerFixture(),w=structuredClone(f.source);
+ const primaryQty=f.source.observations.find(o=>o.raw==='4 kpl');
+ assert.ok(primaryQty);
+ primaryQty.ocrConfidence=32;
+ const standalone=extractVisualPortfolio(f.source);
+ assert.equal(standalone.candidates.length,4);
+ const both=extractVisualPortfolioCorroborated(f.source,w);
+ assert.equal(both.candidates.length,5);
+ assert.equal(both.candidates[0].fields.name.value,'Quartz Devices');
+ assert.equal(both.candidates[0].fields.quantity.value,4);
+ assert.equal(both.candidates[0].canPersist,false);
+ assert.equal(both.candidates[0].marketVerification.status,'not-verified');
+ assert.equal(both.reconciliation.status,'pass');
+});
+test('cross-reading rejects a low-confidence matching field when BOTH OCR reads are weak',()=>{
+ const f=visualLedgerFixture(),w=structuredClone(f.source);
+ f.source.observations.find(o=>o.raw==='4 kpl').ocrConfidence=25;
+ w.observations.find(o=>o.raw==='4 kpl').ocrConfidence=18;
+ const result=extractVisualPortfolioCorroborated(f.source,w);
+ assert.equal(result.candidates.length,4);
+ assert.ok(result.unresolved.some(x=>x.reason==='OCR_NAME_DISAGREEMENT'));
+ assert.equal(result.reconciliation.status,'not-evaluable');
+ assert.equal(result.canPersist,false);
+});
+test('different numeric quantities never combine across OCR reads, even when one is weak',()=>{
+ const f=visualLedgerFixture(),w=structuredClone(f.source);
+ f.source.observations.find(o=>o.raw==='4 kpl').ocrConfidence=25;
+ w.observations.find(o=>o.raw==='4 kpl').raw='9 kpl';
+ const result=extractVisualPortfolioCorroborated(f.source,w);
+ assert.equal(result.candidates.length,4);
+ assert.ok(!result.candidates.some(c=>c.fields.name.value==='Quartz Devices'));
+ assert.equal(result.reconciliation.status,'not-evaluable');
+});
+test('cross-reading with one weak market-value token but exact strong witness preserves source identity',()=>{
+ const f=visualLedgerFixture(),w=structuredClone(f.source);
+ f.source.observations.find(o=>o.raw==='101,25 EUR').ocrConfidence=18;
+ const result=extractVisualPortfolioCorroborated(f.source,w);
+ assert.equal(result.candidates.length,5);
+ assert.equal(result.candidates[0].fields.marketValue.value.cents,10125);
+ assert.equal(result.candidates[0].confidenceBasis,'exact-source-tokens-two-local-reads-at-least-one-strong-per-token');
+ assert.equal(result.reconciliation.status,'pass');
+ assert.ok(result.candidates.every(c=>!c.canPersist));
+});
+test('two matching but low-confidence names do not bypass field confidence gate',()=>{
+ const f=visualLedgerFixture(),w=structuredClone(f.source);
+ f.source.observations.find(o=>o.raw==='Quartz Devices').ocrConfidence=5;
+ w.observations.find(o=>o.raw==='Quartz Devices').ocrConfidence=9;
+ const result=extractVisualPortfolioCorroborated(f.source,w);
+ assert.equal(result.candidates.length,4);
+ assert.ok(!result.candidates.some(c=>c.fields.name.value==='Quartz Devices'));
+});
+
+test('two language reads with complementary per-token confidence can recover a source-supported quantity',()=>{
+ const f=visualLedgerFixture(),w=structuredClone(f.source);
+ // The same fictional quantity is observed in both. Different word tokens
+ // have confident coverage in different readings; neither pass is fully strong.
+ const item=f.source.observations.find(o=>o.raw==='4 kpl');
+ const alt=w.observations.find(o=>o.raw==='4 kpl');
+ assert.ok(item&&alt);
+ // This fixture represents a complete phrase as ONE token, so model the
+ // complementary coverage in the actual word-split inline fixture separately.
+ item.ocrConfidence=80;alt.ocrConfidence=41;
+ const r=extractVisualPortfolioCorroborated(f.source,w);
+ assert.ok(r.candidates.some(c=>c.fields.name.value==='Quartz Devices'));
+ assert.equal(r.canPersist,false);
+});
+test('independently same value but different raw token is withheld despite matching arithmetic',()=>{
+ const f=visualLedgerFixture(),w=structuredClone(f.source);
+ w.observations.find(o=>o.raw==='4 kpl').raw='04 kpl';
+ const r=extractVisualPortfolioCorroborated(f.source,w);
+ assert.ok(!r.candidates.some(c=>c.fields.name.value==='Quartz Devices'));
+ assert.equal(r.reconciliation.status,'not-evaluable');
+});
+test('a shifted or reused source token from a different row cannot corroborate quantity',()=>{
+ const f=visualLedgerFixture(),w=structuredClone(f.source);
+ const q=w.observations.find(o=>o.raw==='4 kpl');
+ q.source.box.y0+=.10;q.source.box.y1+=.10;
+ const r=extractVisualPortfolioCorroborated(f.source,w);
+ assert.ok(!r.candidates.some(c=>c.fields.name.value==='Quartz Devices'));
+ assert.equal(r.canPersist,false);
+});

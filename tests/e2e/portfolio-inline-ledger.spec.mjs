@@ -61,5 +61,5 @@ for(const noSummary of [false,true])test(
     expect(result.canPersist).toBe(false);
     expect(result.rows.every(r=>r.canPersist===false)).toBe(true);
     expect(wrong).toBe(0);
-    expect(correct).toBeGreaterThanOrEqual(2);
+    expect(correct).toBe(4);
   });
