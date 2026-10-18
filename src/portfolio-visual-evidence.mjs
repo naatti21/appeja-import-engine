@@ -170,3 +170,43 @@ export function extractVisualPortfolio(source) {
   return {candidates,unresolved,summary,reconciliation:reconcile(candidates,summary,unresolved),
     requiresUserApproval:true,canPersist:false};
 }
+
+
+/**
+ * Conservative opt-in local second OCR reading. Independently parsable name,
+ * quantity and valuation on the same visual row must agree. A disagreement
+ * WITHHOLDS the instrument; it does not guess a Q/O fix or learn a dictionary.
+ * Agreement between Tesseract language models is not market identity proof.
+ */
+export function extractVisualPortfolioCorroborated(primarySource, witnessSource) {
+  const primary=extractVisualPortfolio(primarySource);
+  const witness=extractVisualPortfolio(witnessSource);
+  if(primary.unresolved.some(u=>u.reason==='INVALID_SOURCE')||
+     witness.unresolved.some(u=>u.reason==='INVALID_SOURCE'))
+    return {candidates:[],unresolved:[{reason:'INVALID_SOURCE'}],
+      reconciliation:{status:'not-evaluable',reason:'INVALID_SOURCE'},
+      requiresUserApproval:true,canPersist:false};
+  function rowY(source,row) {
+    const ids=new Set(row.fields.quantity.sourceIds);
+    const words=source.observations.filter(o=>ids.has(o.id));
+    return words.length?words.reduce((sum,o)=>sum+(o.source.box.y0+o.source.box.y1)/2,0)/words.length:null;
+  }
+  const candidates=[],unresolved=[...primary.unresolved];
+  for(const item of primary.candidates) {
+    const py=rowY(primarySource,item),amount=item.fields.marketValue.value;
+    const matches=witness.candidates.filter(other=>
+      other.kind===item.kind&&other.fields.quantity.value===item.fields.quantity.value&&
+      Math.abs(rowY(witnessSource,other)-py)<.04&&
+      ((amount===null&&other.fields.marketValue.value===null)||
+       (amount!==null&&other.fields.marketValue.value?.cents===amount.cents&&
+        other.fields.marketValue.value?.currency===amount.currency)));
+    if(matches.length!==1||
+       strip(matches[0].fields.name.value)!==strip(item.fields.name.value)) {
+      unresolved.push({reason:'OCR_NAME_DISAGREEMENT',sourceIds:item.fields.name.sourceIds});
+      continue;
+    }
+    candidates.push({...item,ocrNameAgreement:'two-local-language-reads'});
+  }
+  return {...primary,candidates,unresolved,
+    reconciliation:reconcile(candidates,primary.summary,unresolved),canPersist:false};
+}
