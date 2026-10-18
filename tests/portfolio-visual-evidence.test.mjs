@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {extractVisualPortfolio} from '../src/portfolio-visual-evidence.mjs';
+import {extractVisualPortfolio,extractVisualPortfolioCorroborated} from '../src/portfolio-visual-evidence.mjs';
 import {visualLedgerFixture} from './fixtures/portfolio-visual-ledger.mjs';
 
 test('full untrimmed mobile source: four stocks + one wrapped fund; no UI text becomes holding',()=>{
@@ -73,4 +73,22 @@ test('blocking upstream OCR issues prevent speculative recovery',()=>{
  const f=visualLedgerFixture();f.source.issues=[{level:'blocking',code:'UNKNOWN_DOCUMENT'}];
  const r=extractVisualPortfolio(f.source);
  assert.equal(r.candidates.length,0);
+});
+
+test('different current-source name readings block candidate even when cents all reconcile',()=>{
+ const f=visualLedgerFixture();
+ const witness=structuredClone(f.source);
+ witness.observations.find(o=>o.raw==='Quartz Devices').raw='Ouartz Devices';
+ const r=extractVisualPortfolioCorroborated(f.source,witness);
+ assert.equal(r.candidates.length,4);
+ assert.equal(r.unresolved.filter(x=>x.reason==='OCR_NAME_DISAGREEMENT').length,1);
+ assert.equal(r.reconciliation.status,'not-evaluable');
+ assert.equal(r.canPersist,false);
+ assert.ok(r.candidates.every(c=>c.ocrNameAgreement==='two-local-language-reads'));
+});
+test('two identical source readings maintain five unverified candidates and exact arithmetic',()=>{
+ const f=visualLedgerFixture(),r=extractVisualPortfolioCorroborated(f.source,structuredClone(f.source));
+ assert.equal(r.candidates.length,5);
+ assert.equal(r.reconciliation.status,'pass');
+ assert.ok(r.candidates.every(c=>c.marketVerification.status==='not-verified'));
 });
