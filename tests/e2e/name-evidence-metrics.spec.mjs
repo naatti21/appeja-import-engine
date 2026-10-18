@@ -56,7 +56,7 @@ for(const scenario of cases)test('locked real-pixel source identity coverage: '+
   const rows=await page.locator('#rows article').evaluateAll(nodes=>nodes.map(n=>
    [...n.querySelectorAll('p')].map(p=>p.textContent)));
   const correct=fixture.oracle.filter(o=>rows.some(r=>r[0]===o.name&&
-    r[1]===\`\${o.qty} kpl · \${o.isin??(o.ticker+' / '+(scenario.layout==='fi'?'XHEL':'XNAS'))}\`)).length;
+    r[1]===(o.qty+' kpl · '+(o.isin??(o.ticker+' / '+(scenario.layout==='fi'?'XHEL':'XNAS')))))).length;
   measurement={layout:scenario.layout,identity:scenario.identity,correct,
     wrong:rows.length-correct,unresolved:fixture.oracle.length-rows.length,expected:3,
     fieldCorrectionCount:0,marketVerifiedCount:0};
