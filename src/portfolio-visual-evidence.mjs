@@ -67,6 +67,48 @@ function makeLines(words) {
   }
   return lines;
 }
+/**
+ * Find the left/right gutter from CURRENT source geometry, rather than
+ * assuming 60% of every phone screenshot. Text on the right must still be
+ * parsed into a valid quantity or money amount before it becomes a field.
+ * Only instrument sections contribute anchors, not balances or UI headers.
+ * If no usable anchors exist, use the conservative legacy 60% divider.
+ */
+function assignVisualColumns(lines) {
+  let active=false;
+  const anchors=[];
+  for(const line of lines) {
+    const t=line.text.toLowerCase();
+    if(Object.hasOwn(TYPES,t)){active=true;continue;}
+    if(STOPS.test(t)){active=false;continue;}
+    if(!active)continue;
+    if(parseQty(line.text)!==null) {
+      const found=line.words.find(w=>w.box.x0>=.38 && /\d/u.test(w.raw));
+      if(found)anchors.push(found.box.x0);
+      continue;
+    }
+    // A market-value amount is a right-side price, not a day-change
+    // percentage, signed gain/loss or summary heading.
+    if(/[%]/u.test(line.text)||/^[+−-]/u.test(line.text) ||
+        EXCLUDE.test(line.text))continue;
+    if(parseMoney(line.text)) {
+      const found=line.words.find(w=>w.box.x0>=.38 &&
+        /[.,]\d{2}/u.test(w.raw));
+      if(found)anchors.push(found.box.x0);
+    }
+  }
+  const divider=anchors.length
+    ?Math.min(.60,Math.max(.35,Math.min(...anchors)-.035)):.60;
+  for(const line of lines) {
+    const left=line.words.filter(w=>w.box.x0<divider);
+    const right=line.words.filter(w=>w.box.x0>=divider);
+    line.left=strip(left.map(w=>w.raw).join(' '));
+    line.right=strip(right.map(w=>w.raw).join(' '));
+    line.leftIds=left.map(w=>w.id);
+    line.rightIds=right.map(w=>w.id);
+  }
+  return divider;
+}
 function sourceField(value,ids) {
   return {value,status:'candidate',sourceIds:[...new Set(ids)]};
 }
@@ -118,6 +160,7 @@ export function extractVisualPortfolio(source) {
   try{lines=makeLines(validatedWords(source));}
   catch{return {candidates:[],unresolved:[{reason:'INVALID_SOURCE'}],
     reconciliation:{status:'not-evaluable',reason:'INVALID_SOURCE'},canPersist:false};}
+  assignVisualColumns(lines);
   const summary=findLedgerSummary(lines),candidates=[],unresolved=[];
   const boundaries=[];
   for(let i=0;i<lines.length;i++){
@@ -144,7 +187,9 @@ export function extractVisualPortfolio(source) {
     const valueLines=lines.filter(p=>p.page===l.page&&p.cy>=l.cy-.055&&p.cy<=l.cy+.012 &&
       p.cy>lastQtyCy+.006&&p.right&&p.rightIds.length&&
       parseMoney(p.right)&&p.words.filter(w=>w.box.x0>=.60).every(w=>!w.weak));
-    const amountLine=valueLines.filter(p=>!qtyRegex.test(p.right)).sort((a,b)=>Math.abs(l.cy-a.cy)-Math.abs(l.cy-b.cy))[0];
+    const amountLine=valueLines.filter(p=>!qtyRegex.test(p.right)&&
+      !EXCLUDE.test(p.left)&&!/\b(?:arvonmuutos|päivän muutos|paivan muutos|day change)\b/iu.test(p.left))
+      .sort((a,b)=>Math.abs(l.cy-a.cy)-Math.abs(l.cy-b.cy))[0];
     // If amount is unavailable, a source-linked name+quantity is still a
     // reviewable candidate, but cannot be used for arithmetic.
     const start=amountLine?amountLine.cy-.014:l.cy-.035;
