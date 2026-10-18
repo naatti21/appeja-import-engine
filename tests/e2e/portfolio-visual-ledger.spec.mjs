@@ -10,7 +10,7 @@ async function run(page,fixture) {
     ctx.fillStyle='black';ctx.font='24px Arial';
     for(const line of f.drawing)ctx.fillText(line.text,line.x,line.y);
     const {evidenceFromOcrTsv}=await import('/src/import-observations.mjs');
-    const {extractVisualPortfolio}=await import('/src/portfolio-visual-evidence.mjs');
+    const {extractVisualPortfolioCorroborated}=await import('/src/portfolio-visual-evidence.mjs');
     const w=await window.Tesseract.createWorker('fin+eng',1,{
       workerPath:location.origin+'/demo/vendor/ocr/worker.min.js',
       corePath:location.origin+'/demo/vendor/ocr/core',
@@ -21,7 +21,10 @@ async function run(page,fixture) {
     try{
       const o=await w.recognize(canvas,{}, {tsv:true,text:true});
       const source=evidenceFromOcrTsv(o.data.tsv,{imageWidth:f.width,imageHeight:f.height});
-      result=extractVisualPortfolio(source);
+      await w.reinitialize('eng');
+      const e=await w.recognize(canvas,{}, {tsv:true,text:true});
+      const witness=evidenceFromOcrTsv(e.data.tsv,{imageWidth:f.width,imageHeight:f.height});
+      result=extractVisualPortfolioCorroborated(source,witness);
     }finally{await w.terminate();}
     return {
       candidates:result.candidates.map(c=>({kind:c.kind,name:c.fields.name.value,
