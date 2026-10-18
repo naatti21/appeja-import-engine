@@ -192,9 +192,11 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
     if(Object.hasOwn(TYPES,t))boundaries.push({i,type:TYPES[t]});
     else if(STOPS.test(t))boundaries.push({i,type:null});
   }
-  let active=null,boundaryIndex=-1,lastQtyCy=-Infinity;
+  let active=null,boundaryIndex=-1,lastQtyCy=-Infinity,lastPage=null;
   for(let i=0;i<lines.length;i++){
     const l=lines[i],b=boundaries.find(x=>x.i===i);
+    // A section on another page is not evidence for this page's row roles.
+    if(l.page!==lastPage){active=null;lastQtyCy=-Infinity;lastPage=l.page;}
     if(b){active=b.type;boundaryIndex=i;lastQtyCy=-Infinity;continue;}
     if(!active)continue;
     // Right-hand "n kpl" is a strong visual holdings row anchor. A floating
@@ -203,7 +205,16 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
     const qtext=strip(right.map(w=>w.raw).join(' '));
     const quantity=parseQty(qtext);
     if(quantity===null)continue;
-    const quantityIds=rightSourceIdsForMatch(l,qtyRegex.exec(qtext));
+    // Consume every quantity boundary, including low-confidence/withheld rows.
+    // Otherwise the next row can borrow this row's name and monetary value.
+    const previousQtyCy=lastQtyCy;
+    lastQtyCy=l.cy;
+    const quantityMatch=qtyRegex.exec(qtext);
+    if(qtyRegex.test(qtext.slice(quantityMatch.index+quantityMatch[0].length))) {
+      unresolved.push({reason:'UNCERTAIN_QUANTITY',field:'quantity',sourceIds:l.rightIds,
+        canPersist:false});continue;
+    }
+    const quantityIds=rightSourceIdsForMatch(l,quantityMatch);
     if(!quantityIds.length)continue;
     const quantityWords=right.filter(w=>qtyRegex.test(w.raw)||/\d/.test(w.raw));
     if(!quantityWords.length||(!crossReadOnly&&right.some(w=>quantityIds.includes(w.id)&&w.weak))){
@@ -211,7 +222,7 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
     }
     // Per-row right hand value is above or aligned with the quantity.
     const valueLines=lines.filter(p=>p.page===l.page&&p.cy>=l.cy-.055&&p.cy<=l.cy+.012 &&
-      p.cy>lastQtyCy+.006&&p.right&&p.rightIds.length&&
+      p.cy>previousQtyCy+.006&&p.right&&p.rightIds.length&&
       uniqueRightMoney(p)&&(crossReadOnly||p.words.filter(w=>uniqueRightMoney(p).ids.includes(w.id)).every(w=>!w.weak)));
     const amountLine=valueLines.filter(p=>(p===l||!qtyRegex.test(p.right))&&
       !EXCLUDE.test(p.left)&&!/\b(?:arvonmuutos|päivän muutos|paivan muutos|day change)\b/iu.test(p.left))
@@ -219,15 +230,34 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
     // If amount is unavailable, a source-linked name+quantity is still a
     // reviewable candidate, but cannot be used for arithmetic.
     const start=amountLine?amountLine.cy-.014:l.cy-.035;
-    const eligible=lines.filter(p=>p.page===l.page&&p.cy>=Math.max(start,lastQtyCy+.006)&&
+    const eligible=lines.filter(p=>p.page===l.page&&p.cy>=Math.max(start,previousQtyCy+.006)&&
       p.cy<=l.cy+.018&&p.left&&p.leftIds.length&&
       !EXCLUDE.test(p.left)&&!Object.hasOwn(TYPES,p.left.toLowerCase())&&
       !STOPS.test(p.left)&&!parseMoney(p.left)&&!qtyRegex.test(p.left)&&
       (crossReadOnly||p.words.filter(w=>p.leftIds.includes(w.id)).every(w=>!w.weak)));
-    const parts=eligible.slice(-3);
+    // Inspect the COMPLETE source interval, not only the short window near
+    // the amount. Low-confidence competing text remains conflict evidence.
+    // OCR agreement and arithmetic cannot establish a text's semantic role.
+    const context=lines.slice(boundaryIndex+1,i+1).filter(p=>
+      p.page===l.page&&p.cy>previousQtyCy+.006&&p.left&&p.leftIds.length&&
+      !EXCLUDE.test(p.left)&&!Object.hasOwn(TYPES,p.left.toLowerCase())&&
+      !STOPS.test(p.left)&&!parseMoney(p.left)&&!qtyRegex.test(p.left));
+    // Supported row grammar: one complete name at the value/quantity anchor,
+    // optionally a single-letter fund share-class continuation at quantity.
+    // Arbitrary multi-line text cannot safely be concatenated into a name.
+    const parts=eligible;
+    const continuation=active==='fund'&&parts.length===2&&
+      parts[0]===amountLine&&parts[1]===l&&/^[A-Z]$/u.test(parts[1].left);
+    const competing=context.some(p=>!parts.includes(p))||
+      (parts.length>1&&!continuation);
+    const aligned=parts.length===1&&(parts[0]===amountLine||parts[0]===l||
+      (!amountLine&&parts[0].cy<l.cy&&context.length===1));
     const name=strip(parts.map(p=>p.left).join(' '));
-    if(!name||name.length>140||parts.length>2||!/\p{L}/u.test(name)){
-      unresolved.push({reason:'UNRESOLVED_INSTRUMENT_NAME',sourceIds:l.ids});lastQtyCy=l.cy;continue;
+    if(competing||(!aligned&&!continuation)||!name||name.length>140||!/\p{L}/u.test(name)){
+      unresolved.push({reason:'UNRESOLVED_INSTRUMENT_NAME',field:'name',
+        detail:competing?'COMPETING_SOURCE_TEXT':'UNPROVEN_ROW_BINDING',
+        sourceIds:[...new Set([...context.flatMap(p=>p.ids),...l.ids])],
+        requiresUserApproval:true,canPersist:false});continue;
     }
     const ids=[...new Set(parts.flatMap(p=>p.leftIds))];
     const amountEvidence=amountLine?uniqueRightMoney(amountLine):null;
@@ -236,7 +266,18 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
         marketValue:amountEvidence?sourceField(amountEvidence.value,amountEvidence.ids):{value:null,status:'missing',sourceIds:[]},
         purchasePrice:{value:null,status:'missing',sourceIds:[]}},
       canPersist:false});
-    lastQtyCy=l.cy;
+  }
+  // A source observation can support only one holding. Withhold ALL owners
+  // of a collision rather than choosing whichever row happened to run first.
+  const owners=new Map();
+  for(const c of candidates)for(const id of new Set(Object.values(c.fields).flatMap(f=>f.sourceIds))) {
+    const rows=owners.get(id)??[];rows.push(c);owners.set(id,rows);
+  }
+  const conflicted=new Set([...owners.values()].filter(rows=>rows.length>1).flat());
+  for(let i=candidates.length-1;i>=0;i--)if(conflicted.has(candidates[i])) {
+    const c=candidates.splice(i,1)[0];
+    unresolved.push({reason:'SHARED_ROW_SOURCE',field:'name',
+      sourceIds:[...new Set(Object.values(c.fields).flatMap(f=>f.sourceIds))],canPersist:false});
   }
   return {candidates,unresolved,summary,reconciliation:reconcile(candidates,summary,unresolved),
     requiresUserApproval:true,canPersist:false};
