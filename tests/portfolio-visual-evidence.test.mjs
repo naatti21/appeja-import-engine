@@ -92,3 +92,48 @@ test('two identical source readings maintain five unverified candidates and exac
  assert.equal(r.reconciliation.status,'pass');
  assert.ok(r.candidates.every(c=>c.marketVerification.status==='not-verified'));
 });
+
+
+function repositionValueColumn(f,deltaPx) {
+  const shift=deltaPx/f.width;
+  for(const o of f.source.observations){
+    if(o.source.box.x0>=.60){
+      o.source.box.x0+=shift;o.source.box.x1+=shift;
+      assert.ok(o.source.box.x0>=0&&o.source.box.x1<=1);
+    }
+  }
+  for(const item of f.drawing)if(item.x>=500)item.x+=deltaPx;
+  return f;
+}
+test('moved value/quantity column still yields five exact source-linked instruments',()=>{
+ for(const offset of [-145,-95,-55,0]){
+  const f=repositionValueColumn(visualLedgerFixture(),offset);
+  const r=extractVisualPortfolio(f.source);
+  assert.deepEqual(r.candidates.map(c=>({
+    kind:c.kind,name:c.fields.name.value,qty:c.fields.quantity.value,
+    cents:c.fields.marketValue.value?.cents
+  })),f.oracle,'right column shifted '+offset+'px');
+  assert.equal(r.reconciliation.status,'pass');
+  assert.equal(r.canPersist,false);
+  assert.ok(r.candidates.every(c=>c.marketVerification.status==='not-verified'));
+ }
+});
+test('one nearby day-change amount must not masquerade as missing holding market value',()=>{
+ const f=visualLedgerFixture({missingAmount:true});
+ const original=f.source.observations.find(o=>o.raw==='Arbor Financial');
+ const amountSource=structuredClone(original.source);
+ amountSource.box={x0:505/f.width,x1:700/f.width,
+    y0:original.source.box.y0-50/f.height,
+    y1:original.source.box.y1-50/f.height};
+ const labelSource=structuredClone(amountSource);
+ labelSource.box.x0=65/f.width;labelSource.box.x1=320/f.width;
+ f.source.observations.push({id:'synthetic-fake-daily-label',raw:'Arvonmuutos',
+   ocrConfidence:99,source:labelSource});
+ f.source.observations.push({id:'synthetic-fake-daily-amount',raw:'9,99 EUR',
+   ocrConfidence:99,source:amountSource});
+ const r=extractVisualPortfolio(f.source);
+ assert.equal(r.candidates.length,5);
+ assert.equal(r.candidates[2].fields.marketValue.value,null);
+ assert.equal(r.reconciliation.status,'not-evaluable');
+ assert.equal(r.canPersist,false);
+});

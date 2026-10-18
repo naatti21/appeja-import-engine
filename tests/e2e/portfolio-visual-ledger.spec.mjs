@@ -59,7 +59,7 @@ async function run(page,fixture) {
     };
   },fixture);
 }
-for(const crop of [false,true])test('genuine OCR + visual holdings on '+(crop?'cropped':'full-screen')+' synthetic portfolio',async({page,context})=>{
+for(const {crop,shift} of [{crop:false,shift:0},{crop:true,shift:0},{crop:false,shift:-95},{crop:false,shift:-145}])test('genuine OCR + visual holdings on '+(crop?'cropped':'full-screen')+' synthetic portfolio, column '+shift,async({page,context})=>{
  test.skip(process.env.REAL_OCR_QA!=='1','Staged same-origin Tesseract OCR required');
  test.setTimeout(240000);
  const outside=[];await context.route('**/*',route=>{
@@ -70,11 +70,12 @@ for(const crop of [false,true])test('genuine OCR + visual holdings on '+(crop?'c
  await page.goto('/demo/structure-learning.html');
  await page.addScriptTag({url:'/demo/vendor/ocr/tesseract.min.js'});
  const fixture=visualLedgerFixture({crop});
+ for(const line of fixture.drawing)if(line.x>=500)line.x+=shift;
  const got=await run(page,fixture);
  const correct=got.candidates.filter(c=>fixture.oracle.some(o=>o.name===c.name&&
    o.qty===c.qty&&o.cents===c.cents&&o.kind===c.kind)).length;
  const wrong=got.candidates.length-correct;
- console.log('FULLSCREEN_OCR_PORTFOLIO '+JSON.stringify({crop,
+ console.log('FULLSCREEN_OCR_PORTFOLIO '+JSON.stringify({crop,shift,
    correct,wrong,total:fixture.oracle.length,withheld:fixture.oracle.length-got.candidates.length,
    reconciliation:got.reconciliation,externalRequests:outside.length,
    actual:got.candidates.map(c=>({kind:c.kind,name:c.name,qty:c.qty,cents:c.cents}))}));
