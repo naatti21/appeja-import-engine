@@ -45,6 +45,14 @@ jobs:
         env:
           REAL_OCR_QA: '1'
         run: npx playwright test structure-learning.spec.mjs mobile-corrections.spec.mjs mobile-learning-safety.spec.mjs --reporter=list,json > structure-qa.log 2>&1
+      - name: P0 source-binding and poisoning focused Node checks
+        if: ${{ !cancelled() }}
+        run: node --test tests/mobile-learning-safety.test.mjs tests/mobile-name-corroboration.test.mjs 2>&1 | tee p0-focused-node.log
+      - name: P0 true pixel OCR source-binding attacks
+        if: ${{ !cancelled() }}
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test mobile-learning-safety.spec.mjs --reporter=list 2>&1 | tee p0-focused-browser.log
       - name: Held-out real pixel OCR name-source metrics
         if: ${{ !cancelled() }}
         env:
@@ -58,6 +66,8 @@ jobs:
             structure-qa.log
             structure-node-qa.log
             name-evidence-metrics.log
+            p0-focused-node.log
+            p0-focused-browser.log
             structure-tested-sha.txt
             test-results/
           retention-days: 14
