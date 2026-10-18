@@ -26,6 +26,25 @@ function parseMoney(text) {
   if(Math.abs(p.value*100-cents)>1e-7||!Number.isSafeInteger(cents))return null;
   return {cents,currency:asCurrency(m[2])};
 }
+/**
+ * A compact holding row may contain both value and quantity on one line.
+ * Accept exactly one currency amount and preserve its specific source words,
+ * never the quantity words. If two amounts are present, abstain.
+ */
+function uniqueRightMoney(line) {
+  const match=moneyRegex.exec(line.right);
+  if(!match||moneyRegex.test(line.right.slice(match.index+match[0].length)))return null;
+  const value=parseMoney(match[0]);
+  if(!value)return null;
+  let at=0;
+  const ids=[];
+  for(const word of line.words.filter(w=>line.rightIds.includes(w.id))) {
+    const end=at+word.raw.length;
+    if(end>match.index && at<match.index+match[0].length)ids.push(word.id);
+    at=end+1;
+  }
+  return ids.length?{value,ids}:null;
+}
 function parseQty(text) {
   const m=qtyRegex.exec(strip(text));
   if(!m)return null;
@@ -186,8 +205,8 @@ export function extractVisualPortfolio(source) {
     // Per-row right hand value is above or aligned with the quantity.
     const valueLines=lines.filter(p=>p.page===l.page&&p.cy>=l.cy-.055&&p.cy<=l.cy+.012 &&
       p.cy>lastQtyCy+.006&&p.right&&p.rightIds.length&&
-      parseMoney(p.right)&&p.words.filter(w=>p.rightIds.includes(w.id)).every(w=>!w.weak));
-    const amountLine=valueLines.filter(p=>!qtyRegex.test(p.right)&&
+      uniqueRightMoney(p)&&p.words.filter(w=>p.rightIds.includes(w.id)).every(w=>!w.weak));
+    const amountLine=valueLines.filter(p=>(p===l||!qtyRegex.test(p.right))&&
       !EXCLUDE.test(p.left)&&!/\b(?:arvonmuutos|päivän muutos|paivan muutos|day change)\b/iu.test(p.left))
       .sort((a,b)=>Math.abs(l.cy-a.cy)-Math.abs(l.cy-b.cy))[0];
     // If amount is unavailable, a source-linked name+quantity is still a
@@ -204,10 +223,10 @@ export function extractVisualPortfolio(source) {
       unresolved.push({reason:'UNRESOLVED_INSTRUMENT_NAME',sourceIds:l.ids});lastQtyCy=l.cy;continue;
     }
     const ids=[...new Set(parts.flatMap(p=>p.leftIds))];
-    const amount=amountLine?parseMoney(amountLine.right):null;
+    const amountEvidence=amountLine?uniqueRightMoney(amountLine):null;
     candidates.push({kind:active,certainty:'candidate',marketVerification:{status:'not-verified'},
       fields:{name:sourceField(name,ids),quantity:sourceField(quantity,l.rightIds),
-        marketValue:amount?sourceField(amount,amountLine.rightIds):{value:null,status:'missing',sourceIds:[]},
+        marketValue:amountEvidence?sourceField(amountEvidence.value,amountEvidence.ids):{value:null,status:'missing',sourceIds:[]},
         purchasePrice:{value:null,status:'missing',sourceIds:[]}},
       canPersist:false});
     lastQtyCy=l.cy;
