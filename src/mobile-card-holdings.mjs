@@ -72,12 +72,11 @@ export function mobileSourceLines(source, confirmedCorrections=new Map()) {
   });
 }
 /**
- * Infer which unlabelled text line might be the security name only from
- * INDEPENDENT cards in the CURRENT document. This does not verify securities.
+ * Find positional contrasts that can contradict a learned name binding.
+ * This is negative evidence only, never proof of a security name.
  *
- * A repeating heading alongside a different name in >=3 cards offers bounded
- * context. Learned field positions alone may not supply this evidence.
- * Ambiguous or single-card layouts MUST abstain.
+ * A shared issuer name across different listings can appear alongside varying
+ * section headings. Repetition/variation alone cannot tell the two roles apart.
  */
 function corroborateNamesAcrossCards(groups) {
   const byPattern=new Map(), candidates=new Map();
@@ -104,7 +103,7 @@ function corroborateNamesAcrossCards(groups) {
     if(varying.length!==1||shared.length!==1)continue;
     // A third card may have weak OCR on its identifier: it can establish a
     // repeated heading pattern, but the resolver still rejects its own row.
-    // This provides source-linked B-candidate evidence, not verified identity.
+    // Even agreement with teaching cannot turn this contrast into name evidence.
     const nameIndex=varying[0];
     for(const b of batch)candidates.set(b.index,{index:nameIndex,count:batch.length});
   }
@@ -149,6 +148,10 @@ export function resolveMobileCards(source, learner, confirmedCorrections=new Map
     if (identities.length!==1 || quantities.length!==1 || group[quantities[0]].value===null || !names.length) {reject('IDENTITY_OR_QUANTITY_REQUIRED');continue;}
     const profile=learner?.lookup(pattern);
     if (profile?.state==='conflict') {reject('LEARNING_CONFLICT','name');continue;}
+    const contrast=corroboratedNames.get(groupIndex);
+    if(profile?.state==='active' && contrast && profile.binding.entity!==contrast.index) {
+      reject('LEARNED_NAME_CONFLICT','name');continue;
+    }
     // A role sequence cannot distinguish two arbitrary text lines after a swap.
     // Derive semantics before consulting learned positions. Even a sole free-text
     // line could be a heading above a missing name: cardinality is not semantics.
@@ -159,9 +162,6 @@ export function resolveMobileCards(source, learner, confirmedCorrections=new Map
         entityIndex=confirmed[0]; nameEvidence='current-document-confirmation';
       } else if(!confirmed.length && labelled.length===1) {
         entityIndex=labelled[0]; nameEvidence='source-label';
-      } else if(!confirmed.length&&!labelled.length&&profile?.state==='active'&&corroboratedNames.has(groupIndex)) {
-        entityIndex=corroboratedNames.get(groupIndex).index;
-        nameEvidence='current-document-cross-card-contrast';
       }
     }
     const binding=entityIndex===null?null:{entity:entityIndex,identity:identities[0],measure:quantities[0]};
