@@ -8,7 +8,9 @@ on:
       - 'src/mobile-review-session.mjs'
       - 'src/review-draft.mjs'
       - 'tests/mobile-review-session.test.mjs'
+      - 'tests/mobile-learning-safety.test.mjs'
       - 'tests/e2e/mobile-corrections.spec.mjs'
+      - 'tests/e2e/mobile-learning-safety.spec.mjs'
       - 'scripts/prepare-local-ocr.mjs'
       - 'src/import-observations.mjs'
       - 'src/numbers.mjs'
@@ -35,17 +37,20 @@ jobs:
       - run: node scripts/prepare-local-ocr.mjs --swedish
       - run: npx playwright install --with-deps chromium
       - run: git rev-parse HEAD > structure-tested-sha.txt
-      - run: npm test
+      - id: node_tests
+        run: npm test > structure-node-qa.log 2>&1
       - name: Real OCR and mobile learning, synthetic input only
+        if: ${{ !cancelled() && (steps.node_tests.outcome == 'success' || steps.node_tests.outcome == 'failure') }}
         env:
           REAL_OCR_QA: '1'
-        run: npx playwright test structure-learning.spec.mjs mobile-corrections.spec.mjs --reporter=list,json > structure-qa.log 2>&1
+        run: npx playwright test structure-learning.spec.mjs mobile-corrections.spec.mjs mobile-learning-safety.spec.mjs --reporter=list,json > structure-qa.log 2>&1
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: structure-learning-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             structure-qa.log
+            structure-node-qa.log
             structure-tested-sha.txt
             test-results/
           retention-days: 14

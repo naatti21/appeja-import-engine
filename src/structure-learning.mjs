@@ -6,6 +6,24 @@ const ROLES = new Set(['text', 'identity', 'measure', 'price', 'total', 'cost', 
 const APP = 'import-engine-structure';
 const clone = value => JSON.parse(JSON.stringify(value));
 const key = pattern => JSON.stringify(pattern);
+/** Repetition records user choices, not semantic evidence. The adapter must first
+ * derive a binding from the CURRENT source, independently of this memory.
+ * No raw source content is accepted by or persisted in the learning store.
+ */
+export function assessSourceBinding(pattern, profile, binding) {
+  if (!binding) return {usable:false, reason:'AMBIGUOUS_NAME', field:'name'};
+  try {
+    validatePattern(pattern); validateBinding(pattern,binding);
+    if (profile) {
+      if (key(profile.pattern)!==key(pattern)) throw Error('PATTERN_MISMATCH');
+      validateBinding(pattern,profile.binding);
+    }
+  } catch {return {usable:false,reason:'INVALID_LEARNED_BINDING',field:'name'};}
+  if (profile?.state==='conflict') return {usable:false,reason:'LEARNING_CONFLICT',field:'name'};
+  if (profile && profile.binding.entity!==binding.entity)
+    return {usable:false,reason:'LEARNED_NAME_CONFLICT',field:'name'};
+  return {usable:true};
+}
 function validatePattern(pattern) {
   if (!Array.isArray(pattern) || pattern.length < 3 || pattern.length > 16 || pattern.some(x => !ROLES.has(x)))
     throw Error('INVALID_PATTERN');

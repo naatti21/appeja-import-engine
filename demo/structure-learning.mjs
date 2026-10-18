@@ -9,7 +9,7 @@ try {const data=localStorage.getItem(STORAGE);if(data){if(data.length>16384)thro
 catch {$('message').textContent='Tallennetut rakenteet eivät ole käytettävissä. Jatketaan ilman niitä.';}
 const say=text=>{$('message').textContent=text;};
 const reasons={UNCERTAIN_SOURCE_OR_LAYOUT:'Teksti tai kortin rajat ovat epävarmoja.',IDENTITY_OR_QUANTITY_REQUIRED:'Tunniste tai yksiselitteinen kappalemäärä puuttuu.',OCR_IDENTITY_DISAGREEMENT:'Lukukerrat antavat eri instrumenttitunnisteen.',LEARNING_CONFLICT:'Aiemmat opetukset ovat ristiriidassa.',PROVISIONAL_STRUCTURE:'Rakenne tarvitsee vielä toisen vahvistetun aineiston.',AMBIGUOUS_NAME:'Instrumentin nimelle on useita mahdollisia lähderivejä.',AMBIGUOUS_CURRENCY:'Kortissa on useita valuuttatietoja.'};
-const explain=reason=>reasons[reason]??(reason?'Kortti vaatii lähteen tarkistuksen.':'Lähde-ehdotus; tarkista ennen opetusta.');
+const explain=reason=>reason==='LEARNED_NAME_CONFLICT'?'Nimi jäi epävarmaksi: lähteen nimikenttä on ristiriidassa opitun rivipaikan kanssa. Korjaa vain nimi tämän tuonnin lähdekuvasta.':reason==='AMBIGUOUS_NAME'?'Nimi jäi epävarmaksi: tekstiriveistä ei voi erottaa nimeä ja väliotsikkoa. Korjaa vain nimi tämän tuonnin lähdekuvasta.':reasons[reason]??(reason?'Kortti vaatii lähteen tarkistuksen.':'Lähde-ehdotus; tarkista ennen opetusta.');
 function clear(){token++;session=null;source=null;$('correctionLine').replaceChildren();$('correctionValue').value='';$('originalText').textContent='';$('correctionStatus').textContent='';$('sourceCrop').width=0;parsed=null;key=null;expanded=false;$('image').value='';$('result').hidden=true;$('rows').replaceChildren();$('reviewState').textContent='';$('learningState').textContent='';$('card').replaceChildren();for(const id of ['entity','identity','measure'])$(id).replaceChildren();if(url)URL.revokeObjectURL(url);url=null;$('preview').removeAttribute('src');}
 function change(action){
  const before=learner.export();
@@ -67,7 +67,7 @@ $('teach').onclick=()=>{
  const values=['entity','identity','measure'];if(values.some(k=>$(k).value==='')){say('Valitse kaikki kolme lähderiviä.');return;}
  const binding=Object.fromEntries(values.map(k=>[k,Number($(k).value)]));
  const state=change(()=>learner.confirm({pattern:c.pattern,binding,documentKey:key,confirmed:true}));
- $('learningState').textContent=state==='active'?'Rakenne vahvistettu kahdesta aineistosta. Ehdotukset vaativat edelleen tarkistuksen.':state==='provisional'?'Alustava rakenne. Tarvitaan toinen eri aineisto ja oma vahvistuksesi.':state==='conflict'?'Ristiriitaiset opetukset. Rakenteen käyttö estetty.':'';
+ $('learningState').textContent=state==='active'?'Rakennevalinnat tallennettu kahdesta aineistosta. Ne eivät todista tekstirivin merkitystä: epäselvä nimi tarvitsee tämän tuonnin lähdekorjauksen.':state==='provisional'?'Alustava rakenne. Tarvitaan toinen eri aineisto ja oma vahvistuksesi.':state==='conflict'?'Ristiriitaiset opetukset. Rakenteen käyttö estetty.':'';
 };
 $('more').onclick=()=>{expanded=true;render();};
 $('review').onclick=()=>{$('reviewState').textContent=`${expanded?parsed.rows.length:Math.min(3,parsed.rows.length)} näkyvää lähde-ehdotusta tarkistettu tässä näkymässä. Puuttuvat tiedot estävät tuonnin. Ei tallennusta eikä automaattista oppimista.`;};
@@ -87,7 +87,7 @@ async function showCorrectionSource(){
  const current=token, index=Number($('correctionLine').value), line=session?.lines()[index];
  if(!line)return;
  $('originalText').textContent='A: Alkuperäinen havainto: '+line.text;
- $('correctionValue').value=line.correction?.value??(line.role==='measure'?String(line.value??''):line.text);
+ $('correctionValue').value=line.correction?.value??(line.role==='measure'?String(line.value??''):line.nameLabel?line.value:line.text);
  $('correctionStatus').textContent=line.correction?'Käyttäjän korjaus: '+line.correction.value:'';
  if(line.correction)$('correctionField').value=line.correction.field;
  else $('correctionField').value=line.role==='identity'?'identity':line.role==='measure'?'quantity':'name';

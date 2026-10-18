@@ -1,5 +1,6 @@
 /** Narrow, source-bound single-column card adapter. No security lookup or portfolio writes. */
 import {parseNumber} from './numbers.mjs';
+import {assessSourceBinding} from './structure-learning.mjs';
 const norm = s => s.normalize('NFKC').trim().replace(/\s+/g, ' ');
 const numeric = s => {const n = parseNumber(s); return n.status === 'valid' && n.value > 0 ? n.value : null;};
 function isinValid(s) {
@@ -15,6 +16,10 @@ function roleOf(text) {
   // Fold accents ONLY for closed field labels; never for names or identifiers.
   const labels = text.normalize('NFD').replace(/\p{M}/gu, '');
   let m;
+  // Explicit source field semantics; not a company/heading vocabulary.
+  if ((m=/^(?:Instrument name|Security name|Arvopaperin nimi|Instrumentets namn)\s*:\s*(.+)$/i.exec(text)))
+    return /\p{L}/u.test(m[1]) && m[1].length<=100
+      ? {role:'text',value:m[1],nameLabel:true} : {role:'unknown'};
   if ((m = /^ISIN\s*:?\s*([A-Z0-9]+)$/i.exec(text)))
     return isinValid(m[1].toUpperCase()) ? {role:'identity', value:{isin:m[1].toUpperCase()}} : {role:'unknown'};
   if ((m = /^(?:Ticker|Symbol)\s*:?\s*([A-Z0-9][A-Z0-9.\/-]{0,14})\s+(?:MIC|Exchange|Pörssi|Börs)\s*:?\s*([A-Z0-9]{4})$/.exec(text)))
@@ -47,7 +52,7 @@ export function mobileSourceLines(source, confirmedCorrections=new Map()) {
     seen.add(o.id);
     return {...b, raw:norm(o.raw), id:o.id, page:o.source.page,
       weak:o.source.format === 'image-ocr' && !correction ? !(o.ocrConfidence >= 85) : false,
-      corrected:!!correction, correctionField:correction?.field, ids:correction?.sourceIds??[o.id],
+      corrected:!!correction, correctionField:correction?.field, sourceNameLabel:correction?.sourceNameLabel, ids:correction?.sourceIds??[o.id],
       identityDisagreement:o.identityDisagreement === true};
   }).filter(o => o.raw);
   words.sort((a,b) => a.page-b.page || a.y0-b.y0 || a.x0-b.x0);
@@ -62,7 +67,8 @@ export function mobileSourceLines(source, confirmedCorrections=new Map()) {
     l.words.sort((a,b) => a.x0-b.x0);
     const text = norm(l.words.map(w => w.raw).join(' '));
     return {page:l.page, y0:l.y0,y1:l.y1,text,ids:l.words.flatMap(w=>w.ids),corrected:l.words.some(w=>w.corrected),
-      weak:l.words.some(w=>w.weak), identityDisagreement:l.words.some(w=>w.identityDisagreement), split:l.words.some((w,i)=>i>0 && w.x0-l.words[i-1].x1 > 0.22), ...(l.words.length===1&&l.words[0].correctionField==='name'?{role:'text',value:text}:roleOf(text))};
+      nameConfirmed:l.words.length===1&&l.words[0].correctionField==='name',
+      weak:l.words.some(w=>w.weak), identityDisagreement:l.words.some(w=>w.identityDisagreement), split:l.words.some((w,i)=>i>0 && w.x0-l.words[i-1].x1 > 0.22), ...(l.words.length===1&&l.words[0].correctionField==='name'?{role:'text',value:text,nameLabel:!!l.words[0].sourceNameLabel}:roleOf(text))};
   });
 }
 export function resolveMobileCards(source, learner, confirmedCorrections=new Map()) {
@@ -93,7 +99,7 @@ export function resolveMobileCards(source, learner, confirmedCorrections=new Map
     const pattern=group.map(l=>l.role);
     const card={id,certainty:'observed',pattern,lines:group,account:scopes.length===1?scopes[0]:account, reason:null};
     cards.push(card);
-    const reject=reason=>{card.reason=reason;unresolved.push({id,reason});};
+    const reject=(reason,field=null)=>{card.reason=reason;card.uncertainField=field;unresolved.push({id,reason,...(field?{field,sourceIds:group.filter(l=>l.role==='text').flatMap(l=>l.ids)}:{})});};
     if(group.some(l=>l.identityDisagreement)){reject('OCR_IDENTITY_DISAGREEMENT');continue;}
     if (pattern.length>16 || group.some(l=>l.weak || l.split || l.role==='unknown') || scopes.length>1) {reject('UNCERTAIN_SOURCE_OR_LAYOUT');continue;}
     const identities=group.map((l,i)=>l.role==='identity'?i:-1).filter(i=>i>=0);
@@ -101,11 +107,23 @@ export function resolveMobileCards(source, learner, confirmedCorrections=new Map
     const names=group.map((l,i)=>l.role==='text'?i:-1).filter(i=>i>=0);
     if (identities.length!==1 || quantities.length!==1 || group[quantities[0]].value===null || !names.length) {reject('IDENTITY_OR_QUANTITY_REQUIRED');continue;}
     const profile=learner?.lookup(pattern);
-    if (profile?.state==='conflict') {reject('LEARNING_CONFLICT');continue;}
-    let binding=names.length===1?{entity:names[0],identity:identities[0],measure:quantities[0]}:null;
-    if(profile?.state==='active') binding=profile.binding;
+    if (profile?.state==='conflict') {reject('LEARNING_CONFLICT','name');continue;}
+    // A role sequence cannot distinguish two arbitrary text lines after a swap.
+    // Derive semantics before consulting learned positions. Even a sole free-text
+    // line could be a heading above a missing name: cardinality is not semantics.
+    const labelled=names.filter(i=>group[i].nameLabel), confirmed=names.filter(i=>group[i].nameConfirmed);
+    let entityIndex=null;
+    if(labelled.length<=1 && confirmed.length<=1) {
+      if(confirmed.length===1 && (!labelled.length || labelled[0]===confirmed[0])) entityIndex=confirmed[0];
+      else if(!confirmed.length && labelled.length===1) entityIndex=labelled[0];
+    }
+    const binding=entityIndex===null?null:{entity:entityIndex,identity:identities[0],measure:quantities[0]};
     card.teachable=true;
-    if (!binding) {reject(profile?'PROVISIONAL_STRUCTURE':'AMBIGUOUS_NAME');continue;}
+    // A per-document name correction may bypass a stale positional preference,
+    // but never mutates/reactivates the profile or overrides a quarantined one.
+    const manualName=entityIndex!==null && group[entityIndex].nameConfirmed;
+    const assessment=assessSourceBinding(pattern,manualName?null:profile,binding);
+    if (!assessment.usable) {reject(assessment.reason,assessment.field);continue;}
     card.binding=binding;
     const entity=group[binding.entity], identity=group[binding.identity], quantity=group[binding.measure];
     // Recheck source semantics even for a learned map. Profiles cannot invent fields.
@@ -115,7 +133,8 @@ export function resolveMobileCards(source, learner, confirmedCorrections=new Map
     rows.push({id, fields:{name:field(entity.value,entity),identity:field(identity.value,identity),quantity:field(quantity.value,quantity),
       account:card.account?field(card.account.value,card.account):{value:null,status:'missing',sourceIds:[]},
       currency:currencies.length?field(currencies[0].value,currencies[0]):{value:null,status:'missing',sourceIds:[]},
-      buyPrice:{value:null,status:'missing',sourceIds:[]}}, learned:profile?.state==='active',
+      buyPrice:{value:null,status:'missing',sourceIds:[]}}, learned:profile?.state==='active'&&!manualName,
+      nameEvidence:manualName?'current-document-confirmation':'source-label',
       certainty:'candidate',instrumentVerification:{status:'not-verified'},
       warnings:['SOURCE_IDENTITY_NOT_MARKET_VERIFIED','PURCHASE_PRICE_NOT_RESOLVED'], canPersist:false});
   }

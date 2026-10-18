@@ -19,7 +19,7 @@ export function createMobileReviewSession(source) {
       projected.observations=projected.observations.filter(o=>!ids.has(o.id)||o.id===first);
       const o=projected.observations.find(o=>o.id===first);
       o.raw=edit.projectedText;o.source.box=box;o.identityDisagreement=false;
-      corrections.set(first,{sourceIds:[...line.ids],field:edit.field});
+      corrections.set(first,{sourceIds:[...line.ids],field:edit.field,sourceNameLabel:!!line.nameLabel});
     }
     return {source:projected,corrections};
   }
