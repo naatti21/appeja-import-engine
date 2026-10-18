@@ -15,7 +15,7 @@ const TOTAL=/^(?:arvo yhteensä|arvo yhteensa|total value|värde totalt|varde to
 const EXCLUDE=/^(?:sijoitukset|sijoita|säästä ja sijoita|saasta ja sijoita|portfolio|overview|muutos|kurssi|omistus|arvonmuutos|arvonmuutos 1 päivä|arvonmuutos 1 paiva|päivän muutos|paivan muutos|suodata tuloksia|filter results|arvo yhteensä|arvo yhteensa|käytettävissä oleva saldo|kaytettavissa oleva saldo|available balance|total value|säästötilit|saastotilit|katsaus|maksa|palvelumme|tuki|more)$/i;
 const moneyRegex=/(-?\d(?:[\d \u00a0\u202f]*\d)?[,.]\d{2})\s*(EUR|USD|SEK|GBP|€|\$|£)(?!\p{L})/iu;
 const qtyRegex=/(?:^|\s)(\d[\d., ]*)\s*(kpl|pcs|st)\b/i;
-const asCurrency=s=>({€:'EUR','$':'USD','£':'GBP'})[s]??s.toUpperCase();
+const asCurrency=s=>({'€':'EUR','$':'USD','£':'GBP'})[s]??s.toUpperCase();
 const strip=s=>s.normalize('NFKC').replace(/\s+/gu,' ').trim();
 function parseMoney(text) {
   const m=moneyRegex.exec(strip(text));
