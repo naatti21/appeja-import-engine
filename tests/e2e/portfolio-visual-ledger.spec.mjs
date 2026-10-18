@@ -50,7 +50,8 @@ for(const crop of [false,true])test('genuine OCR + visual holdings on '+(crop?'c
  const wrong=got.candidates.length-correct;
  console.log('FULLSCREEN_OCR_PORTFOLIO '+JSON.stringify({crop,
    correct,wrong,total:fixture.oracle.length,withheld:fixture.oracle.length-got.candidates.length,
-   reconciliation:got.reconciliation,externalRequests:outside.length}));
+   reconciliation:got.reconciliation,externalRequests:outside.length,
+   actual:got.candidates.map(c=>({kind:c.kind,name:c.name,qty:c.qty,cents:c.cents}))}));
  expect(outside).toEqual([]);
  expect(got.canPersist).toBe(false);
  expect(wrong).toBe(0);
