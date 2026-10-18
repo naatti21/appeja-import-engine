@@ -1,0 +1,32 @@
+name: Issue50 financial parsing and reconciliation safety
+on:
+  pull_request:
+    paths:
+      - 'src/portfolio-visual-evidence.mjs'
+      - 'src/portfolio-financial-evidence.mjs'
+      - 'tests/portfolio-financial-safety.test.mjs'
+      - '.github/workflows/issue50-financial-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  safe-financial-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: EU money, quantity ambiguity, and scoped reconciliation Node QA
+        run: node --test tests/portfolio-financial-safety.test.mjs tests/portfolio-visual-evidence.test.mjs tests/portfolio-inline-ledger.test.mjs
+      - run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+      - run: node scripts/prepare-local-ocr.mjs --swedish
+      - run: npx playwright install --with-deps chromium
+      - name: Real synthetic pixels through local Tesseract
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test portfolio-visual-ledger.spec.mjs portfolio-inline-ledger.spec.mjs --reporter=list
