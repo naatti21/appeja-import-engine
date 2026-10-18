@@ -7,7 +7,8 @@ import {parseNumber} from './numbers.mjs';
 const NORMALIZE=s=>String(s??'').normalize('NFKC').replace(/\s+/gu,' ').trim();
 const MONEY=/(?<![\p{L}\p{N}.,+\-−])(\d{1,3}(?:[., ]\d{3})+|\d+)[,.](\d{2})\s*(EUR|USD|SEK|GBP|€|\$|£)(?![\p{L}\p{N}.,])/giu;
 const QUANTITY=/(?<![\p{L}\p{N}.,])(\d+(?:[., ]\d+)*)\s*(kpl|pcs|st)\b/giu;
-const CURRENCY={'€':'EUR','
+const CURRENCY={'€':'EUR','£':'GBP'};
+const asCurrency=s=>s===String.fromCharCode(36)?'USD':CURRENCY[s]??s.toUpperCase();
 const field=(m,kind,text)=>{
  const amount=kind==='money'?m[0].replace(/\s*(EUR|USD|SEK|GBP|€|\$|£)$/iu,'').trim():m[1];
  const parsed=parseNumber(amount);
@@ -16,7 +17,7 @@ const field=(m,kind,text)=>{
  if(kind==='qty')return {match:m,value:parsed.value};
  const cents=Math.round(parsed.value*100);
  if(!Number.isSafeInteger(cents)||Math.abs(cents-parsed.value*100)>1e-7)return null;
- return {match:m,value:{cents,currency:CURRENCY[m[3]]??m[3].toUpperCase()}};
+ return {match:m,value:{cents,currency:asCurrency(m[3])}};
 };
 export function financialMoneyMatches(text) {
  const s=NORMALIZE(text);
