@@ -58,12 +58,12 @@ test('matching asset name on two exchanges needs instrument-level user choice',a
   ]})});
  assert.equal(r.rows[0].status,'ambiguous');
  assert.equal(r.rows[0].matches.length,2);
- const choice=selectInstrumentListing(r.rows[0],'QV.XN');
+ const choice=selectInstrumentListing(r.rows[0],{symbol:'QV.XN',exchange:'XNAS'});
  assert.equal(choice.status,'user-selected-listing');
  assert.equal(choice.selection.exchange,'XNAS');
  assert.equal(choice.marketVerified,false);
  assert.equal(choice.canPersist,false);
- assert.equal(selectInstrumentListing(r.rows[0],'UNLISTED').status,'selection-rejected');
+ assert.equal(selectInstrumentListing(r.rows[0],{symbol:'UNLISTED',exchange:'XNAS'}).status,'selection-rejected');
 });
 test('broker valuation EUR does not falsely imply that US listing trades in EUR',async()=>{
  const r=await suggestInstrumentListings(extract(),{lookupMode:'local',
@@ -117,4 +117,18 @@ test('no automatic proposal from invalid source candidate or invalid market list
  assert.equal(r.rows.length,3);
  assert.equal(r.issues.length,2);
  assert.ok(r.rows.every(a=>a.status==='unavailable'));
+});
+
+test('the same ticker on multiple exchanges cannot be selected without a venue',async()=>{
+ const r=await suggestInstrumentListings(extract(),{lookupMode:'local',
+  resolver:async ({name})=>({schema_version:'instrument-resolver-v1',query:name,candidates:[
+    listing('DUP',name,'EQUITY','XHEL'),listing('DUP',name,'EQUITY','XNAS')
+  ]})});
+ assert.equal(r.rows[0].status,'ambiguous');
+ assert.equal(selectInstrumentListing(r.rows[0],{symbol:'DUP',exchange:''}).status,'selection-rejected');
+ const c=selectInstrumentListing(r.rows[0],{symbol:'DUP',exchange:'XNAS'});
+ assert.equal(c.status,'user-selected-listing');
+ assert.equal(c.selection.exchange,'XNAS');
+ assert.equal(c.marketVerified,false);
+ assert.equal(c.canPersist,false);
 });
