@@ -11,7 +11,7 @@ const TYPES={osakkeet:'stock',aktier:'stock',stocks:'stock',shares:'stock',
   rahastot:'fund',fonder:'fund',funds:'fund'};
 const STOPS=/^(?:säästötilit|saastotilit|savings accounts|sparkonton|accounts|tilit)$/i;
 const CASH=/^(?:käytettävissä oleva saldo|kaytettavissa oleva saldo|available balance|disponibelt saldo)$/i;
-const TOTAL=/^(?:arvo yhteensä|arvo yhteensa|total value|värde totalt|varde totalt)\b/i;
+const TOTAL=/^(?:arvo yhteensä|arvo yhteensa|total value|värde totalt|varde totalt)(?=\s|$)/i;
 const EXCLUDE=/^(?:sijoitukset|sijoita|säästä ja sijoita|saasta ja sijoita|portfolio|overview|muutos|kurssi|omistus|arvonmuutos|arvonmuutos 1 päivä|arvonmuutos 1 paiva|päivän muutos|paivan muutos|suodata tuloksia|filter results|arvo yhteensä|arvo yhteensa|käytettävissä oleva saldo|kaytettavissa oleva saldo|available balance|total value|säästötilit|saastotilit|katsaus|maksa|palvelumme|tuki|more)$/i;
 const moneyRegex=/(-?\d(?:[\d \u00a0\u202f]*\d)?[,.]\d{2})\s*(EUR|USD|SEK|GBP|€|\$|£)(?!\p{L})/iu;
 const qtyRegex=/(?:^|\s)(\d[\d., ]*)\s*(kpl|pcs|st)\b/i;
