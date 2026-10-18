@@ -84,7 +84,7 @@ function corroborateNamesAcrossCards(groups) {
   for(let index=0;index<groups.length;index++){
     const lines=groups[index],names=lines.map((line,i)=>line.role==='text'?i:-1).filter(i=>i>=0);
     if(names.length!==2 || lines.length>16 ||
-      lines.some(l=>l.weak||l.split||l.identityDisagreement||l.role==='unknown') ||
+      lines.some(l=>l.split||l.role==='unknown'||(l.role==='text'&&l.weak)) ||
       lines.filter(l=>l.role==='identity').length!==1 ||
       lines.filter(l=>l.role==='measure'&&Number.isFinite(l.value)&&l.value>0).length!==1 ||
       names.some(i=>lines[i].nameLabel||lines[i].nameConfirmed))continue;
@@ -102,6 +102,8 @@ function corroborateNamesAcrossCards(groups) {
     const varying=names.filter((i,j)=>distinct[j]===batch.length);
     const shared=names.filter((i,j)=>distinct[j]===1);
     if(varying.length!==1||shared.length!==1)continue;
+    // A third card may have weak OCR on its identifier: it can establish a
+    // repeated heading pattern, but the resolver still rejects its own row.
     // This provides source-linked B-candidate evidence, not verified identity.
     const nameIndex=varying[0];
     for(const b of batch)candidates.set(b.index,{index:nameIndex,count:batch.length});
@@ -157,7 +159,7 @@ export function resolveMobileCards(source, learner, confirmedCorrections=new Map
         entityIndex=confirmed[0]; nameEvidence='current-document-confirmation';
       } else if(!confirmed.length && labelled.length===1) {
         entityIndex=labelled[0]; nameEvidence='source-label';
-      } else if(!confirmed.length&&!labelled.length&&corroboratedNames.has(groupIndex)) {
+      } else if(!confirmed.length&&!labelled.length&&profile?.state==='active'&&corroboratedNames.has(groupIndex)) {
         entityIndex=corroboratedNames.get(groupIndex).index;
         nameEvidence='current-document-cross-card-contrast';
       }
