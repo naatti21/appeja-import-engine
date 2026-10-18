@@ -264,13 +264,24 @@ export function extractVisualPortfolioCorroborated(primarySource, witnessSource)
     const words=source.observations.filter(o=>ids.has(o.id));
     return words.length?words.reduce((sum,o)=>sum+(o.source.box.y0+o.source.box.y1)/2,0)/words.length:null;
   }
-  function confidentlyObserved(source,field) {
-    const ids=field?.sourceIds??[];
-    const byId=new Map(source.observations.map(o=>[o.id,o]));
-    return ids.length>0&&ids.every(id=>{
-      const o=byId.get(id);
-      return o && (o.source.format!=='image-ocr'||o.ocrConfidence>=75);
-    });
+  function tokenSupportedAcrossReads(a,b) {
+    const idsA=a?.sourceIds??[],idsB=b?.sourceIds??[];
+    const byIdA=new Map(primarySource.observations.map(o=>[o.id,o]));
+    const byIdB=new Map(witnessSource.observations.map(o=>[o.id,o]));
+    if(!idsA.length||idsA.length!==idsB.length)return false;
+    for(let i=0;i<idsA.length;i++) {
+      const x=byIdA.get(idsA[i]),y=byIdB.get(idsB[i]);
+      if(!x||!y||strip(x.raw)!==strip(y.raw)||
+         x.source.page!==y.source.page)return false;
+      const xb=x.source.box,yb=y.source.box;
+      const cx=(xb.x0+xb.x1)/2,cy=(xb.y0+xb.y1)/2;
+      if(Math.abs(cx-(yb.x0+yb.x1)/2)>.05||
+         Math.abs(cy-(yb.y0+yb.y1)/2)>.03)return false;
+      const strongX=x.source.format!=='image-ocr'||x.ocrConfidence>=75;
+      const strongY=y.source.format!=='image-ocr'||y.ocrConfidence>=75;
+      if(!strongX&&!strongY)return false;
+    }
+    return true;
   }
   function fieldAgreement(p,w) {
     for(const key of ['name','quantity','marketValue']) {
@@ -279,10 +290,10 @@ export function extractVisualPortfolioCorroborated(primarySource, witnessSource)
       const valueA=key==='marketValue'?JSON.stringify(a.value):a.value;
       const valueB=key==='marketValue'?JSON.stringify(b.value):b.value;
       if(valueA!==valueB)return false;
-      // No consensus confidence can arise from two equally poor readings.
-      if(a.value!==null &&
-        !confidentlyObserved(primarySource,a)&&!confidentlyObserved(witnessSource,b))
-        return false;
+      // Each source word needs matching text, near-identical source geometry,
+      // and at least ONE high-confidence reading. Complementary model
+      // strengths may corroborate a field; two weak tokens never do.
+      if(a.value!==null && !tokenSupportedAcrossReads(a,b))return false;
     }
     return true;
   }
@@ -301,7 +312,7 @@ export function extractVisualPortfolioCorroborated(primarySource, witnessSource)
       continue;
     }
     candidates.push({...item,ocrNameAgreement:'two-local-language-reads',
-      confidenceBasis:'exact-fields-two-local-reads-at-least-one-strong-per-field'});
+      confidenceBasis:'exact-source-tokens-two-local-reads-at-least-one-strong-per-token'});
   }
   return {...primary,candidates,unresolved,
     reconciliation:reconcile(candidates,primary.summary,unresolved),canPersist:false};
