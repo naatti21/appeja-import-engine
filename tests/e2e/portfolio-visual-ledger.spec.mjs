@@ -43,7 +43,7 @@ async function run(page,fixture) {
         return {schema_version:'instrument-resolver-v1',query:name,candidates};
       }});
     const ambiguous=listings.rows.find(r=>r.status==='ambiguous');
-    const choice=ambiguous?selectInstrumentListing(ambiguous,ambiguous.matches[0].symbol):null;
+    const choice=ambiguous?selectInstrumentListing(ambiguous,{symbol:ambiguous.matches[0].symbol,exchange:ambiguous.matches[0].exchange}):null;
     return {
       candidates:result.candidates.map(c=>({kind:c.kind,name:c.fields.name.value,
         qty:c.fields.quantity.value,cents:c.fields.marketValue.value?.cents??null,
