@@ -27,7 +27,7 @@ function safeCandidate(raw) {
     s=>s!==undefined&&(typeof s!=='string'||s.length>100||/[\u0000-\u001f\u007f]/u.test(s))))return null;
   // A listing without venue information is not suitable for selecting a
   // specific instrument. One name may exist on several stock exchanges.
-  if(!clean(exchange)&&!clean(exchange_name)&&!clean(full_exchange_name))return null;
+  if(!clean(exchange))return null;
   return Object.freeze({symbol,shortname:clean(shortname),longname:clean(longname),
     exchange:clean(exchange),exchangeDisplay:clean(exchange_display),
     quoteType:quote_type.toUpperCase(),currency:clean(currency).toUpperCase(),
