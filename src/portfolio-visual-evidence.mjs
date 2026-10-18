@@ -5,7 +5,7 @@
  * ticker/ISIN and never verifies market identity, writes holdings or learns
  * names. All values remain only in the caller's in-memory result.
  */
-import {parseNumber} from './numbers.mjs';
+import {uniqueMoney,uniqueQuantity,financialQuantityMatches} from './portfolio-financial-evidence.mjs';
 
 const TYPES={osakkeet:'stock',aktier:'stock',stocks:'stock',shares:'stock',
   rahastot:'fund',fonder:'fund',funds:'fund'};
@@ -13,24 +13,11 @@ const STOPS=/^(?:säästötilit|saastotilit|savings accounts|sparkonton|accounts
 const CASH=/^(?:käytettävissä oleva saldo|kaytettavissa oleva saldo|available balance|disponibelt saldo)$/i;
 const TOTAL=/^(?:arvo yhteensä|arvo yhteensa|total value|värde totalt|varde totalt)(?=\s|$)/i;
 const EXCLUDE=/^(?:sijoitukset|sijoita|säästä ja sijoita|saasta ja sijoita|portfolio|overview|muutos|kurssi|omistus|arvonmuutos|arvonmuutos 1 päivä|arvonmuutos 1 paiva|päivän muutos|paivan muutos|suodata tuloksia|filter results|arvo yhteensä|arvo yhteensa|käytettävissä oleva saldo|kaytettavissa oleva saldo|available balance|total value|säästötilit|saastotilit|katsaus|maksa|palvelumme|tuki|more)$/i;
-const moneyRegex=/(-?\d(?:[\d \u00a0\u202f]*\d)?[,.]\d{2})\s*(EUR|USD|SEK|GBP|€|\$|£)(?!\p{L})/iu;
-const qtyRegex=/(?:^|\s)(\d[\d., ]*)\s*(kpl|pcs|st)\b/i;
 const asCurrency=s=>({'€':'EUR','$':'USD','£':'GBP'})[s]??s.toUpperCase();
 const strip=s=>s.normalize('NFKC').replace(/\s+/gu,' ').trim();
 function parseMoney(text) {
-  const m=moneyRegex.exec(strip(text));
-  if(!m)return null;
-  const p=parseNumber(m[1]);
-  if(p.status!=='valid'||p.value<0)return null;
-  const cents=Math.round(p.value*100);
-  if(Math.abs(p.value*100-cents)>1e-7||!Number.isSafeInteger(cents))return null;
-  return {cents,currency:asCurrency(m[2])};
+  return uniqueMoney(text)?.value??null;
 }
-/**
- * A compact holding row may contain both value and quantity on one line.
- * Accept exactly one currency amount and preserve its specific source words,
- * never the quantity words. If two amounts are present, abstain.
- */
 function rightSourceIdsForMatch(line,match) {
   if(!match)return [];
   let at=0;
@@ -43,17 +30,13 @@ function rightSourceIdsForMatch(line,match) {
   return [...new Set(ids)];
 }
 function uniqueRightMoney(line) {
-  const match=moneyRegex.exec(line.right);
-  if(!match||moneyRegex.test(line.right.slice(match.index+match[0].length)))return null;
-  const value=parseMoney(match[0]);
-  if(!value)return null;
-  const ids=rightSourceIdsForMatch(line,match);
-  return ids.length?{value,ids}:null;
+  const candidate=uniqueMoney(line.right);
+  if(!candidate)return null;
+  const ids=rightSourceIdsForMatch(line,candidate.match);
+  return ids.length?{value:candidate.value,ids}:null;
 }
 function parseQty(text) {
-  const m=qtyRegex.exec(strip(text));
-  if(!m)return null;
-  const p=parseNumber(m[1]);return p.status==='valid'&&p.value>0?p.value:null;
+  return uniqueQuantity(text)?.value??null;
 }
 function validatedWords(source) {
   if(!source||!Array.isArray(source.observations)||source.observations.length>3000||
@@ -137,25 +120,46 @@ function sourceField(value,ids) {
   return {value,status:'candidate',sourceIds:[...new Set(ids)]};
 }
 function findLedgerSummary(lines) {
-  let total=null,cash=null,sectionOpen=false;
-  for(let i=0;i<lines.length;i++){
+  // Financial scope is defined by an explicitly observed portfolio heading,
+  // never by the proximity of unrelated amounts. Cropped images simply
+  // cannot be arithmetically reconciled.
+  const totals=[],cashes=[];
+  let scopeOpen=false,scopeClosed=false,sectionCount=0;
+  for(let i=0;i<lines.length;i++) {
     const l=lines[i],t=l.text;
-    if(/^(?:sijoitukset|investments|investeringar)$/i.test(t))sectionOpen=true;
-    if(STOPS.test(t)&&sectionOpen)break;
-    const type=TOTAL.test(t)?'total':CASH.test(t)?'cash':null;
-    if(!type)continue;
-    const terms=[l,...lines.slice(i+1,i+3).filter(x=>
-      x.page===l.page&&x.cy-l.cy<.05&&x.cy>l.cy)];
-    const priced=terms.find(x=>parseMoney(x.text)&&!x.weak);
+    if(/^(?:sijoitukset|investments|investeringar)$/iu.test(t)) {
+      sectionCount++;scopeOpen=true;
+      continue;
+    }
+    if(STOPS.test(t) && scopeOpen){scopeClosed=true;scopeOpen=false;continue;}
+    if(!scopeOpen||scopeClosed)continue;
+    const kind=TOTAL.test(t)?'total':CASH.test(t)?'cash':null;
+    if(!kind)continue;
+    let priced=null, observed=null;
+    const own=uniqueMoney(l.text);
+    if(own&&!l.weak) {
+      priced=own.value;observed=l;
+    } else {
+      const next=lines[i+1];
+      const pure=next&&uniqueMoney(next.text);
+      if(next&&next.page===l.page&&next.cy>l.cy&&next.cy-l.cy<.05&&
+        pure&&!next.weak&&strip(next.text)===strip(pure.match[0])) {
+        priced=pure.value;observed=next;
+      }
+    }
     if(!priced)continue;
-    const found=parseMoney(priced.text);
-    const field={...found,sourceIds:[...new Set([...l.ids,...priced.ids])]};
-    if(type==='total')total=field;else cash=field;
+    const value={...priced,sourceIds:[...new Set([...l.ids,...observed.ids])]};
+    if(kind==='total')totals.push(value);else cashes.push(value);
   }
-  return {total,cash};
+  return {
+    total:totals.length===1?totals[0]:null,
+    cash:cashes.length===1?cashes[0]:null,
+    ambiguous:sectionCount>1||totals.length>1||cashes.length>1
+  };
 }
 function reconcile(candidates,summary,unresolved) {
   const result={status:'not-evaluable',reason:'MISSING_INDEPENDENT_TOTAL_OR_CASH',canPersist:false};
+  if(summary.ambiguous)return {...result,reason:'AMBIGUOUS_SUMMARY'};
   if(!summary.total||!summary.cash)return result;
   if(summary.total.currency!==summary.cash.currency)return {...result,reason:'MIXED_CURRENCIES'};
   if(!candidates.length||unresolved.length||candidates.some(c=>!c.fields.marketValue.value))
@@ -201,11 +205,16 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
     // amount without quantity must never become a holding.
     const right=l.words.filter(w=>l.rightIds.includes(w.id));
     const qtext=strip(right.map(w=>w.raw).join(' '));
+    const quantityMatches=financialQuantityMatches(qtext);
+    if(quantityMatches.length>1) {
+      unresolved.push({reason:'AMBIGUOUS_QUANTITY',sourceIds:l.rightIds});
+      lastQtyCy=l.cy;continue;
+    }
     const quantity=parseQty(qtext);
     if(quantity===null)continue;
-    const quantityIds=rightSourceIdsForMatch(l,qtyRegex.exec(qtext));
+    const quantityIds=rightSourceIdsForMatch(l,quantityMatches[0]?.match);
     if(!quantityIds.length)continue;
-    const quantityWords=right.filter(w=>qtyRegex.test(w.raw)||/\d/.test(w.raw));
+    const quantityWords=right.filter(w=>/\d/.test(w.raw));
     if(!quantityWords.length||(!crossReadOnly&&right.some(w=>quantityIds.includes(w.id)&&w.weak))){
       unresolved.push({reason:'UNCERTAIN_QUANTITY',sourceIds:l.rightIds});continue;
     }
@@ -213,7 +222,7 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
     const valueLines=lines.filter(p=>p.page===l.page&&p.cy>=l.cy-.055&&p.cy<=l.cy+.012 &&
       p.cy>lastQtyCy+.006&&p.right&&p.rightIds.length&&
       uniqueRightMoney(p)&&(crossReadOnly||p.words.filter(w=>uniqueRightMoney(p).ids.includes(w.id)).every(w=>!w.weak)));
-    const amountLine=valueLines.filter(p=>(p===l||!qtyRegex.test(p.right))&&
+    const amountLine=valueLines.filter(p=>(p===l||!financialQuantityMatches(p.right).length)&&
       !EXCLUDE.test(p.left)&&!/\b(?:arvonmuutos|päivän muutos|paivan muutos|day change)\b/iu.test(p.left))
       .sort((a,b)=>Math.abs(l.cy-a.cy)-Math.abs(l.cy-b.cy))[0];
     // If amount is unavailable, a source-linked name+quantity is still a
@@ -222,7 +231,7 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
     const eligible=lines.filter(p=>p.page===l.page&&p.cy>=Math.max(start,lastQtyCy+.006)&&
       p.cy<=l.cy+.018&&p.left&&p.leftIds.length&&
       !EXCLUDE.test(p.left)&&!Object.hasOwn(TYPES,p.left.toLowerCase())&&
-      !STOPS.test(p.left)&&!parseMoney(p.left)&&!qtyRegex.test(p.left)&&
+      !STOPS.test(p.left)&&!parseMoney(p.left)&&!financialQuantityMatches(p.left).length&&
       (crossReadOnly||p.words.filter(w=>p.leftIds.includes(w.id)).every(w=>!w.weak)));
     const parts=eligible.slice(-3);
     const name=strip(parts.map(p=>p.left).join(' '));
@@ -237,6 +246,19 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
         purchasePrice:{value:null,status:'missing',sourceIds:[]}},
       canPersist:false});
     lastQtyCy=l.cy;
+  }
+  // An unused source-visible valuation is a potential missed position.
+  // Arithmetic equality cannot prove completeness if such a value exists.
+  const used=new Set(candidates.flatMap(c=>c.fields.marketValue.sourceIds));
+  let inList=false;
+  for(const l of lines) {
+    const text=strip(l.text).toLowerCase();
+    if(Object.hasOwn(TYPES,text)){inList=true;continue;}
+    if(STOPS.test(text)){inList=false;continue;}
+    if(!inList||EXCLUDE.test(l.left)||/arvonmuutos|päivän muutos|paivan muutos|day change|%/iu.test(l.text))continue;
+    const money=uniqueRightMoney(l);
+    if(money && money.ids.some(id=>!used.has(id)))
+      unresolved.push({reason:'UNPAIRED_MARKET_VALUE',sourceIds:money.ids});
   }
   return {candidates,unresolved,summary,reconciliation:reconcile(candidates,summary,unresolved),
     requiresUserApproval:true,canPersist:false};
