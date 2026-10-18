@@ -115,11 +115,13 @@ export async function suggestInstrumentListings(extraction,{
  * A deliberate instrument-choice action, not a financial write. The selected
  * listing still needs explicit app-level save approval and source review.
  */
-export function selectInstrumentListing(suggestion, symbol){
+export function selectInstrumentListing(suggestion, choice){
   if(!suggestion||!['suggested','ambiguous'].includes(suggestion.status)||
-     !Array.isArray(suggestion.matches)||typeof symbol!=='string')
+     !Array.isArray(suggestion.matches)||!choice||
+     typeof choice.symbol!=='string'||typeof choice.exchange!=='string')
     return {status:'selection-rejected',canPersist:false};
-  const exact=suggestion.matches.filter(m=>m.symbol===symbol);
+  // Symbols are not globally unique. A user must choose the actual venue too.
+  const exact=suggestion.matches.filter(m=>m.symbol===choice.symbol&&m.exchange===choice.exchange);
   if(exact.length!==1)return {status:'selection-rejected',canPersist:false};
   return {status:'user-selected-listing',selection:{...exact[0]},kind:suggestion.kind,
     sourceIds:[...suggestion.sourceIds],marketVerified:false,canPersist:false};
