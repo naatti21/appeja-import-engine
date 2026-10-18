@@ -31,11 +31,8 @@ function parseMoney(text) {
  * Accept exactly one currency amount and preserve its specific source words,
  * never the quantity words. If two amounts are present, abstain.
  */
-function uniqueRightMoney(line) {
-  const match=moneyRegex.exec(line.right);
-  if(!match||moneyRegex.test(line.right.slice(match.index+match[0].length)))return null;
-  const value=parseMoney(match[0]);
-  if(!value)return null;
+function rightSourceIdsForMatch(line,match) {
+  if(!match)return [];
   let at=0;
   const ids=[];
   for(const word of line.words.filter(w=>line.rightIds.includes(w.id))) {
@@ -43,6 +40,14 @@ function uniqueRightMoney(line) {
     if(end>match.index && at<match.index+match[0].length)ids.push(word.id);
     at=end+1;
   }
+  return [...new Set(ids)];
+}
+function uniqueRightMoney(line) {
+  const match=moneyRegex.exec(line.right);
+  if(!match||moneyRegex.test(line.right.slice(match.index+match[0].length)))return null;
+  const value=parseMoney(match[0]);
+  if(!value)return null;
+  const ids=rightSourceIdsForMatch(line,match);
   return ids.length?{value,ids}:null;
 }
 function parseQty(text) {
@@ -198,6 +203,8 @@ export function extractVisualPortfolio(source) {
     const qtext=strip(right.map(w=>w.raw).join(' '));
     const quantity=parseQty(qtext);
     if(quantity===null)continue;
+    const quantityIds=rightSourceIdsForMatch(l,qtyRegex.exec(qtext));
+    if(!quantityIds.length)continue;
     const quantityWords=right.filter(w=>qtyRegex.test(w.raw)||/\d/.test(w.raw));
     if(!quantityWords.length||right.some(w=>w.weak)){
       unresolved.push({reason:'UNCERTAIN_QUANTITY',sourceIds:l.rightIds});continue;
@@ -225,7 +232,7 @@ export function extractVisualPortfolio(source) {
     const ids=[...new Set(parts.flatMap(p=>p.leftIds))];
     const amountEvidence=amountLine?uniqueRightMoney(amountLine):null;
     candidates.push({kind:active,certainty:'candidate',marketVerification:{status:'not-verified'},
-      fields:{name:sourceField(name,ids),quantity:sourceField(quantity,l.rightIds),
+      fields:{name:sourceField(name,ids),quantity:sourceField(quantity,quantityIds),
         marketValue:amountEvidence?sourceField(amountEvidence.value,amountEvidence.ids):{value:null,status:'missing',sourceIds:[]},
         purchasePrice:{value:null,status:'missing',sourceIds:[]}},
       canPersist:false});
