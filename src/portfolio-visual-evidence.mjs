@@ -179,7 +179,7 @@ function reconcile(candidates,summary,unresolved) {
  * Evidence grade is always B candidate. Real market verification (C) belongs
  * to a separate privacy-reviewed resolver and explicit user approval.
  */
-export function extractVisualPortfolio(source) {
+export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
   let lines;
   try{lines=makeLines(validatedWords(source));}
   catch{return {candidates:[],unresolved:[{reason:'INVALID_SOURCE'}],
@@ -206,13 +206,13 @@ export function extractVisualPortfolio(source) {
     const quantityIds=rightSourceIdsForMatch(l,qtyRegex.exec(qtext));
     if(!quantityIds.length)continue;
     const quantityWords=right.filter(w=>qtyRegex.test(w.raw)||/\d/.test(w.raw));
-    if(!quantityWords.length||right.some(w=>w.weak)){
+    if(!quantityWords.length||(!crossReadOnly&&right.some(w=>quantityIds.includes(w.id)&&w.weak))){
       unresolved.push({reason:'UNCERTAIN_QUANTITY',sourceIds:l.rightIds});continue;
     }
     // Per-row right hand value is above or aligned with the quantity.
     const valueLines=lines.filter(p=>p.page===l.page&&p.cy>=l.cy-.055&&p.cy<=l.cy+.012 &&
       p.cy>lastQtyCy+.006&&p.right&&p.rightIds.length&&
-      uniqueRightMoney(p)&&p.words.filter(w=>p.rightIds.includes(w.id)).every(w=>!w.weak));
+      uniqueRightMoney(p)&&(crossReadOnly||p.words.filter(w=>uniqueRightMoney(p).ids.includes(w.id)).every(w=>!w.weak)));
     const amountLine=valueLines.filter(p=>(p===l||!qtyRegex.test(p.right))&&
       !EXCLUDE.test(p.left)&&!/\b(?:arvonmuutos|päivän muutos|paivan muutos|day change)\b/iu.test(p.left))
       .sort((a,b)=>Math.abs(l.cy-a.cy)-Math.abs(l.cy-b.cy))[0];
@@ -223,7 +223,7 @@ export function extractVisualPortfolio(source) {
       p.cy<=l.cy+.018&&p.left&&p.leftIds.length&&
       !EXCLUDE.test(p.left)&&!Object.hasOwn(TYPES,p.left.toLowerCase())&&
       !STOPS.test(p.left)&&!parseMoney(p.left)&&!qtyRegex.test(p.left)&&
-      p.words.filter(w=>p.leftIds.includes(w.id)).every(w=>!w.weak));
+      (crossReadOnly||p.words.filter(w=>p.leftIds.includes(w.id)).every(w=>!w.weak)));
     const parts=eligible.slice(-3);
     const name=strip(parts.map(p=>p.left).join(' '));
     if(!name||name.length>140||parts.length>2||!/\p{L}/u.test(name)){
@@ -250,8 +250,10 @@ export function extractVisualPortfolio(source) {
  * Agreement between Tesseract language models is not market identity proof.
  */
 export function extractVisualPortfolioCorroborated(primarySource, witnessSource) {
-  const primary=extractVisualPortfolio(primarySource);
-  const witness=extractVisualPortfolio(witnessSource);
+  // Tentative low-confidence fields stay INTERNAL to this two-read gate.
+  // Never publish either pass independently when evidence is weak.
+  const primary=extractVisualPortfolio(primarySource,{crossReadOnly:true});
+  const witness=extractVisualPortfolio(witnessSource,{crossReadOnly:true});
   if(primary.unresolved.some(u=>u.reason==='INVALID_SOURCE')||
      witness.unresolved.some(u=>u.reason==='INVALID_SOURCE'))
     return {candidates:[],unresolved:[{reason:'INVALID_SOURCE'}],
@@ -262,6 +264,28 @@ export function extractVisualPortfolioCorroborated(primarySource, witnessSource)
     const words=source.observations.filter(o=>ids.has(o.id));
     return words.length?words.reduce((sum,o)=>sum+(o.source.box.y0+o.source.box.y1)/2,0)/words.length:null;
   }
+  function confidentlyObserved(source,field) {
+    const ids=field?.sourceIds??[];
+    const byId=new Map(source.observations.map(o=>[o.id,o]));
+    return ids.length>0&&ids.every(id=>{
+      const o=byId.get(id);
+      return o && (o.source.format!=='image-ocr'||o.ocrConfidence>=75);
+    });
+  }
+  function fieldAgreement(p,w) {
+    for(const key of ['name','quantity','marketValue']) {
+      const a=p.fields[key],b=w.fields[key];
+      if(!a||!b)return false;
+      const valueA=key==='marketValue'?JSON.stringify(a.value):a.value;
+      const valueB=key==='marketValue'?JSON.stringify(b.value):b.value;
+      if(valueA!==valueB)return false;
+      // No consensus confidence can arise from two equally poor readings.
+      if(a.value!==null &&
+        !confidentlyObserved(primarySource,a)&&!confidentlyObserved(witnessSource,b))
+        return false;
+    }
+    return true;
+  }
   const candidates=[],unresolved=[...primary.unresolved];
   for(const item of primary.candidates) {
     const py=rowY(primarySource,item),amount=item.fields.marketValue.value;
@@ -271,12 +295,13 @@ export function extractVisualPortfolioCorroborated(primarySource, witnessSource)
       ((amount===null&&other.fields.marketValue.value===null)||
        (amount!==null&&other.fields.marketValue.value?.cents===amount.cents&&
         other.fields.marketValue.value?.currency===amount.currency)));
-    if(matches.length!==1||
+    if(matches.length!==1||!fieldAgreement(item,matches[0])||
        strip(matches[0].fields.name.value)!==strip(item.fields.name.value)) {
       unresolved.push({reason:'OCR_NAME_DISAGREEMENT',sourceIds:item.fields.name.sourceIds});
       continue;
     }
-    candidates.push({...item,ocrNameAgreement:'two-local-language-reads'});
+    candidates.push({...item,ocrNameAgreement:'two-local-language-reads',
+      confidenceBasis:'exact-fields-two-local-reads-at-least-one-strong-per-field'});
   }
   return {...primary,candidates,unresolved,
     reconciliation:reconcile(candidates,primary.summary,unresolved),canPersist:false};
