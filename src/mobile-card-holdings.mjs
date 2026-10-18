@@ -71,6 +71,45 @@ export function mobileSourceLines(source, confirmedCorrections=new Map()) {
       weak:l.words.some(w=>w.weak), identityDisagreement:l.words.some(w=>w.identityDisagreement), split:l.words.some((w,i)=>i>0 && w.x0-l.words[i-1].x1 > 0.22), ...(l.words.length===1&&l.words[0].correctionField==='name'?{role:'text',value:text,nameLabel:!!l.words[0].sourceNameLabel}:roleOf(text))};
   });
 }
+/**
+ * Infer which unlabelled text line might be the security name only from
+ * INDEPENDENT cards in the CURRENT document. This does not verify securities.
+ *
+ * A repeating heading alongside a different name in >=3 cards offers bounded
+ * context. Learned field positions alone may not supply this evidence.
+ * Ambiguous or single-card layouts MUST abstain.
+ */
+function corroborateNamesAcrossCards(groups) {
+  const byPattern=new Map(), candidates=new Map();
+  for(let index=0;index<groups.length;index++){
+    const lines=groups[index],names=lines.map((line,i)=>line.role==='text'?i:-1).filter(i=>i>=0);
+    if(names.length!==2 || lines.length>16 ||
+      lines.some(l=>l.split||l.role==='unknown'||(l.role==='text'&&l.weak)) ||
+      lines.filter(l=>l.role==='identity').length!==1 ||
+      lines.filter(l=>l.role==='measure'&&Number.isFinite(l.value)&&l.value>0).length!==1 ||
+      names.some(i=>lines[i].nameLabel||lines[i].nameConfirmed))continue;
+    const key=JSON.stringify(lines.map(l=>l.role));
+    const batch=byPattern.get(key)??[];
+    batch.push({index,lines,names,identity:JSON.stringify(lines.find(l=>l.role==='identity').value)});
+    byPattern.set(key,batch);
+  }
+  for(const batch of byPattern.values()){
+    // Requiring three DISTINCT source cards avoids treating two arbitrary
+    // text lines as semantically meaningful after only one repetition.
+    if(batch.length<3 || new Set(batch.map(b=>b.identity)).size!==batch.length)continue;
+    const names=batch[0].names;
+    const distinct=names.map(i=>new Set(batch.map(b=>b.lines[i].value)).size);
+    const varying=names.filter((i,j)=>distinct[j]===batch.length);
+    const shared=names.filter((i,j)=>distinct[j]===1);
+    if(varying.length!==1||shared.length!==1)continue;
+    // A third card may have weak OCR on its identifier: it can establish a
+    // repeated heading pattern, but the resolver still rejects its own row.
+    // This provides source-linked B-candidate evidence, not verified identity.
+    const nameIndex=varying[0];
+    for(const b of batch)candidates.set(b.index,{index:nameIndex,count:batch.length});
+  }
+  return candidates;
+}
 export function resolveMobileCards(source, learner, confirmedCorrections=new Map()) {
   let lines;
   try {lines=mobileSourceLines(source,confirmedCorrections);} catch {return {rows:[], unresolved:[{reason:'INVALID_SOURCE'}], cards:[], canPersist:false};}
@@ -83,8 +122,10 @@ export function resolveMobileCards(source, learner, confirmedCorrections=new Map
     else group.push(line);
   }
   const rows=[], unresolved=[], cards=[];
+  const corroboratedNames=corroborateNamesAcrossCards(groups);
   let account=null, page=null;
-  for (const group of groups) {
+  for (let groupIndex=0;groupIndex<groups.length;groupIndex++) {
+    const group=groups[groupIndex];
     if(page!==group[0].page){account=null;page=group[0].page;}
     const scopes=group.filter(l=>l.role==='scope');
     if(scopes.length) account=null;
@@ -112,10 +153,16 @@ export function resolveMobileCards(source, learner, confirmedCorrections=new Map
     // Derive semantics before consulting learned positions. Even a sole free-text
     // line could be a heading above a missing name: cardinality is not semantics.
     const labelled=names.filter(i=>group[i].nameLabel), confirmed=names.filter(i=>group[i].nameConfirmed);
-    let entityIndex=null;
+    let entityIndex=null, nameEvidence=null;
     if(labelled.length<=1 && confirmed.length<=1) {
-      if(confirmed.length===1 && (!labelled.length || labelled[0]===confirmed[0])) entityIndex=confirmed[0];
-      else if(!confirmed.length && labelled.length===1) entityIndex=labelled[0];
+      if(confirmed.length===1 && (!labelled.length || labelled[0]===confirmed[0])) {
+        entityIndex=confirmed[0]; nameEvidence='current-document-confirmation';
+      } else if(!confirmed.length && labelled.length===1) {
+        entityIndex=labelled[0]; nameEvidence='source-label';
+      } else if(!confirmed.length&&!labelled.length&&profile?.state==='active'&&corroboratedNames.has(groupIndex)) {
+        entityIndex=corroboratedNames.get(groupIndex).index;
+        nameEvidence='current-document-cross-card-contrast';
+      }
     }
     const binding=entityIndex===null?null:{entity:entityIndex,identity:identities[0],measure:quantities[0]};
     card.teachable=true;
@@ -134,7 +181,7 @@ export function resolveMobileCards(source, learner, confirmedCorrections=new Map
       account:card.account?field(card.account.value,card.account):{value:null,status:'missing',sourceIds:[]},
       currency:currencies.length?field(currencies[0].value,currencies[0]):{value:null,status:'missing',sourceIds:[]},
       buyPrice:{value:null,status:'missing',sourceIds:[]}}, learned:profile?.state==='active'&&!manualName,
-      nameEvidence:manualName?'current-document-confirmation':'source-label',
+      nameEvidence,
       certainty:'candidate',instrumentVerification:{status:'not-verified'},
       warnings:['SOURCE_IDENTITY_NOT_MARKET_VERIFIED','PURCHASE_PRICE_NOT_RESOLVED'], canPersist:false});
   }
