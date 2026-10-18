@@ -26,12 +26,35 @@ async function run(page,fixture) {
       const witness=evidenceFromOcrTsv(e.data.tsv,{imageWidth:f.width,imageHeight:f.height});
       result=extractVisualPortfolioCorroborated(source,witness);
     }finally{await w.terminate();}
+    const {suggestInstrumentListings,selectInstrumentListing}=
+      await import('/src/portfolio-instrument-listings.mjs');
+    const received=[];
+    const listings=await suggestInstrumentListings(result,{lookupMode:'local',
+      resolver:async ({name})=>{
+        received.push(name);
+        const index=f.oracle.findIndex(o=>o.name===name);
+        const matched=index>=0?f.oracle[index]:null;
+        const type=matched?.kind==='fund'?'MUTUALFUND':'EQUITY';
+        const stock=index===1;
+        const common={shortname:name,longname:name,quote_type:type,
+          exchange:'XHEL',currency:'USD'};
+        const candidates=matched?[{...common,symbol:'DEMO'+index+'.XH'}]:[];
+        if(stock)candidates.push({...common,symbol:'DEMO'+index+'.XN',exchange:'XNAS'});
+        return {schema_version:'instrument-resolver-v1',query:name,candidates};
+      }});
+    const ambiguous=listings.rows.find(r=>r.status==='ambiguous');
+    const choice=ambiguous?selectInstrumentListing(ambiguous,{symbol:ambiguous.matches[0].symbol,exchange:ambiguous.matches[0].exchange}):null;
     return {
       candidates:result.candidates.map(c=>({kind:c.kind,name:c.fields.name.value,
         qty:c.fields.quantity.value,cents:c.fields.marketValue.value?.cents??null,
         sourceIds:c.fields.name.sourceIds})),
       unresolved:result.unresolved.map(u=>u.reason),
       reconciliation:result.reconciliation.status,
+      listings:listings.rows.map(r=>({kind:r.kind,name:r.name,status:r.status,
+        symbols:r.matches.map(m=>m.symbol),marketVerified:r.marketVerified,canPersist:r.canPersist})),
+      listingQueries:received,
+      choice:{status:choice?.status??null,canPersist:choice?.canPersist??false,
+        marketVerified:choice?.marketVerified??false},
       canPersist:result.canPersist
     };
   },fixture);
@@ -58,5 +81,11 @@ for(const crop of [false,true])test('genuine OCR + visual holdings on '+(crop?'c
  expect(outside).toEqual([]);
  expect(got.canPersist).toBe(false);
  expect(wrong).toBe(0);
- expect(correct).toBeGreaterThanOrEqual(1);
+ expect(correct).toBeGreaterThanOrEqual(4);
+ expect(got.listings).toHaveLength(got.candidates.length);
+ expect(got.listingQueries).toEqual(got.candidates.map(c=>c.name));
+ expect(got.listings.every(r=>r.status==='suggested'||r.status==='ambiguous')).toBe(true);
+ expect(got.listings.every(r=>!r.marketVerified&&!r.canPersist)).toBe(true);
+ expect(got.listings.some(r=>r.kind==='fund'&&r.status==='suggested')).toBe(true);
+ expect(got.choice).toEqual({status:'user-selected-listing',canPersist:false,marketVerified:false});
 });

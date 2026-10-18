@@ -1,0 +1,24 @@
+name: Instrument listing privacy and identity QA
+on:
+  pull_request:
+    paths:
+      - 'src/portfolio-instrument-listings.mjs'
+      - 'tests/portfolio-instrument-listings.test.mjs'
+      - '.github/workflows/instrument-listings-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  listings-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Instrument listing source binding, consent and type tests
+        run: node --test tests/portfolio-visual-evidence.test.mjs tests/portfolio-instrument-listings.test.mjs
