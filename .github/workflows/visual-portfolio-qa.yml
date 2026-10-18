@@ -5,6 +5,7 @@ on:
       - 'src/portfolio-visual-evidence.mjs'
       - 'tests/portfolio-visual-evidence.test.mjs'
       - 'tests/portfolio-inline-ledger.test.mjs'
+      - 'tests/e2e/portfolio-inline-ledger.spec.mjs'
       - 'tests/fixtures/portfolio-inline-ledger.mjs'
       - 'tests/fixtures/portfolio-visual-ledger.mjs'
       - 'tests/e2e/portfolio-visual-ledger.spec.mjs'
@@ -32,4 +33,4 @@ jobs:
       - name: Real local browser OCR of fictional full screen + crop
         env:
           REAL_OCR_QA: '1'
-        run: npx playwright test portfolio-visual-ledger.spec.mjs --reporter=list
+        run: npx playwright test portfolio-visual-ledger.spec.mjs portfolio-inline-ledger.spec.mjs --reporter=list
