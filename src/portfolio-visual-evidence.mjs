@@ -175,7 +175,7 @@ export function extractVisualPortfolio(source) {
     if(!active)continue;
     // Right-hand "n kpl" is a strong visual holdings row anchor. A floating
     // amount without quantity must never become a holding.
-    const right=l.words.filter(w=>w.box.x0>=.60);
+    const right=l.words.filter(w=>l.rightIds.includes(w.id));
     const qtext=strip(right.map(w=>w.raw).join(' '));
     const quantity=parseQty(qtext);
     if(quantity===null)continue;
@@ -186,7 +186,7 @@ export function extractVisualPortfolio(source) {
     // Per-row right hand value is above or aligned with the quantity.
     const valueLines=lines.filter(p=>p.page===l.page&&p.cy>=l.cy-.055&&p.cy<=l.cy+.012 &&
       p.cy>lastQtyCy+.006&&p.right&&p.rightIds.length&&
-      parseMoney(p.right)&&p.words.filter(w=>w.box.x0>=.60).every(w=>!w.weak));
+      parseMoney(p.right)&&p.words.filter(w=>p.rightIds.includes(w.id)).every(w=>!w.weak));
     const amountLine=valueLines.filter(p=>!qtyRegex.test(p.right)&&
       !EXCLUDE.test(p.left)&&!/\b(?:arvonmuutos|päivän muutos|paivan muutos|day change)\b/iu.test(p.left))
       .sort((a,b)=>Math.abs(l.cy-a.cy)-Math.abs(l.cy-b.cy))[0];
@@ -197,7 +197,7 @@ export function extractVisualPortfolio(source) {
       p.cy<=l.cy+.018&&p.left&&p.leftIds.length&&
       !EXCLUDE.test(p.left)&&!Object.hasOwn(TYPES,p.left.toLowerCase())&&
       !STOPS.test(p.left)&&!parseMoney(p.left)&&!qtyRegex.test(p.left)&&
-      p.words.filter(w=>w.box.x0<.60).every(w=>!w.weak));
+      p.words.filter(w=>p.leftIds.includes(w.id)).every(w=>!w.weak));
     const parts=eligible.slice(-3);
     const name=strip(parts.map(p=>p.left).join(' '));
     if(!name||name.length>140||parts.length>2||!/\p{L}/u.test(name)){
