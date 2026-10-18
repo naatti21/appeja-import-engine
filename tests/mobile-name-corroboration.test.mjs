@@ -26,10 +26,16 @@ async function teachCorrect(learner){
     },documentKey:await documentKey(f.source),confirmed:true});
   }
 }
-test('three independently identified cards: repeated banner is not the name; no memorized tickers',()=>{
+test('active teaching plus three independent cards: repeated banner is not a name',async()=>{
   for(const layout of ['en','fi']){
+    const learner=createStructureLearner();
+    for(const round of [0,1]){
+      const taught=mobileFixture({layout,round});
+      const card=resolveMobileCards(taught.source,learner).cards.find(c=>c.teachable);
+      learner.confirm({pattern:card.pattern,binding:{entity:1,identity:card.pattern.indexOf('identity'),measure:card.pattern.indexOf('measure')},documentKey:await documentKey(taught.source),confirmed:true});
+    }
     const f=mobileFixture({layout,round:2});
-    const result=resolveMobileCards(f.source);
+    const result=resolveMobileCards(f.source,learner);
     assert.equal(result.rows.length,3);
     assert.equal(result.unresolved.length,0);
     result.rows.forEach((row,i)=>{
@@ -68,16 +74,17 @@ test('swapping repeated banner and real name conflicts with previously learned p
   assert.equal(result.unresolved.filter(x=>x.reason==='LEARNED_NAME_CONFLICT').length,3);
   assert.equal(result.canPersist,false);
 });
-test('one or two cards do not establish cross-card semantics',()=>{
-  const f=mobileFixture();
-  const all=resolveMobileCards(f.source);
+test('one or two cards do not establish cross-card semantics, even after learning',async()=>{
+  const learner=createStructureLearner();await teachCorrect(learner);
+  const f=mobileFixture({round:2});
+  const all=resolveMobileCards(f.source,learner);
   assert.equal(all.rows.length,3);
   // Remove third card and trailing controls, retaining all earlier card geometry.
   const start=f.source.observations.findIndex(o=>o.raw===f.oracle[2].name);
   const end=f.source.observations.findIndex(o=>o.raw==='Balance: 1000 EUR');
   const s=structuredClone(f.source);
   s.observations=s.observations.filter((_,i)=>!(i>=start-1&&i<end));
-  const result=resolveMobileCards(s);
+  const result=resolveMobileCards(s,learner);
   assert.equal(result.rows.length,0);
   assert.equal(result.canPersist,false);
 });
@@ -94,4 +101,16 @@ test('changing any source identity role into unknown prevents promotion',()=>{
  const result=resolveMobileCards(f.source);
  assert.equal(result.rows.length,0); // only two independently identified cards remain
  assert.equal(result.canPersist,false);
+});
+
+
+test('one low-confidence ticker may help identify layout but its own row remains blocked',async()=>{
+  const learner=createStructureLearner();await teachCorrect(learner);
+  const f=mobileFixture({round:2});
+  f.source.observations.find(o=>o.raw.startsWith('Ticker:')).ocrConfidence=70;
+  const result=resolveMobileCards(f.source,learner);
+  assert.equal(result.rows.length,2);
+  assert.equal(result.unresolved.length,1);
+  assert.deepEqual(result.rows.map(r=>r.fields.name.value),f.oracle.slice(1).map(o=>o.name));
+  assert.ok(result.rows.every(r=>r.instrumentVerification.status==='not-verified'&&!r.canPersist));
 });
