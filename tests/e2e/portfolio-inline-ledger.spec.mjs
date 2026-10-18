@@ -43,12 +43,24 @@ for(const noSummary of [false,true])test(
         witness=evidenceFromOcrTsv(b.data.tsv,{imageWidth:f.width,imageHeight:f.height});
       }finally{await worker.terminate();}
       const r=extractVisualPortfolioCorroborated(primary,witness);
+      const {extractVisualPortfolio}=await import('/src/portfolio-visual-evidence.mjs');
+      const compact=x=>extractVisualPortfolio(x).candidates.map(c=>({
+        name:c.fields.name.value,quantity:c.fields.quantity.value,
+        cents:c.fields.marketValue.value?.cents??null,
+        qtyIds:c.fields.quantity.sourceIds,
+        nameIds:c.fields.name.sourceIds
+      }));
       return {rows:r.candidates.map(c=>({
         name:c.fields.name.value,kind:c.kind,quantity:c.fields.quantity.value,
         cents:c.fields.marketValue.value?.cents??null,
         canPersist:c.canPersist
       })),unresolved:r.unresolved.map(x=>x.reason),
-        reconciliation:r.reconciliation.status,canPersist:r.canPersist};
+        reconciliation:r.reconciliation.status,canPersist:r.canPersist,
+        diagnostics:{primary:compact(primary),witness:compact(witness),
+          unresolvedPrimary:extractVisualPortfolio(primary).unresolved,
+          unresolvedWitness:extractVisualPortfolio(witness).unresolved,
+          wordsPrimary:primary.observations.map(o=>[o.id,o.raw,o.ocrConfidence]),
+          wordsWitness:witness.observations.map(o=>[o.id,o.raw,o.ocrConfidence])}};
     },fixture);
     const correct=result.rows.filter(row=>fixture.oracle.some(o=>
       o.name===row.name&&o.kind===row.kind&&o.quantity===row.quantity&&o.cents===row.cents)).length;
@@ -56,7 +68,7 @@ for(const noSummary of [false,true])test(
     console.log('INLINE_TRUE_OCR '+JSON.stringify({noSummary,correct,wrong,
       withheld:fixture.oracle.length-result.rows.length,
       total:fixture.oracle.length,reconciliation:result.reconciliation,
-      unresolved:result.unresolved}));
+      unresolved:result.unresolved,diagnostics:result.diagnostics}));
     expect(outside).toEqual([]);
     expect(result.canPersist).toBe(false);
     expect(result.rows.every(r=>r.canPersist===false)).toBe(true);
