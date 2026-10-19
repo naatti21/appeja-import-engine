@@ -7,6 +7,8 @@ import {resolveMobileCards,documentKey} from '../src/mobile-card-holdings.mjs';
 import {createStructureLearner} from '../src/structure-learning.mjs';
 import {extractVisualPortfolio,extractVisualPortfolioCorroborated} from '../src/portfolio-visual-evidence.mjs';
 import {suggestInstrumentListings,selectInstrumentListing} from '../src/portfolio-instrument-listings.mjs';
+import {preparePortfolioIdentityReview,chooseInstrumentIdentity}
+ from '../src/portfolio-identity-review.mjs';
 
 test('legacy card role teaching cannot promote an unlabeled name, even after two confirmations',async()=>{
  const learner=createStructureLearner();
@@ -71,7 +73,7 @@ test('two OCR passes must agree on compact rows before name can become a source 
  assert.equal(r.reconciliation.status,'not-evaluable');
 });
 test('external market lookup disabled by default and even local choices do not persist',async()=>{
- const source=extractVisualPortfolio(inlineLedgerFixture().source);
+ const f=inlineLedgerFixture(),source=extractVisualPortfolio(f.source);
  let calls=0;
  const resolver=async ({name})=>{
    calls++;
@@ -79,10 +81,17 @@ test('external market lookup disabled by default and even local choices do not p
      {symbol:'ABC.XHEL',shortname:name,longname:name,quote_type:'EQUITY',
       exchange:'XHEL',currency:'USD'}]};
  };
- const off=await suggestInstrumentListings(source,{resolver});
+ const raw=await suggestInstrumentListings(source,{resolver,lookupMode:'local'});
+ assert.equal(calls,0,'OCR names cannot query listing resolver directly');
+ assert.deepEqual(raw.issues,[{reason:'EXPLICIT_IDENTITY_REVIEW_REQUIRED'}]);
+ let review=preparePortfolioIdentityReview(source,f.source);
+ assert.ok(review.rows.length>0);
+ for(const row of review.rows)review=chooseInstrumentIdentity(review,
+   {rowId:row.rowId,decision:'confirm-observed'});
+ const off=await suggestInstrumentListings(review,{resolver});
  assert.equal(calls,0);
  assert.ok(off.rows.every(x=>x.status==='not-checked'));
- const local=await suggestInstrumentListings(source,{resolver,lookupMode:'local'});
+ const local=await suggestInstrumentListings(review,{resolver,lookupMode:'local'});
  assert.ok(calls>0);
  const s=local.rows.find(r=>r.kind==='stock'&&r.status==='suggested');
  assert.ok(s);
