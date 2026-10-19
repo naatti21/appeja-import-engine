@@ -44,6 +44,53 @@ jobs:
         run: |
           node scripts/build-mobile-lab-preview.mjs
           node scripts/verify-mobile-lab-preview.mjs
+      - name: Checkout locked fictional instrument-review bundle
+        uses: actions/checkout@v4
+        with:
+          ref: 0cbaa47e7085f6ed83c138ff9df977b66de51471
+          path: synthetic-source
+      - name: Build and validate isolated fictional instrument review
+        working-directory: synthetic-source
+        run: |
+          npm ci
+          npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+          npm run prepare:pdfjs
+          node scripts/prepare-local-ocr.mjs
+          node --test tests/issue55-session-boundary.test.mjs tests/issue55-identity-review.test.mjs tests/portfolio-instrument-listings.test.mjs
+          node scripts/build-issue55-synthetic-lab.mjs
+          node scripts/verify-issue55-synthetic-lab.mjs
+      - name: Real local OCR and mobile clicks on fictional image selector
+        working-directory: synthetic-source
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test issue55-lab-synthetic-preview.spec.mjs --reporter=list
+      - name: Add namespaced fictional route without changing existing LAB
+        run: |
+          sha256sum dist/index.html dist/demo/mobile-source-review.html > preserved-lab-before.txt
+          mkdir -p dist/issue55-test/demo dist/issue55-test/tests/fixtures
+          cp -a synthetic-source/dist/src dist/issue55-test/
+          cp -a synthetic-source/dist/demo/vendor dist/issue55-test/demo/
+          cp synthetic-source/dist/demo/portfolio-identity-review.html dist/issue55-test/demo/
+          cp synthetic-source/dist/demo/portfolio-identity-review-entry.mjs dist/issue55-test/demo/
+          cp synthetic-source/dist/demo/portfolio-identity-review.mjs dist/issue55-test/demo/
+          cp synthetic-source/dist/demo/issue55-samples.mjs dist/issue55-test/demo/
+          cp synthetic-source/dist/tests/fixtures/issue55-name-role.mjs dist/issue55-test/tests/fixtures/
+          sha256sum -c preserved-lab-before.txt
+          test -s dist/issue55-test/demo/vendor/ocr/lang/eng.traineddata
+          test -s dist/issue55-test/demo/vendor/ocr/lang/fin.traineddata
+          grep -q 'data-sample-mode="absent"' dist/issue55-test/demo/portfolio-identity-review.html
+          grep -q 'id="portfolioFile"' dist/issue55-test/demo/portfolio-identity-review.html
+      - name: Checkout locked real-OCR published-path smoke test
+        uses: actions/checkout@v4
+        with:
+          ref: 8b2fd377d6b59d26a00898506902846b97bb4e97
+          path: preview-smoke
+      - name: Test final project-subpath, original LAB and sample-only real OCR
+        env:
+          REAL_OCR_QA: '1'
+        run: |
+          cp preview-smoke/tests/e2e/issue55-published-lab.spec.mjs tests/e2e/issue55-published-lab.spec.mjs
+          npx playwright test issue55-published-lab.spec.mjs --reporter=list
       - name: Upload isolated GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
