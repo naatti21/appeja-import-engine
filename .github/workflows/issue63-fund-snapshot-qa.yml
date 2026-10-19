@@ -1,9 +1,9 @@
 name: Issue63 isolated fund snapshot QA
 on:
   push:
-    branches: ['feature/issue63-fund-snapshots']
+    branches: ['feature/issue63-fund-snapshots', 'fix/issue63-exclusive-field-binding']
   pull_request:
-    branches: ['fix/pr59-lookup-race-contracts']
+    branches: ['fix/pr59-lookup-race-contracts', 'feature/issue63-fund-snapshots']
   workflow_dispatch:
 permissions:
   contents: read
@@ -24,12 +24,12 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: git rev-parse HEAD > tested-sha.txt
       - name: New contract and unchanged security boundaries
-        run: node --test tests/fund-snapshots.test.mjs tests/issue55-session-boundary.test.mjs tests/issue55-identity-review.test.mjs tests/portfolio-instrument-listings.test.mjs > focused-node.log 2>&1
+        run: node --test tests/fund*.test.mjs tests/issue55-session-boundary.test.mjs tests/issue55-identity-review.test.mjs tests/portfolio-instrument-listings.test.mjs > focused-node.log 2>&1
       - name: Real fictional PNG OCR and mobile review
         if: ${{ !cancelled() }}
         env:
           REAL_OCR_QA: '1'
-        run: npx playwright test fund-snapshots.spec.mjs issue55-mobile-identity.spec.mjs --workers=2 --reporter=list > focused-browser.log 2>&1
+        run: npx playwright test fund-snapshots.spec.mjs fund-binding.spec.mjs fund-broker-structures.spec.mjs fund-review-lifecycle.spec.mjs issue55-mobile-identity.spec.mjs --workers=2 --reporter=list > focused-browser.log 2>&1
       - if: always()
         uses: actions/upload-artifact@v4
         with:
