@@ -5,8 +5,8 @@ test('public LAB release artifact keeps previous home and serves fictional isola
   test.setTimeout(240000);
   const outbound=[];
   await context.route('**/*',route=>{
-    const host=new URL(route.request().url).hostname;
-    if(host!=='localhost'&&host!=='127.0.0.1'){outbound.push(route.request().url);return route.abort();}
+    const host=new URL(route.request().url()).hostname;
+    if(host!=='localhost'&&host!=='127.0.0.1'){outbound.push(route.request().url());return route.abort();}
     return route.continue();
   });
   await page.setViewportSize({width:360,height:780});
