@@ -9,6 +9,10 @@
  * The value currency is the broker's *display currency*, not necessarily the
  * security's trading currency. They must NOT be compared as an identity gate.
  */
+import {reviewFingerprint} from './review-object-integrity.mjs';
+import {isCurrentPortfolioIdentityReview} from './portfolio-identity-review.mjs';
+const suggestions=new WeakMap(),requests=new WeakMap();
+const rejected=()=>({rows:[],issues:[{reason:'EXPLICIT_IDENTITY_REVIEW_REQUIRED'}],requiresUserApproval:true,canPersist:false});
 const LIMIT = 30;
 const clean = value => String(value ?? '').normalize('NFKC').replace(/\s+/gu,' ').trim();
 const canonical = value => clean(value).toLocaleLowerCase('und').replace(/[.,]/g,'').replace(/\s+/gu,' ');
@@ -75,7 +79,7 @@ function responseListings(response,name,kind){
  * cannot infer click authenticity. No market identity is auto-verified.
  */
 function checkedReviewedRows(review){
-  if(!review||review.status!=='identity-review'||
+  if(!isCurrentPortfolioIdentityReview(review)||review.status!=='identity-review'||
     review.canPersist!==false||review.marketIdentityVerified!==false||
     !Array.isArray(review.rows)||!Array.isArray(review.userSelections)||
     review.rows.length>LIMIT||review.userSelections.length>LIMIT)
@@ -112,7 +116,7 @@ function checkedReviewedRows(review){
       issues.push({reason:'INVALID_REVIEWED_INSTRUMENT_NAME'});continue;
     }
     // Never derive a query from row.observedText: it may be a subgroup heading.
-    const proposed={kind:row.kind,certainty:'candidate',canPersist:false,
+    const proposed={reviewRowId:row.rowId,kind:row.kind,certainty:'candidate',canPersist:false,
       marketVerification:{status:'not-verified'},
       fields:{name:{value:name,sourceIds:[...row.sourceIds.name]},
         quantity:{value:row.quantity,sourceIds:[...row.sourceIds.quantity]}}};
@@ -126,8 +130,8 @@ function checkedReviewedRows(review){
  * 'local' uses caller-owned local candidates, and 'external' additionally
  * requires explicit session consent. Raw OCR candidates cannot reach it.
  */
-export async function suggestInstrumentListings(extraction,{
-  resolver=null,lookupMode='disabled',approvedExternalLookup=false
+async function performLookup(extraction,{
+  resolver=null,lookupMode='disabled',approvedExternalLookup=false,rowId=null
 }={}){
   const {rows:reviewedRows,issues}=checkedReviewedRows(extraction);
   if(issues.some(x=>x.reason==='EXPLICIT_IDENTITY_REVIEW_REQUIRED'))
@@ -137,6 +141,8 @@ export async function suggestInstrumentListings(extraction,{
     && typeof resolver==='function';
   const answers=new Map();
   for(const row of reviewedRows) {
+    if(rowId!==null&&row.reviewRowId!==rowId)continue;
+    if(!isCurrentPortfolioIdentityReview(extraction))return rejected();
     if(!allowed){
       rows.push(none(row,'not-checked',
         lookupMode==='external'?'EXPLICIT_LOOKUP_CONSENT_REQUIRED':'LOOKUP_NOT_ENABLED'));
@@ -148,10 +154,14 @@ export async function suggestInstrumentListings(extraction,{
       if(!promise){
         // Deliberate user-selected name ONLY; never shares, OCR text,
         // original image, source IDs, positions, account or balance.
-        promise=Promise.resolve().then(()=>resolver({name:query}));
+        promise=Promise.resolve().then(()=>{
+          if(!isCurrentPortfolioIdentityReview(extraction))throw Error("STALE_REVIEW");
+          return resolver({name:query});
+        });
         answers.set(key,promise);
       }
       const response=await promise;
+      if(!isCurrentPortfolioIdentityReview(extraction))return rejected();
       const matches=responseListings(response,query,row.kind);
       if(!matches.length)rows.push(none(row,'unresolved','NO_EXACT_TYPE_MATCH'));
       else rows.push({...none(row,matches.length===1?'suggested':'ambiguous',
@@ -161,15 +171,29 @@ export async function suggestInstrumentListings(extraction,{
       rows.push(none(row,'unavailable','RESOLVER_FAILED_OR_UNTRUSTED'));
     }
   }
+  if(!isCurrentPortfolioIdentityReview(extraction))return rejected();
+  for(const row of rows)suggestions.set(row,{review:extraction,snapshot:reviewFingerprint(row)});
   return {rows,issues,requiresUserApproval:true,canPersist:false,
     marketVerification:'no-listing-user-confirmed'};
+}
+/** Deduplicate repeated clicks for the same current review and injected adapter. */
+export function suggestInstrumentListings(review,options={}) {
+  if(!isCurrentPortfolioIdentityReview(review))return Promise.resolve(rejected());
+  const key=JSON.stringify([options.lookupMode??'disabled',options.approvedExternalLookup===true,options.rowId??null]);
+  const cached=requests.get(review)??[];
+  const found=cached.find(x=>x.resolver===options.resolver&&x.key===key);
+  if(found)return found.promise.then(result=>isCurrentPortfolioIdentityReview(review)?result:rejected());
+  const promise=performLookup(review,options);
+  cached.push({resolver:options.resolver,key,promise});requests.set(review,cached);
+  return promise;
 }
 /**
  * A deliberate instrument-choice action, not a financial write. The selected
  * listing still needs explicit app-level save approval and source review.
  */
 export function selectInstrumentListing(suggestion, choice){
-  if(!suggestion||!['suggested','ambiguous'].includes(suggestion.status)||
+  const record=suggestion&&suggestions.get(suggestion);
+  if(!record||!isCurrentPortfolioIdentityReview(record.review)||record.snapshot===null||record.snapshot!==reviewFingerprint(suggestion)||!['suggested','ambiguous'].includes(suggestion.status)||
      !Array.isArray(suggestion.matches)||!choice||
      typeof choice.symbol!=='string'||typeof choice.exchange!=='string')
     return {status:'selection-rejected',canPersist:false};

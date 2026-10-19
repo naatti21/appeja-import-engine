@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; connect-src 'self'; img-src 'self' blob: data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'">
+<title>Paikallinen instrumenttitarkistus – tutkimus</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101820;color:#edf5fa;font:16px system-ui}main{max-width:640px;margin:auto;padding:16px}h1{font-size:25px}h2{font-size:21px}h3{font-size:18px}p{line-height:1.45}button,input,summary{font:inherit;min-height:46px;padding:10px;border-radius:8px}button,input{border:1px solid #7d9aa8;background:#183341;color:inherit}button{cursor:pointer}button:disabled{opacity:.5}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #ffd480;outline-offset:2px}input{width:100%;min-width:0}label{display:block;margin-block:8px}.actions{display:flex;flex-wrap:wrap;gap:8px}.actions>*{flex:1 1 140px}.card{border:1px solid #7d9aa8;border-radius:12px;padding:12px;margin-block:12px;overflow-wrap:anywhere}.reviewed{border-color:#86c7a0}canvas{display:block;max-width:100%;height:auto;margin:8px 0;border:1px solid #66808d}small{display:block;color:#bed0dc}.note{color:#ffdd99}#feedback{min-height:24px}summary{cursor:pointer}img{max-width:100%}[hidden]{display:none!important}
+</style></head><body><main id="portfolioReview">
+<h1>Instrumentin tarkistus</h1><p class="note">Paikallinen tutkimusversio — vain keksityt testikuvat. Ei tallennusta eikä oikeaa instrumenttihakua.</p>
+<label for="portfolioFile">Valitse testikuva</label><input id="portfolioFile" type="file" accept="image/png,image/jpeg,image/webp">
+<div class="actions"><button id="readPortfolio" type="button">Lue kuva</button><button id="cancelPortfolio" type="button">Peruuta ja tyhjennä</button></div>
+<p id="feedback" role="status" aria-live="polite">Valitse kuva. Mitään havaintoa ei vahvisteta automaattisesti.</p>
+<p id="safety">Instrumentit varmentamatta. Ei tallennuslupaa.</p>
+<section aria-label="Tarkistettavat havainnot"><h2>Tarkistettavat havainnot</h2><div id="pendingRows"></div></section>
+<section aria-label="Käyttäjän käsittelemät"><h2>Käyttäjän käsittelemät</h2><p>Oma valinta ei varmista markkinapaikkaa tai instrumenttia.</p><div id="reviewedRows"></div></section>
+<details id="fullSource" hidden><summary>Näytä koko lähdekuva</summary><img alt="Kokonainen paikallinen testikuva" id="portfolioImage"></details>
+<script type="module" src="./portfolio-identity-review-entry.mjs"></script>
+</main></body></html>
