@@ -3,7 +3,7 @@
  * Deliberately bounded to labelled cards; unsupported structures remain unresolved.
  */
 const norm=s=>String(s).normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/\s+/g,' ').trim();
-const labels={name:['rahasto','fund','fond'],quantity:['osuudet yhteensa','total units','antal andelar'],value:['arvo','value','varde'],nav:['nav'],averageAcquisitionPrice:['keskihankintahinta','average acquisition price','genomsnittligt anskaffningspris']};
+const labels={name:['rahasto','fund','fond'],quantity:['osuudet yhteensa','total units','antal andelar'],value:['arvo','value','varde'],nav:['nav'],averageAcquisitionPrice:['keskikurssi','keskihankintahinta','average acquisition price','genomsnittligt anskaffningspris']};
 const roleLabels=['nykyiset omistukset','current holdings','aktuella innehav'];
 const keyFor=s=>Object.keys(labels).find(k=>labels[k].includes(norm(s)));
 export function parseDisplayedDecimal(raw){
@@ -42,8 +42,9 @@ const empty=(status='missing',reason=null,obs=[])=>({status,reason,raw:obs.map(o
 function observed(obs,extra={}){return {...empty('observed',null,obs),...extra};}
 function oneRead(source,detail=false){
  const lines=segments(source);
- const role=lines.filter(l=>(detail?['rahaston tiedot','fund details','fondinformation']:roleLabels).includes(norm(l.raw)));
+ const role=lines.filter(l=>(detail?['rahaston tiedot','fund details','fondinformation']:[...roleLabels,'rahastot']).includes(norm(l.raw)));
  if(role.length!==1||lines.some(l=>/ostokuitti|purchase receipt|kopnota|ostotapahtuma/i.test(norm(l.raw))))return {documentRole:'UNKNOWN_DOCUMENT_ROLE',rows:[],roleEvidence:[]};
+ if(!detail&&norm(role[0].raw)==='rahastot')return brokerRead(lines,source,role[0]);
  const starts=lines.filter(l=>keyFor(l.raw)==='name'&&l.page===role[0].page&&l.box.y0>role[0].box.y1);
  const rows=starts.map((start,index)=>{
   const end=starts[index+1]?.box.y0??1;
@@ -52,29 +53,28 @@ function oneRead(source,detail=false){
   const nameLines=block.filter(l=>l.box.y0<(anchors[0]?.box.y0??end));
   const names=nameLines.flatMap(l=>l.obs);
   const fields={name:nameLines.length>0&&nameLines.length<=2&&!names.some(o=>/\d|\.\.\.|…/.test(o.raw))?observed(names):empty('ambiguous','NAME_ROLE_OR_TRUNCATION',names)};
-  for(const key of ['quantity','value','nav','averageAcquisitionPrice']){
-   const a=anchors.filter(l=>keyFor(l.raw)===key);
-   if(a.length!==1){fields[key]=empty(a.length?'ambiguous':'missing',a.length?'DUPLICATE_FIELD_LABEL':'FIELD_NOT_VISIBLE',a.flatMap(l=>l.obs));continue;}
-   const anchor=a[0];
-   const columnPeers=anchors.filter(l=>Math.abs(l.box.y0-anchor.box.y0)<.02&&l.box.x0>anchor.box.x0+.08);
-   const right=Math.min(...columnPeers.map(l=>l.box.x0),1);
-   const next=block.filter(l=>l.box.y0>anchor.box.y1&&l.box.x0>=anchor.box.x0-.025&&l.box.x0<right-.02);
-   const token=next[0];
-   // Only the immediately following line within two label-heights belongs to this label.
-   if(!token||token.box.y0-anchor.box.y1>Math.max(.012,(anchor.box.y1-anchor.box.y0)*2)){fields[key]=empty('missing','FIELD_NOT_VISIBLE',anchor.obs);continue;}
-   const re=key==='quantity'?/^(.+?)\s+(kpl|pcs|st|units|andelar)$/i:/^(.+?)\s+(EUR|USD|SEK|GBP|CHF|NOK|DKK|€)$/i;
-   const lower=anchors.filter(l=>l.box.y0>anchor.box.y1&&l.box.x0>=anchor.box.x0-.025&&l.box.x0<right-.02).map(l=>l.box.y0);
-   const cellEnd=Math.min(...lower,end);
-   const competing=next.filter(l=>l.box.y0<cellEnd&&re.test(l.raw));
-   if(competing.length>1){fields[key]=empty('ambiguous','MULTIPLE_VALUES_IN_FIELD_REGION',competing.flatMap(l=>l.obs));continue;}
-   const m=token.raw.match(re),number=m&&parseDisplayedDecimal(m[1]);
-   fields[key]=number?observed(token.obs,{...number,currency:key==='quantity'?null:m[2]==='€'?'EUR':m[2].toUpperCase(),labelEvidence:evidence(anchor.obs)}):empty('ambiguous','INVALID_NUMBER_OR_ROLE',token.obs);
-  }
-  const money=['value','nav','averageAcquisitionPrice'].map(k=>fields[k]).filter(f=>f.status==='observed');
-  fields.currency=money.length&&new Set(money.map(f=>f.currency)).size===1?observed(money.flatMap(f=>f.evidence.map(e=>source.observations.find(o=>o.id===e.sourceId))),{value:money[0].currency}):empty('ambiguous','CURRENCY_CONFLICT_OR_MISSING');
+  Object.assign(fields,labelledFields(block,end));
+  fields.currency=currencyField(fields,source);
   return {rowId:`fund-${start.page}-${index}`,fields,identityStatus:'UNVERIFIED',canPersist:false};
  });
+ enforceExclusiveNumericRoles(rows);
+ for(const row of rows)row.fields.currency=currencyField(row.fields,source);
  return {documentRole:detail?'FUND_DETAILS':'CURRENT_HOLDINGS_SNAPSHOT',rows,roleEvidence:evidence(role[0].obs)};
+}
+// Currency is a derived observation and may share evidence. Financial values
+// themselves must have a single owner, including across card boundaries.
+function enforceExclusiveNumericRoles(rows){
+ const owners=new Map();
+ const names=new Map();
+ for(const row of rows)for(const e of row.fields.name.evidence){const fields=names.get(e.sourceId)??new Set();fields.add(row.fields.name);names.set(e.sourceId,fields);}
+ for(const fields of names.values())if(fields.size>1)for(const field of fields){field.status='ambiguous';field.reason='SOURCE_REUSED_ACROSS_CARDS';}
+ for(const row of rows)for(const key of ['quantity','value','nav','averageAcquisitionPrice']){
+  const field=row.fields[key];if(field.status!=='observed')continue;
+  for(const e of field.evidence.filter(e=>/\d/.test(e.raw))){
+   const prior=owners.get(e.sourceId)??new Set();prior.add(field);owners.set(e.sourceId,prior);
+  }
+ }
+ for(const fields of owners.values())if(fields.size>1)for(const field of fields){field.status='ambiguous';field.reason='SOURCE_REUSED_ACROSS_FINANCIAL_FIELDS';field.decimal=null;}
 }
 function agrees(a,b){
  return a.status===b?.status&&norm(a.raw)===norm(b.raw)&&a.decimal===b.decimal&&a.currency===b.currency&&a.value===b.value&&(!a.box||b.box&&Math.max(...Object.keys(a.box).map(k=>Math.abs(a.box[k]-b.box[k])))<.025);
@@ -107,3 +107,71 @@ export function combineFundSnapshots(documents){
 export const extractFundSnapshot=(primary,witness)=>extract(primary,witness);
 /** Detail price is a separate source; never automatically matched to an account or holding. */
 export const extractFundCostBasisDetail=(primary,witness)=>extract(primary,witness,true);
+
+/** Bounded source-role adapter for fictional unlabelled fund names, inline
+ * units and market value / Arvo-NAV-Keskikurssi cards. Never identifies a fund.
+ * An explicit Rahastot section AND matching geometry in both reads is required.
+ */
+function brokerRead(lines,source,role){
+ const unknown={documentRole:'UNKNOWN_DOCUMENT_ROLE',rows:[],roleEvidence:[]};
+ // Do not reinterpret a partially renamed legacy labelled template.
+ if(lines.some(l=>keyFor(l.raw)==='name'))return unknown;
+ const content=lines.filter(l=>l.page===role.page&&l.box.y0>role.box.y1);
+ const unitRE=/^(.+?)\s+(kpl|pcs|st|units|andelar)$/i;
+ const moneyRE=/^(.+?)\s+(EUR|USD|SEK|GBP|CHF|NOK|DKK|€)$/i;
+ const units=content.filter(l=>unitRE.test(l.raw));
+ if(!units.length)return unknown;
+ const cards=units.map(unit=>{
+  const top=unit.box.y0-Math.max(.08,(unit.box.y1-unit.box.y0)*6);
+  const nameLines=content.filter(l=>l.box.y0>=top&&l.box.y0<unit.box.y0&&l.box.x1<unit.box.x0-.04&&!keyFor(l.raw)&&!/\d|%|…|\.\.\.|^tili:/i.test(l.raw));
+  return {unit,nameLines,start:nameLines[0]?.box.y0??unit.box.y0};
+ });
+ const rows=cards.map(({unit,nameLines,start},index)=>{
+  const end=cards[index+1]?.start??1;
+  const block=content.filter(l=>l.box.y0>=start&&l.box.y0<end);
+  const fields=labelledFields(block,end);
+  const m=unit.raw.match(unitRE),number=parseDisplayedDecimal(m[1]);
+  fields.quantity=number?observed(unit.obs,{...number,currency:null}):empty('ambiguous','INVALID_NUMBER_OR_ROLE',unit.obs);
+  fields.name=nameLines.length>0&&nameLines.length<=2?observed(nameLines.flatMap(l=>l.obs)):empty('ambiguous','NAME_ROLE_OR_TRUNCATION',nameLines.flatMap(l=>l.obs));
+  if(!block.some(l=>keyFor(l.raw)==='value')){
+   // Unlabelled compact value: only the unique money line immediately above
+   // total units, in the same right-hand column. Other prices stay separate.
+   const prices=block.filter(l=>moneyRE.test(l.raw)&&Math.abs(l.box.x0-unit.box.x0)<.035&&l.box.y1<unit.box.y0&&unit.box.y0-l.box.y1<(unit.box.y1-unit.box.y0)*3);
+   if(prices.length===1){const m=prices[0].raw.match(moneyRE),n=parseDisplayedDecimal(m[1]);fields.value=n?observed(prices[0].obs,{...n,currency:m[2]==='€'?'EUR':m[2].toUpperCase()}):empty('ambiguous','INVALID_NUMBER_OR_ROLE',prices[0].obs);}
+   else fields.value=empty(prices.length?'ambiguous':'missing','INLINE_VALUE_NOT_UNIQUE',prices.flatMap(l=>l.obs));
+  }
+  fields.currency=currencyField(fields,source);
+  return {rowId:`fund-${role.page}-${index}`,fields,identityStatus:'UNVERIFIED',canPersist:false};
+ });
+ enforceExclusiveNumericRoles(rows);
+ for(const row of rows)row.fields.currency=currencyField(row.fields,source);
+ return {documentRole:'CURRENT_HOLDINGS_SNAPSHOT',rows,roleEvidence:evidence(role.obs)};
+}
+function labelledFields(block,end){
+ const fields={},anchors=block.filter(l=>keyFor(l.raw)&&keyFor(l.raw)!=='name');
+ for(const key of ['quantity','value','nav','averageAcquisitionPrice']){
+   const a=anchors.filter(l=>keyFor(l.raw)===key);
+   if(a.length!==1){fields[key]=empty(a.length?'ambiguous':'missing',a.length?'DUPLICATE_FIELD_LABEL':'FIELD_NOT_VISIBLE',a.flatMap(l=>l.obs));continue;}
+   const anchor=a[0];
+   // Column ownership belongs to the whole card, not to a single horizontal
+   // label row. Staggering a neighboring label must never widen this cell.
+   const columnPeers=anchors.filter(l=>l.box.x0>anchor.box.x0+.08);
+   const right=Math.min(...columnPeers.map(l=>l.box.x0),1);
+   const next=block.filter(l=>l.box.y0>anchor.box.y1&&l.box.x0>=anchor.box.x0-.025&&Math.abs(l.box.x0-anchor.box.x0)<.04&&l.box.x0<right-.02&&l.box.x1<=right+.015);
+   const token=next[0];
+   // Only the immediately following line within two label-heights belongs to this label.
+   if(!token||token.box.y0-anchor.box.y1>Math.max(.012,(anchor.box.y1-anchor.box.y0)*2)){fields[key]=empty('missing','FIELD_NOT_VISIBLE',anchor.obs);continue;}
+   const re=key==='quantity'?/^(.+?)\s+(kpl|pcs|st|units|andelar)$/i:/^(.+?)\s+(EUR|USD|SEK|GBP|CHF|NOK|DKK|€)$/i;
+   const lower=anchors.filter(l=>l.box.y0>anchor.box.y1&&l.box.x0>=anchor.box.x0-.025&&l.box.x0<right-.02).map(l=>l.box.y0);
+   const cellEnd=Math.min(...lower,end);
+   const competing=next.filter(l=>l.box.y0<cellEnd&&re.test(l.raw));
+   if(competing.length>1){fields[key]=empty('ambiguous','MULTIPLE_VALUES_IN_FIELD_REGION',competing.flatMap(l=>l.obs));continue;}
+   const m=token.raw.match(re),number=m&&parseDisplayedDecimal(m[1]);
+   fields[key]=number?observed(token.obs,{...number,currency:key==='quantity'?null:m[2]==='€'?'EUR':m[2].toUpperCase(),labelEvidence:evidence(anchor.obs)}):empty('ambiguous','INVALID_NUMBER_OR_ROLE',token.obs);
+  }
+ return fields;
+}
+function currencyField(fields,source){
+ const money=['value','nav','averageAcquisitionPrice'].map(k=>fields[k]).filter(f=>f.status==='observed');
+ return money.length&&new Set(money.map(f=>f.currency)).size===1?observed(money.flatMap(f=>f.evidence.map(e=>source.observations.find(o=>o.id===e.sourceId))),{value:money[0].currency}):empty('ambiguous','CURRENCY_CONFLICT_OR_MISSING');
+}
