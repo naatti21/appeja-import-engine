@@ -6,6 +6,11 @@ on:
       - 'src/portfolio-visual-evidence.mjs'
       - 'src/portfolio-instrument-listings.mjs'
       - 'tests/integration-p0-visual.test.mjs'
+      - 'tests/visual-row-binding.test.mjs'
+      - 'src/portfolio-financial-evidence.mjs'
+      - 'tests/portfolio-financial-safety.test.mjs'
+      - 'tests/fixtures/visual-row-binding.mjs'
+      - 'tests/e2e/visual-row-binding.spec.mjs'
       - 'tests/issue45-legacy-audit.test.mjs'
       - 'tests/e2e/issue45-legacy-audit.spec.mjs'
       - '.github/workflows/integrated-p0-visual-qa.yml'
@@ -25,11 +30,18 @@ jobs:
           node-version: '22'
       - run: npm ci
       - name: Old card P0 + new visual and listing integration — focused Node
-        run: node --test tests/integration-p0-visual.test.mjs tests/issue45-legacy-audit.test.mjs tests/mobile-learning-safety.test.mjs tests/structure-learning.test.mjs tests/portfolio-visual-evidence.test.mjs tests/portfolio-inline-ledger.test.mjs tests/portfolio-instrument-listings.test.mjs
+        run: node --test tests/portfolio-financial-safety.test.mjs tests/visual-row-binding.test.mjs tests/integration-p0-visual.test.mjs tests/issue45-legacy-audit.test.mjs tests/mobile-learning-safety.test.mjs tests/structure-learning.test.mjs tests/portfolio-visual-evidence.test.mjs tests/portfolio-inline-ledger.test.mjs tests/portfolio-instrument-listings.test.mjs
       - run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
       - run: node scripts/prepare-local-ocr.mjs --swedish
       - run: npx playwright install --with-deps chromium
       - name: Actual synthetic PNG to OCR, legacy heading poison AND new full/compact visual
         env:
           REAL_OCR_QA: '1'
-        run: npx playwright test issue45-legacy-audit.spec.mjs portfolio-visual-ledger.spec.mjs portfolio-inline-ledger.spec.mjs --reporter=list
+        run: npx playwright test visual-row-binding.spec.mjs mobile-learning-safety.spec.mjs issue45-legacy-audit.spec.mjs portfolio-visual-ledger.spec.mjs portfolio-inline-ledger.spec.mjs --reporter=list
+      - name: Preserve fictional OCR regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-row-binding-${{ github.event.pull_request.head.sha || github.sha }}
+          path: test-results/
+          if-no-files-found: ignore

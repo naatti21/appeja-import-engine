@@ -1,0 +1,38 @@
+{
+  "base": "3c998a3287c9006f0f9a61263e483e03eb932512",
+  "baseNode": {
+    "pass": 229,
+    "fail": 24
+  },
+  "afterNode": {
+    "pass": 238,
+    "fail": 24
+  },
+  "unchangedFailures": true,
+  "failures": [
+    "en: independent third import improves without learning names or values",
+    "fi: independent third import improves without learning names or values",
+    "clear labelled cards work without learning; price never becomes cost",
+    "missing listing, malformed ISIN and duplicate quantity cannot be learned away",
+    "changed layout stays unresolved; conflicting explicit corrections block",
+    "duplicates do not merge or add; source accounts remain separate",
+    "unknown international names and source ISINs remain generic; no currency is guessed",
+    "Swedish quantities and separate listing identifiers do not merge instruments",
+    "source IDs, confidence, pages and column geometry cannot silently disappear",
+    "source account cannot leak from one page to the next",
+    "actual ISIN checksum is checked without a company table",
+    "disagreement between OCR readings blocks identities rather than fixing characters",
+    "learned positions transfer to entirely unseen names and listing codes",
+    "unknown intervening section invalidates account inheritance",
+    "active teaching plus three independent cards: repeated banner is not a name",
+    "one or two cards do not establish cross-card semantics, even after learning",
+    "one low-confidence ticker may help identify layout but its own row remains blocked",
+    "closed label accent folding does not rewrite names, tickers, or quantities",
+    "confirmed identity edit preserves original OCR, source IDs and review status; undo reinstates block",
+    "correction teaches structural roles, never values; same-document replay and conflicting teaching stay blocked",
+    "corrections on different cards do not rewrite another account or become market verification",
+    "Q/O, I/1, l/1, S/5 and B/8 disagreements require exact local corrections, never substitution rules",
+    "ASCII field-label variants never relax unknown numeric material or source identity checks",
+    "untrusted source metadata cannot claim a human confirmation"
+  ]
+}
