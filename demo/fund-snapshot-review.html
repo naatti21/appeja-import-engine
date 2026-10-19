@@ -1,0 +1,11 @@
+<!doctype html><html lang="fi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; worker-src 'self'; connect-src 'self'">
+<title>Rahastohavaintojen paikallinen tarkistus</title>
+<style>*{box-sizing:border-box}body{font:16px system-ui;max-width:740px;margin:auto;padding:16px;color:#17242e;background:#f4f6f8}article{background:white;border:1px solid #aebbc6;border-radius:8px;padding:12px;margin:14px 0;overflow-wrap:anywhere}button,input{font:inherit;min-height:44px;max-width:100%;margin:4px 0}button{padding:8px 12px}img,canvas{max-width:100%;height:auto}dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}dd{margin:0}label{display:block}small{display:block}h1{font-size:1.5rem}</style>
+<main id="fundReview"><h1>Rahastojen nykyiset omistukset</h1><p>Paikallinen tutkimusnäkymä. Havainnot eivät varmista instrumenttia. Mitään ei tallenneta salkkuun tai lähetetä hakupalveluun.</p>
+<label>Fiktiivinen rahastokuva <input id="fundFile" type="file" accept="image/png,image/jpeg,image/webp"></label>
+<button id="readFunds">Lue kuva</button> <button id="cancelFunds">Peruuta ja tyhjennä</button>
+<p id="fundStatus" role="status"></p><p>Kuva voi kattaa vain osan salkusta. Määriä ei lisätä vanhoihin eikä näkymättömiä omistuksia poisteta.</p>
+<details id="fundSource" hidden><summary>Koko lähdekuva</summary><img id="fundImage" alt="Valittu paikallinen lähdekuva"></details>
+<section id="fundRows" aria-label="Rahastohavainnot"></section></main>
+<script type="module" src="./fund-snapshot-review-entry.mjs"></script></html>

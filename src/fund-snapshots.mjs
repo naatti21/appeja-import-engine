@@ -1,0 +1,109 @@
+/** Local, non-persistable observations of explicitly labelled current fund holdings.
+ * No bank/issuer dictionary, instrument lookup, portfolio merge or OCR identity promotion.
+ * Deliberately bounded to labelled cards; unsupported structures remain unresolved.
+ */
+const norm=s=>String(s).normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/\s+/g,' ').trim();
+const labels={name:['rahasto','fund','fond'],quantity:['osuudet yhteensa','total units','antal andelar'],value:['arvo','value','varde'],nav:['nav'],averageAcquisitionPrice:['keskihankintahinta','average acquisition price','genomsnittligt anskaffningspris']};
+const roleLabels=['nykyiset omistukset','current holdings','aktuella innehav'];
+const keyFor=s=>Object.keys(labels).find(k=>labels[k].includes(norm(s)));
+export function parseDisplayedDecimal(raw){
+ const s=String(raw).replace(/\u00a0|\u202f/g,' ').trim();
+ if(!/^(?:\d+|\d{1,3}(?: \d{3})+)(?:[,.]\d+)?$/.test(s))return null;
+ // Without a locale contract, 1.234 / 1,234 may mean grouped thousands.
+ if(/^[1-9]\d{0,2}[,.]\d{3}$/.test(s))return null;
+ const decimal=s.replace(/ /g,'').replace(',','.');
+ if(!/[1-9]/.test(decimal)||!Number.isFinite(Number(decimal)))return null;
+ return {decimal,displayPrecision:decimal.includes('.')?decimal.split('.')[1].length:0,possiblyRounded:true};
+}
+const evidence=obs=>obs.map(o=>({sourceId:o.id,raw:o.raw,page:o.source.page,box:{...o.source.box}}));
+const boxOf=obs=>({x0:Math.min(...obs.map(o=>o.source.box.x0)),y0:Math.min(...obs.map(o=>o.source.box.y0)),x1:Math.max(...obs.map(o=>o.source.box.x1)),y1:Math.max(...obs.map(o=>o.source.box.y1))});
+function valid(source){
+ const obs=source?.observations;
+ return Array.isArray(obs)&&obs.length>0&&!source.issues?.some(i=>i.level==='blocking')&&new Set(obs.map(o=>o?.id)).size===obs.length&&obs.every(o=>{
+  const b=o?.source?.box;return o?.source?.format==='image-ocr'&&typeof o.id==='string'&&o.id.length>0&&typeof o.raw==='string'&&Number.isInteger(o.source?.page)&&o.source.page>0&&b&&Object.values(b).length===4&&Object.values(b).every(Number.isFinite)&&b.x0>=0&&b.y0>=0&&b.x1<=1&&b.y1<=1&&b.x1>b.x0&&b.y1>b.y0;
+ });
+}
+function segments(source){
+ const rows=[];
+ for(const o of [...source.observations].sort((a,b)=>a.source.page-b.source.page||a.source.box.y0-b.source.box.y0||a.source.box.x0-b.source.box.x0)){
+  const b=o.source.box,cy=(b.y0+b.y1)/2;
+  let row=rows.find(r=>r.page===o.source.page&&Math.abs(r.cy-cy)<Math.min(r.height,b.y1-b.y0)*.55);
+  if(!row){row={page:o.source.page,cy,height:b.y1-b.y0,obs:[]};rows.push(row);}row.obs.push(o);
+ }
+ const out=[];
+ for(const row of rows){
+  let group=[];
+  const flush=()=>{if(group.length){out.push({raw:group.map(o=>o.raw).join(' '),obs:group,box:boxOf(group),page:row.page});group=[];}};
+  for(const o of row.obs.sort((a,b)=>a.source.box.x0-b.source.box.x0)){if(group.length&&o.source.box.x0-group.at(-1).source.box.x1>.055)flush();group.push(o);}flush();
+ }
+ return out.sort((a,b)=>a.page-b.page||a.box.y0-b.box.y0||a.box.x0-b.box.x0);
+}
+const empty=(status='missing',reason=null,obs=[])=>({status,reason,raw:obs.map(o=>o.raw).join(' '),decimal:null,sourceIds:obs.map(o=>o.id),evidence:evidence(obs),witnessEvidence:[],box:obs.length?boxOf(obs):null});
+function observed(obs,extra={}){return {...empty('observed',null,obs),...extra};}
+function oneRead(source,detail=false){
+ const lines=segments(source);
+ const role=lines.filter(l=>(detail?['rahaston tiedot','fund details','fondinformation']:roleLabels).includes(norm(l.raw)));
+ if(role.length!==1||lines.some(l=>/ostokuitti|purchase receipt|kopnota|ostotapahtuma/i.test(norm(l.raw))))return {documentRole:'UNKNOWN_DOCUMENT_ROLE',rows:[],roleEvidence:[]};
+ const starts=lines.filter(l=>keyFor(l.raw)==='name'&&l.page===role[0].page&&l.box.y0>role[0].box.y1);
+ const rows=starts.map((start,index)=>{
+  const end=starts[index+1]?.box.y0??1;
+  const block=lines.filter(l=>l.page===start.page&&l.box.y0>start.box.y1&&l.box.y0<end);
+  const anchors=block.filter(l=>keyFor(l.raw)&&keyFor(l.raw)!=='name');
+  const nameLines=block.filter(l=>l.box.y0<(anchors[0]?.box.y0??end));
+  const names=nameLines.flatMap(l=>l.obs);
+  const fields={name:nameLines.length>0&&nameLines.length<=2&&!names.some(o=>/\d|\.\.\.|…/.test(o.raw))?observed(names):empty('ambiguous','NAME_ROLE_OR_TRUNCATION',names)};
+  for(const key of ['quantity','value','nav','averageAcquisitionPrice']){
+   const a=anchors.filter(l=>keyFor(l.raw)===key);
+   if(a.length!==1){fields[key]=empty(a.length?'ambiguous':'missing',a.length?'DUPLICATE_FIELD_LABEL':'FIELD_NOT_VISIBLE',a.flatMap(l=>l.obs));continue;}
+   const anchor=a[0];
+   const columnPeers=anchors.filter(l=>Math.abs(l.box.y0-anchor.box.y0)<.02&&l.box.x0>anchor.box.x0+.08);
+   const right=Math.min(...columnPeers.map(l=>l.box.x0),1);
+   const next=block.filter(l=>l.box.y0>anchor.box.y1&&l.box.x0>=anchor.box.x0-.025&&l.box.x0<right-.02);
+   const token=next[0];
+   // Only the immediately following line within two label-heights belongs to this label.
+   if(!token||token.box.y0-anchor.box.y1>Math.max(.012,(anchor.box.y1-anchor.box.y0)*2)){fields[key]=empty('missing','FIELD_NOT_VISIBLE',anchor.obs);continue;}
+   const re=key==='quantity'?/^(.+?)\s+(kpl|pcs|st|units|andelar)$/i:/^(.+?)\s+(EUR|USD|SEK|GBP|CHF|NOK|DKK|€)$/i;
+   const lower=anchors.filter(l=>l.box.y0>anchor.box.y1&&l.box.x0>=anchor.box.x0-.025&&l.box.x0<right-.02).map(l=>l.box.y0);
+   const cellEnd=Math.min(...lower,end);
+   const competing=next.filter(l=>l.box.y0<cellEnd&&re.test(l.raw));
+   if(competing.length>1){fields[key]=empty('ambiguous','MULTIPLE_VALUES_IN_FIELD_REGION',competing.flatMap(l=>l.obs));continue;}
+   const m=token.raw.match(re),number=m&&parseDisplayedDecimal(m[1]);
+   fields[key]=number?observed(token.obs,{...number,currency:key==='quantity'?null:m[2]==='€'?'EUR':m[2].toUpperCase(),labelEvidence:evidence(anchor.obs)}):empty('ambiguous','INVALID_NUMBER_OR_ROLE',token.obs);
+  }
+  const money=['value','nav','averageAcquisitionPrice'].map(k=>fields[k]).filter(f=>f.status==='observed');
+  fields.currency=money.length&&new Set(money.map(f=>f.currency)).size===1?observed(money.flatMap(f=>f.evidence.map(e=>source.observations.find(o=>o.id===e.sourceId))),{value:money[0].currency}):empty('ambiguous','CURRENCY_CONFLICT_OR_MISSING');
+  return {rowId:`fund-${start.page}-${index}`,fields,identityStatus:'UNVERIFIED',canPersist:false};
+ });
+ return {documentRole:detail?'FUND_DETAILS':'CURRENT_HOLDINGS_SNAPSHOT',rows,roleEvidence:evidence(role[0].obs)};
+}
+function agrees(a,b){
+ return a.status===b?.status&&norm(a.raw)===norm(b.raw)&&a.decimal===b.decimal&&a.currency===b.currency&&a.value===b.value&&(!a.box||b.box&&Math.max(...Object.keys(a.box).map(k=>Math.abs(a.box[k]-b.box[k])))<.025);
+}
+function extract(primary,witness,detail=false){
+ const base={schema:'fund-snapshot-observations-v1',canPersist:false,candidates:[],marketIdentityVerified:false,coverage:'PARTIAL_OR_UNKNOWN',actions:[],requiresReview:true};
+ if(!valid(primary)||!valid(witness))return {...base,documentRole:'UNKNOWN_DOCUMENT_ROLE',rows:[],issues:['INVALID_SOURCE_EVIDENCE']};
+ const a=oneRead(primary,detail),b=oneRead(witness,detail);
+ if(a.documentRole!==b.documentRole||a.documentRole!==(detail?'FUND_DETAILS':'CURRENT_HOLDINGS_SNAPSHOT')||!agrees(observed(a.roleEvidence.map(e=>primary.observations.find(o=>o.id===e.sourceId))),observed(b.roleEvidence.map(e=>witness.observations.find(o=>o.id===e.sourceId)))))return {...base,documentRole:'UNKNOWN_DOCUMENT_ROLE',rows:[],issues:['UNPROVEN_DOCUMENT_ROLE']};
+ for(const row of a.rows){
+  // Match by geometric region, not the list index: a missing OCR card must not shift others.
+  const peers=b.rows.filter(r=>row.fields.name.box&&r.fields.name.box&&Math.abs(r.fields.name.box.y0-row.fields.name.box.y0)<.025);
+  for(const [key,field] of Object.entries(row.fields)){
+   const other=peers.length===1?peers[0].fields[key]:null;
+   if(!other||!agrees(field,other)){field.status='ambiguous';field.reason='OCR_READINGS_DISAGREE';field.decimal=null;}
+   field.witnessEvidence=other?.evidence??[];
+   field.witnessLabelEvidence=other?.labelEvidence??[];
+  }
+  row.structuralStatus=['name','quantity','value','currency'].every(k=>row.fields[k].status==='observed')?'OBSERVED_ROW_REQUIRES_IDENTITY_REVIEW':'UNRESOLVED';
+  row.canRequestCostBasis=row.fields.averageAcquisitionPrice.status==='missing'&&row.structuralStatus==='OBSERVED_ROW_REQUIRES_IDENTITY_REVIEW';
+ }
+ return {...base,...a,sourceEvidence:evidence(primary.observations),witnessSourceEvidence:evidence(witness.observations),issues:[]};
+}
+/** Keep document evidence separate. No name-based cross-account matching or deletion. */
+export function combineFundSnapshots(documents){
+ const unique=[...new Set(documents)];
+ return {documents:unique,actions:[],canPersist:false,coverage:'PARTIAL_OR_UNKNOWN',matchingStatus:'REQUIRES_ACCOUNT_AND_IDENTITY_REVIEW'};
+}
+
+export const extractFundSnapshot=(primary,witness)=>extract(primary,witness);
+/** Detail price is a separate source; never automatically matched to an account or holding. */
+export const extractFundCostBasisDetail=(primary,witness)=>extract(primary,witness,true);
