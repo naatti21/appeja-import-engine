@@ -3,9 +3,26 @@
  * Deliberately bounded to labelled cards; unsupported structures remain unresolved.
  */
 const norm=s=>String(s).normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/\s+/g,' ').trim();
-const labels={name:['rahasto','fund','fond'],quantity:['osuudet yhteensa','total units','antal andelar'],value:['arvo','value','varde'],nav:['nav'],averageAcquisitionPrice:['keskikurssi','keskihankintahinta','average acquisition price','genomsnittligt anskaffningspris']};
+const labels={name:['rahasto','fund','fond'],quantity:['osuudet yhteensa','total units','antal andelar'],value:['arvo','value','varde'],nav:['nav'],averageAcquisitionPrice:['gav','keskikurssi','keskihankintahinta','average acquisition price','genomsnittligt anskaffningspris']};
 const roleLabels=['nykyiset omistukset','current holdings','aktuella innehav'];
-const keyFor=s=>Object.keys(labels).find(k=>labels[k].includes(norm(s)));
+// Economic labels remain labels when OCR joins dates/as-of context to them.
+// Unknown unit-price/period-change roles are barriers, not holdings-value aliases.
+const economicLabels={value:labels.value,nav:labels.nav,averageAcquisitionPrice:labels.averageAcquisitionPrice,
+ unitPrice:['osuuden hinta','yksikkohinta','unit price','share price','price','kurssi','hinta'],
+ periodChange:['paivan muutos','paivamuutos','daily change','day change','tuotto','return','avkastning']};
+function keyFor(raw){
+ const text=norm(raw),exact=Object.keys(labels).find(k=>labels[k].includes(text));
+ if(exact)return exact;
+ // Match whole label phrases, never an instrument-specific string or date.
+ const matches=Object.entries(economicLabels).flatMap(([key,names])=>names.flatMap(name=>{
+  const at=text.indexOf(name),end=at+name.length;
+  return at>=0&&(at===0||/[\s(/:]/.test(text[at-1]))&&
+   (end===text.length||/[\s\d(/:]/.test(text[end]))?[{key,at,end}]:[];
+ }));
+ // "price" inside "average acquisition price" is not a competing label.
+ const claims=[...new Set(matches.filter(m=>!matches.some(n=>n!==m&&n.at<=m.at&&n.end>=m.end&&(n.at<m.at||n.end>m.end))).map(m=>m.key))];
+ return claims.length===1?claims[0]:claims.length?'ambiguousFinancialRole':undefined;
+}
 export function parseDisplayedDecimal(raw){
  const s=String(raw).replace(/\u00a0|\u202f/g,' ').trim();
  if(!/^(?:\d+|\d{1,3}(?: \d{3})+)(?:[,.]\d+)?$/.test(s))return null;
@@ -137,7 +154,23 @@ function brokerRead(lines,source,role){
    // Unlabelled compact value: only the unique money line immediately above
    // total units, in the same right-hand column. Other prices stay separate.
    const prices=block.filter(l=>moneyRE.test(l.raw)&&Math.abs(l.box.x0-unit.box.x0)<.035&&l.box.y1<unit.box.y0&&unit.box.y0-l.box.y1<(unit.box.y1-unit.box.y0)*3);
-   if(prices.length===1){const m=prices[0].raw.match(moneyRE),n=parseDisplayedDecimal(m[1]);fields.value=n?observed(prices[0].obs,{...n,currency:m[2]==='€'?'EUR':m[2].toUpperCase()}):empty('ambiguous','INVALID_NUMBER_OR_ROLE',prices[0].obs);}
+   if(prices.length===1){
+    const price=prices[0];
+    // A unique EUR token is not proof of total market value. A local label
+    // owns its economic role even if a date/other line prevents exact binding.
+    const claims=content.filter(l=>{
+     // Include an adjacent heading just above the name-derived card start.
+     // Unclassified text in this price region is uncertainty, not permission
+     // to invent a total-value role. Neighboring left-column returns are not
+     // part of the right-column numeric region.
+     const key=keyFor(l.raw),semantic=key&&key!=='name'&&key!=='quantity'&&key!=='value'&&block.includes(l);
+     return !moneyRE.test(l.raw)&&!unitRE.test(l.raw)&&l.box.y0<price.box.y0&&
+      (semantic||price.box.y0-l.box.y1<4*(price.box.y1-price.box.y0))&&
+      (Math.abs(l.box.x0-price.box.x0)<.06||l.box.x0<=price.box.x0&&l.box.x1>price.box.x0);
+    });
+    if(claims.length)fields.value={...empty('ambiguous','COMPETING_ECONOMIC_ROLE',price.obs),labelEvidence:evidence(claims.flatMap(l=>l.obs))};
+    else{const m=price.raw.match(moneyRE),n=parseDisplayedDecimal(m[1]);fields.value=n?observed(price.obs,{...n,currency:m[2]==='€'?'EUR':m[2].toUpperCase()}):empty('ambiguous','INVALID_NUMBER_OR_ROLE',price.obs);}
+   }
    else fields.value=empty(prices.length?'ambiguous':'missing','INLINE_VALUE_NOT_UNIQUE',prices.flatMap(l=>l.obs));
   }
   fields.currency=currencyField(fields,source);
