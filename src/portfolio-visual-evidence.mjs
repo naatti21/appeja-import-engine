@@ -231,8 +231,14 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
       .sort((a,b)=>Math.abs(l.cy-a.cy)-Math.abs(l.cy-b.cy))[0];
     // If amount is unavailable, a source-linked name+quantity is still a
     // reviewable candidate, but cannot be used for arithmetic.
+    const priorPrice=lines.slice(boundaryIndex+1,i).filter(p=>
+      p.page===l.page&&p.cy>previousQtyCy+.006&&
+      p.cy<(amountLine?.cy??l.cy)-.045&&p.left&&p.leftIds.length&&
+      uniqueRightMoney(p)&&!EXCLUDE.test(p.left)&&!STOPS.test(p.left)&&
+      !/arvonmuutos|päivän muutos|paivan muutos|day change|%/iu.test(p.text)).at(-1);
+    const localStart=Math.max(previousQtyCy+.006,priorPrice?priorPrice.cy+.006:-Infinity);
     const start=amountLine?amountLine.cy-.014:l.cy-.035;
-    const eligible=lines.filter(p=>p.page===l.page&&p.cy>=Math.max(start,previousQtyCy+.006)&&
+    const eligible=lines.filter(p=>p.page===l.page&&p.cy>=Math.max(start,localStart)&&
       p.cy<=l.cy+.018&&p.left&&p.leftIds.length&&
       !EXCLUDE.test(p.left)&&!Object.hasOwn(TYPES,p.left.toLowerCase())&&
       !STOPS.test(p.left)&&!parseMoney(p.left)&&!financialQuantityMatches(p.left).length&&
@@ -241,7 +247,7 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
     // the amount. Low-confidence competing text remains conflict evidence.
     // OCR agreement and arithmetic cannot establish a text's semantic role.
     const context=lines.slice(boundaryIndex+1,i+1).filter(p=>
-      p.page===l.page&&p.cy>previousQtyCy+.006&&p.left&&p.leftIds.length&&
+      p.page===l.page&&p.cy>localStart&&p.left&&p.leftIds.length&&
       !EXCLUDE.test(p.left)&&!Object.hasOwn(TYPES,p.left.toLowerCase())&&
       !STOPS.test(p.left)&&!parseMoney(p.left)&&!financialQuantityMatches(p.left).length);
     // Supported row grammar: one complete name at the value/quantity anchor,
