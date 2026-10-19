@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -41,15 +41,15 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: issue55-P0-${ github.event.pull_request.head.sha || github.sha }}
+          name: issue55-P0-${{ github.event.pull_request.head.sha || github.sha }}
           path: test-results/
           if-no-files-found: ignore
           retention-days: 14
       - name: Enforce RED until both test levels actually pass
         if: always()
         env:
-          NODE_OUTCOME: ${ steps.node.outcome }}
-          OCR_OUTCOME: ${ steps.ocr.outcome }}
+          NODE_OUTCOME: ${{ steps.node.outcome }}
+          OCR_OUTCOME: ${{ steps.ocr.outcome }}
         run: |
           echo "Node role oracle: $NODE_OUTCOME"
           echo "Real OCR role oracle: $OCR_OUTCOME"
