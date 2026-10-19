@@ -67,23 +67,76 @@ function responseListings(response,name,kind){
   return [...matching.values()].slice(0,8);
 }
 /**
+ * Names from raw visual extraction are NOT instrument identities. The only
+ * accepted lookup source is preparePortfolioIdentityReview() followed by
+ * an explicit per-row chooseInstrumentIdentity() user decision.
+ *
+ * Caller must enforce the direct user gesture in its UI; this pure function
+ * cannot infer click authenticity. No market identity is auto-verified.
+ */
+function checkedReviewedRows(review){
+  if(!review||review.status!=='identity-review'||
+    review.canPersist!==false||review.marketIdentityVerified!==false||
+    !Array.isArray(review.rows)||!Array.isArray(review.userSelections)||
+    review.rows.length>LIMIT||review.userSelections.length>LIMIT)
+    return {rows:[],issues:[{reason:'EXPLICIT_IDENTITY_REVIEW_REQUIRED'}]};
+  const records=[],issues=[],seen=new Set();
+  for(const selection of review.userSelections) {
+    if(!selection||selection.assertionSource!=='explicit-user-choice'||
+      typeof selection.rowId!=='string'||seen.has(selection.rowId)) {
+      issues.push({reason:'INVALID_REVIEW_CHOICE'});continue;
+    }
+    seen.add(selection.rowId);
+    const row=review.rows.find(r=>r.rowId===selection.rowId);
+    const sameIds=(field)=>Array.isArray(row?.sourceIds?.[field])&&
+      Array.isArray(selection.sourceIds?.[field])&&
+      JSON.stringify(row.sourceIds[field])===JSON.stringify(selection.sourceIds[field]);
+    if(!row||row.kind!==selection.kind||
+      row.observedText!==selection.observedText||
+      row.quantity!==selection.quantity||
+      JSON.stringify(row.marketValue)!==JSON.stringify(selection.marketValue)||
+      !['confirm-observed','correct-name','exclude-row'].includes(selection.decision)||
+      !['stock','fund'].includes(selection.kind)||
+      !['name','quantity','marketValue'].every(sameIds)) {
+      issues.push({reason:'INVALID_REVIEW_SOURCE_BINDING'});continue;
+    }
+    if(selection.decision==='exclude-row') {
+      if(selection.userSelectedName!==null)
+        issues.push({reason:'EXCLUDED_ROW_HAS_NAME'});
+      continue;
+    }
+    const name=clean(selection.userSelectedName);
+    if((selection.decision==='confirm-observed'&&name!==row.observedText)||
+      !goodToken(name,140)||name.length<2||
+      !/^[\p{L}\p{N}][\p{L}\p{N}\p{M}\s&.'()\-+/]{0,139}$/u.test(name)){
+      issues.push({reason:'INVALID_REVIEWED_INSTRUMENT_NAME'});continue;
+    }
+    // Never derive a query from row.observedText: it may be a subgroup heading.
+    const proposed={kind:row.kind,certainty:'candidate',canPersist:false,
+      marketVerification:{status:'not-verified'},
+      fields:{name:{value:name,sourceIds:[...row.sourceIds.name]},
+        quantity:{value:row.quantity,sourceIds:[...row.sourceIds.quantity]}}};
+    if(!validSourceRow(proposed)){issues.push({reason:'INVALID_REVIEWED_ROW'});continue;}
+    records.push(proposed);
+  }
+  return {rows:records,issues};
+}
+/**
  * resolver: injected async ({name}) => instrument-resolver-v1 response.
- * 'local' uses a caller-owned fictional/offline lookup with no consent needed.
- * 'external' requires explicit current-session consent. This is NOT a
- * network enablement switch or provider endpoint implementation.
+ * 'local' uses caller-owned local candidates, and 'external' additionally
+ * requires explicit session consent. Raw OCR candidates cannot reach it.
  */
 export async function suggestInstrumentListings(extraction,{
   resolver=null,lookupMode='disabled',approvedExternalLookup=false
 }={}){
-  if(!extraction||extraction.canPersist!==false||
-    !Array.isArray(extraction.candidates)||extraction.candidates.length>LIMIT)
-    return {rows:[],issues:[{reason:'INVALID_EXTRACTION'}],canPersist:false};
-  const rows=[],issues=[];
+  const {rows:reviewedRows,issues}=checkedReviewedRows(extraction);
+  if(issues.some(x=>x.reason==='EXPLICIT_IDENTITY_REVIEW_REQUIRED'))
+    return {rows:[],issues,requiresUserApproval:true,canPersist:false};
+  const rows=[];
   const allowed = (lookupMode==='local'||(lookupMode==='external'&&approvedExternalLookup===true))
     && typeof resolver==='function';
   const answers=new Map();
-  for(const row of extraction.candidates){
-    if(!validSourceRow(row)){issues.push({reason:'INVALID_SOURCE_ROW'});continue;}
+  for(const row of reviewedRows) {
     if(!allowed){
       rows.push(none(row,'not-checked',
         lookupMode==='external'?'EXPLICIT_LOOKUP_CONSENT_REQUIRED':'LOOKUP_NOT_ENABLED'));
@@ -93,8 +146,8 @@ export async function suggestInstrumentListings(extraction,{
     try{
       let promise=answers.get(key);
       if(!promise){
-        // Deliberately pass only a name, never shares, value, original OCR,
-        // account, document, other positions, geometry or source IDs.
+        // Deliberate user-selected name ONLY; never shares, OCR text,
+        // original image, source IDs, positions, account or balance.
         promise=Promise.resolve().then(()=>resolver({name:query}));
         answers.set(key,promise);
       }
