@@ -1,9 +1,9 @@
 name: Issue63 isolated fund snapshot QA
 on:
   push:
-    branches: ['feature/issue63-fund-snapshots', 'fix/issue63-exclusive-field-binding']
+    branches: ['feature/issue63-fund-snapshots', 'fix/issue63-exclusive-field-binding', 'fix/pr65-dated-price-role']
   pull_request:
-    branches: ['fix/pr59-lookup-race-contracts', 'feature/issue63-fund-snapshots']
+    branches: ['fix/pr59-lookup-race-contracts', 'feature/issue63-fund-snapshots', 'fix/issue63-exclusive-field-binding']
   workflow_dispatch:
 permissions:
   contents: read
@@ -29,7 +29,20 @@ jobs:
         if: ${{ !cancelled() }}
         env:
           REAL_OCR_QA: '1'
-        run: npx playwright test fund-snapshots.spec.mjs fund-binding.spec.mjs fund-broker-structures.spec.mjs fund-review-lifecycle.spec.mjs issue55-mobile-identity.spec.mjs --workers=2 --reporter=list > focused-browser.log 2>&1
+        run: npx playwright test fund-economic-roles.spec.mjs fund-snapshots.spec.mjs fund-binding.spec.mjs fund-broker-structures.spec.mjs fund-review-lifecycle.spec.mjs issue55-mobile-identity.spec.mjs --workers=2 --reporter=list > focused-browser.log 2>&1
+      - name: Publish exact-SHA developer test summary
+        if: always()
+        run: |
+          python3 - <<'PYREPORT'
+          import os
+          from pathlib import Path
+          sha=Path('tested-sha.txt').read_text().strip() if Path('tested-sha.txt').exists() else 'NOT RUN'
+          text='Automated developer QA, not independent approval. Tested SHA: '+sha+'\n'
+          for name in ['focused-node.log','focused-browser.log','full-node.log','ordinary-browser.log','frozen-p0-browser.log']:
+              p=Path(name)
+              if p.exists(): text+='\n### '+name+'\n```text\n'+'\n'.join(p.read_text().splitlines()[-20:])+'\n```\n'
+          Path(os.environ['GITHUB_STEP_SUMMARY']).write_text(text)
+          PYREPORT
       - if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -59,11 +72,27 @@ jobs:
         run: |
           git rev-parse HEAD > tested-sha.txt
           npm test > full-node.log 2>&1
+      - id: ordinary
+        continue-on-error: true
+        run: npx playwright test --workers=2 --reporter=list > ordinary-browser.log 2>&1
       - id: browser
         continue-on-error: true
         env:
           REAL_OCR_QA: '1'
         run: npx playwright test issue55-name-role.spec.mjs --workers=2 --reporter=list > frozen-p0-browser.log 2>&1
+      - name: Publish exact-SHA developer test summary
+        if: always()
+        run: |
+          python3 - <<'PYREPORT'
+          import os
+          from pathlib import Path
+          sha=Path('tested-sha.txt').read_text().strip() if Path('tested-sha.txt').exists() else 'NOT RUN'
+          text='Automated developer QA, not independent approval. Tested SHA: '+sha+'\n'
+          for name in ['focused-node.log','focused-browser.log','full-node.log','ordinary-browser.log','frozen-p0-browser.log']:
+              p=Path(name)
+              if p.exists(): text+='\n### '+name+'\n```text\n'+'\n'.join(p.read_text().splitlines()[-20:])+'\n```\n'
+          Path(os.environ['GITHUB_STEP_SUMMARY']).write_text(text)
+          PYREPORT
       - if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -72,11 +101,13 @@ jobs:
             tested-sha.txt
             full-node.log
             frozen-p0-browser.log
+            ordinary-browser.log
             test-results/
           retention-days: 14
       - name: Preserve actual failure status
         if: always()
         env:
           NODE_RESULT: ${{ steps.node.outcome }}
+          ORDINARY_RESULT: ${{ steps.ordinary.outcome }}
           BROWSER_RESULT: ${{ steps.browser.outcome }}
-        run: test "$NODE_RESULT" = success && test "$BROWSER_RESULT" = success
+        run: test "$NODE_RESULT" = success && test "$ORDINARY_RESULT" = success && test "$BROWSER_RESULT" = success
