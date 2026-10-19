@@ -11,7 +11,7 @@ test('public LAB release artifact keeps previous home and serves fictional isola
   });
   await page.setViewportSize({width:360,height:780});
   await page.goto('/dist/index.html');
-  await expect(page.locator('#fileImport')).toHaveCount(1);
+  await expect(page.locator('#documentFile')).toHaveCount(1);
   await page.goto('/dist/issue55-test/demo/portfolio-identity-review.html');
   await expect(page.locator('#portfolioFile')).toBeHidden();
   await expect(page.getByText('Oikeiden salkku- tai pankkikuvien lataaminen')).toBeVisible();
