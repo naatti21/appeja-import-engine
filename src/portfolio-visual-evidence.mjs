@@ -5,7 +5,7 @@
  * ticker/ISIN and never verifies market identity, writes holdings or learns
  * names. All values remain only in the caller's in-memory result.
  */
-import {uniqueMoney,uniqueQuantity,financialQuantityMatches} from './portfolio-financial-evidence.mjs';
+import {uniqueMoney,uniqueQuantity,financialQuantityMatches,financialQuantityEvidence} from './portfolio-financial-evidence.mjs';
 
 const TYPES={osakkeet:'stock',aktier:'stock',stocks:'stock',shares:'stock',
   rahastot:'fund',fonder:'fund',funds:'fund'};
@@ -206,13 +206,15 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
     // amount without quantity must never become a holding.
     const right=l.words.filter(w=>l.rightIds.includes(w.id));
     const qtext=strip(right.map(w=>w.raw).join(' '));
-    const quantityMatches=financialQuantityMatches(qtext);
-    if(quantityMatches.length>1) {
-      unresolved.push({reason:'AMBIGUOUS_QUANTITY',field:'quantity',sourceIds:l.rightIds,canPersist:false});
+    const qtyEvidence=financialQuantityEvidence(qtext);
+    if(qtyEvidence.status==='ambiguous'||qtyEvidence.status==='invalid') {
+      unresolved.push({reason:qtyEvidence.status==='ambiguous'?'AMBIGUOUS_QUANTITY':'INVALID_QUANTITY',
+        field:'quantity',sourceIds:l.rightIds,canPersist:false});
       lastQtyCy=l.cy;continue;
     }
-    const quantity=parseQty(qtext);
+    const quantity=qtyEvidence.value;
     if(quantity===null)continue;
+    const quantityMatches=financialQuantityMatches(qtext);
     // Even a withheld quantity consumes its visual row boundary.
     const previousQtyCy=lastQtyCy;
     lastQtyCy=l.cy;
