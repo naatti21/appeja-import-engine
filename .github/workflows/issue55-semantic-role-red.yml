@@ -1,0 +1,56 @@
+name: Issue55 P0 missing-issuer semantic role RED
+on:
+  pull_request:
+    branches:
+      - 'integration/issue49-issue50-20261019'
+    paths:
+      - 'tests/fixtures/issue55-name-role.mjs'
+      - 'tests/issue55-semantic-name.test.mjs'
+      - 'tests/e2e/issue55-name-role.spec.mjs'
+      - '.github/workflows/issue55-semantic-role-red.yml'
+      - 'src/portfolio-visual-evidence.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  semantic-role:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Source-level role invariant (RED expected until P0 fix)
+        id: node
+        continue-on-error: true
+        run: node --test tests/issue55-semantic-name.test.mjs
+      - run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+      - run: node scripts/prepare-local-ocr.mjs --swedish
+      - run: npx playwright install --with-deps chromium
+      - name: Genuine PNG to local dual OCR (RED expected until P0 fix)
+        id: ocr
+        continue-on-error: true
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test issue55-name-role.spec.mjs --reporter=list
+      - name: Preserve raw fictional pixels and both OCR readings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: issue55-P0-${ github.event.pull_request.head.sha || github.sha }}
+          path: test-results/
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: Enforce RED until both test levels actually pass
+        if: always()
+        env:
+          NODE_OUTCOME: ${ steps.node.outcome }}
+          OCR_OUTCOME: ${ steps.ocr.outcome }}
+        run: |
+          echo "Node role oracle: $NODE_OUTCOME"
+          echo "Real OCR role oracle: $OCR_OUTCOME"
+          test "$NODE_OUTCOME" = "success" && test "$OCR_OUTCOME" = "success"
