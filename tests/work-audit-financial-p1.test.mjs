@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {visualLedgerFixture} from './fixtures/portfolio-visual-ledger.mjs';
+import {rowBindingFixture} from './fixtures/visual-row-binding.mjs';
 import {extractVisualPortfolio,extractVisualPortfolioCorroborated} from '../src/portfolio-visual-evidence.mjs';
 
 function view(original,newText) {
@@ -45,4 +46,13 @@ test('P1 controls: intact positive quantities and valid groupings remain useful'
  const group=extractVisualPortfolio(view('101,25 EUR','1 101,25 EUR'));
  assert.equal(group.candidates[0].fields.marketValue.value.cents,110125);
  assert.equal(group.reconciliation.status,'mismatch');
+});
+
+test('valid 0,00 EUR cash supports a true arithmetic PASS; zero long quantity does not',()=>{
+ const good=extractVisualPortfolio(rowBindingFixture({attack:false}).source);
+ assert.equal(good.candidates.length,4);
+ assert.equal(good.reconciliation.status,'pass');
+ const bad=extractVisualPortfolio(view('4 kpl','0 kpl'));
+ assert.equal(bad.candidates.some(c=>c.fields.name.value==='Quartz Devices'),false);
+ assert.equal(bad.reconciliation.status,'not-evaluable');
 });
