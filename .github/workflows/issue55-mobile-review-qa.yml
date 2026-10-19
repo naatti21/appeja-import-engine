@@ -1,0 +1,91 @@
+name: P0 issue55 mobile identity review exact-SHA QA
+on:
+  push:
+    branches: ['fix/issue55-mobile-identity-review']
+  pull_request:
+    branches: ['fix/issue55-lookup-requires-reviewed-name-20261019']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mobile-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+      - run: node scripts/prepare-local-ocr.mjs --swedish
+      - run: npx playwright install --with-deps chromium
+      - name: Record exact checkout and boundary tests
+        run: |
+          git rev-parse HEAD > tested-sha.txt
+          node --test tests/issue55-session-boundary.test.mjs tests/issue55-identity-review.test.mjs > mobile-node.log 2>&1
+      - name: Real PNG to local OCR to direct mobile clicks to fake local lookup
+        if: ${{ !cancelled() }}
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test issue55-mobile-identity.spec.mjs --reporter=list > mobile-browser.log 2>&1
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-review-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            tested-sha.txt
+            mobile-node.log
+            mobile-browser.log
+            test-results/
+          retention-days: 14
+  inherited-red-and-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+      - run: node scripts/prepare-local-ocr.mjs --swedish
+      - run: npx playwright install --with-deps chromium
+      - name: Full Node including unchanged RED oracle
+        id: node
+        continue-on-error: true
+        run: |
+          git rev-parse HEAD > tested-sha.txt
+          npm test > full-node.log 2>&1
+      - name: Unchanged PR58 focused contracts
+        id: focused
+        continue-on-error: true
+        run: node --test tests/portfolio-instrument-listings.test.mjs tests/issue55-identity-review.test.mjs > inherited-focused.log 2>&1
+      - name: Frozen RED plus review, lookup, issue49 and legacy P0 real OCR
+        id: browser
+        continue-on-error: true
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test issue55-name-role.spec.mjs issue55-identity-review.spec.mjs issue55-reviewed-lookup.spec.mjs visual-row-binding.spec.mjs mobile-learning-safety.spec.mjs issue45-legacy-audit.spec.mjs portfolio-visual-ledger.spec.mjs portfolio-inline-ledger.spec.mjs --reporter=list > inherited-browser.log 2>&1
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: inherited-red-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            tested-sha.txt
+            full-node.log
+            inherited-focused.log
+            inherited-browser.log
+            test-results/
+          retention-days: 14
+      - name: Preserve actual failing status (no expected-failure conversion)
+        if: always()
+        env:
+          NODE: ${{ steps.node.outcome }}
+          FOCUSED: ${{ steps.focused.outcome }}
+          BROWSER: ${{ steps.browser.outcome }}
+        run: test "$NODE" = success && test "$FOCUSED" = success && test "$BROWSER" = success

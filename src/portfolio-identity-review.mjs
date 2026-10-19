@@ -9,6 +9,38 @@
  * response to a deliberate user action. Neither function verifies a listing,
  * queries a resolver, authorizes persistence or changes the source image.
  */
+// Object provenance is process-local, never serializable or importable.
+// This is an application boundary, not protection against hostile same-origin JS.
+import {reviewFingerprint} from './review-object-integrity.mjs';
+const sessions=new WeakMap();
+function register(review,session={active:true,current:null}) {
+  session.current=review;
+  sessions.set(review,{session,snapshot:reviewFingerprint(review)});
+  return review;
+}
+export function isCurrentPortfolioIdentityReview(review) {
+  const record=review&&sessions.get(review);
+  return !!record&&record.session.active&&record.session.current===review&&
+    record.snapshot!==null&&record.snapshot===reviewFingerprint(review);
+}
+export function cancelPortfolioIdentityReview(review) {
+  const record=review&&sessions.get(review);
+  if(record)record.session.active=false;
+}
+export function undoInstrumentIdentity(review,rowId) {
+  if(!isCurrentPortfolioIdentityReview(review)||!review.userSelections.some(s=>s.rowId===rowId))
+    return {status:'rejected',reason:'STALE_OR_DUPLICATE_ROW',canPersist:false};
+  const userSelections=review.userSelections.filter(s=>s.rowId!==rowId);
+  return register({...review,userSelections,remainingReviewRows:review.rows.length-userSelections.length},sessions.get(review).session);
+}
+function validGeometry(words) {
+  return words.length>0&&words.every(w=>{
+    const b=w?.source?.box;
+    return b&&Number.isInteger(w.source.page)&&w.source.page>=1&&
+      [b.x0,b.y0,b.x1,b.y1].every(Number.isFinite)&&
+      b.x0>=0&&b.y0>=0&&b.x1<=1&&b.y1<=1&&b.x0<b.x1&&b.y0<b.y1;
+  })&&new Set(words.map(w=>w.source.page)).size===1;
+}
 const clean = x => typeof x==='string'
   ?x.normalize('NFKC').replace(/\s+/gu,' ').trim():'';
 const MAX_ROWS=100;
@@ -55,6 +87,7 @@ export function preparePortfolioIdentityReview(extraction, source){
       return notReady('DUPLICATE_OR_INVALID_SOURCE_ID');
     sourceById.set(word.id,word);
   }
+  const sessionId=crypto.randomUUID();
   const rows=[],unresolved=copyUnresolved(extraction.unresolved),claimed=new Set();
   for(let i=0;i<extraction.candidates.length;i++){
     const entry=extraction.candidates[i];
@@ -73,14 +106,15 @@ export function preparePortfolioIdentityReview(extraction, source){
       (market?.value===null||(amountIds&&amountIds.every(id=>sourceById.has(id))&&
        Number.isSafeInteger(market.value.cents)&&market.value.cents>=0&&
        /^[A-Z]{3}$/u.test(market.value.currency)))&&
-      new Set(all).size===all.length&&all.every(id=>!claimed.has(id));
+      new Set(all).size===all.length&&all.every(id=>!claimed.has(id))&&
+      validGeometry(all.map(id=>sourceById.get(id)));
     if(!valid){
       unresolved.push({reason:'INVALID_IDENTITY_REVIEW_ROW',field:'name',
         sourceIds:all.filter(id=>sourceById.has(id)),canPersist:false});
       continue;
     }
     for(const id of all)claimed.add(id);
-    const rowId='row-'+i+'-'+nameIds.join('.');
+    const rowId='row-'+sessionId+'-'+i;
     rows.push({
       rowId,kind:entry.kind,status:'needs-user-identity-choice',
       observedText:clean(name.value),observedTextRole:'UNPROVEN_NAME_OR_HEADING',
@@ -97,13 +131,13 @@ export function preparePortfolioIdentityReview(extraction, source){
   }
   const observedArithmetic=['pass','mismatch','not-evaluable'].includes(extraction.reconciliation?.status)
     ?extraction.reconciliation.status:'not-evaluable';
-  return {
+  return register({
     schemaVersion:1,status:'identity-review',rows,userSelections:[],
     // Identity claims stay EMPTY even if the source OCR called text a candidate.
     candidates:[],unresolved,observedArithmetic,
     reconciliation:{status:'not-evaluable',reason:'IDENTITY_NOT_ESTABLISHED',canPersist:false},
     marketIdentityVerified:false,requiresUserApproval:true,canPersist:false
-  };
+  });
 }
 /**
  * One deliberate user choice per source row. This is a recorded assertion
@@ -111,7 +145,7 @@ export function preparePortfolioIdentityReview(extraction, source){
  * It cannot choose a row that was not part of the prepared current review.
  */
 export function chooseInstrumentIdentity(review, {rowId,decision,chosenName}={}){
-  if(!review||review.status!=='identity-review'||
+  if(!isCurrentPortfolioIdentityReview(review)||review.status!=='identity-review'||
      review.canPersist!==false||!Array.isArray(review.rows)||
      !Array.isArray(review.userSelections)||typeof rowId!=='string')
     return {status:'rejected',reason:'INVALID_REVIEW',canPersist:false};
@@ -133,11 +167,11 @@ export function chooseInstrumentIdentity(review, {rowId,decision,chosenName}={})
       marketValue:[...row.sourceIds.marketValue]},
     assertionSource:'explicit-user-choice',marketIdentityVerified:false,canPersist:false};
   const userSelections=[...review.userSelections,choice];
-  return {
+  return register({
     ...review,userSelections,
     status:'identity-review', // Never masquerade as automatically verified.
     // Even all reviewed rows are NOT ready to save without app-specific approval.
     candidates:[],marketIdentityVerified:false,canPersist:false,
     remainingReviewRows:review.rows.length-userSelections.length
-  };
+  },sessions.get(review).session);
 }
