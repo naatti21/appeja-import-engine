@@ -17,10 +17,10 @@ async function run(page,fixture) {
       langPath:location.origin+'/demo/vendor/ocr/lang',
       gzip:false,workerBlobURL:false,cacheMethod:'none'
     });
-    let result;
+    let result,source;
     try{
       const o=await w.recognize(canvas,{}, {tsv:true,text:true});
-      const source=evidenceFromOcrTsv(o.data.tsv,{imageWidth:f.width,imageHeight:f.height});
+      source=evidenceFromOcrTsv(o.data.tsv,{imageWidth:f.width,imageHeight:f.height});
       await w.reinitialize('eng');
       const e=await w.recognize(canvas,{}, {tsv:true,text:true});
       const witness=evidenceFromOcrTsv(e.data.tsv,{imageWidth:f.width,imageHeight:f.height});
