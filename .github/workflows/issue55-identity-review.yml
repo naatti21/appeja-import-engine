@@ -1,0 +1,42 @@
+name: Issue55 P0 identity review boundary QA
+on:
+  pull_request:
+    branches:
+      - 'test/issue55-semantic-name-red-20261019'
+    paths:
+      - 'src/portfolio-identity-review.mjs'
+      - 'tests/issue55-identity-review.test.mjs'
+      - 'tests/e2e/issue55-identity-review.spec.mjs'
+      - '.github/workflows/issue55-identity-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  review-boundary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Node strict per-row identity review invariant
+        run: node --test tests/issue55-identity-review.test.mjs
+      - run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+      - run: node scripts/prepare-local-ocr.mjs --swedish
+      - run: npx playwright install --with-deps chromium
+      - name: True PNG to dual-local Tesseract with fail-closed handoff
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test issue55-identity-review.spec.mjs --reporter=list
+      - name: Preserve fictional PNG source OCR and safe review output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: issue55-review-${{ github.event.pull_request.head.sha || github.sha }}
+          path: test-results/
+          retention-days: 14
+          if-no-files-found: ignore
