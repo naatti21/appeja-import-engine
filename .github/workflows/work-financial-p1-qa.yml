@@ -5,6 +5,7 @@ on:
       - 'src/portfolio-financial-evidence.mjs'
       - 'src/portfolio-visual-evidence.mjs'
       - 'tests/work-audit-financial-p1.test.mjs'
+      - 'tests/e2e/work-financial-attacks.spec.mjs'
       - '.github/workflows/work-financial-p1-qa.yml'
   workflow_dispatch:
 permissions:
@@ -23,3 +24,10 @@ jobs:
       - run: npm ci
       - name: Independent Work financial attacks, no suffix salvage
         run: node --test tests/work-audit-financial-p1.test.mjs tests/portfolio-financial-safety.test.mjs tests/portfolio-visual-evidence.test.mjs tests/portfolio-inline-ledger.test.mjs
+      - run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+      - run: node scripts/prepare-local-ocr.mjs --swedish
+      - run: npx playwright install --with-deps chromium
+      - name: Actual signed and duplicated synthetic PNG through both local OCR models
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test work-financial-attacks.spec.mjs --reporter=list
