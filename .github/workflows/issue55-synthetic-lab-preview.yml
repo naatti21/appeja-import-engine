@@ -1,0 +1,52 @@
+name: Isolated issue55 fictional phone LAB package (NO DEPLOY)
+on:
+  push:
+    branches: ['lab/issue55-synthetic-phone-preview-20261019']
+  pull_request:
+    branches: ['fix/pr59-lookup-race-contracts']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+      - run: npm run prepare:pdfjs
+      - run: node scripts/prepare-local-ocr.mjs
+      - run: npx playwright install --with-deps chromium
+      - name: Record exact checkout
+        run: git rev-parse HEAD > tested-sha.txt
+      - name: Safe identity and listing boundaries remain green
+        run: node --test tests/issue55-session-boundary.test.mjs tests/issue55-identity-review.test.mjs tests/portfolio-instrument-listings.test.mjs
+      - name: Stage sample-only isolated LAB artifact without deploying
+        run: |
+          node scripts/build-issue55-synthetic-lab.mjs
+          node scripts/verify-issue55-synthetic-lab.mjs
+      - name: Real PNG and Tesseract mobile click tests (existing P0 review)
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test issue55-mobile-identity.spec.mjs --reporter=list
+      - name: Project-site path and fictional sample chooser E2E
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test issue55-lab-synthetic-preview.spec.mjs --reporter=list
+      - name: Archive fictional preview only, NO PAGES DEPLOY
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: issue55-fictional-lab-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            tested-sha.txt
+            dist/
+            test-results/
+          retention-days: 14
