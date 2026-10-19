@@ -4,8 +4,16 @@ import {extractVisualPortfolio} from '../src/portfolio-visual-evidence.mjs';
 import {suggestInstrumentListings,selectInstrumentListing}
   from '../src/portfolio-instrument-listings.mjs';
 import {visualLedgerFixture} from './fixtures/portfolio-visual-ledger.mjs';
+import {preparePortfolioIdentityReview,chooseInstrumentIdentity}
+  from '../src/portfolio-identity-review.mjs';
 
-const extract=()=>extractVisualPortfolio(visualLedgerFixture().source);
+const extract=()=>{
+ const f=visualLedgerFixture();
+ let review=preparePortfolioIdentityReview(extractVisualPortfolio(f.source),f.source);
+ for(const row of review.rows)review=chooseInstrumentIdentity(review,
+   {rowId:row.rowId,decision:'confirm-observed'});
+ return review;
+};
 const listing=(symbol,name,quoteType,exchange='XHEL',currency='EUR')=>({
   symbol,shortname:name,longname:name,quote_type:quoteType,exchange,
   exchange_display:exchange,exchange_name:'Fictional Market',currency
@@ -33,7 +41,7 @@ test('only instrument names cross lookup boundary, never shares, values, OCR or 
  const result=await suggestInstrumentListings(input,{resolver,lookupMode:'external',
    approvedExternalLookup:true});
  assert.equal(queries.length,5);
- assert.deepEqual(queries,input.candidates.map(c=>c.fields.name.value));
+ assert.deepEqual(queries,input.userSelections.map(s=>s.userSelectedName));
  assert.equal(result.rows.length,5);
  assert.equal(result.rows.filter(r=>r.status==='suggested').length,4);
  assert.equal(result.rows.filter(r=>r.status==='unresolved').length,1);
@@ -76,7 +84,8 @@ test('broker valuation EUR does not falsely imply that US listing trades in EUR'
 test('mismatched OCR spelling is not silently replaced by a nearby ticker/name',async()=>{
  const original=extract();
  const wrong=structuredClone(original);
- wrong.candidates[0].fields.name.value='Ouartz Devices';
+ wrong.userSelections[0].decision='correct-name';
+ wrong.userSelections[0].userSelectedName='Ouartz Devices';
  const r=await suggestInstrumentListings(wrong,{lookupMode:'local',
   resolver:async ({name})=>({schema_version:'instrument-resolver-v1',query:name,
     candidates:[listing('QV.XH','Quartz Devices','EQUITY')]})});
@@ -98,7 +107,8 @@ test('untrusted provider schema, spoofed query or invalid venue never validates 
 });
 test('duplicate instrument name reuses per-call lookups but retains separate source rows',async()=>{
  const x=extract();
- x.candidates[1].fields.name.value=x.candidates[0].fields.name.value;
+ x.userSelections[1].decision='correct-name';
+ x.userSelections[1].userSelectedName=x.userSelections[0].userSelectedName;
  let n=0;
  const resolver=async ({name})=>{n++;return {schema_version:'instrument-resolver-v1',
    query:name,candidates:[listing('DUP.XH',name,'EQUITY')]};};
@@ -109,8 +119,8 @@ test('duplicate instrument name reuses per-call lookups but retains separate sou
 });
 test('no automatic proposal from invalid source candidate or invalid market listing',async()=>{
  const x=extract();
- x.candidates[0].marketVerification.status='verified';
- x.candidates[1].fields.quantity.sourceIds=[];
+ x.userSelections[0].assertionSource='not-a-user-choice';
+ x.userSelections[1].sourceIds.quantity=[];
  const r=await suggestInstrumentListings(x,{lookupMode:'local',resolver:async()=>{
    throw Error('must never run on invalid rows');
  }});
@@ -131,4 +141,41 @@ test('the same ticker on multiple exchanges cannot be selected without a venue',
  assert.equal(c.selection.exchange,'XNAS');
  assert.equal(c.marketVerified,false);
  assert.equal(c.canPersist,false);
+});
+
+test('issue55 P0: raw OCR cannot reach external resolver even with lookup consent',async()=>{
+ const f=visualLedgerFixture(),raw=extractVisualPortfolio(f.source);
+ let calls=0;
+ const result=await suggestInstrumentListings(raw,{
+  lookupMode:'external',approvedExternalLookup:true,
+  resolver:async()=>{calls++;return {schema_version:'instrument-resolver-v1',candidates:[]};}
+ });
+ assert.equal(calls,0);
+ assert.deepEqual(result.rows,[]);
+ assert.deepEqual(result.issues,[{reason:'EXPLICIT_IDENTITY_REVIEW_REQUIRED'}]);
+ assert.equal(result.canPersist,false);
+});
+test('issue55 P0: unreviewed heading never gets sent, corrected name requires user choice',async()=>{
+ const {issue55Fixture}=await import('./fixtures/issue55-name-role.mjs');
+ const f=issue55Fixture({mode:'absent'}),raw=extractVisualPortfolio(f.source);
+ let review=preparePortfolioIdentityReview(raw,f.source);
+ const names=[];
+ const resolver=async ({name})=>{
+  names.push(name);
+  return {schema_version:'instrument-resolver-v1',query:name,candidates:[]};
+ };
+ const before=await suggestInstrumentListings(review,{lookupMode:'external',
+  approvedExternalLookup:true,resolver});
+ assert.equal(names.length,0);
+ assert.equal(before.rows.length,0);
+ const first=review.rows.find(r=>r.observedText==='Growth bucket');
+ review=chooseInstrumentIdentity(review,{rowId:first.rowId,
+   decision:'correct-name',chosenName:'Amber Circuit'});
+ const after=await suggestInstrumentListings(review,{lookupMode:'external',
+  approvedExternalLookup:true,resolver});
+ assert.deepEqual(names,['Amber Circuit']);
+ assert.equal(after.rows.length,1);
+ assert.equal(after.rows[0].name,'Amber Circuit');
+ assert.equal(after.canPersist,false);
+ assert.ok(!names.includes('Growth bucket'));
 });

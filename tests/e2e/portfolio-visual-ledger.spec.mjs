@@ -17,10 +17,10 @@ async function run(page,fixture) {
       langPath:location.origin+'/demo/vendor/ocr/lang',
       gzip:false,workerBlobURL:false,cacheMethod:'none'
     });
-    let result;
+    let result,source;
     try{
       const o=await w.recognize(canvas,{}, {tsv:true,text:true});
-      const source=evidenceFromOcrTsv(o.data.tsv,{imageWidth:f.width,imageHeight:f.height});
+      source=evidenceFromOcrTsv(o.data.tsv,{imageWidth:f.width,imageHeight:f.height});
       await w.reinitialize('eng');
       const e=await w.recognize(canvas,{}, {tsv:true,text:true});
       const witness=evidenceFromOcrTsv(e.data.tsv,{imageWidth:f.width,imageHeight:f.height});
@@ -28,8 +28,18 @@ async function run(page,fixture) {
     }finally{await w.terminate();}
     const {suggestInstrumentListings,selectInstrumentListing}=
       await import('/src/portfolio-instrument-listings.mjs');
+    const {preparePortfolioIdentityReview,chooseInstrumentIdentity}=
+      await import('/src/portfolio-identity-review.mjs');
+    // Real UI must collect clicks. This test explicitly simulates a per-row
+    // user choice only AFTER verifying that raw extraction cannot query.
+    const rawLookup=await suggestInstrumentListings(result,{lookupMode:'local',
+      resolver:async()=>{throw Error('raw OCR lookup must never execute');}});
+    let review=preparePortfolioIdentityReview(result,source);
+    const pendingBeforeChoice=review.rows.length;
+    for(const row of review.rows)review=chooseInstrumentIdentity(review,
+      {rowId:row.rowId,decision:'confirm-observed'});
     const received=[];
-    const listings=await suggestInstrumentListings(result,{lookupMode:'local',
+    const listings=await suggestInstrumentListings(review,{lookupMode:'local',
       resolver:async ({name})=>{
         received.push(name);
         const index=f.oracle.findIndex(o=>o.name===name);
@@ -53,6 +63,7 @@ async function run(page,fixture) {
       listings:listings.rows.map(r=>({kind:r.kind,name:r.name,status:r.status,
         symbols:r.matches.map(m=>m.symbol),marketVerified:r.marketVerified,canPersist:r.canPersist})),
       listingQueries:received,
+      pendingBeforeChoice,rawLookupIssues:rawLookup.issues,
       choice:{status:choice?.status??null,canPersist:choice?.canPersist??false,
         marketVerified:choice?.marketVerified??false},
       canPersist:result.canPersist
@@ -83,6 +94,8 @@ for(const {crop,shift} of [{crop:false,shift:0},{crop:true,shift:0},{crop:false,
  expect(got.canPersist).toBe(false);
  expect(wrong).toBe(0);
  expect(correct).toBeGreaterThanOrEqual(4);
+ expect(got.rawLookupIssues).toEqual([{reason:'EXPLICIT_IDENTITY_REVIEW_REQUIRED'}]);
+ expect(got.pendingBeforeChoice).toBe(got.listings.length);
  expect(got.listings).toHaveLength(got.candidates.length);
  expect(got.listingQueries).toEqual(got.candidates.map(c=>c.name));
  expect(got.listings.every(r=>r.status==='suggested'||r.status==='ambiguous')).toBe(true);

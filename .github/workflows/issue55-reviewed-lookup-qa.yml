@@ -1,0 +1,41 @@
+name: Issue55 P0 reviewed instrument lookup QA
+on:
+  pull_request:
+    branches:
+      - 'fix/issue55-explicit-identity-review-20261019'
+    paths:
+      - 'src/portfolio-instrument-listings.mjs'
+      - 'tests/portfolio-instrument-listings.test.mjs'
+      - 'tests/e2e/issue55-reviewed-lookup.spec.mjs'
+      - '.github/workflows/issue55-reviewed-lookup-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reviewed-lookup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Legacy listing invariants migrated to explicit identity review
+        run: node --test tests/portfolio-instrument-listings.test.mjs tests/issue55-identity-review.test.mjs
+      - run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+      - run: node scripts/prepare-local-ocr.mjs --swedish
+      - run: npx playwright install --with-deps chromium
+      - name: Real pixel OCR to controlled name-only resolver handoff
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test issue55-reviewed-lookup.spec.mjs --reporter=list
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: issue55-lookup-${{ github.event.pull_request.head.sha || github.sha }}
+          path: test-results/
+          retention-days: 14
+          if-no-files-found: ignore
