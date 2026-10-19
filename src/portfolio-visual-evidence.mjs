@@ -208,7 +208,7 @@ export function extractVisualPortfolio(source,{crossReadOnly=false}={}) {
     const qtext=strip(right.map(w=>w.raw).join(' '));
     const quantityMatches=financialQuantityMatches(qtext);
     if(quantityMatches.length>1) {
-      unresolved.push({reason:'AMBIGUOUS_QUANTITY',sourceIds:l.rightIds});
+      unresolved.push({reason:'AMBIGUOUS_QUANTITY',field:'quantity',sourceIds:l.rightIds,canPersist:false});
       lastQtyCy=l.cy;continue;
     }
     const quantity=parseQty(qtext);
