@@ -1,0 +1,79 @@
+name: Publish isolated fictional issue55 LAB on GitHub Pages
+on:
+  push:
+    branches: ['lab/issue55-public-preview-20261019']
+permissions:
+  contents: read
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  package:
+    name: Preserve previous LAB and test the fictional route
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout audited issue55 preview branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: .
+      - name: Checkout EXACT previously deployed standalone LAB
+        uses: actions/checkout@v4
+        with:
+          repository: naatti21/appeja-import-engine
+          ref: 294dac1b1a79fb148acb48f7ada9e8c9cc433633
+          path: baseline
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Prepare audited synthetic preview
+        run: |
+          npm ci
+          npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+          npm run prepare:pdfjs
+          node scripts/prepare-local-ocr.mjs
+          node --test tests/issue55-session-boundary.test.mjs tests/issue55-identity-review.test.mjs tests/portfolio-instrument-listings.test.mjs
+          node scripts/build-issue55-synthetic-lab.mjs
+          node scripts/verify-issue55-synthetic-lab.mjs
+      - name: Rebuild and verify original pinned LAB home
+        working-directory: baseline
+        run: |
+          npm ci
+          npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+          npm run prepare:pdfjs
+          node scripts/prepare-local-ocr.mjs
+          node scripts/build-mobile-lab-preview.mjs
+          node scripts/verify-mobile-lab-preview.mjs
+      - name: Combine original LAB unchanged with isolated /issue55-test route
+        run: node scripts/assemble-issue55-pages.mjs
+      - run: npx playwright install --with-deps chromium
+      - name: Exercise actual pixel OCR, phone buttons, and unchanged LAB root
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test issue55-published-lab.spec.mjs --reporter=list
+      - name: Record exact code and previous LAB source
+        run: |
+          git rev-parse HEAD > release-head-sha.txt
+          cd baseline && git rev-parse HEAD > ../preserved-lab-sha.txt
+      - name: Upload tested page artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+  deploy:
+    name: Publish LAB-only fictional phone test after successful QA
+    needs: package
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/configure-pages@v5
+      - id: deployment
+        name: Deploy verified two-route LAB artifact
+        uses: actions/deploy-pages@v4
