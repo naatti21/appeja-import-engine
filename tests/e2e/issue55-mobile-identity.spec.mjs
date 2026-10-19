@@ -74,3 +74,43 @@ test('issue55 late OCR after cancel and malformed resolver output cannot restore
  await page.getByRole('button',{name:'Hae paikallisesta testihakemistosta'}).click();await expect(page.getByText('Ei luotettavaa listaustulosta.')).toBeVisible();
  expect(await page.evaluate(()=>window.calls)).toEqual([{name:'Silver Orchard'}]);expect(outside).toEqual([]);
 });
+
+for(const transition of ['other-row','cancel','new-file'])test('PR59 pending lookup survives safely: '+transition,async({page,context},info)=>{
+ test.skip(process.env.REAL_OCR_QA!=='1','Requires local OCR assets');test.setTimeout(240000);
+ const outside=await setup(page,context),image=await png(page,issue55Fixture({mode:'faint'}));
+ await page.evaluate(async()=>{
+  const {mountPortfolioIdentityReview}=await import('/demo/portfolio-identity-review.mjs');window.calls=[];window.pendingLookups=[];
+  mountPortfolioIdentityReview(document.getElementById('portfolioReview'),{resolver:payload=>{
+   window.calls.push(payload);return new Promise(resolve=>window.pendingLookups.push(()=>resolve({schema_version:'instrument-resolver-v1',query:payload.name,candidates:[{symbol:'SYNTH',shortname:payload.name,quote_type:'EQUITY',exchange:'XTEST'}]})));
+  }});
+ });
+ async function correctFirst(){
+  const row=page.locator('#pendingRows article').first();await row.getByRole('button',{name:'Korjaa nimi',exact:true}).click();
+  await row.getByRole('textbox').fill('Amber Circuit');await row.getByRole('button',{name:'Vahvista korjattu nimi'}).click();
+ }
+ await load(page,image);await expect(page.locator('#pendingRows article')).toHaveCount(3,{timeout:120000});await correctFirst();
+ const search=()=>page.getByRole('button',{name:'Hae paikallisesta testihakemistosta'});
+ await search().dblclick();await expect.poll(()=>page.evaluate(()=>window.calls.length)).toBe(1);await expect(search()).toBeDisabled();
+ if(transition==='other-row'){
+  await page.locator('#pendingRows article').filter({hasText:'Copper Harbor'}).getByRole('button',{name:'Jätä rivi pois'}).click();
+  await expect(search()).toBeDisabled();
+  const third=page.locator('#pendingRows article').filter({hasText:'Silver Orchard'});
+  await third.getByRole('button',{name:'Korjaa nimi',exact:true}).click();
+  await third.getByRole('textbox').fill('Unsubmitted draft');
+ }else{
+  if(transition==='cancel'){await page.getByRole('button',{name:'Peruuta ja tyhjennä'}).click();await page.evaluate(()=>window.pendingLookups[0]());await expect(page.locator('article')).toHaveCount(0);}
+  await load(page,image);await expect(page.locator('#pendingRows article')).toHaveCount(3,{timeout:120000});await correctFirst();
+ }
+ await page.evaluate(()=>window.pendingLookups[0]());
+ await expect(search()).toBeEnabled();await expect(page.getByText(/SYNTH/)).toHaveCount(0);
+ if(transition==='other-row'){
+  await expect(page.locator('#reviewedRows article').filter({hasText:'Copper Harbor'})).toContainText('Rivi jätetty pois');
+  const draft=page.locator('#pendingRows article').filter({hasText:'Silver Orchard'}).getByRole('textbox');
+  await expect(draft).toHaveValue('Unsubmitted draft');await expect(draft).toBeFocused();
+ }
+ await search().dblclick();await expect.poll(()=>page.evaluate(()=>window.calls.length)).toBe(2);
+ await page.evaluate(()=>window.pendingLookups[1]());await expect(page.getByText(/SYNTH/)).toBeVisible();
+ expect(await page.evaluate(()=>window.calls)).toEqual([{name:'Amber Circuit'},{name:'Amber Circuit'}]);
+ if(transition==='other-row')await expect(page.locator('#reviewedRows article').filter({hasText:'Copper Harbor'})).toContainText('Rivi jätetty pois');
+ await page.screenshot({path:info.outputPath('lookup-race.png'),fullPage:true});expect(outside).toEqual([]);
+});

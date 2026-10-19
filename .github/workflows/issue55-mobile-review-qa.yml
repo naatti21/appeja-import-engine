@@ -1,9 +1,9 @@
 name: P0 issue55 mobile identity review exact-SHA QA
 on:
   push:
-    branches: ['fix/issue55-mobile-identity-review']
+    branches: ['fix/issue55-mobile-identity-review', 'fix/pr59-lookup-race-contracts']
   pull_request:
-    branches: ['fix/issue55-lookup-requires-reviewed-name-20261019']
+    branches: ['fix/issue55-lookup-requires-reviewed-name-20261019', 'fix/issue55-mobile-identity-review']
   workflow_dispatch:
 permissions:
   contents: read

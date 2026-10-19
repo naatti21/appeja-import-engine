@@ -84,8 +84,20 @@ export function mountPortfolioIdentityReview(root,{recognize=recognizeLocalPortf
       if(!valid()||busy.has(row.rowId)||outputs.has(row.rowId))return;
       busy.add(row.rowId);search.disabled=true;message('Haetaan vain valitulla nimellä.');
       const result=await suggestInstrumentListings(current,{lookupMode:'local',resolver,rowId:row.rowId});
-      busy.delete(row.rowId);if(!valid())return;outputs.set(row.rowId,result);render(row.rowId);message('Paikallinen haku valmis. Tulokset eivät ole varmennuksia.');
-     });search.disabled=!resolver||busy.has(row.rowId)||outputs.has(row.rowId);actions.append(search);
+      // A cancelled/new-file operation owns a different UI: never touch it.
+      if(operation!==epoch)return;
+      busy.delete(row.rowId);
+      if(!valid()){
+       // Another row changed the review revision while this request ran.
+       // Release only the current control; keep the stale result discarded
+       // and preserve other rows' form contents, decisions and focus.
+       const card=[...$('reviewedRows').querySelectorAll('article')].find(c=>c.dataset.rowId===row.rowId);
+       const control=card?.querySelector('[data-lookup]');
+       if(control)control.disabled=!resolver||busy.has(row.rowId)||outputs.has(row.rowId);
+       return;
+      }
+      outputs.set(row.rowId,result);render(row.rowId);message('Paikallinen haku valmis. Tulokset eivät ole varmennuksia.');
+     });search.dataset.lookup='';search.disabled=!resolver||busy.has(row.rowId)||outputs.has(row.rowId);actions.append(search);
      if(!resolver)card.append(element('small','Hakupalvelua ei ole kytketty. Mitään tietoa ei lähetetä.'));
      const out=outputs.get(row.rowId);
      if(out)for(const r of out.rows){

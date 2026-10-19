@@ -86,9 +86,17 @@ test('mismatched OCR spelling is not silently replaced by a nearby ticker/name',
  const wrong=structuredClone(original);
  wrong.userSelections[0].decision='correct-name';
  wrong.userSelections[0].userSelectedName='Ouartz Devices';
- const r=await suggestInstrumentListings(wrong,{lookupMode:'local',
-  resolver:async ({name})=>({schema_version:'instrument-resolver-v1',query:name,
-    candidates:[listing('QV.XH','Quartz Devices','EQUITY')]})});
+ let forbiddenCalls=0;
+ const rejected=await suggestInstrumentListings(wrong,{lookupMode:'local',resolver:async()=>{forbiddenCalls++;return {};}});
+ assert.equal(forbiddenCalls,0);assert.deepEqual(rejected.rows,[]);
+ const f=visualLedgerFixture();
+ let legitimate=preparePortfolioIdentityReview(extractVisualPortfolio(f.source),f.source);
+ legitimate=chooseInstrumentIdentity(legitimate,{rowId:legitimate.rows[0].rowId,decision:'correct-name',chosenName:'Ouartz Devices'});
+ let calls=0;
+ const r=await suggestInstrumentListings(legitimate,{lookupMode:'local',
+  resolver:async ({name})=>{calls++;assert.equal(name,'Ouartz Devices');return {schema_version:'instrument-resolver-v1',query:name,
+    candidates:[listing('QV.XH','Quartz Devices','EQUITY')]};}});
+ assert.equal(calls,1);
  assert.equal(r.rows[0].status,'unresolved');
  assert.equal(r.rows[0].matches.length,0);
  assert.equal(r.marketVerification,'no-listing-user-confirmed');
@@ -109,24 +117,54 @@ test('duplicate instrument name reuses per-call lookups but retains separate sou
  const x=extract();
  x.userSelections[1].decision='correct-name';
  x.userSelections[1].userSelectedName=x.userSelections[0].userSelectedName;
+ let forbiddenCalls=0;
+ const rejected=await suggestInstrumentListings(x,{lookupMode:'local',resolver:async()=>{forbiddenCalls++;return {};}});
+ assert.equal(forbiddenCalls,0);assert.deepEqual(rejected.rows,[]);
+ const f=visualLedgerFixture();
+ let review=preparePortfolioIdentityReview(extractVisualPortfolio(f.source),f.source);
+ const [first,second]=review.rows;
+ review=chooseInstrumentIdentity(review,{rowId:first.rowId,decision:'confirm-observed'});
+ review=chooseInstrumentIdentity(review,{rowId:second.rowId,decision:'correct-name',chosenName:first.observedText});
  let n=0;
- const resolver=async ({name})=>{n++;return {schema_version:'instrument-resolver-v1',
+ const resolver=async ({name})=>{n++;assert.equal(name,first.observedText);return {schema_version:'instrument-resolver-v1',
    query:name,candidates:[listing('DUP.XH',name,'EQUITY')]};};
- const r=await suggestInstrumentListings(x,{lookupMode:'local',resolver});
- assert.equal(n,4);
- assert.equal(r.rows.length,5);
+ const r=await suggestInstrumentListings(review,{lookupMode:'local',resolver});
+ assert.equal(n,1);
+ assert.equal(r.rows.length,2);
+ assert.ok(r.rows.every(row=>row.status==='suggested'&&!row.marketVerified&&!row.canPersist));
  assert.notDeepEqual(r.rows[0].sourceIds,r.rows[1].sourceIds);
 });
 test('no automatic proposal from invalid source candidate or invalid market listing',async()=>{
  const x=extract();
  x.userSelections[0].assertionSource='not-a-user-choice';
  x.userSelections[1].sourceIds.quantity=[];
- const r=await suggestInstrumentListings(x,{lookupMode:'local',resolver:async()=>{
-   throw Error('must never run on invalid rows');
+ let calls=0;
+ const r=await suggestInstrumentListings(x,{lookupMode:'local',resolver:async()=>{calls++;return {};}});
+ assert.equal(calls,0);assert.deepEqual(r.rows,[]);
+ assert.deepEqual(r.issues,[{reason:'EXPLICIT_IDENTITY_REVIEW_REQUIRED'}]);
+ const f=visualLedgerFixture(),raw=extractVisualPortfolio(f.source);
+ raw.candidates[0].fields.name.sourceIds=['missing-before-review'];
+ let review=preparePortfolioIdentityReview(raw,f.source);
+ assert.equal(review.rows.length,4);
+ assert.ok(review.unresolved.some(u=>u.reason==='INVALID_IDENTITY_REVIEW_ROW'));
+ for(const row of review.rows)review=chooseInstrumentIdentity(review,{rowId:row.rowId,decision:'confirm-observed'});
+ const seen=[];
+ const invalid=await suggestInstrumentListings(review,{lookupMode:'local',resolver:async({name})=>{
+  seen.push(name);return {schema_version:'instrument-resolver-v1',query:name,candidates:[listing('INVALID',name,'EQUITY','')]};
  }});
- assert.equal(r.rows.length,3);
- assert.equal(r.issues.length,2);
- assert.ok(r.rows.every(a=>a.status==='unavailable'));
+ assert.deepEqual(seen,f.oracle.slice(1).map(row=>row.name));
+ assert.equal(invalid.rows.length,4);
+ assert.ok(invalid.rows.every(row=>row.status==='unresolved'&&!row.marketVerified&&!row.canPersist&&row.matches.length===0));
+ const valid=await suggestInstrumentListings(review,{lookupMode:'local',resolver:async({name})=>({
+  schema_version:'instrument-resolver-v1',query:name,candidates:[listing('VALID',name,review.rows.find(row=>row.observedText===name).kind==='fund'?'MUTUALFUND':'EQUITY')]
+ })});
+ assert.equal(valid.rows.length,4);
+ assert.ok(valid.rows.every(row=>row.status==='suggested'&&row.matches.length===1&&!row.marketVerified&&!row.canPersist));
+ assert.deepEqual(valid.rows.map(row=>row.sourceIds),review.rows.map(row=>row.sourceIds.name));
+ const malformed=await suggestInstrumentListings(review,{lookupMode:'local',resolver:async()=>({schema_version:'wrong',candidates:[]})});
+ assert.equal(malformed.rows.length,4);
+ assert.ok(malformed.rows.every(row=>row.status==='unavailable'&&!row.marketVerified&&!row.canPersist));
+
 });
 
 test('the same ticker on multiple exchanges cannot be selected without a venue',async()=>{
