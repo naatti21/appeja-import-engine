@@ -13,7 +13,7 @@ const moneySuffix=/(?:\b(?:EUR|USD|SEK|GBP)\b|[€\u0024£])/giu;
 const qtySuffix=/\b(?:kpl|pcs|st)\b/giu;
 const currency=s=>s==='€'?'EUR':s==='£'?'GBP':
   s===String.fromCharCode(36)?'USD':s.toUpperCase();
-function exactPositiveNumber(raw) {
+function exactSourceNumber(raw,{allowZero=false}={}) {
   const s=normalize(raw);
   // Signed and accounting-style positions are not part of our
   // currently supported long-only holdings grammar. Never strip a sign.
@@ -23,12 +23,13 @@ function exactPositiveNumber(raw) {
   if(s.includes(' ')&&!/^\d{1,3}(?: \d{3})+(?:[.,]\d{1,2})?$/u.test(s))
     return null;
   const p=parseNumber(s);
-  return p.status==='valid'&&Number.isFinite(p.value)&&p.value>0?p.value:null;
+  return p.status==='valid'&&Number.isFinite(p.value)&&
+    (p.value>0||(allowZero&&p.value===0))?p.value:null;
 }
 function evidence(text,regex,suffix,kind) {
   const s=normalize(text), matches=[...s.matchAll(regex)];
   const entries=matches.map(m=>{
-    const numeric=exactPositiveNumber(m[1]);
+    const numeric=exactSourceNumber(m[1],{allowZero:kind==='money'});
     const outside=s.slice(m.index+m[0].length).trimStart();
     const invalidBracket=outside.startsWith(')');
     if(numeric===null||invalidBracket)
