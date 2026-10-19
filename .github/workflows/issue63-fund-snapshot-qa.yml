@@ -1,0 +1,82 @@
+name: Issue63 isolated fund snapshot QA
+on:
+  push:
+    branches: ['feature/issue63-fund-snapshots']
+  pull_request:
+    branches: ['fix/pr59-lookup-race-contracts']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fund-snapshots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+      - run: node scripts/prepare-local-ocr.mjs --swedish
+      - run: npx playwright install --with-deps chromium
+      - run: git rev-parse HEAD > tested-sha.txt
+      - name: New contract and unchanged security boundaries
+        run: node --test tests/fund-snapshots.test.mjs tests/issue55-session-boundary.test.mjs tests/issue55-identity-review.test.mjs tests/portfolio-instrument-listings.test.mjs > focused-node.log 2>&1
+      - name: Real fictional PNG OCR and mobile review
+        if: ${{ !cancelled() }}
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test fund-snapshots.spec.mjs issue55-mobile-identity.spec.mjs --workers=2 --reporter=list > focused-browser.log 2>&1
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fund-snapshot-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            tested-sha.txt
+            focused-node.log
+            focused-browser.log
+            test-results/
+          retention-days: 14
+  inherited-red:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund tesseract.js@5.1.0
+      - run: node scripts/prepare-local-ocr.mjs --swedish
+      - run: npx playwright install --with-deps chromium
+      - id: node
+        continue-on-error: true
+        run: |
+          git rev-parse HEAD > tested-sha.txt
+          npm test > full-node.log 2>&1
+      - id: browser
+        continue-on-error: true
+        env:
+          REAL_OCR_QA: '1'
+        run: npx playwright test issue55-name-role.spec.mjs --workers=2 --reporter=list > frozen-p0-browser.log 2>&1
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: inherited-red-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            tested-sha.txt
+            full-node.log
+            frozen-p0-browser.log
+            test-results/
+          retention-days: 14
+      - name: Preserve actual failure status
+        if: always()
+        env:
+          NODE_RESULT: ${{ steps.node.outcome }}
+          BROWSER_RESULT: ${{ steps.browser.outcome }}
+        run: test "$NODE_RESULT" = success && test "$BROWSER_RESULT" = success
