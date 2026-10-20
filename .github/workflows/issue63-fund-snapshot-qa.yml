@@ -1,9 +1,9 @@
 name: Issue63 isolated fund snapshot QA
 on:
   push:
-    branches: ['feature/issue63-fund-snapshots', 'fix/issue63-exclusive-field-binding', 'fix/pr65-dated-price-role']
+    branches: ['feature/issue63-fund-snapshots', 'fix/issue63-exclusive-field-binding', 'fix/pr65-dated-price-role', 'fix/pr66-economic-role-binding']
   pull_request:
-    branches: ['fix/pr59-lookup-race-contracts', 'feature/issue63-fund-snapshots', 'fix/issue63-exclusive-field-binding']
+    branches: ['fix/pr59-lookup-race-contracts', 'feature/issue63-fund-snapshots', 'fix/issue63-exclusive-field-binding', 'fix/pr65-dated-price-role']
   workflow_dispatch:
 permissions:
   contents: read
@@ -29,7 +29,7 @@ jobs:
         if: ${{ !cancelled() }}
         env:
           REAL_OCR_QA: '1'
-        run: npx playwright test fund-economic-roles.spec.mjs fund-snapshots.spec.mjs fund-binding.spec.mjs fund-broker-structures.spec.mjs fund-review-lifecycle.spec.mjs issue55-mobile-identity.spec.mjs --workers=2 --reporter=list > focused-browser.log 2>&1
+        run: npx playwright test fund-offset-roles.spec.mjs fund-economic-roles.spec.mjs fund-snapshots.spec.mjs fund-binding.spec.mjs fund-broker-structures.spec.mjs fund-review-lifecycle.spec.mjs issue55-mobile-identity.spec.mjs --workers=2 --reporter=list > focused-browser.log 2>&1
       - name: Publish exact-SHA developer test summary
         if: always()
         run: |
@@ -72,6 +72,8 @@ jobs:
         run: |
           git rev-parse HEAD > tested-sha.txt
           npm test > full-node.log 2>&1
+      - name: Prepare PDF.js for the inherited browser suite
+        run: npm run prepare:pdfjs
       - id: ordinary
         continue-on-error: true
         run: npx playwright test --workers=2 --reporter=list > ordinary-browser.log 2>&1

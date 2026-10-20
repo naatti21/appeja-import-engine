@@ -1,3 +1,4 @@
+import {buildEconomicBindings,enforceEconomicBindings} from './fund-role-binding.mjs';
 /** Local, non-persistable observations of explicitly labelled current fund holdings.
  * No bank/issuer dictionary, instrument lookup, portfolio merge or OCR identity promotion.
  * Deliberately bounded to labelled cards; unsupported structures remain unresolved.
@@ -19,6 +20,12 @@ function keyFor(raw){
   return at>=0&&(at===0||/[\s(/:]/.test(text[at-1]))&&
    (end===text.length||/[\s\d(/:]/.test(text[end]))?[{key,at,end}]:[];
  }));
+ // A company/fund name containing Value or Price is not a field label.
+ // Only label phrases plus numeric/date/as-of context qualify semantically.
+ let remainder=text;
+ for(const m of [...matches].sort((a,b)=>(b.end-b.at)-(a.end-a.at)))remainder=remainder.replace(text.slice(m.at,m.end),' ');
+ remainder=remainder.replace(/\b(as of|per|on|at|date|paivays|paiva)\b/g,' ').replace(/[\d\s.,:/()%+\-]/g,'');
+ if(remainder)return undefined;
  // "price" inside "average acquisition price" is not a competing label.
  const claims=[...new Set(matches.filter(m=>!matches.some(n=>n!==m&&n.at<=m.at&&n.end>=m.end&&(n.at<m.at||n.end>m.end))).map(m=>m.key))];
  return claims.length===1?claims[0]:claims.length?'ambiguousFinancialRole':undefined;
@@ -75,6 +82,9 @@ function oneRead(source,detail=false){
   return {rowId:`fund-${start.page}-${index}`,fields,identityStatus:'UNVERIFIED',canPersist:false};
  });
  enforceExclusiveNumericRoles(rows);
+ const scope=starts.map((start,i)=>({id:rows[i].rowId,page:start.page,start:start.box.y0,end:starts[i+1]?.box.y0??1,nameIds:rows[i].fields.name.sourceIds}));
+ const graph=buildEconomicBindings(lines.filter(l=>l.page===role[0].page&&l.box.y0>role[0].box.y1),scope,keyFor);
+ enforceEconomicBindings(rows,graph);
  for(const row of rows)row.fields.currency=currencyField(row.fields,source);
  return {documentRole:detail?'FUND_DETAILS':'CURRENT_HOLDINGS_SNAPSHOT',rows,roleEvidence:evidence(role[0].obs)};
 }
@@ -109,6 +119,7 @@ function extract(primary,witness,detail=false){
    if(!other||!agrees(field,other)){field.status='ambiguous';field.reason='OCR_READINGS_DISAGREE';field.decimal=null;}
    field.witnessEvidence=other?.evidence??[];
    field.witnessLabelEvidence=other?.labelEvidence??[];
+   if(field.roleBinding)field.witnessRoleBinding=other?.roleBinding??null;
   }
   row.structuralStatus=['name','quantity','value','currency'].every(k=>row.fields[k].status==='observed')?'OBSERVED_ROW_REQUIRES_IDENTITY_REVIEW':'UNRESOLVED';
   row.canRequestCostBasis=row.fields.averageAcquisitionPrice.status==='missing'&&row.structuralStatus==='OBSERVED_ROW_REQUIRES_IDENTITY_REVIEW';
@@ -143,6 +154,8 @@ function brokerRead(lines,source,role){
   const nameLines=content.filter(l=>l.box.y0>=top&&l.box.y0<unit.box.y0&&l.box.x1<unit.box.x0-.04&&!keyFor(l.raw)&&!/\d|%|…|\.\.\.|^tili:/i.test(l.raw));
   return {unit,nameLines,start:nameLines[0]?.box.y0??unit.box.y0};
  });
+ const scope=cards.map((c,i)=>({id:`fund-${role.page}-${i}`,page:role.page,start:c.start,end:cards[i+1]?.start??1,nameIds:c.nameLines.flatMap(l=>l.obs.map(o=>o.id))}));
+ const graph=buildEconomicBindings(content,scope,keyFor);
  const rows=cards.map(({unit,nameLines,start},index)=>{
   const end=cards[index+1]?.start??1;
   const block=content.filter(l=>l.box.y0>=start&&l.box.y0<end);
@@ -156,20 +169,9 @@ function brokerRead(lines,source,role){
    const prices=block.filter(l=>moneyRE.test(l.raw)&&Math.abs(l.box.x0-unit.box.x0)<.035&&l.box.y1<unit.box.y0&&unit.box.y0-l.box.y1<(unit.box.y1-unit.box.y0)*3);
    if(prices.length===1){
     const price=prices[0];
-    // A unique EUR token is not proof of total market value. A local label
-    // owns its economic role even if a date/other line prevents exact binding.
-    const claims=content.filter(l=>{
-     // Include an adjacent heading just above the name-derived card start.
-     // Unclassified text in this price region is uncertainty, not permission
-     // to invent a total-value role. Neighboring left-column returns are not
-     // part of the right-column numeric region.
-     const key=keyFor(l.raw),semantic=key&&key!=='name'&&key!=='quantity'&&key!=='value'&&block.includes(l);
-     return !moneyRE.test(l.raw)&&!unitRE.test(l.raw)&&l.box.y0<price.box.y0&&
-      (semantic||price.box.y0-l.box.y1<4*(price.box.y1-price.box.y0))&&
-      (Math.abs(l.box.x0-price.box.x0)<.06||l.box.x0<=price.box.x0&&l.box.x1>price.box.x0);
-    });
-    if(claims.length)fields.value={...empty('ambiguous','COMPETING_ECONOMIC_ROLE',price.obs),labelEvidence:evidence(claims.flatMap(l=>l.obs))};
-    else{const m=price.raw.match(moneyRE),n=parseDisplayedDecimal(m[1]);fields.value=n?observed(price.obs,{...n,currency:m[2]==='€'?'EUR':m[2].toUpperCase()}):empty('ambiguous','INVALID_NUMBER_OR_ROLE',price.obs);}
+    const binding=graph.forNumber(price.obs.map(o=>o.id),scope[index].id);
+    if(binding.status!=='unlabelled')fields.value={...empty('ambiguous',binding.reason??'COMPETING_ECONOMIC_ROLE',price.obs),roleBinding:binding,labelEvidence:binding.claims.flatMap(c=>c.label.observations)};
+    else{const m=price.raw.match(moneyRE),n=parseDisplayedDecimal(m[1]);fields.value=n?observed(price.obs,{...n,currency:m[2]==='€'?'EUR':m[2].toUpperCase(),bindingMethod:'scoped-unlabelled-total',roleBinding:binding}):empty('ambiguous','INVALID_NUMBER_OR_ROLE',price.obs);}
    }
    else fields.value=empty(prices.length?'ambiguous':'missing','INLINE_VALUE_NOT_UNIQUE',prices.flatMap(l=>l.obs));
   }
@@ -177,6 +179,7 @@ function brokerRead(lines,source,role){
   return {rowId:`fund-${role.page}-${index}`,fields,identityStatus:'UNVERIFIED',canPersist:false};
  });
  enforceExclusiveNumericRoles(rows);
+ enforceEconomicBindings(rows,graph);
  for(const row of rows)row.fields.currency=currencyField(row.fields,source);
  return {documentRole:'CURRENT_HOLDINGS_SNAPSHOT',rows,roleEvidence:evidence(role.obs)};
 }
