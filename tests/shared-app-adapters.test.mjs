@@ -83,3 +83,54 @@ test('No forged reference nor unknown domain field is accepted for financial evi
  assert.ok(result.problems.some(x=>x.code==='UNSUPPORTED_DOMAIN_FIELD'));
  assert.equal(JSON.stringify(result).includes('hello'),false);
 });
+
+test('Actual holdings CSV parser to source envelope to Osakevahti review preserves same source IDs',async()=>{
+ const {parseHoldingsCsv}=await import('../src/holdings.mjs');
+ const {evidenceFromDelimited}=await import('../src/import-observations.mjs');
+ const csv='Nimi;Määrä;Hankintahinta;Valuutta\nExample Horizon Index;3,01;160,02;EUR';
+ const source=evidenceFromDelimited(csv),parsed=parseHoldingsCsv(csv);
+ const record=parsed.records[0];
+ const fields=Object.fromEntries(Object.entries(record.fields).map(([key,v])=>[key,{
+  value:v.value,status:v.status==='valid'?'candidate':v.status,
+  sourceIds:v.observationId?[v.observationId]:[]
+ }]));
+ const draft=createOsakevahtiReview({source,documentRole:'PORTFOLIO_HOLDINGS',
+  rows:[{id:'csv-holding-1',fields}]});
+ assert.equal(draft.canPersist,false);
+ assert.equal(draft.records[0].fields.quantity.value,3.01);
+ assert.equal(draft.records[0].fields.buyPrice.value,160.02);
+ assert.equal(reviewFieldSources(draft,'csv-holding-1','buyPrice')[0].raw,'160,02');
+});
+test('Actual structured payroll parser and PDF source envelope enter the same review shape',async()=>{
+ const {layoutFromPdfItems}=await import('../src/layout.mjs');
+ const {parsePayrollSections}=await import('../src/payroll-sections.mjs');
+ const {evidenceFromPdfLayout}=await import('../src/import-observations.mjs');
+ const lines=[
+  'PALKKALASKELMA',
+  'Palkkakausi 3.8.2026 - 16.8.2026',
+  'Maksupäivä 28.8.2026',
+  'Maksetaan 2 678,39',
+  'KERTYMÄ PALKKAKAUDELTA',
+  'Ennakonpid. al. tul 4 698,11',
+  'Ennakonpidätys -1 526,89',
+  'KERTYMÄ VUODEN ALUSTA',
+  'Ennakonpid. al. tul 63 832,82',
+  'Ennakonpidätys -18 792,51'
+ ];
+ const height=1000;
+ const layout=layoutFromPdfItems([{width:1300,height,items:lines.map((str,i)=>({
+  str,width:Math.min(1000,Math.max(80,str.length*7)),height:12,
+  transform:[12,0,0,12,60,height-30-i*27]
+ }))}]);
+ const parsed=parsePayrollSections(layout);
+ const source=evidenceFromPdfLayout(layout);
+ const draft=createPalkkaReview({source,parsed});
+ assert.equal(draft.documentType,'payroll');
+ assert.equal(draft.records[0].fields.payDate.value,'2026-08-28');
+ assert.equal(draft.records[0].fields.grossPay.value,4698.11);
+ assert.equal(draft.records[0].fields.netPay.value,2678.39);
+ assert.equal(draft.records[0].fields.ytdTaxableIncome.value,63832.82);
+ assert.equal(draft.records[0].fields.grossPay.status,'candidate');
+ assert.ok(reviewFieldSources(draft,'payslip-1','grossPay').length>0);
+ assert.equal(draft.canPersist,false);
+});
