@@ -9,7 +9,7 @@ export function createOsakevahtiReview({source,rows=[],documentRole='UNKNOWN_DOC
  const issues=allowedRole?[]:[{code:'UNPROVEN_HOLDINGS_DOCUMENT_ROLE'}];
  const normalized=rows.map((row,i)=>({
    id:row.id||row.rowId||'holding-'+(i+1),
-   fields:Object.fromEntries(Object.entries(row.fields||{}).filter(([k])=>fields.includes(k)))
+   fields:{...(row.fields||{})}
  }));
  // Source semantic roles must be provided separately by the holdings parser.
  // A NAV source must NEVER be re-used as averageAcquisitionPrice or buyPrice.
