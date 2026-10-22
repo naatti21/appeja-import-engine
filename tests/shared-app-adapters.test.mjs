@@ -29,7 +29,7 @@ test('Nordnet fund: exact quantity, total value, NAV and GAV stay separate and n
 test('NAV cannot serve as cost basis even with a shared plausible numeric source',()=>{
  const result=createOsakevahtiReview({source:data(),documentRole:'CURRENT_HOLDINGS_SNAPSHOT',rows:[{
   id:'r',fields:{name:field('Nordnet Eurooppa Indeksi','name'),
-   quantity:field(3.01,'units'),nav:field(182.86,'nav'),averageAcquisitionPrice:field(182.86,'nav')}
+   quantity:field(3.01,'units'),nav:field(182.86,'nav'),averageAcquisitionPrice:field(182.86,'nav','nav')}
  }]});
  assert.ok(result.problems.some(x=>x.code==='NAV_COST_SOURCE_COLLISION'));
  assert.ok(result.problems.some(x=>x.code==='FIELD_ROLE_CONFLICT'));
@@ -80,5 +80,6 @@ test('No forged reference nor unknown domain field is accepted for financial evi
   rows:[{id:'r',fields:{name:field('Nordnet Eurooppa Indeksi','name'),
     quantity:field(3.01,'unrelated'),secretToken:field('hello','value')}}]});
  assert.ok(result.problems.some(x=>x.code==='BAD_SOURCE_REFERENCE'));
+ assert.ok(result.problems.some(x=>x.code==='UNSUPPORTED_DOMAIN_FIELD'));
  assert.equal(JSON.stringify(result).includes('hello'),false);
 });
