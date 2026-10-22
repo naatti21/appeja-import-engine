@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {createOsakevahtiReview} from '../src/adapters/osakevahti-review.mjs';
+import {createOsakevahtiReview,createOsakevahtiFundSnapshotReview} from '../src/adapters/osakevahti-review.mjs';
 import {createPalkkaReview} from '../src/adapters/palkka-review.mjs';
 import {correctReviewField,reviewFieldSources,reviewDiagnostics} from '../src/review-draft.mjs';
 const obs=(id,raw)=>({id,raw,method:'synthetic',source:{format:'image-ocr',page:1,
@@ -133,4 +133,67 @@ test('Actual structured payroll parser and PDF source envelope enter the same re
  assert.equal(draft.records[0].fields.grossPay.status,'candidate');
  assert.ok(reviewFieldSources(draft,'payslip-1','grossPay').length>0);
  assert.equal(draft.canPersist,false);
+});
+
+test('Real two-read compact fund snapshot flows to review without auto selecting a portfolio holding',async()=>{
+ const {fundSnapshotFixture}=await import('./fixtures/fund-snapshots.mjs');
+ const {extractFundSnapshot}=await import('../src/fund-snapshots.mjs');
+ const fixture=fundSnapshotFixture('compact');
+ const source={...fixture.source,schemaVersion:1,sourceKind:'image-ocr-tsv'};
+ const snapshot=extractFundSnapshot(fixture.source,structuredClone(fixture.source));
+ const review=createOsakevahtiFundSnapshotReview({source,snapshot});
+ assert.equal(review.documentType,'holdings');
+ assert.equal(review.canPersist,false);
+ assert.equal(review.records.length,1);
+ const f=review.records[0].fields;
+ assert.equal(f.name.value,'Juniper Horizon Sustainable Index');
+ assert.equal(f.quantity.value,'49.7');
+ assert.equal(f.value.value,'1000.50');
+ assert.equal(f.quantity.status,'candidate');
+ assert.equal(f.nav.status,'missing');
+ assert.equal(f.averageAcquisitionPrice.status,'missing');
+ assert.equal('account' in f,false);
+ assert.deepEqual(reviewFieldSources(review,review.records[0].id,'quantity').map(o=>o.raw),['49,7 kpl']);
+});
+test('Five actual fund cards preserve 4-decimal NAV vs acquisition cost and source provenance',async()=>{
+ const {fundSnapshotFixture}=await import('./fixtures/fund-snapshots.mjs');
+ const {extractFundSnapshot}=await import('../src/fund-snapshots.mjs');
+ const fixture=fundSnapshotFixture('cards');
+ const source={...fixture.source,schemaVersion:1,sourceKind:'image-ocr-tsv'};
+ const result=extractFundSnapshot(fixture.source,structuredClone(fixture.source));
+ const draft=createOsakevahtiFundSnapshotReview({source,snapshot:result});
+ assert.equal(draft.records.length,5);
+ assert.equal(draft.problems.length,0);
+ for(const [i,row] of draft.records.entries()){
+   assert.equal(row.fields.name.value,fixture.oracle[i].name);
+   assert.equal(row.fields.quantity.value,fixture.oracle[i].quantity);
+   assert.equal(row.fields.value.value,fixture.oracle[i].value);
+   assert.equal(row.fields.nav.value,fixture.oracle[i].nav);
+   assert.equal(row.fields.averageAcquisitionPrice.value,fixture.oracle[i].averageAcquisitionPrice);
+   assert.equal(row.fields.currency.value,'EUR');
+   assert.notEqual(row.fields.nav.sourceIds[0],row.fields.averageAcquisitionPrice.sourceIds[0]);
+ }
+ assert.equal(draft.canPersist,false);
+});
+test('Second OCR reading disagreement keeps same source but blocks candidate role',async()=>{
+ const {fundSnapshotFixture}=await import('./fixtures/fund-snapshots.mjs');
+ const {extractFundSnapshot}=await import('../src/fund-snapshots.mjs');
+ const f=fundSnapshotFixture('compact'),w=structuredClone(f.source);
+ w.observations.find(o=>o.raw==='49,7 kpl').raw='497 kpl';
+ const result=extractFundSnapshot(f.source,w);
+ const review=createOsakevahtiFundSnapshotReview({source:{...f.source,schemaVersion:1,sourceKind:'image-ocr-tsv'},snapshot:result});
+ assert.equal(review.records[0].fields.quantity.status,'ambiguous');
+ assert.equal(review.canPersist,false);
+});
+test('Swapped review evidence and forged fund identity fail closed',async()=>{
+ const {fundSnapshotFixture}=await import('./fixtures/fund-snapshots.mjs');
+ const {extractFundSnapshot}=await import('../src/fund-snapshots.mjs');
+ const f=fundSnapshotFixture('compact');
+ const snapshot=extractFundSnapshot(f.source,structuredClone(f.source));
+ const swapped=structuredClone(f.source);swapped.observations.find(o=>o.raw==='49,7 kpl').raw='41,7 kpl';
+ const review=createOsakevahtiFundSnapshotReview({source:{...swapped,schemaVersion:1,sourceKind:'image-ocr-tsv'},snapshot});
+ assert.ok(review.problems.some(p=>p.code==='FUND_SNAPSHOT_SOURCE_MISMATCH'));
+ assert.equal(review.records[0].fields.quantity.status,'conflict');
+ const forged=structuredClone(snapshot);forged.rows[0].identityStatus='VERIFIED';
+ assert.throws(()=>createOsakevahtiFundSnapshotReview({source:{...f.source,schemaVersion:1,sourceKind:'image-ocr-tsv'},snapshot:forged}),/INVALID_FUND_ROW_STATE/);
 });
