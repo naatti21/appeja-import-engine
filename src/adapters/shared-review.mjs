@@ -3,7 +3,7 @@
  * Domain-specific parsers supply semantic roles; this adapter cannot invent them.
  * No instrument lookup, salary/portfolio storage or auto-approval here.
  */
-import {createReviewDraft} from './review-draft.mjs';
+import {createReviewDraft} from '../review-draft.mjs';
 
 const STATUSES=new Set(['candidate','verified','valid','observed','missing','ambiguous','conflict','invalid','unverified']);
 const FIELD=/^[A-Za-z][A-Za-z0-9_]{0,63}$/;
