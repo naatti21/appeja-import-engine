@@ -1,0 +1,25 @@
+name: Shared app review adapters — safety gate
+on:
+  push:
+    branches:
+      - feature/shared-osakevahti-palkka-review-20261022
+  pull_request:
+    paths:
+      - 'src/adapters/**'
+      - 'tests/shared-app-adapters.test.mjs'
+      - '.github/workflows/shared-app-review.yml'
+permissions:
+  contents: read
+jobs:
+  app-adapter-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Cross-app adapter contract and source safety tests
+        run: node --test tests/shared-app-adapters.test.mjs
+      - name: Existing shared review-draft regression
+        run: node --test tests/review-draft.test.mjs
